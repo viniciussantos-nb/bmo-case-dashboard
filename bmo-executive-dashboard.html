@@ -31,103 +31,104 @@ body {
 }
 
 .dashboard {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 40px;
+  padding: 28px 36px;
 }
 
 /* Header */
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 28px;
-  padding-bottom: 20px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
   border-bottom: 3px solid var(--nu-purple);
 }
 
 .header-left h1 {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--nu-purple);
-  margin-bottom: 4px;
-}
-
-.header-left .subtitle {
-  font-size: 14px;
-  color: var(--chrome-grey);
-}
-
-.header-right {
-  text-align: right;
-}
-
-.header-right .period {
-  font-size: 13px;
-  color: var(--chrome-grey);
-  margin-bottom: 4px;
-}
-
-.header-right .total {
   font-size: 24px;
   font-weight: 700;
   color: var(--nu-purple);
 }
 
-.header-right .total-label {
-  font-size: 11px;
+.header-right {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-stat {
+  text-align: center;
+}
+
+.header-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--nu-purple);
+}
+
+.header-stat-label {
+  font-size: 10px;
   color: var(--chrome-grey);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 /* Executive Summary */
 .exec-summary {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-radius: 16px;
-  padding: 24px 32px;
-  margin-bottom: 24px;
+  border-radius: 12px;
+  padding: 20px 28px;
+  margin-bottom: 20px;
   color: white;
 }
 
-.exec-summary-title {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.7;
-  margin-bottom: 12px;
-}
-
 .exec-summary-text {
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.exec-summary-text strong {
-  color: var(--nu-red);
-  font-weight: 700;
-}
-
+.exec-summary-text strong { color: var(--nu-red); }
 .exec-summary-text .highlight {
   background: rgba(130, 10, 209, 0.4);
   padding: 2px 8px;
   border-radius: 4px;
 }
 
-/* KPI Strip */
+/* Section Title */
+.section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nu-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  background: var(--nu-purple);
+  border-radius: 2px;
+}
+
+/* KPI Strip - Simplified */
 .kpi-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .kpi-card {
   background: var(--nu-off-white);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 16px;
   position: relative;
   overflow: hidden;
 }
@@ -138,519 +139,252 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
 }
 
 .kpi-card.critical::before { background: var(--nu-red); }
 .kpi-card.warning::before { background: var(--nu-yellow); }
-.kpi-card.ok::before { background: var(--nu-green); }
-.kpi-card.neutral::before { background: var(--nu-purple); }
+
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
 
 .kpi-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--chrome-grey);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
 }
 
-.kpi-value {
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.kpi-card.critical .kpi-value { color: var(--nu-red); }
-.kpi-card.warning .kpi-value { color: var(--nu-yellow); }
-.kpi-card.ok .kpi-value { color: var(--nu-green); }
-.kpi-card.neutral .kpi-value { color: var(--nu-purple); }
-
-.kpi-meta {
-  font-size: 12px;
-  color: var(--chrome-grey);
-}
-
-.kpi-trend {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 600;
-  margin-top: 8px;
-  padding: 3px 8px;
-  border-radius: 10px;
-}
-
-.kpi-trend.bad { background: #fef2f2; color: var(--nu-red); }
-.kpi-trend.good { background: #f0fdf4; color: var(--nu-green); }
-
-.kpi-trajectory {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px dashed var(--nu-grey);
-}
-
-.kpi-trajectory-label {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--chrome-grey);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-.kpi-trajectory-steps {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-}
-
-.kpi-trajectory-step {
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.kpi-trajectory-step.current {
-  background: var(--nu-off-white);
-  color: var(--chrome-grey);
-}
-
-.kpi-trajectory-step.target {
-  background: var(--nu-green);
-  color: white;
-}
-
-.kpi-trajectory-arrow {
-  color: var(--chrome-grey);
-  font-size: 10px;
-}
-
-/* Roadmap Section */
-.roadmap-section {
-  margin-bottom: 24px;
-}
-
-.roadmap-container {
-  background: white;
-  border: 1px solid var(--nu-grey);
-  border-radius: 14px;
-  padding: 20px;
-}
-
-.roadmap-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.roadmap-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--nu-black);
-}
-
-.roadmap-methodology {
-  font-size: 10px;
-  color: var(--chrome-grey);
-  background: var(--nu-off-white);
-  padding: 4px 10px;
-  border-radius: 10px;
-}
-
-.roadmap-timeline {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-  margin-bottom: 16px;
-}
-
-.roadmap-phase {
-  padding: 12px 16px;
-  text-align: center;
-  position: relative;
-}
-
-.roadmap-phase::after {
-  content: '→';
-  position: absolute;
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--nu-purple);
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.roadmap-phase:last-child::after {
-  display: none;
-}
-
-.roadmap-phase.phase-1 {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-  border-radius: 10px 0 0 10px;
-}
-
-.roadmap-phase.phase-2 {
-  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
-}
-
-.roadmap-phase.phase-3 {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-  border-radius: 0 10px 10px 0;
-}
-
-.roadmap-phase-label {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-.phase-1 .roadmap-phase-label { color: var(--nu-red); }
-.phase-2 .roadmap-phase-label { color: #ca8a04; }
-.phase-3 .roadmap-phase-label { color: var(--nu-blue); }
-
-.roadmap-phase-period {
-  font-size: 11px;
-  color: var(--chrome-grey);
-  margin-bottom: 8px;
-}
-
-.roadmap-phase-focus {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--nu-black);
-}
-
-.roadmap-metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.roadmap-metric {
-  background: var(--nu-off-white);
-  border-radius: 10px;
-  padding: 12px;
-}
-
-.roadmap-metric-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.roadmap-metric-name {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--nu-black);
-}
-
-.roadmap-metric-method {
+.kpi-method {
   font-size: 8px;
   color: var(--chrome-grey);
   background: white;
   padding: 2px 6px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
-.roadmap-metric-values {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-}
-
-.roadmap-metric-value {
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.roadmap-metric-value.current { color: var(--chrome-grey); }
-.roadmap-metric-value.f1 { color: var(--nu-red); }
-.roadmap-metric-value.f2 { color: #ca8a04; }
-.roadmap-metric-value.target { color: var(--nu-green); }
-
-.roadmap-metric-arrow {
-  font-size: 10px;
-  color: var(--nu-grey);
-}
-
-/* Problems Section */
-.problems-section {
-  margin-bottom: 24px;
-}
-
-.section-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--nu-purple);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-title::before {
-  content: '';
-  width: 4px;
-  height: 18px;
-  background: var(--nu-purple);
-  border-radius: 2px;
-}
-
-.problems-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.problem-card {
-  background: white;
-  border: 1px solid var(--nu-grey);
-  border-radius: 14px;
-  padding: 20px;
-  position: relative;
-}
-
-.problem-card.priority-1 { border-left: 5px solid var(--nu-red); }
-.problem-card.priority-2 { border-left: 5px solid var(--nu-yellow); }
-.problem-card.priority-3 { border-left: 5px solid var(--nu-blue); }
-
-.problem-header {
+.kpi-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-
-.problem-badge {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.priority-1 .problem-badge { background: #fef2f2; color: var(--nu-red); }
-.priority-2 .problem-badge { background: #fefce8; color: #ca8a04; }
-.priority-3 .problem-badge { background: #eff6ff; color: var(--nu-blue); }
-
-.problem-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--nu-black);
-  margin-bottom: 8px;
-}
-
-.problem-metric {
-  display: flex;
   align-items: baseline;
-  gap: 8px;
-  margin-bottom: 8px;
 }
 
-.problem-value {
+.kpi-value {
   font-size: 28px;
   font-weight: 800;
 }
 
-.priority-1 .problem-value { color: var(--nu-red); }
-.priority-2 .problem-value { color: var(--nu-yellow); }
-.priority-3 .problem-value { color: var(--nu-blue); }
+.kpi-card.critical .kpi-value { color: var(--nu-red); }
+.kpi-card.warning .kpi-value { color: var(--nu-yellow); }
 
-.problem-unit {
-  font-size: 13px;
-  color: var(--chrome-grey);
+.kpi-target {
+  text-align: right;
 }
 
-.problem-detail {
-  font-size: 12px;
-  color: var(--chrome-grey);
-  line-height: 1.5;
-}
-
-.problem-impact {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--nu-grey);
-  font-size: 11px;
-}
-
-.impact-label {
-  font-weight: 600;
-  color: var(--chrome-grey);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-.impact-text {
-  color: var(--nu-black);
-  line-height: 1.4;
-}
-
-/* Causality Section */
-.causality-section {
-  background: var(--nu-off-white);
-  border-radius: 14px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-}
-
-.causality-flow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.causality-item {
-  background: white;
-  border-radius: 10px;
-  padding: 12px 20px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.causality-item.root {
-  background: var(--nu-red);
-  color: white;
-}
-
-.causality-item.effect {
-  background: white;
-  border: 2px solid var(--nu-grey);
-}
-
-.causality-item .label {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.7;
-  margin-bottom: 4px;
-}
-
-.causality-item .value {
-  font-size: 18px;
+.kpi-target-value {
+  font-size: 14px;
   font-weight: 700;
+  color: var(--nu-green);
 }
 
-.causality-arrow {
-  font-size: 20px;
-  color: var(--nu-purple);
-  font-weight: 700;
+.kpi-target-label {
+  font-size: 9px;
+  color: var(--chrome-grey);
 }
 
-/* Top Offenders */
-.offenders-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 24px;
+/* Gantt Roadmap */
+.gantt-section {
+  margin-bottom: 20px;
 }
 
-.offender-card {
+.gantt-container {
   background: white;
   border: 1px solid var(--nu-grey);
-  border-radius: 14px;
-  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.offender-title {
-  font-size: 13px;
+.gantt-header {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr 1fr;
+  background: var(--nu-off-white);
+  border-bottom: 1px solid var(--nu-grey);
+}
+
+.gantt-header-cell {
+  padding: 12px 16px;
+  font-size: 11px;
   font-weight: 700;
+  text-transform: uppercase;
+  color: var(--chrome-grey);
+  text-align: center;
+  border-left: 1px solid var(--nu-grey);
+}
+
+.gantt-header-cell:first-child {
+  border-left: none;
+  text-align: left;
+}
+
+.gantt-header-cell.phase-1 { color: var(--nu-red); }
+.gantt-header-cell.phase-2 { color: #ca8a04; }
+.gantt-header-cell.phase-3 { color: var(--nu-blue); }
+
+.gantt-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--nu-grey);
+}
+
+.gantt-row:last-child {
+  border-bottom: none;
+}
+
+.gantt-row-label {
+  padding: 14px 16px;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--nu-black);
-  margin-bottom: 16px;
-}
-
-.offender-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.offender-item {
+  background: var(--nu-off-white);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-.offender-rank {
-  width: 24px;
-  height: 24px;
-  background: var(--nu-purple);
-  color: white;
-  border-radius: 50%;
+.gantt-row-label .icon {
+  font-size: 14px;
+}
+
+.gantt-cell {
+  padding: 10px 12px;
+  border-left: 1px solid var(--nu-grey);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
 }
 
-.offender-bar {
-  flex: 1;
-  height: 28px;
-  background: var(--nu-off-white);
+.gantt-bar {
+  width: 100%;
+  padding: 8px 12px;
   border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-}
-
-.offender-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--nu-purple) 0%, var(--nu-light-purple) 100%);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.offender-fill.critical { background: linear-gradient(90deg, var(--nu-red) 0%, #f87171 100%); }
-
-.offender-name {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
+  text-align: center;
   color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.offender-value {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 11px;
+.gantt-bar.action { background: var(--nu-purple); }
+.gantt-bar.action-light { background: var(--nu-light-purple); }
+.gantt-bar.continuation { background: var(--nu-grey); color: var(--chrome-grey); }
+
+.gantt-bar.phase-1 { background: var(--nu-red); }
+.gantt-bar.phase-2 { background: var(--nu-yellow); color: var(--nu-black); }
+.gantt-bar.phase-3 { background: var(--nu-blue); }
+
+/* Metrics Row in Gantt */
+.gantt-row.metrics {
+  background: linear-gradient(90deg, var(--nu-off-white) 0%, white 10%);
+}
+
+.gantt-row.metrics .gantt-row-label {
+  font-weight: 700;
+  color: var(--nu-purple);
+}
+
+.gantt-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.gantt-metric-value {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gantt-metric-value.target { color: var(--nu-green); }
+
+.gantt-metric-label {
+  font-size: 9px;
+  color: var(--chrome-grey);
+}
+
+/* Focus Section */
+.focus-section {
+  margin-bottom: 20px;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.focus-card {
+  background: white;
+  border: 1px solid var(--nu-grey);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.focus-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.focus-card-title {
+  font-size: 13px;
   font-weight: 700;
   color: var(--nu-black);
+}
+
+.focus-card-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: #fef2f2;
+  color: var(--nu-red);
+}
+
+.focus-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--nu-off-white);
+}
+
+.focus-item:last-child { border-bottom: none; }
+
+.focus-item-name {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.focus-item-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nu-red);
 }
 
 /* Action Footer */
 .action-footer {
   background: linear-gradient(135deg, var(--nu-purple) 0%, #6a08ad 100%);
-  border-radius: 14px;
-  padding: 20px 28px;
+  border-radius: 12px;
+  padding: 18px 24px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .action-text {
@@ -660,306 +394,53 @@ body {
 .action-title {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .action-subtitle {
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.85;
 }
 
 .action-items {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .action-item {
   background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 10px;
-  padding: 12px 20px;
+  border-radius: 8px;
+  padding: 10px 16px;
   text-align: center;
 }
 
 .action-item .number {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
 }
 
 .action-item .label {
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
   opacity: 0.8;
 }
 
 /* Footer */
 .footer {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--nu-grey);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--chrome-grey);
 }
 
-.footer-logo {
-  font-weight: 700;
-  color: var(--nu-purple);
-}
-
-/* Cascade Section */
-.cascade-section {
-  margin-bottom: 24px;
-}
-
-.cascade-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-}
-
-.cascade-card {
-  background: white;
-  border: 1px solid var(--nu-grey);
-  border-radius: 14px;
-  padding: 18px;
-}
-
-.cascade-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--nu-off-white);
-}
-
-.cascade-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-
-.cascade-icon.channel { background: #fef2f2; }
-.cascade-icon.squad { background: #fefce8; }
-.cascade-icon.reason { background: #eff6ff; }
-
-.cascade-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--nu-black);
-}
-
-.cascade-subtitle {
-  font-size: 11px;
-  color: var(--chrome-grey);
-}
-
-.cascade-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--nu-off-white);
-}
-
-.cascade-item:last-child {
-  border-bottom: none;
-}
-
-.cascade-item-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.cascade-rank {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+.footer-methodology {
   background: var(--nu-off-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--chrome-grey);
+  padding: 8px 14px;
+  border-radius: 8px;
+  max-width: 70%;
 }
 
-.cascade-rank.top { background: var(--nu-red); color: white; }
-
-.cascade-name {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--nu-black);
-}
-
-.cascade-metrics {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.cascade-metric {
-  text-align: right;
-}
-
-.cascade-metric-value {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--nu-black);
-}
-
-.cascade-metric-value.critical { color: var(--nu-red); }
-.cascade-metric-value.warning { color: var(--nu-yellow); }
-
-.cascade-metric-label {
-  font-size: 9px;
-  color: var(--chrome-grey);
-  text-transform: uppercase;
-}
-
-/* Action Plan Section */
-.action-plan-section {
-  margin-bottom: 24px;
-}
-
-.action-plan-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.action-plan-card {
-  background: white;
-  border: 1px solid var(--nu-grey);
-  border-radius: 14px;
-  padding: 18px;
-  position: relative;
-  overflow: hidden;
-}
-
-.action-plan-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-}
-
-.action-plan-card.immediate::before { background: var(--nu-red); }
-.action-plan-card.short::before { background: var(--nu-yellow); }
-.action-plan-card.medium::before { background: var(--nu-blue); }
-
-.action-plan-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-
-.action-plan-horizon {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 10px;
-  text-transform: uppercase;
-}
-
-.immediate .action-plan-horizon { background: #fef2f2; color: var(--nu-red); }
-.short .action-plan-horizon { background: #fefce8; color: #ca8a04; }
-.medium .action-plan-horizon { background: #eff6ff; color: var(--nu-blue); }
-
-.action-plan-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--nu-black);
-  margin-bottom: 10px;
-}
-
-.action-plan-items {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.action-plan-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--nu-black);
-  line-height: 1.4;
-}
-
-.action-plan-item::before {
-  content: '→';
-  color: var(--nu-purple);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.action-plan-target {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--nu-grey);
-}
-
-.action-plan-target-label {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--chrome-grey);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.action-plan-target-value {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.immediate .action-plan-target-value { color: var(--nu-red); }
-.short .action-plan-target-value { color: #ca8a04; }
-.medium .action-plan-target-value { color: var(--nu-blue); }
-
-/* Methodology Note */
-.methodology-note {
-  background: var(--nu-off-white);
-  border-radius: 10px;
-  padding: 14px 20px;
-  margin-bottom: 16px;
-  border-left: 4px solid var(--nu-purple);
-}
-
-.methodology-note-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--nu-purple);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 6px;
-}
-
-.methodology-note-content {
-  font-size: 11px;
-  color: var(--chrome-grey);
-  line-height: 1.6;
-}
-
-.methodology-note-content strong {
-  color: var(--nu-black);
-  font-weight: 600;
-}
-
-/* Print styles */
 @media print {
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .dashboard { padding: 20px; }
@@ -973,628 +454,241 @@ body {
   <div class="header">
     <div class="header-left">
       <h1>Ouvidoria — Executive Dashboard</h1>
-      <div class="subtitle">Customer Relationship Forum | Diagnóstico Operacional</div>
     </div>
     <div class="header-right">
-      <div class="period">Jan/2025 - Dez/2025</div>
-      <div class="total">337.614</div>
-      <div class="total-label">casos analisados</div>
+      <div class="header-stat">
+        <div class="header-stat-value">337.614</div>
+        <div class="header-stat-label">Casos analisados</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">90 dias</div>
+        <div class="header-stat-label">Horizonte</div>
+      </div>
     </div>
   </div>
 
   <!-- Executive Summary -->
   <div class="exec-summary">
-    <div class="exec-summary-title">Visão Executiva</div>
     <div class="exec-summary-text">
-      A operação apresenta <strong>3 problemas críticos interligados</strong>. O <span class="highlight">SLA elevado</span> é a causa raiz que impacta diretamente a resolutividade e a satisfação do cliente. Priorizando SLA, os demais indicadores tendem a melhorar em cascata.
+      <strong>3 problemas críticos interligados</strong> com <span class="highlight">SLA elevado</span> como causa raiz. Foco em Collections + RDR resolve 45% do problema em 90 dias.
     </div>
   </div>
 
   <!-- KPI Strip -->
+  <div class="section-title">Indicadores Críticos</div>
   <div class="kpi-strip">
     <div class="kpi-card critical">
-      <div class="kpi-label">SLA Médio</div>
-      <div class="kpi-value">6,5d</div>
-      <div class="kpi-meta">Meta Final: ≤5d (90 dias)</div>
-      <div class="kpi-trend bad">↑ 65% vs ano anterior</div>
-      <div class="kpi-trajectory">
-        <div class="kpi-trajectory-label">Trajetória</div>
-        <div class="kpi-trajectory-steps">
-          <span class="kpi-trajectory-step current">6,5d</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">6,0d</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">5,5d</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step target">5,0d</span>
+      <div class="kpi-header">
+        <div class="kpi-label">SLA Médio</div>
+        <div class="kpi-method">Regulatório</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-value">6,5d</div>
+        <div class="kpi-target">
+          <div class="kpi-target-value">≤5d</div>
+          <div class="kpi-target-label">Meta 90d</div>
         </div>
       </div>
     </div>
     <div class="kpi-card warning">
-      <div class="kpi-label">Resolutividade</div>
-      <div class="kpi-value">35,3%</div>
-      <div class="kpi-meta">Meta Final: ≥60% (90 dias)</div>
-      <div class="kpi-trend bad">↓ 24,7pp abaixo da meta</div>
-      <div class="kpi-trajectory">
-        <div class="kpi-trajectory-label">Trajetória</div>
-        <div class="kpi-trajectory-steps">
-          <span class="kpi-trajectory-step current">35%</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">42%</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">50%</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step target">60%</span>
+      <div class="kpi-header">
+        <div class="kpi-label">Resolutividade</div>
+        <div class="kpi-method">P75 Interno</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-value">35%</div>
+        <div class="kpi-target">
+          <div class="kpi-target-value">≥60%</div>
+          <div class="kpi-target-label">Meta 90d</div>
         </div>
       </div>
     </div>
     <div class="kpi-card warning">
-      <div class="kpi-label">tNPS</div>
-      <div class="kpi-value">5,3</div>
-      <div class="kpi-meta">Meta Final: ≥20 (90 dias)</div>
-      <div class="kpi-trend bad">Canal RDR: -66</div>
-      <div class="kpi-trajectory">
-        <div class="kpi-trajectory-label">Trajetória</div>
-        <div class="kpi-trajectory-steps">
-          <span class="kpi-trajectory-step current">5</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">10</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">15</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step target">20</span>
+      <div class="kpi-header">
+        <div class="kpi-label">tNPS</div>
+        <div class="kpi-method">Benchmark</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-value">5,3</div>
+        <div class="kpi-target">
+          <div class="kpi-target-value">≥20</div>
+          <div class="kpi-target-label">Meta 90d</div>
         </div>
       </div>
     </div>
     <div class="kpi-card critical">
-      <div class="kpi-label">Taxa Resposta tNPS</div>
-      <div class="kpi-value">7,2%</div>
-      <div class="kpi-meta">Meta Final: ≥15% (90 dias)</div>
-      <div class="kpi-trend bad">92,8% sem feedback</div>
-      <div class="kpi-trajectory">
-        <div class="kpi-trajectory-label">Trajetória</div>
-        <div class="kpi-trajectory-steps">
-          <span class="kpi-trajectory-step current">7%</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">9%</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step">12%</span>
-          <span class="kpi-trajectory-arrow">→</span>
-          <span class="kpi-trajectory-step target">15%</span>
+      <div class="kpi-header">
+        <div class="kpi-label">Taxa Resposta</div>
+        <div class="kpi-method">2x Baseline</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-value">7%</div>
+        <div class="kpi-target">
+          <div class="kpi-target-value">≥15%</div>
+          <div class="kpi-target-label">Meta 90d</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Roadmap de Metas -->
-  <div class="roadmap-section">
-    <div class="section-title">Roadmap de Metas (90 dias)</div>
-    <div class="roadmap-container">
-      <div class="roadmap-header">
-        <div class="roadmap-title">Trajetória por Fase do Plano de Ação</div>
-        <div class="roadmap-methodology">Metodologia: Regulatório + P75 Interno + Benchmark Mercado</div>
+  <!-- Gantt Roadmap -->
+  <div class="gantt-section">
+    <div class="section-title">Roadmap de Ação (90 dias)</div>
+    <div class="gantt-container">
+      <div class="gantt-header">
+        <div class="gantt-header-cell">Track</div>
+        <div class="gantt-header-cell phase-1">Fase 1 (0-30d)</div>
+        <div class="gantt-header-cell phase-2">Fase 2 (30-60d)</div>
+        <div class="gantt-header-cell phase-3">Fase 3 (60-90d)</div>
       </div>
       
-      <!-- Timeline -->
-      <div class="roadmap-timeline">
-        <div class="roadmap-phase phase-1">
-          <div class="roadmap-phase-label">Fase 1 — Imediato</div>
-          <div class="roadmap-phase-period">0-30 dias</div>
-          <div class="roadmap-phase-focus">Quick Wins Collections</div>
+      <div class="gantt-row">
+        <div class="gantt-row-label"><span class="icon">⚡</span> Operacional</div>
+        <div class="gantt-cell">
+          <div class="gantt-bar phase-1">Task Force Collections</div>
         </div>
-        <div class="roadmap-phase phase-2">
-          <div class="roadmap-phase-label">Fase 2 — Curto Prazo</div>
-          <div class="roadmap-phase-period">30-60 dias</div>
-          <div class="roadmap-phase-focus">Otimização Processos</div>
+        <div class="gantt-cell">
+          <div class="gantt-bar phase-2">Expansão CSS + Chargeback</div>
         </div>
-        <div class="roadmap-phase phase-3">
-          <div class="roadmap-phase-label">Fase 3 — Médio Prazo</div>
-          <div class="roadmap-phase-period">60-90 dias</div>
-          <div class="roadmap-phase-focus">Transformação Estrutural</div>
+        <div class="gantt-cell">
+          <div class="gantt-bar phase-3">Modelo Preditivo</div>
         </div>
       </div>
 
-      <!-- Metrics per Phase -->
-      <div class="roadmap-metrics">
-        <div class="roadmap-metric">
-          <div class="roadmap-metric-header">
-            <div class="roadmap-metric-name">SLA</div>
-            <div class="roadmap-metric-method">Regulatório</div>
-          </div>
-          <div class="roadmap-metric-values">
-            <span class="roadmap-metric-value current">6,5d</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f1">6,0d</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f2">5,5d</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value target">5,0d</span>
+      <div class="gantt-row">
+        <div class="gantt-row-label"><span class="icon">🔧</span> Processos</div>
+        <div class="gantt-cell">
+          <div class="gantt-bar phase-1">Templates RDR</div>
+        </div>
+        <div class="gantt-cell">
+          <div class="gantt-bar phase-2">Automação Triagem</div>
+        </div>
+        <div class="gantt-cell">
+          <div class="gantt-bar phase-3">Feedback Loop Produto</div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-row-label"><span class="icon">📊</span> Dados</div>
+        <div class="gantt-cell">
+          <div class="gantt-bar action-light">Validação KPIs</div>
+        </div>
+        <div class="gantt-cell">
+          <div class="gantt-bar action">Dashboard Squads</div>
+        </div>
+        <div class="gantt-cell">
+          <div class="gantt-bar action">Integração Procedência</div>
+        </div>
+      </div>
+
+      <div class="gantt-row metrics">
+        <div class="gantt-row-label">Meta SLA</div>
+        <div class="gantt-cell">
+          <div class="gantt-metric">
+            <div class="gantt-metric-value">6,0d</div>
           </div>
         </div>
-        <div class="roadmap-metric">
-          <div class="roadmap-metric-header">
-            <div class="roadmap-metric-name">Resolutividade</div>
-            <div class="roadmap-metric-method">P75 Interno</div>
-          </div>
-          <div class="roadmap-metric-values">
-            <span class="roadmap-metric-value current">35%</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f1">42%</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f2">50%</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value target">60%</span>
+        <div class="gantt-cell">
+          <div class="gantt-metric">
+            <div class="gantt-metric-value">5,5d</div>
           </div>
         </div>
-        <div class="roadmap-metric">
-          <div class="roadmap-metric-header">
-            <div class="roadmap-metric-name">tNPS</div>
-            <div class="roadmap-metric-method">Benchmark</div>
-          </div>
-          <div class="roadmap-metric-values">
-            <span class="roadmap-metric-value current">5</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f1">10</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f2">15</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value target">20</span>
+        <div class="gantt-cell">
+          <div class="gantt-metric">
+            <div class="gantt-metric-value target">≤5,0d</div>
           </div>
         </div>
-        <div class="roadmap-metric">
-          <div class="roadmap-metric-header">
-            <div class="roadmap-metric-name">Taxa Resposta</div>
-            <div class="roadmap-metric-method">2x Baseline</div>
+      </div>
+
+      <div class="gantt-row metrics">
+        <div class="gantt-row-label">Meta Resolutividade</div>
+        <div class="gantt-cell">
+          <div class="gantt-metric">
+            <div class="gantt-metric-value">42%</div>
           </div>
-          <div class="roadmap-metric-values">
-            <span class="roadmap-metric-value current">7%</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f1">9%</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value f2">12%</span>
-            <span class="roadmap-metric-arrow">→</span>
-            <span class="roadmap-metric-value target">15%</span>
+        </div>
+        <div class="gantt-cell">
+          <div class="gantt-metric">
+            <div class="gantt-metric-value">50%</div>
+          </div>
+        </div>
+        <div class="gantt-cell">
+          <div class="gantt-metric">
+            <div class="gantt-metric-value target">≥60%</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 3 Critical Problems -->
-  <div class="problems-section">
-    <div class="section-title">Problemas Críticos Priorizados</div>
-    <div class="problems-grid">
-      <div class="problem-card priority-1">
-        <div class="problem-header">
-          <div class="problem-badge">Prioridade 1</div>
+  <!-- Focus Section -->
+  <div class="focus-section">
+    <div class="section-title">Foco Prioritário</div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-card-header">
+          <div class="focus-card-title">Top Squads (SLA crítico)</div>
+          <div class="focus-card-badge">45% do problema</div>
         </div>
-        <div class="problem-title">SLA Elevado</div>
-        <div class="problem-metric">
-          <span class="problem-value">46,5%</span>
-          <span class="problem-unit">acima de 8 dias</span>
+        <div class="focus-item">
+          <span class="focus-item-name">1. Collections</span>
+          <span class="focus-item-value">69.635 casos · 72% estouro</span>
         </div>
-        <div class="problem-detail">
-          BACEN exige resposta em até 10 dias úteis. SLA piorou 65% no ano.
+        <div class="focus-item">
+          <span class="focus-item-name">2. CSS</span>
+          <span class="focus-item-value">23.147 casos · 48% estouro</span>
         </div>
-        <div class="problem-impact">
-          <div class="impact-label">Impacto</div>
-          <div class="impact-text">Risco regulatório direto + causa raiz dos demais problemas</div>
-        </div>
-      </div>
-
-      <div class="problem-card priority-2">
-        <div class="problem-header">
-          <div class="problem-badge">Prioridade 2</div>
-        </div>
-        <div class="problem-title">Baixa Resolutividade RDR</div>
-        <div class="problem-metric">
-          <span class="problem-value">16-19%</span>
-          <span class="problem-unit">de resolução</span>
-        </div>
-        <div class="problem-detail">
-          34% da base (114k casos). tNPS de -66. Clientes já escalaram para canais externos.
-        </div>
-        <div class="problem-impact">
-          <div class="impact-label">Impacto</div>
-          <div class="impact-text">Exposição reputacional crítica — cada caso é um detrator potencial</div>
+        <div class="focus-item">
+          <span class="focus-item-name">3. Chargeback</span>
+          <span class="focus-item-value">9.645 casos · 51% estouro</span>
         </div>
       </div>
 
-      <div class="problem-card priority-3">
-        <div class="problem-header">
-          <div class="problem-badge">Prioridade 3</div>
+      <div class="focus-card">
+        <div class="focus-card-header">
+          <div class="focus-card-title">Top Reasons (Collections)</div>
+          <div class="focus-card-badge">80-92% estouro</div>
         </div>
-        <div class="problem-title">Baixa Taxa Resposta tNPS</div>
-        <div class="problem-metric">
-          <span class="problem-value">7,2%</span>
-          <span class="problem-unit">respondem pesquisa</span>
+        <div class="focus-item">
+          <span class="focus-item-name">1. SCR</span>
+          <span class="focus-item-value">92% estouro · 11,2d SLA</span>
         </div>
-        <div class="problem-detail">
-          92,8% não respondem. Decisões baseadas em amostra potencialmente enviesada.
+        <div class="focus-item">
+          <span class="focus-item-name">2. Multidébitos</span>
+          <span class="focus-item-value">87% estouro · 9,8d SLA</span>
         </div>
-        <div class="problem-impact">
-          <div class="impact-label">Impacto</div>
-          <div class="impact-text">Sem visibilidade real — melhora ao reduzir SLA</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Causality Chain -->
-  <div class="causality-section">
-    <div class="section-title">Cadeia de Causalidade</div>
-    <div class="causality-flow">
-      <div class="causality-item root">
-        <div class="label">Causa Raiz</div>
-        <div class="value">SLA Alto</div>
-      </div>
-      <div class="causality-arrow">→</div>
-      <div class="causality-item effect">
-        <div class="label">Efeito 1</div>
-        <div class="value">↓ Resolutividade</div>
-      </div>
-      <div class="causality-arrow">→</div>
-      <div class="causality-item effect">
-        <div class="label">Efeito 2</div>
-        <div class="value">↓ tNPS</div>
-      </div>
-      <div class="causality-arrow">→</div>
-      <div class="causality-item effect">
-        <div class="label">Efeito 3</div>
-        <div class="value">↓ Taxa Resposta</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Top Offenders -->
-  <div class="offenders-section">
-    <div class="offender-card">
-      <div class="offender-title">Top Squads por Volume Crítico (SLA > 7d)</div>
-      <div class="offender-list">
-        <div class="offender-item">
-          <div class="offender-rank">1</div>
-          <div class="offender-bar">
-            <div class="offender-fill critical" style="width: 100%;">
-              <span class="offender-name">Collections</span>
-            </div>
-            <span class="offender-value">69.635</span>
-          </div>
-        </div>
-        <div class="offender-item">
-          <div class="offender-rank">2</div>
-          <div class="offender-bar">
-            <div class="offender-fill" style="width: 33%;">
-              <span class="offender-name">CSS</span>
-            </div>
-            <span class="offender-value">23.147</span>
-          </div>
-        </div>
-        <div class="offender-item">
-          <div class="offender-rank">3</div>
-          <div class="offender-bar">
-            <div class="offender-fill" style="width: 14%;">
-              <span class="offender-name">Chargeback</span>
-            </div>
-            <span class="offender-value">9.645</span>
-          </div>
+        <div class="focus-item">
+          <span class="focus-item-name">3. Cartão de Crédito</span>
+          <span class="focus-item-value">80% estouro · 8,5d SLA</span>
         </div>
       </div>
-    </div>
-
-    <div class="offender-card">
-      <div class="offender-title">Top Canais por Volume Crítico (SLA > 7d)</div>
-      <div class="offender-list">
-        <div class="offender-item">
-          <div class="offender-rank">1</div>
-          <div class="offender-bar">
-            <div class="offender-fill critical" style="width: 100%;">
-              <span class="offender-name">RDR</span>
-            </div>
-            <span class="offender-value">88.702</span>
-          </div>
-        </div>
-        <div class="offender-item">
-          <div class="offender-rank">2</div>
-          <div class="offender-bar">
-            <div class="offender-fill" style="width: 63%;">
-              <span class="offender-name">Email</span>
-            </div>
-            <span class="offender-value">56.022</span>
-          </div>
-        </div>
-        <div class="offender-item">
-          <div class="offender-rank">3</div>
-          <div class="offender-bar">
-            <div class="offender-fill" style="width: 12%;">
-              <span class="offender-name">Procon</span>
-            </div>
-            <span class="offender-value">10.791</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cascade Drill-Down: Canal → Squad → Reason -->
-  <div class="cascade-section">
-    <div class="section-title">Drill-Down: Onde Atacar</div>
-    <div class="cascade-grid">
-      
-      <!-- Canal -->
-      <div class="cascade-card">
-        <div class="cascade-header">
-          <div class="cascade-icon channel">📡</div>
-          <div>
-            <div class="cascade-title">Por Canal</div>
-            <div class="cascade-subtitle">93% concentrado em 2 canais</div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank top">1</div>
-            <div class="cascade-name">RDR</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">88.702</div>
-              <div class="cascade-metric-label">Casos</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">-66</div>
-              <div class="cascade-metric-label">tNPS</div>
-            </div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank">2</div>
-            <div class="cascade-name">Email</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value">56.022</div>
-              <div class="cascade-metric-label">Casos</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value warning">-8</div>
-              <div class="cascade-metric-label">tNPS</div>
-            </div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank">3</div>
-            <div class="cascade-name">Procon</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value">10.791</div>
-              <div class="cascade-metric-label">Casos</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value">+12</div>
-              <div class="cascade-metric-label">tNPS</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Squad -->
-      <div class="cascade-card">
-        <div class="cascade-header">
-          <div class="cascade-icon squad">👥</div>
-          <div>
-            <div class="cascade-title">Por Squad</div>
-            <div class="cascade-subtitle">78% concentrado em 5 squads</div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank top">1</div>
-            <div class="cascade-name">Collections</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">69.635</div>
-              <div class="cascade-metric-label">Casos</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">72%</div>
-              <div class="cascade-metric-label">Estouro</div>
-            </div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank">2</div>
-            <div class="cascade-name">CSS</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value">23.147</div>
-              <div class="cascade-metric-label">Casos</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value warning">48%</div>
-              <div class="cascade-metric-label">Estouro</div>
-            </div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank">3</div>
-            <div class="cascade-name">Chargeback</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value">9.645</div>
-              <div class="cascade-metric-label">Casos</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value warning">51%</div>
-              <div class="cascade-metric-label">Estouro</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reason -->
-      <div class="cascade-card">
-        <div class="cascade-header">
-          <div class="cascade-icon reason">📋</div>
-          <div>
-            <div class="cascade-title">Por Reason (Collections)</div>
-            <div class="cascade-subtitle">Top ofensores dentro do squad crítico</div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank top">1</div>
-            <div class="cascade-name">SCR</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">92%</div>
-              <div class="cascade-metric-label">Estouro</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">11,2d</div>
-              <div class="cascade-metric-label">SLA</div>
-            </div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank">2</div>
-            <div class="cascade-name">Multidébitos</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">87%</div>
-              <div class="cascade-metric-label">Estouro</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value critical">9,8d</div>
-              <div class="cascade-metric-label">SLA</div>
-            </div>
-          </div>
-        </div>
-        <div class="cascade-item">
-          <div class="cascade-item-left">
-            <div class="cascade-rank">3</div>
-            <div class="cascade-name">Cartão de Crédito</div>
-          </div>
-          <div class="cascade-metrics">
-            <div class="cascade-metric">
-              <div class="cascade-metric-value warning">80%</div>
-              <div class="cascade-metric-label">Estouro</div>
-            </div>
-            <div class="cascade-metric">
-              <div class="cascade-metric-value warning">8,5d</div>
-              <div class="cascade-metric-label">SLA</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Action Plan -->
-  <div class="action-plan-section">
-    <div class="section-title">Plano de Ação Recomendado</div>
-    <div class="action-plan-grid">
-      
-      <!-- Phase 1: Immediate -->
-      <div class="action-plan-card immediate">
-        <div class="action-plan-header">
-          <div class="action-plan-horizon">Fase 1 (0-30d)</div>
-        </div>
-        <div class="action-plan-title">Quick Wins - Collections</div>
-        <div class="action-plan-items">
-          <div class="action-plan-item">Task force dedicada para SCR e Multidébitos</div>
-          <div class="action-plan-item">Priorização FIFO para casos com SLA > 5 dias</div>
-          <div class="action-plan-item">Capacitação emergencial em casos complexos</div>
-          <div class="action-plan-item">Revisão de templates de resposta RDR</div>
-        </div>
-        <div class="action-plan-target">
-          <div class="action-plan-target-label">Metas Fase 1</div>
-          <div class="action-plan-target-value">SLA: 6,5d → 6,0d | Resolutividade: 35% → 42%</div>
-        </div>
-      </div>
-
-      <!-- Phase 2: Short Term -->
-      <div class="action-plan-card short">
-        <div class="action-plan-header">
-          <div class="action-plan-horizon">Fase 2 (30-60d)</div>
-        </div>
-        <div class="action-plan-title">Otimização de Processos</div>
-        <div class="action-plan-items">
-          <div class="action-plan-item">Revisão de SLAs por complexidade de reason</div>
-          <div class="action-plan-item">Automação de triagem por canal e motivo</div>
-          <div class="action-plan-item">Integração de dados de procedência (BACEN)</div>
-          <div class="action-plan-item">Dashboard operacional para squads</div>
-        </div>
-        <div class="action-plan-target">
-          <div class="action-plan-target-label">Metas Fase 2</div>
-          <div class="action-plan-target-value">SLA: 6,0d → 5,5d | Resolutividade: 42% → 50%</div>
-        </div>
-      </div>
-
-      <!-- Phase 3: Medium Term -->
-      <div class="action-plan-card medium">
-        <div class="action-plan-header">
-          <div class="action-plan-horizon">Fase 3 (60-90d)</div>
-        </div>
-        <div class="action-plan-title">Transformação Estrutural</div>
-        <div class="action-plan-items">
-          <div class="action-plan-item">Modelo preditivo de casos críticos</div>
-          <div class="action-plan-item">Causa raiz sistêmica nos top reasons</div>
-          <div class="action-plan-item">Feedback loop com áreas de produto</div>
-          <div class="action-plan-item">Benchmark de resolutividade por canal</div>
-        </div>
-        <div class="action-plan-target">
-          <div class="action-plan-target-label">Metas Finais (90d)</div>
-          <div class="action-plan-target-value">SLA: ≤5d | Resol: ≥60% | tNPS: ≥20 | Resp: ≥15%</div>
-        </div>
-      </div>
-
     </div>
   </div>
 
   <!-- Action Footer -->
   <div class="action-footer">
     <div class="action-text">
-      <div class="action-title">Resumo: Foco em Collections via RDR para impacto máximo</div>
-      <div class="action-subtitle">1 squad (Collections) + 1 canal (RDR) + 3 reasons (SCR, Multidébitos, Cartão) = 45% do problema resolvido</div>
+      <div class="action-title">Recomendação: Foco em Collections + RDR + 3 Reasons</div>
+      <div class="action-subtitle">Atacando 1 squad + 1 canal + 3 reasons = 45% do problema resolvido</div>
     </div>
     <div class="action-items">
       <div class="action-item">
-        <div class="number">45%</div>
-        <div class="label">Do problema</div>
+        <div class="number">90d</div>
+        <div class="label">Horizonte</div>
       </div>
       <div class="action-item">
-        <div class="number">3</div>
-        <div class="label">Reasons foco</div>
+        <div class="number">45%</div>
+        <div class="label">Impacto</div>
       </div>
-    </div>
-  </div>
-
-  <!-- Methodology Note -->
-  <div class="methodology-note">
-    <div class="methodology-note-title">Metodologia de Cálculo das Metas</div>
-    <div class="methodology-note-content">
-      <strong>SLA:</strong> Compliance BACEN (10 dias úteis) com margem de 50% para segurança operacional. 
-      <strong>Resolutividade:</strong> Benchmark interno P75 — percentil 75 dos squads já atinge 60%. 
-      <strong>tNPS:</strong> Benchmark de mercado bancário + melhor canal interno (Chat: +32). 
-      <strong>Taxa de Resposta:</strong> Incremento de 2x sobre baseline, correlacionado com redução de SLA.
     </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    <div class="footer-logo">Nubank — Ouvidoria</div>
-    <div>Customer Relationship Forum | Análise: Jan-Dez 2025 | Horizonte: 90 dias</div>
+    <div>Nubank — Ouvidoria | Customer Relationship Forum | Jan-Dez 2025</div>
+    <div class="footer-methodology">
+      <strong>Metodologia:</strong> SLA = BACEN +50% margem | Resolutividade = P75 interno | tNPS = Benchmark mercado | Taxa = 2x baseline
+    </div>
   </div>
 </div>
 
