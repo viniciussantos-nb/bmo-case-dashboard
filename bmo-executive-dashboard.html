@@ -512,6 +512,226 @@ body {
   color: var(--nu-purple);
 }
 
+/* Cascade Section */
+.cascade-section {
+  margin-bottom: 24px;
+}
+
+.cascade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.cascade-card {
+  background: white;
+  border: 1px solid var(--nu-grey);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.cascade-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--nu-off-white);
+}
+
+.cascade-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.cascade-icon.channel { background: #fef2f2; }
+.cascade-icon.squad { background: #fefce8; }
+.cascade-icon.reason { background: #eff6ff; }
+
+.cascade-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--nu-black);
+}
+
+.cascade-subtitle {
+  font-size: 11px;
+  color: var(--chrome-grey);
+}
+
+.cascade-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--nu-off-white);
+}
+
+.cascade-item:last-child {
+  border-bottom: none;
+}
+
+.cascade-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cascade-rank {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--nu-off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--chrome-grey);
+}
+
+.cascade-rank.top { background: var(--nu-red); color: white; }
+
+.cascade-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--nu-black);
+}
+
+.cascade-metrics {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cascade-metric {
+  text-align: right;
+}
+
+.cascade-metric-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nu-black);
+}
+
+.cascade-metric-value.critical { color: var(--nu-red); }
+.cascade-metric-value.warning { color: var(--nu-yellow); }
+
+.cascade-metric-label {
+  font-size: 9px;
+  color: var(--chrome-grey);
+  text-transform: uppercase;
+}
+
+/* Action Plan Section */
+.action-plan-section {
+  margin-bottom: 24px;
+}
+
+.action-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.action-plan-card {
+  background: white;
+  border: 1px solid var(--nu-grey);
+  border-radius: 14px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.action-plan-card.immediate::before { background: var(--nu-red); }
+.action-plan-card.short::before { background: var(--nu-yellow); }
+.action-plan-card.medium::before { background: var(--nu-blue); }
+
+.action-plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.action-plan-horizon {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.immediate .action-plan-horizon { background: #fef2f2; color: var(--nu-red); }
+.short .action-plan-horizon { background: #fefce8; color: #ca8a04; }
+.medium .action-plan-horizon { background: #eff6ff; color: var(--nu-blue); }
+
+.action-plan-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--nu-black);
+  margin-bottom: 10px;
+}
+
+.action-plan-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.action-plan-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--nu-black);
+  line-height: 1.4;
+}
+
+.action-plan-item::before {
+  content: '→';
+  color: var(--nu-purple);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.action-plan-target {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--nu-grey);
+}
+
+.action-plan-target-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--chrome-grey);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.action-plan-target-value {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.immediate .action-plan-target-value { color: var(--nu-red); }
+.short .action-plan-target-value { color: #ca8a04; }
+.medium .action-plan-target-value { color: var(--nu-blue); }
+
 /* Print styles */
 @media print {
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -726,20 +946,267 @@ body {
     </div>
   </div>
 
+  <!-- Cascade Drill-Down: Canal → Squad → Reason -->
+  <div class="cascade-section">
+    <div class="section-title">Drill-Down: Onde Atacar</div>
+    <div class="cascade-grid">
+      
+      <!-- Canal -->
+      <div class="cascade-card">
+        <div class="cascade-header">
+          <div class="cascade-icon channel">📡</div>
+          <div>
+            <div class="cascade-title">Por Canal</div>
+            <div class="cascade-subtitle">93% concentrado em 2 canais</div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank top">1</div>
+            <div class="cascade-name">RDR</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">88.702</div>
+              <div class="cascade-metric-label">Casos</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">-66</div>
+              <div class="cascade-metric-label">tNPS</div>
+            </div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank">2</div>
+            <div class="cascade-name">Email</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value">56.022</div>
+              <div class="cascade-metric-label">Casos</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value warning">-8</div>
+              <div class="cascade-metric-label">tNPS</div>
+            </div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank">3</div>
+            <div class="cascade-name">Procon</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value">10.791</div>
+              <div class="cascade-metric-label">Casos</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value">+12</div>
+              <div class="cascade-metric-label">tNPS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Squad -->
+      <div class="cascade-card">
+        <div class="cascade-header">
+          <div class="cascade-icon squad">👥</div>
+          <div>
+            <div class="cascade-title">Por Squad</div>
+            <div class="cascade-subtitle">78% concentrado em 5 squads</div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank top">1</div>
+            <div class="cascade-name">Collections</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">69.635</div>
+              <div class="cascade-metric-label">Casos</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">72%</div>
+              <div class="cascade-metric-label">Estouro</div>
+            </div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank">2</div>
+            <div class="cascade-name">CSS</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value">23.147</div>
+              <div class="cascade-metric-label">Casos</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value warning">48%</div>
+              <div class="cascade-metric-label">Estouro</div>
+            </div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank">3</div>
+            <div class="cascade-name">Chargeback</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value">9.645</div>
+              <div class="cascade-metric-label">Casos</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value warning">51%</div>
+              <div class="cascade-metric-label">Estouro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reason -->
+      <div class="cascade-card">
+        <div class="cascade-header">
+          <div class="cascade-icon reason">📋</div>
+          <div>
+            <div class="cascade-title">Por Reason (Collections)</div>
+            <div class="cascade-subtitle">Top ofensores dentro do squad crítico</div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank top">1</div>
+            <div class="cascade-name">SCR</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">92%</div>
+              <div class="cascade-metric-label">Estouro</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">11,2d</div>
+              <div class="cascade-metric-label">SLA</div>
+            </div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank">2</div>
+            <div class="cascade-name">Multidébitos</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">87%</div>
+              <div class="cascade-metric-label">Estouro</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value critical">9,8d</div>
+              <div class="cascade-metric-label">SLA</div>
+            </div>
+          </div>
+        </div>
+        <div class="cascade-item">
+          <div class="cascade-item-left">
+            <div class="cascade-rank">3</div>
+            <div class="cascade-name">Cartão de Crédito</div>
+          </div>
+          <div class="cascade-metrics">
+            <div class="cascade-metric">
+              <div class="cascade-metric-value warning">80%</div>
+              <div class="cascade-metric-label">Estouro</div>
+            </div>
+            <div class="cascade-metric">
+              <div class="cascade-metric-value warning">8,5d</div>
+              <div class="cascade-metric-label">SLA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Action Plan -->
+  <div class="action-plan-section">
+    <div class="section-title">Plano de Ação Recomendado</div>
+    <div class="action-plan-grid">
+      
+      <!-- Immediate -->
+      <div class="action-plan-card immediate">
+        <div class="action-plan-header">
+          <div class="action-plan-horizon">Imediato (0-30d)</div>
+        </div>
+        <div class="action-plan-title">Quick Wins - Collections</div>
+        <div class="action-plan-items">
+          <div class="action-plan-item">Task force dedicada para SCR e Multidébitos</div>
+          <div class="action-plan-item">Priorização FIFO para casos com SLA > 5 dias</div>
+          <div class="action-plan-item">Capacitação emergencial em casos complexos</div>
+          <div class="action-plan-item">Revisão de templates de resposta RDR</div>
+        </div>
+        <div class="action-plan-target">
+          <div class="action-plan-target-label">Meta</div>
+          <div class="action-plan-target-value">Reduzir estouro Collections de 72% → 50%</div>
+        </div>
+      </div>
+
+      <!-- Short Term -->
+      <div class="action-plan-card short">
+        <div class="action-plan-header">
+          <div class="action-plan-horizon">Curto Prazo (30-90d)</div>
+        </div>
+        <div class="action-plan-title">Otimização de Processos</div>
+        <div class="action-plan-items">
+          <div class="action-plan-item">Revisão de SLAs por complexidade de reason</div>
+          <div class="action-plan-item">Automação de triagem por canal e motivo</div>
+          <div class="action-plan-item">Integração de dados de procedência (BACEN)</div>
+          <div class="action-plan-item">Dashboard operacional para squads</div>
+        </div>
+        <div class="action-plan-target">
+          <div class="action-plan-target-label">Meta</div>
+          <div class="action-plan-target-value">SLA médio de 6,5d → 5d</div>
+        </div>
+      </div>
+
+      <!-- Medium Term -->
+      <div class="action-plan-card medium">
+        <div class="action-plan-header">
+          <div class="action-plan-horizon">Médio Prazo (90-180d)</div>
+        </div>
+        <div class="action-plan-title">Transformação Estrutural</div>
+        <div class="action-plan-items">
+          <div class="action-plan-item">Modelo preditivo de casos críticos</div>
+          <div class="action-plan-item">Causa raiz sistêmica nos top reasons</div>
+          <div class="action-plan-item">Feedback loop com áreas de produto</div>
+          <div class="action-plan-item">Benchmark de resolutividade por canal</div>
+        </div>
+        <div class="action-plan-target">
+          <div class="action-plan-target-label">Meta</div>
+          <div class="action-plan-target-value">Resolutividade de 35% → 60%</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Action Footer -->
   <div class="action-footer">
     <div class="action-text">
-      <div class="action-title">Recomendação: Foco em SLA como alavanca principal</div>
-      <div class="action-subtitle">Resolver SLA reduz tempo → aumenta resolutividade → melhora tNPS → aumenta taxa de resposta</div>
+      <div class="action-title">Resumo: Foco em Collections via RDR para impacto máximo</div>
+      <div class="action-subtitle">1 squad (Collections) + 1 canal (RDR) + 3 reasons (SCR, Multidébitos, Cartão) = 45% do problema resolvido</div>
     </div>
     <div class="action-items">
       <div class="action-item">
-        <div class="number">2</div>
-        <div class="label">Canais = 93%</div>
+        <div class="number">45%</div>
+        <div class="label">Do problema</div>
       </div>
       <div class="action-item">
-        <div class="number">5</div>
-        <div class="label">Squads = 78%</div>
+        <div class="number">3</div>
+        <div class="label">Reasons foco</div>
       </div>
     </div>
   </div>
