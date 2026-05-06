@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case BMO - Ouvidoria | Diagnóstico e Priorização</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --nu-purple: #820AD1;
+  --nu-light-purple: #AA68FF;
+  --nu-grey: #E4E4E4;
+  --nu-off-white: #F4F4F4;
+  --nu-white: #FFFFFF;
+  --nu-black: #000000;
+  --nu-green: #22C55E;
+  --nu-yellow: #EAB308;
+  --nu-red: #EF4444;
+  --nu-blue: #3B82F6;
+  --chrome-grey: #6B7280;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #000;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px;
+  height: 900px;
+  padding: 24px 56px 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  overflow: hidden;
+  background: var(--nu-white);
+  transform-origin: top left;
+}
+.slide.active { opacity: 1; pointer-events: auto; }
+.slide.dark-bg { background: #1A1A2E; }
+.slide.purple-bg { background: var(--nu-purple); }
+
+.chrome {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--chrome-grey);
+  letter-spacing: 0.01em;
+}
+.dark-bg .chrome, .purple-bg .chrome { color: rgba(255,255,255,0.5); }
+
+#pageFooter {
+  position: fixed;
+  text-align: center;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  color: var(--chrome-grey);
+  letter-spacing: 0.05em;
+  z-index: 5;
+  pointer-events: none;
+  display: none;
+}
+
+.slide-title {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--nu-purple);
+  margin-bottom: 18px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.slide-subtitle {
+  font-size: 22px;
+  color: var(--nu-black);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.key-message {
+  background: var(--nu-off-white);
+  border-left: 5px solid var(--nu-purple);
+  padding: 18px 26px;
+  border-radius: 0 12px 12px 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--nu-black);
+  margin: 16px 0;
+}
+
+/* Cover */
+.cover-title {
+  font-size: 100px;
+  font-weight: 700;
+  color: var(--nu-white);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+.cover-subtitle {
+  font-size: 30px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 48px;
+}
+.cover-verticals { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 48px; }
+.vertical-tag {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 14px 28px;
+  color: var(--nu-white);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Cards */
+.cards-grid { display: grid; gap: 16px; }
+.cards-2 { grid-template-columns: 1fr 1fr; }
+.cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.card {
+  background: var(--nu-off-white);
+  border-radius: 14px;
+  padding: 22px;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--nu-purple);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.card p, .card li {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--nu-black);
+}
+.card ul { padding-left: 20px; }
+.card li { margin-bottom: 6px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 17px; border: none; }
+thead th {
+  background: var(--nu-purple);
+  color: var(--nu-white);
+  padding: 12px 18px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: none;
+}
+thead th:first-child { border-radius: 10px 0 0 0; }
+thead th:last-child { border-radius: 0 10px 0 0; }
+tbody td {
+  padding: 12px 18px;
+  border: none;
+  border-bottom: 1px solid var(--nu-grey);
+  color: var(--nu-black);
+  line-height: 1.5;
+  vertical-align: top;
+  font-size: 17px;
+}
+tbody tr:nth-child(even) td { background: var(--nu-off-white); }
+tbody tr:last-child td { border-bottom: none; }
+td strong { color: var(--nu-purple); }
+table.compact { font-size: 14px; }
+table.compact thead th { padding: 10px 14px; font-size: 12px; }
+table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; }
+
+/* Priority cards */
+.priority-card {
+  background: var(--nu-off-white);
+  border-radius: 14px;
+  padding: 24px;
+  border-top: 5px solid var(--nu-purple);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.priority-card.priority-1 { border-top-color: var(--nu-red); }
+.priority-card.priority-2 { border-top-color: var(--nu-yellow); }
+.priority-card.priority-3 { border-top-color: var(--nu-blue); }
+
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.priority-badge .num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: white;
+}
+.priority-1 .priority-badge .num { background: var(--nu-red); }
+.priority-1 .priority-badge { color: var(--nu-red); }
+.priority-2 .priority-badge .num { background: var(--nu-yellow); }
+.priority-2 .priority-badge { color: var(--nu-yellow); }
+.priority-3 .priority-badge .num { background: var(--nu-blue); }
+.priority-3 .priority-badge { color: var(--nu-blue); }
+
+.priority-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--nu-black);
+  line-height: 1.3;
+}
+.priority-card .big-number {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+}
+.priority-1 .big-number { color: var(--nu-red); }
+.priority-2 .big-number { color: var(--nu-yellow); }
+.priority-3 .big-number { color: var(--nu-blue); }
+
+.priority-card .metric-label {
+  font-size: 14px;
+  color: var(--chrome-grey);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.priority-card .description {
+  font-size: 16px;
+  color: var(--nu-black);
+  line-height: 1.5;
+}
+
+/* Impact indicator */
+.impact-high { color: var(--nu-red); font-weight: 700; }
+.impact-medium { color: var(--nu-yellow); font-weight: 700; }
+.impact-low { color: var(--nu-green); font-weight: 700; }
+
+/* Two column helper */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.stat-box {
+  background: var(--nu-off-white);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  flex: 1;
+}
+.stat-box .value {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--nu-purple);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-box .label {
+  font-size: 14px;
+  color: var(--chrome-grey);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.stat-box.danger .value { color: var(--nu-red); }
+.stat-box.warning .value { color: var(--nu-yellow); }
+.stat-box.success .value { color: var(--nu-green); }
+
+/* Executive format */
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--chrome-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.executive-conclusion {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--nu-purple);
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+/* Squad examples box */
+.squad-examples {
+  background: var(--nu-off-white);
+  border-radius: 12px;
+  padding: 20px 28px;
+  margin-top: 24px;
+}
+.squad-examples h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--nu-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.squad-examples ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.squad-examples li {
+  font-size: 16px;
+  color: var(--nu-black);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--nu-grey);
+}
+.squad-examples li:last-child {
+  border-bottom: none;
+}
+.squad-examples .highlight {
+  color: var(--nu-red);
+  font-weight: 700;
+}
+
+/* Navigation */
+.nav-bar { display: none; }
+.progress-bar { display: none; }
+
+.slide::-webkit-scrollbar { width: 4px; }
+.slide::-webkit-scrollbar-thumb { background: var(--nu-grey); border-radius: 2px; }
+
+@media (max-width: 900px) {
+  .slide { padding: 24px 20px 56px; }
+  .cards-2, .cards-3, .two-col { grid-template-columns: 1fr; }
+}
+
+@media print {
+  @page { size: landscape; margin: 0; }
+  body { background: white; overflow: visible; height: auto; width: auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .deck { position: static; width: auto; height: auto; }
+  .slide {
+    position: relative !important;
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    break-after: page;
+    break-inside: avoid;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden !important;
+    box-sizing: border-box;
+    padding: 28px 48px 28px !important;
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- SLIDE 0: Cover -->
+<div class="slide purple-bg active" data-slide="0">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div style="display:flex;flex-direction:column;justify-content:center;height:calc(900px - 140px);">
+    <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;">Diagnóstico e Priorização</div>
+    <div class="cover-title">Case BMO<br>Ouvidoria</div>
+    <div class="cover-subtitle" style="color:rgba(255,255,255,0.85);">Diagnóstico Estruturado dos Problemas Críticos</div>
+    <div style="margin-top:40px;font-size:18px;font-weight:500;color:rgba(255,255,255,0.7);">Vinicius Santos</div>
+  </div>
+  <svg viewBox="0 0 413.2 224.6" xmlns="http://www.w3.org/2000/svg" width="110" style="position:absolute;bottom:60px;left:56px;">
+    <g fill="white"><path d="M2.4,92.5c-0.5,10,0,20.2,0,30.2c0,20.2,0,40.4,0,60.6c0,11.8,0,23.9,0,35.7c0,0,0,0,0,0c0,0,54,0,54,0s0-47.4,0-88.2c0-27.5-0.2-51.9,0-56.9c1-23.8,7.5-39.4,19.7-52.1c-0.9,0-1.9-0.1-2.8-0.1c-26.3,0-51,15.1-63,38.4C4.9,70.4,3,81.4,2.4,92.5z"/><path d="M126.2,0.4c-20.2,0-37.4,7.9-50.3,21.4c40.2,0,66.3,27.4,67.7,71c0.3,10,0.4,63.6,0.4,63.6V219h54c0,0,0-43.3,0-84.6c0-25.6,0.2-47.7-1.6-63C191.5,28.9,165.4,0.4,126.2,0.4z"/><path d="M410.8,132.1c0.5-10,0-20.2,0-30.2c0-20.2,0-40.4,0-60.6c0-11.8,0-23.9,0-35.7c0,0,0,0,0,0c0,0-54,0-54,0s0,47.4,0,88.2c0,27.5,0.2,51.9,0,56.9c-1,23.8-7.5,39.4-19.7,52.1c0.9,0,1.9,0.1,2.8,0.1c26.3,0,51-15.1,63-38.4C408.3,154.2,410.2,143.3,410.8,132.1z"/><path d="M287,224.2c20.2,0,37.4-7.9,50.3-21.4c-40.2,0-66.3-27.4-67.7-71c-0.3-10-0.5-34.8-0.5-63.6c0-31.5,0-62.6,0-62.6l-54,0.1c0,0,0,43.3,0,84.6c0,25.6-0.2,47.7,1.6,63C221.7,195.8,247.8,224.2,287,224.2z"/></g>
+  </svg>
+</div>
+
+<!-- SLIDE 1: Visão Geral - 3 Problemas Críticos -->
+<div class="slide" data-slide="1">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Diagnóstico Estruturado</div>
+  <div class="executive-conclusion">Três problemas críticos impactam a operação da Ouvidoria, sendo o SLA elevado a causa raiz que amplifica os demais</div>
+  
+  <div class="stats-row">
+    <div class="stat-box danger">
+      <div class="value">337.614</div>
+      <div class="label">Total de Casos Analisados</div>
+    </div>
+    <div class="stat-box danger">
+      <div class="value">6,48 dias</div>
+      <div class="label">SLA Médio</div>
+    </div>
+    <div class="stat-box warning">
+      <div class="value">35,3%</div>
+      <div class="label">Resolutividade Geral</div>
+    </div>
+    <div class="stat-box danger">
+      <div class="value">7,2%</div>
+      <div class="label">Taxa de Resposta tNPS</div>
+    </div>
+  </div>
+
+  <div class="cards-grid cards-3" style="margin-bottom:28px;gap:24px;">
+    <div class="priority-card priority-1" style="padding:28px;">
+      <div class="priority-badge"><span class="num">1</span> Prioridade Crítica</div>
+      <h3 style="font-size:22px;margin-bottom:16px;">SLA Elevado</h3>
+      <div class="big-number" style="font-size:52px;">46,5%</div>
+      <div class="metric-label" style="font-size:15px;margin-bottom:18px;">dos casos acima de 8 dias</div>
+      <div class="description" style="font-size:14px;line-height:1.6;">BACEN exige resposta em até 10 dias úteis. SLA piorou 65% no ano (4,5 → 7,4 dias). É a causa raiz dos demais problemas.</div>
+    </div>
+    
+    <div class="priority-card priority-2" style="padding:28px;">
+      <div class="priority-badge"><span class="num">2</span> Prioridade Alta</div>
+      <h3 style="font-size:22px;margin-bottom:16px;">Baixa Resolutividade em RDR</h3>
+      <div class="big-number" style="font-size:52px;">16-19%</div>
+      <div class="metric-label" style="font-size:15px;margin-bottom:18px;">de resolução no canal RDR</div>
+      <div class="description" style="font-size:14px;line-height:1.6;">34% da base (114k casos). tNPS de -66. Clientes já escalaram para canais externos. Cada caso não resolvido impacta diretamente a reputação do banco.</div>
+    </div>
+    
+    <div class="priority-card priority-3" style="padding:28px;">
+      <div class="priority-badge"><span class="num">3</span> Prioridade Média</div>
+      <h3 style="font-size:22px;margin-bottom:16px;">Baixa Taxa de Resposta tNPS</h3>
+      <div class="big-number" style="font-size:52px;">7,2%</div>
+      <div class="metric-label" style="font-size:15px;margin-bottom:18px;">taxa de resposta à pesquisa</div>
+      <div class="description" style="font-size:14px;line-height:1.6;">92,8% não respondem. Relatórios com baixa representatividade. Sem dados, CompSol não consegue gerar insights confiáveis.</div>
+    </div>
+  </div>
+
+  <div class="key-message" style="padding:22px 28px;">
+    <strong>Tese Central:</strong> SLA é a causa raiz dos demais problemas. Resolver SLA melhora resolutividade (cliente atendido rápido tem problema resolvido) e aumenta taxa de resposta (quem responde tem SLA de 4,6 dias vs 6,6 dias de quem não responde).
+  </div>
+</div>
+
+<!-- SLIDE 2: Comprovação SLA como Driver -->
+<div class="slide" data-slide="2">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Validação da Hipótese</div>
+  <div class="executive-conclusion">SLA rápido é o principal driver de resolutividade e satisfação — atendimentos em até 3 dias têm o dobro da resolutividade e tNPS 2x maior</div>
+
+  <div class="two-col">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Categoria SLA</th>
+            <th style="text-align:right;">Total Casos</th>
+            <th style="text-align:right;">Resolutividade</th>
+            <th style="text-align:right;">tNPS Médio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--nu-green);">Rápido (0-3 dias)</strong></td>
+            <td style="text-align:right;">153.834</td>
+            <td style="text-align:right;"><strong style="color:var(--nu-green);">42,0%</strong></td>
+            <td style="text-align:right;"><strong style="color:var(--nu-green);">6,1</strong></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--nu-red);">Lento (4+ dias)</strong></td>
+            <td style="text-align:right;">86.073</td>
+            <td style="text-align:right;"><strong style="color:var(--nu-red);">24,5%</strong></td>
+            <td style="text-align:right;"><strong style="color:var(--nu-red);">4,2</strong></td>
+          </tr>
+          <tr style="background:var(--nu-off-white);">
+            <td><strong>Variação</strong></td>
+            <td style="text-align:right;">—</td>
+            <td style="text-align:right;"><strong style="color:var(--nu-red);">-17,5pp</strong></td>
+            <td style="text-align:right;"><strong style="color:var(--nu-red);">-1,9pts</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="squad-examples" style="margin-top:20px;">
+        <h4 style="margin-bottom:14px;">Comprovação por Squad (Top 3 por Volume)</h4>
+        <ul style="line-height:1.9;">
+          <li><strong>Collections:</strong> Rápido <span style="color:var(--nu-green);font-weight:700;">45%</span> resolutividade vs Lento <span style="color:var(--nu-red);font-weight:700;">21%</span> <span class="highlight">(-24pp)</span></li>
+          <li><strong>CSS:</strong> Rápido <span style="color:var(--nu-green);font-weight:700;">44%</span> resolutividade vs Lento <span style="color:var(--nu-red);font-weight:700;">22%</span> <span class="highlight">(-22pp)</span></li>
+          <li><strong>GBA:</strong> Rápido <span style="color:var(--nu-green);font-weight:700;">35%</span> resolutividade vs Lento <span style="color:var(--nu-red);font-weight:700;">26%</span> <span class="highlight">(-9pp)</span></li>
+        </ul>
+      </div>
+
+      <div style="background:var(--nu-purple);background:linear-gradient(135deg, var(--nu-purple) 0%, #6B21A8 100%);border-radius:12px;padding:18px 22px;margin-top:20px;">
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Relação de Causalidade</div>
+        <div style="font-size:15px;color:white;line-height:1.55;">SLA → Resolutividade → tNPS → Taxa de Resposta. Reduzir o tempo de atendimento é a alavanca que melhora todos os demais indicadores.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="border-top:5px solid var(--nu-purple);margin-bottom:20px;padding:24px;">
+        <div class="card-title" style="margin-bottom:18px;">Detalhamento por Faixa de SLA</div>
+        <table class="compact">
+          <thead>
+            <tr>
+              <th>Faixa SLA</th>
+              <th style="text-align:right;">Casos</th>
+              <th style="text-align:right;">Resolutiv.</th>
+              <th style="text-align:right;">tNPS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:12px 14px;">0-1 dias</td>
+              <td style="text-align:right;padding:12px 14px;">32.908</td>
+              <td style="text-align:right;color:var(--nu-green);font-weight:700;padding:12px 14px;">55,6%</td>
+              <td style="text-align:right;color:var(--nu-green);font-weight:700;padding:12px 14px;">7,5</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px;">2-3 dias</td>
+              <td style="text-align:right;padding:12px 14px;">42.135</td>
+              <td style="text-align:right;color:var(--nu-green);font-weight:700;padding:12px 14px;">47,5%</td>
+              <td style="text-align:right;color:var(--nu-green);font-weight:700;padding:12px 14px;">7,2</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px;">4-5 dias</td>
+              <td style="text-align:right;padding:12px 14px;">22.820</td>
+              <td style="text-align:right;padding:12px 14px;">35,0%</td>
+              <td style="text-align:right;padding:12px 14px;">5,9</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px;">6-7 dias</td>
+              <td style="text-align:right;padding:12px 14px;">20.497</td>
+              <td style="text-align:right;padding:12px 14px;">30,9%</td>
+              <td style="text-align:right;padding:12px 14px;">5,1</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px;">8-10 dias</td>
+              <td style="text-align:right;padding:12px 14px;">28.296</td>
+              <td style="text-align:right;color:var(--nu-red);padding:12px 14px;">28,7%</td>
+              <td style="text-align:right;color:var(--nu-red);padding:12px 14px;">4,4</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px;">11+ dias</td>
+              <td style="text-align:right;padding:12px 14px;">93.251</td>
+              <td style="text-align:right;color:var(--nu-red);font-weight:700;padding:12px 14px;">29,7%</td>
+              <td style="text-align:right;color:var(--nu-red);font-weight:700;padding:12px 14px;">3,5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="key-message" style="margin:0;padding:20px 24px;">
+        <strong>Conclusão:</strong> A cada dia adicional de SLA, perdemos ~3pp de resolutividade e ~0,5pts de tNPS. Casos resolvidos em até 3 dias têm <strong>71% mais chance</strong> de ter o problema resolvido.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: Tabela de Impactos -->
+<div class="slide" data-slide="3">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Matriz de Impactos</div>
+  <div class="executive-conclusion">SLA elevado gera risco regulatório direto; RDR tem exposição reputacional crítica; baixa taxa tNPS compromete visibilidade para melhoria</div>
+  <div style="font-size:12px;color:var(--chrome-grey);margin-top:-24px;margin-bottom:20px;">Análise qualitativa baseada em dados operacionais e indicadores do período</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%;">Problema</th>
+        <th style="width:27%;">Impacto Regulatório</th>
+        <th style="width:27%;">Impacto Reputacional</th>
+        <th style="width:28%;">Impacto Operacional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong style="color:var(--nu-red);">1. SLA Elevado</strong><br>
+          <span style="font-size:14px;color:var(--chrome-grey);">46,5% acima de 8 dias</span>
+        </td>
+        <td>
+          <span class="impact-high">● CRÍTICO</span><br>
+          BACEN exige resposta em até <strong>10 dias úteis</strong>. Com SLA de 6,48 dias e 46,5% acima de 8 dias, operamos no limite regulatório. <strong>Risco de multas e sanções.</strong>
+        </td>
+        <td>
+          <span class="impact-high">● ALTO</span><br>
+          Casos demorados migram para <strong>Procon (8,2%)</strong> e <strong>RDR (34%)</strong>. SLA alto alimenta ciclo de escalation externo, gerando exposição pública negativa.
+        </td>
+        <td>
+          <span class="impact-high">● CRÍTICO</span><br>
+          SLA piorou <strong>65% no ano</strong> (4,5 → 7,4 dias). Backlog acumulado gera efeito cascata: mais casos antigos → mais pressão → mais erros → mais retrabalho.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong style="color:var(--nu-yellow);">2. Baixa Resolutividade RDR</strong><br>
+          <span style="font-size:14px;color:var(--chrome-grey);">16-19% de resolução</span>
+        </td>
+        <td>
+          <span class="impact-high">● CRÍTICO</span><br>
+          RDR concentra demandas que chegaram via <strong>BACEN</strong>. Resolutividade de 16-19% indica que <strong>80%+ dos clientes</strong> deste canal saem sem solução, gerando reincidência e insatisfação.
+        </td>
+        <td>
+          <span class="impact-high">● CRÍTICO</span><br>
+          RDR = <strong>34% da base (114k casos)</strong>. tNPS de <strong>-66</strong> neste canal. Cada caso não resolvido é um detrator público potencial, afetando nota e decisão de novos clientes.
+        </td>
+        <td>
+          <span class="impact-medium">● ALTO</span><br>
+          RDR + Collections concentra 76k casos com <strong>97% de não resposta</strong> ao tNPS. É um "ponto cego" operacional — sem feedback para melhorar.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong style="color:var(--nu-blue);">3. Baixa Taxa Resposta tNPS</strong><br>
+          <span style="font-size:14px;color:var(--chrome-grey);">7,2% de resposta</span>
+        </td>
+        <td>
+          <span class="impact-medium">● MÉDIO</span><br>
+          Com apenas <strong>7% de resposta</strong>, não temos visibilidade real sobre a satisfação dos clientes. Decisões de melhoria ficam baseadas em amostra potencialmente enviesada.
+        </td>
+        <td>
+          <span class="impact-medium">● ALTO</span><br>
+          Sem feedback, não identificamos detratores a tempo de fazer recovery. <strong>90% dos detractors não têm problema resolvido</strong> — e não sabemos quem são os 93% que não respondem.
+        </td>
+        <td>
+          <span class="impact-medium">● MÉDIO</span><br>
+          CompSol não consegue gerar relatórios confiáveis. Decisões de melhoria baseadas em <strong>7% da base</strong>, potencialmente enviesada.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="key-message" style="margin-top:28px;padding:22px 28px;">
+    <strong>Por que esta ordem?</strong> SLA é causa raiz (resolve e melhora os demais). RDR tem exposição reputacional imediata (clientes já insatisfeitos). Taxa de resposta melhora com SLA menor — clientes atendidos em até 3 dias respondem 30% mais à pesquisa.
+  </div>
+</div>
+
+<!-- SLIDE 4: Dados Adicionais e Fontes Internas -->
+<div class="slide" data-slide="4">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Refinamento do Diagnóstico</div>
+  <div class="executive-conclusion">A base atual apresenta gaps críticos: ausência de procedência/causa raiz e 51% dos casos sem canal de recebimento classificado</div>
+
+  <div class="two-col" style="gap:32px;">
+    <div>
+      <div class="card" style="border-top:5px solid var(--nu-red);margin-bottom:24px;padding:28px;">
+        <div class="card-title" style="margin-bottom:20px;">Gaps de Qualidade na Base</div>
+        
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <span style="background:var(--nu-red);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
+            <strong style="font-size:17px;">Procedência Ausente</strong>
+          </div>
+          <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
+            <li>Case menciona taxa de <strong style="color:var(--nu-red);">19%</strong> de casos procedentes</li>
+            <li>Base não contém campo de procedência/improcedência</li>
+            <li>Impossível analisar por que BACEN julga casos procedentes</li>
+          </ul>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <span style="background:var(--nu-red);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
+            <strong style="font-size:17px;">Receiving Method em Branco</strong>
+          </div>
+          <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
+            <li><strong style="color:var(--nu-red);">171.638 casos (50,84%)</strong> sem canal classificado</li>
+            <li>Análises por canal ficam comprometidas</li>
+            <li>Impossível segmentar ações por origem do caso</li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <span style="background:var(--nu-green);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">BAIXO</span>
+            <strong style="font-size:17px;">Reason em Branco</strong>
+          </div>
+          <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
+            <li>4.210 casos (<strong>1,25%</strong>) sem motivo classificado</li>
+            <li>Em Collections: apenas <strong>0,25%</strong> (263 casos)</li>
+            <li>Impacto baixo na análise geral</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stats-row" style="margin-bottom:0;">
+        <div class="stat-box danger" style="padding:24px;">
+          <div class="value" style="font-size:40px;">50,8%</div>
+          <div class="label">Receiving Method Blank</div>
+        </div>
+        <div class="stat-box success" style="padding:24px;">
+          <div class="value" style="font-size:40px;">1,25%</div>
+          <div class="label">Reason Blank</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="border-top:5px solid var(--nu-purple);padding:28px;margin-bottom:24px;">
+        <div class="card-title" style="margin-bottom:20px;">Dados Necessários para Aprofundamento</div>
+        <table class="compact">
+          <thead>
+            <tr>
+              <th>Dado Necessário</th>
+              <th>Observação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:16px 14px;"><strong>Procedência RDR</strong><br><span style="font-size:12px;color:var(--chrome-grey);">Casos julgados procedentes pelo BACEN</span></td>
+              <td style="padding:16px 14px;">Dados geralmente descentralizados por squad<br><span style="font-size:12px;color:var(--chrome-grey);">Necessário consolidar de múltiplas fontes</span></td>
+            </tr>
+            <tr>
+              <td style="padding:16px 14px;"><strong>Classificação Causa Raiz</strong><br><span style="font-size:12px;color:var(--chrome-grey);">NOK Produto/Atendimento/Processo</span></td>
+              <td style="padding:16px 14px;">Categorização de por que casos são procedentes<br><span style="font-size:12px;color:var(--chrome-grey);">Falha de atendimento, processo ou produto</span></td>
+            </tr>
+            <tr>
+              <td style="padding:16px 14px;"><strong>Métricas Consolidadas</strong><br><span style="font-size:12px;color:var(--chrome-grey);">tNPS, Resolutividade, SLA</span></td>
+              <td style="padding:16px 14px;">Core Metrics (QuickSight)<br><span style="font-size:12px;color:var(--chrome-grey);">Dashboard consolidado da Ouvidoria</span></td>
+            </tr>
+            <tr>
+              <td style="padding:16px 14px;"><strong>Histórico de Atendimento</strong><br><span style="font-size:12px;color:var(--chrome-grey);">Jornada do cliente antes do RDR</span></td>
+              <td style="padding:16px 14px;">Análise de recontatos e escalations<br><span style="font-size:12px;color:var(--chrome-grey);">Identificar pontos de falha na jornada</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="key-message" style="margin:0;padding:22px 26px;">
+        <strong>Próximo Passo:</strong> Para diagnosticar os 19% de procedência, é necessário cruzar dados de SLA e resolutividade com classificação de causa raiz — identificando se os casos procedentes são por falha de Atendimento, Processo ou Produto.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: Análise de Causa Raiz - Pareto Visão Geral -->
+<div class="slide" data-slide="5">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Análise de Causa Raiz — Pareto</div>
+  <div class="executive-conclusion">2 canais concentram 92,97% dos casos críticos de SLA; Collections sozinho representa 44,73% do problema</div>
+
+  <div class="two-col" style="gap:40px;">
+    <div>
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:28px;">
+        <div style="font-size:14px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:20px;">Pareto por Canal</div>
+        
+        <!-- Gráfico Pareto Canal - Escala Roxo -->
+        <div style="position:relative;height:240px;margin-bottom:20px;">
+          <!-- Eixo Y à esquerda -->
+          <div style="position:absolute;left:0;top:0;width:45px;height:200px;display:flex;flex-direction:column;justify-content:space-between;font-size:10px;color:#6B7280;text-align:right;padding-right:8px;">
+            <span>100%</span>
+            <span>75%</span>
+            <span>50%</span>
+            <span>25%</span>
+            <span>0%</span>
+          </div>
+          
+          <div style="display:flex;align-items:flex-end;height:200px;gap:12px;margin-left:50px;">
+            <!-- RDR: 56,97% do total = altura 56,97% de 180px = 102px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:11px;font-weight:700;color:#4C1D95;margin-bottom:6px;">88.702</div>
+              <div style="width:100%;height:102px;background:linear-gradient(180deg, #4C1D95 0%, #5B21B6 100%);border-radius:6px 6px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;margin-top:8px;">RDR</div>
+              <div style="font-size:10px;color:#4C1D95;font-weight:700;">56,97%</div>
+            </div>
+            <!-- Email: 35,98% = altura 65px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:6px;">56.022</div>
+              <div style="width:100%;height:65px;background:linear-gradient(180deg, #7C3AED 0%, #8B5CF6 100%);border-radius:6px 6px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;margin-top:8px;">Email</div>
+              <div style="font-size:10px;color:#7C3AED;font-weight:700;">35,98%</div>
+            </div>
+            <!-- Procon: 6,93% = altura 12px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:11px;font-weight:700;color:#A78BFA;margin-bottom:6px;">10.791</div>
+              <div style="width:100%;height:12px;background:linear-gradient(180deg, #A78BFA 0%, #C4B5FD 100%);border-radius:6px 6px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;margin-top:8px;">Procon</div>
+              <div style="font-size:10px;color:#A78BFA;font-weight:700;">6,93%</div>
+            </div>
+            <!-- Chat: 0,12% = altura 2px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:11px;font-weight:700;color:#DDD6FE;margin-bottom:6px;">182</div>
+              <div style="width:100%;height:2px;background:linear-gradient(180deg, #DDD6FE 0%, #EDE9FE 100%);border-radius:6px 6px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;margin-top:8px;">Chat</div>
+              <div style="font-size:10px;color:#C4B5FD;font-weight:700;">0,12%</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;">
+          <div style="flex:1;background:white;border-radius:8px;padding:14px;text-align:center;border:2px solid #4C1D95;">
+            <div style="font-size:26px;font-weight:800;color:#4C1D95;">56,97%</div>
+            <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">RDR</div>
+          </div>
+          <div style="flex:1;background:white;border-radius:8px;padding:14px;text-align:center;border:2px solid #7C3AED;">
+            <div style="font-size:26px;font-weight:800;color:#7C3AED;">35,98%</div>
+            <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">Email</div>
+          </div>
+          <div style="flex:1;background:white;border-radius:8px;padding:14px;text-align:center;border:2px solid var(--nu-purple);">
+            <div style="font-size:26px;font-weight:800;color:var(--nu-purple);">92,95%</div>
+            <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">Acumulado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:28px;">
+        <div style="font-size:14px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:20px;">Pareto por Squad</div>
+        
+        <!-- Gráfico Pareto Squad - Escala Roxo -->
+        <div style="position:relative;height:240px;margin-bottom:20px;">
+          <!-- Eixo Y à esquerda -->
+          <div style="position:absolute;left:0;top:0;width:45px;height:200px;display:flex;flex-direction:column;justify-content:space-between;font-size:10px;color:#6B7280;text-align:right;padding-right:8px;">
+            <span>100%</span>
+            <span>75%</span>
+            <span>50%</span>
+            <span>25%</span>
+            <span>0%</span>
+          </div>
+          
+          <div style="display:flex;align-items:flex-end;height:200px;gap:8px;margin-left:50px;">
+            <!-- Collections: 44,73% = altura 80px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:9px;font-weight:700;color:#4C1D95;margin-bottom:4px;">69.635</div>
+              <div style="width:100%;height:80px;background:linear-gradient(180deg, #4C1D95 0%, #5B21B6 100%);border-radius:5px 5px 0 0;"></div>
+              <div style="font-size:9px;font-weight:600;margin-top:4px;">Collect.</div>
+              <div style="font-size:8px;color:#4C1D95;font-weight:700;">44,73%</div>
+            </div>
+            <!-- CSS: 14,87% = altura 27px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:9px;font-weight:700;color:#6D28D9;margin-bottom:4px;">23.147</div>
+              <div style="width:100%;height:27px;background:linear-gradient(180deg, #6D28D9 0%, #7C3AED 100%);border-radius:5px 5px 0 0;"></div>
+              <div style="font-size:9px;font-weight:600;margin-top:4px;">CSS</div>
+              <div style="font-size:8px;color:#6D28D9;font-weight:700;">14,87%</div>
+            </div>
+            <!-- CB: 6,20% = altura 11px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:9px;font-weight:700;color:#8B5CF6;margin-bottom:4px;">9.645</div>
+              <div style="width:100%;height:11px;background:linear-gradient(180deg, #8B5CF6 0%, #A78BFA 100%);border-radius:5px 5px 0 0;"></div>
+              <div style="font-size:9px;font-weight:600;margin-top:4px;">CB</div>
+              <div style="font-size:8px;color:#8B5CF6;font-weight:700;">6,20%</div>
+            </div>
+            <!-- GBA: 6,09% = altura 11px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:9px;font-weight:700;color:#A78BFA;margin-bottom:4px;">9.476</div>
+              <div style="width:100%;height:11px;background:linear-gradient(180deg, #A78BFA 0%, #C4B5FD 100%);border-radius:5px 5px 0 0;"></div>
+              <div style="font-size:9px;font-weight:600;margin-top:4px;">GBA</div>
+              <div style="font-size:8px;color:#A78BFA;font-weight:700;">6,09%</div>
+            </div>
+            <!-- Fraud: 6,04% = altura 11px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:9px;font-weight:700;color:#C4B5FD;margin-bottom:4px;">9.411</div>
+              <div style="width:100%;height:11px;background:linear-gradient(180deg, #C4B5FD 0%, #DDD6FE 100%);border-radius:5px 5px 0 0;"></div>
+              <div style="font-size:9px;font-weight:600;margin-top:4px;">Fraud</div>
+              <div style="font-size:8px;color:#C4B5FD;font-weight:700;">6,04%</div>
+            </div>
+            <!-- Outros: 22,07% = altura 40px -->
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div style="font-size:9px;font-weight:700;color:#9CA3AF;margin-bottom:4px;">34.383</div>
+              <div style="width:100%;height:40px;background:linear-gradient(180deg, #D1D5DB 0%, #E5E7EB 100%);border-radius:5px 5px 0 0;"></div>
+              <div style="font-size:9px;font-weight:600;margin-top:4px;">Outros</div>
+              <div style="font-size:8px;color:#9CA3AF;font-weight:700;">22,07%</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;">
+          <div style="flex:1;background:white;border-radius:8px;padding:14px;text-align:center;border:2px solid #4C1D95;">
+            <div style="font-size:26px;font-weight:800;color:#4C1D95;">44,73%</div>
+            <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">Collections</div>
+          </div>
+          <div style="flex:1;background:white;border-radius:8px;padding:14px;text-align:center;border:2px solid var(--nu-purple);">
+            <div style="font-size:26px;font-weight:800;color:var(--nu-purple);">77,93%</div>
+            <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">Top 5 Squads</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg, var(--nu-purple) 0%, #6B21A8 100%);border-radius:14px;padding:28px 36px;margin-top:32px;">
+    <div style="display:flex;align-items:center;gap:32px;">
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;">Metodologia Pareto</div>
+        <div style="font-size:17px;color:white;line-height:1.6;">Casos com <strong>SLA > 7 dias</strong> foram classificados como críticos. O problema está concentrado: <strong>2 de 7 canais = 92,95% dos casos</strong> e <strong>5 de 20 squads = 77,93% dos casos</strong>.</div>
+      </div>
+      <div style="width:2px;height:70px;background:rgba(255,255,255,0.2);"></div>
+      <div style="text-align:center;min-width:140px;">
+        <div style="font-size:44px;font-weight:800;color:white;">155.697</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:600;">casos críticos</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: Análise de Causa Raiz - Drill-Down Collections -->
+<div class="slide" data-slide="6">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Análise de Causa Raiz — Drill-Down Collections</div>
+  <div class="executive-conclusion">SCR, Multidébitos e Cartão são os reasons que mais estouram SLA — casos complexos com 79,84% a 91,84% de estouro</div>
+
+  <div class="two-col" style="gap:32px;">
+    <div>
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:28px;">
+        <div style="font-size:14px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:24px;">Taxa de Estouro por Reason</div>
+        
+        <!-- Barras horizontais de estouro - Escala Roxo -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:14px;font-weight:600;">SCR</span>
+              <span style="font-size:14px;font-weight:800;color:#4C1D95;">91,84%</span>
+            </div>
+            <div style="height:32px;background:#E5E7EB;border-radius:8px;overflow:hidden;">
+              <div style="width:91.84%;height:100%;background:linear-gradient(90deg, #4C1D95 0%, #5B21B6 100%);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;">
+                <span style="font-size:12px;color:white;font-weight:700;">16.249 casos</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:14px;font-weight:600;">Multidébitos</span>
+              <span style="font-size:14px;font-weight:800;color:#6D28D9;">86,71%</span>
+            </div>
+            <div style="height:32px;background:#E5E7EB;border-radius:8px;overflow:hidden;">
+              <div style="width:86.71%;height:100%;background:linear-gradient(90deg, #6D28D9 0%, #7C3AED 100%);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;">
+                <span style="font-size:12px;color:white;font-weight:700;">4.789 casos</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:14px;font-weight:600;">Cartão de Crédito</span>
+              <span style="font-size:14px;font-weight:800;color:#7C3AED;">81,12%</span>
+            </div>
+            <div style="height:32px;background:#E5E7EB;border-radius:8px;overflow:hidden;">
+              <div style="width:81.12%;height:100%;background:linear-gradient(90deg, #7C3AED 0%, #8B5CF6 100%);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;">
+                <span style="font-size:12px;color:white;font-weight:700;">12.977 casos</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:14px;font-weight:600;">Empréstimo em Atraso</span>
+              <span style="font-size:14px;font-weight:800;color:#8B5CF6;">79,84%</span>
+            </div>
+            <div style="height:32px;background:#E5E7EB;border-radius:8px;overflow:hidden;">
+              <div style="width:79.84%;height:100%;background:linear-gradient(90deg, #8B5CF6 0%, #A78BFA 100%);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;">
+                <span style="font-size:12px;color:white;font-weight:700;">8.357 casos</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-size:14px;font-weight:600;">Acordo CI - Tombado</span>
+              <span style="font-size:14px;font-weight:800;color:#C4B5FD;">49,51%</span>
+            </div>
+            <div style="height:32px;background:#E5E7EB;border-radius:8px;overflow:hidden;">
+              <div style="width:49.51%;height:100%;background:linear-gradient(90deg, #C4B5FD 0%, #DDD6FE 100%);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;">
+                <span style="font-size:12px;color:#4C1D95;font-weight:700;">51.726 casos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <div style="flex:1;background:var(--nu-off-white);border-radius:12px;padding:20px;text-align:center;">
+          <div style="font-size:32px;font-weight:800;color:#4C1D95;">9,04</div>
+          <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">SLA Médio (dias)</div>
+        </div>
+        <div style="flex:1;background:var(--nu-off-white);border-radius:12px;padding:20px;text-align:center;">
+          <div style="font-size:32px;font-weight:800;color:#4C1D95;">66,24%</div>
+          <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">Taxa de Estouro</div>
+        </div>
+        <div style="flex:1;background:var(--nu-off-white);border-radius:12px;padding:20px;text-align:center;">
+          <div style="font-size:32px;font-weight:800;color:var(--nu-purple);">69.635</div>
+          <div style="font-size:12px;color:var(--chrome-grey);font-weight:600;">Casos Críticos</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:28px;margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:20px;">Por que esses reasons estouram?</div>
+        
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:white;border-radius:12px;padding:18px;border-left:5px solid #4C1D95;">
+            <div style="font-size:15px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">SCR (91,84% estouro)</div>
+            <div style="font-size:14px;color:var(--chrome-grey);line-height:1.5;">Consulta ao BACEN/Serasa, análise manual de histórico de crédito, processo burocrático</div>
+          </div>
+          
+          <div style="background:white;border-radius:12px;padding:18px;border-left:5px solid #6D28D9;">
+            <div style="font-size:15px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Multidébitos (86,71% estouro)</div>
+            <div style="font-size:14px;color:var(--chrome-grey);line-height:1.5;">Múltiplas dívidas exigem análise cruzada, negociação complexa entre produtos</div>
+          </div>
+          
+          <div style="background:white;border-radius:12px;padding:18px;border-left:5px solid #7C3AED;">
+            <div style="font-size:15px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Cartão de Crédito (81,12% estouro)</div>
+            <div style="font-size:14px;color:var(--chrome-grey);line-height:1.5;">Disputas de valores, análise de transações contestadas, processo de estorno</div>
+          </div>
+          
+          <div style="background:white;border-radius:12px;padding:18px;border-left:5px solid #8B5CF6;">
+            <div style="font-size:15px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Empréstimo em Atraso (79,84% estouro)</div>
+            <div style="font-size:14px;color:var(--chrome-grey);line-height:1.5;">Cálculos de juros, renegociação de dívidas, integração com sistemas legados</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-message" style="margin:0;padding:20px 26px;">
+        <strong>Conclusão:</strong> O problema não é só volume — é complexidade. SCR e Multidébitos têm processos que dependem de sistemas externos e análise manual. Acordo CI Tombado tem alto volume mas processo mais simples (49,5% de estouro).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: Orientação para Analistas -->
+<div class="slide" data-slide="7">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Desenvolvimento do Time</div>
+  <div class="executive-conclusion">Autonomia com alinhamento: playbook estruturado + perguntas-guia + calibração contínua</div>
+
+  <div class="cards-grid cards-3" style="gap:28px;margin-bottom:28px;">
+    <!-- Pilar 1: Playbook -->
+    <div class="card" style="border-top:5px solid var(--nu-purple);padding:32px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <div style="width:50px;height:50px;background:var(--nu-purple);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div style="font-size:19px;font-weight:700;color:var(--nu-purple);">Playbook Estruturado</div>
+      </div>
+      <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.9;">
+        <li>Critérios para escolha de metodologia<br><span style="font-size:13px;color:var(--chrome-grey);">Pareto vs FTA vs 5 Porquês</span></li>
+        <li>Checklist de validação da análise</li>
+        <li>Templates de output padronizado</li>
+        <li>Biblioteca de análises anteriores</li>
+        <li>Exemplos de boas práticas<br><span style="font-size:13px;color:var(--chrome-grey);">Cases reais como referência</span></li>
+      </ul>
+    </div>
+
+    <!-- Pilar 2: Perguntas-Guia -->
+    <div class="card" style="border-top:5px solid var(--nu-purple);padding:32px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <div style="width:50px;height:50px;background:var(--nu-purple);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <div style="font-size:19px;font-weight:700;color:var(--nu-purple);">Perguntas-Guia</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:white;border-radius:10px;padding:14px 18px;border-left:4px solid var(--nu-purple);">
+          <div style="font-size:14px;font-weight:600;color:var(--nu-black);">"Onde está concentrado o problema?"</div>
+          <div style="font-size:12px;color:var(--chrome-grey);margin-top:4px;">Direciona para Pareto</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:14px 18px;border-left:4px solid var(--nu-purple);">
+          <div style="font-size:14px;font-weight:600;color:var(--nu-black);">"É volume ou complexidade?"</div>
+          <div style="font-size:12px;color:var(--chrome-grey);margin-top:4px;">Define natureza do problema</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:14px 18px;border-left:4px solid var(--nu-purple);">
+          <div style="font-size:14px;font-weight:600;color:var(--nu-black);">"Qual ação essa análise habilita?"</div>
+          <div style="font-size:12px;color:var(--chrome-grey);margin-top:4px;">Garante acionabilidade</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:14px 18px;border-left:4px solid var(--nu-purple);">
+          <div style="font-size:14px;font-weight:600;color:var(--nu-black);">"Validamos a hipótese com dados?"</div>
+          <div style="font-size:12px;color:var(--chrome-grey);margin-top:4px;">Evita conclusões precipitadas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pilar 3: Calibração -->
+    <div class="card" style="border-top:5px solid var(--nu-purple);padding:32px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <div style="width:50px;height:50px;background:var(--nu-purple);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div style="font-size:19px;font-weight:700;color:var(--nu-purple);">Calibração Contínua</div>
+      </div>
+      <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.9;">
+        <li>Sessões mensais de revisão de cases</li>
+        <li>Peer review antes de apresentações</li>
+        <li>Alinhamento de critérios de profundidade</li>
+        <li>Feedback loop com stakeholders</li>
+        <li>Documentação de learnings<br><span style="font-size:13px;color:var(--chrome-grey);">Erros comuns e como evitá-los</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg, var(--nu-purple) 0%, #6B21A8 100%);border-radius:14px;padding:28px 36px;">
+    <div style="display:flex;align-items:center;gap:36px;">
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;">Filosofia de Orientação</div>
+        <div style="font-size:17px;color:white;line-height:1.7;">Para um time sênior, a orientação não é <strong>"como fazer"</strong> — é <strong>"quando usar o quê"</strong> e <strong>"qual o padrão de qualidade esperado"</strong>. O playbook dá a estrutura, as perguntas dão a direção, a calibração garante o alinhamento.</div>
+      </div>
+      <div style="width:2px;height:80px;background:rgba(255,255,255,0.2);"></div>
+      <div style="text-align:center;min-width:140px;">
+        <div style="font-size:52px;font-weight:800;color:white;">5</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.7);font-weight:600;">Analistas Sêniors</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: Closing -->
+<div class="slide purple-bg" data-slide="8" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+  <div class="chrome" style="position:absolute;top:40px;left:56px;right:56px;"><span>Nubank</span><span>Confidencial</span></div>
+  <div style="text-align:center;">
+    <div style="font-size:24px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:24px;">Diagnóstico Estruturado</div>
+    <div style="font-size:64px;font-weight:700;color:white;line-height:1.2;margin-bottom:32px;">Próximos Passos</div>
+    <div style="font-size:20px;color:rgba(255,255,255,0.75);line-height:1.6;">
+      Plano de Ação e Recomendações
+    </div>
+  </div>
+  <svg viewBox="0 0 413.2 224.6" xmlns="http://www.w3.org/2000/svg" width="110" style="position:absolute;bottom:60px;left:56px;">
+    <g fill="white"><path d="M2.4,92.5c-0.5,10,0,20.2,0,30.2c0,20.2,0,40.4,0,60.6c0,11.8,0,23.9,0,35.7c0,0,0,0,0,0c0,0,54,0,54,0s0-47.4,0-88.2c0-27.5-0.2-51.9,0-56.9c1-23.8,7.5-39.4,19.7-52.1c-0.9,0-1.9-0.1-2.8-0.1c-26.3,0-51,15.1-63,38.4C4.9,70.4,3,81.4,2.4,92.5z"/><path d="M126.2,0.4c-20.2,0-37.4,7.9-50.3,21.4c40.2,0,66.3,27.4,67.7,71c0.3,10,0.4,63.6,0.4,63.6V219h54c0,0,0-43.3,0-84.6c0-25.6,0.2-47.7-1.6-63C191.5,28.9,165.4,0.4,126.2,0.4z"/><path d="M410.8,132.1c0.5-10,0-20.2,0-30.2c0-20.2,0-40.4,0-60.6c0-11.8,0-23.9,0-35.7c0,0,0,0,0,0c0,0-54,0-54,0s0,47.4,0,88.2c0,27.5,0.2,51.9,0,56.9c-1,23.8-7.5,39.4-19.7,52.1c0.9,0,1.9,0.1,2.8,0.1c26.3,0,51-15.1,63-38.4C408.3,154.2,410.2,143.3,410.8,132.1z"/><path d="M287,224.2c20.2,0,37.4-7.9,50.3-21.4c-40.2,0-66.3-27.4-67.7-71c-0.3-10-0.5-34.8-0.5-63.6c0-31.5,0-62.6,0-62.6l-54,0.1c0,0,0,43.3,0,84.6c0,25.6-0.2,47.7,1.6,63C221.7,195.8,247.8,224.2,287,224.2z"/></g>
+  </svg>
+</div>
+
+</div>
+
+<div id="pageFooter"></div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const SLIDE_W = 1600;
+const SLIDE_H = 900;
+
+const PAGE_NUMS = [null, 2, 3, 4, 5, 6, 7, 8, null];
+
+function scaleSlides() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const scale = Math.min(vw / SLIDE_W, vh / SLIDE_H);
+  const offsetX = (vw - SLIDE_W * scale) / 2;
+  const offsetY = (vh - SLIDE_H * scale) / 2;
+  slides.forEach(s => {
+    s.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  });
+  updatePageFooter(offsetX, offsetY, scale);
+}
+window.addEventListener('resize', scaleSlides);
+scaleSlides();
+
+function updatePageFooter(offsetX, offsetY, scale) {
+  const footer = document.getElementById('pageFooter');
+  if (!footer) return;
+  const pageNum = PAGE_NUMS[current];
+  if (!pageNum) { footer.style.display = 'none'; return; }
+  if (offsetX === undefined) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    scale = Math.min(vw / SLIDE_W, vh / SLIDE_H);
+    offsetX = (vw - SLIDE_W * scale) / 2;
+    offsetY = (vh - SLIDE_H * scale) / 2;
+  }
+  footer.textContent = pageNum + ' / ' + (total - 1);
+  footer.style.left = offsetX + 'px';
+  footer.style.top = (offsetY + (SLIDE_H - 26) * scale) + 'px';
+  footer.style.width = (SLIDE_W * scale) + 'px';
+  footer.style.fontSize = Math.max(9, 13 * scale) + 'px';
+  footer.style.display = 'block';
+}
+
+function showSlide(idx) {
+  slides.forEach(s => s.classList.remove('active'));
+  slides[idx].classList.add('active');
+  updatePageFooter();
+}
+
+function navigate(dir) {
+  const next = current + dir;
+  if (next >= 0 && next < total) { current = next; showSlide(current); }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight'||e.key===' ') { e.preventDefault(); navigate(1); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); navigate(-1); }
+});
+
+let tx=0;
+document.addEventListener('touchstart', e => { tx=e.changedTouches[0].screenX; });
+document.addEventListener('touchend', e => { const d=tx-e.changedTouches[0].screenX; if(Math.abs(d)>50) navigate(d>0?1:-1); });
+
+document.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+  const x = e.clientX / window.innerWidth;
+  if (x > 0.65) navigate(1);
+  else if (x < 0.35) navigate(-1);
+});
+
+showSlide(0);
+scaleSlides();
+</script>
+</body>
+</html>
