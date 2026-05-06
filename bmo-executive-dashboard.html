@@ -186,6 +186,204 @@ body {
 .kpi-trend.bad { background: #fef2f2; color: var(--nu-red); }
 .kpi-trend.good { background: #f0fdf4; color: var(--nu-green); }
 
+.kpi-trajectory {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--nu-grey);
+}
+
+.kpi-trajectory-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--chrome-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.kpi-trajectory-steps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.kpi-trajectory-step {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.kpi-trajectory-step.current {
+  background: var(--nu-off-white);
+  color: var(--chrome-grey);
+}
+
+.kpi-trajectory-step.target {
+  background: var(--nu-green);
+  color: white;
+}
+
+.kpi-trajectory-arrow {
+  color: var(--chrome-grey);
+  font-size: 10px;
+}
+
+/* Roadmap Section */
+.roadmap-section {
+  margin-bottom: 24px;
+}
+
+.roadmap-container {
+  background: white;
+  border: 1px solid var(--nu-grey);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.roadmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.roadmap-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--nu-black);
+}
+
+.roadmap-methodology {
+  font-size: 10px;
+  color: var(--chrome-grey);
+  background: var(--nu-off-white);
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.roadmap-timeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 16px;
+}
+
+.roadmap-phase {
+  padding: 12px 16px;
+  text-align: center;
+  position: relative;
+}
+
+.roadmap-phase::after {
+  content: '→';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--nu-purple);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.roadmap-phase:last-child::after {
+  display: none;
+}
+
+.roadmap-phase.phase-1 {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-radius: 10px 0 0 10px;
+}
+
+.roadmap-phase.phase-2 {
+  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+}
+
+.roadmap-phase.phase-3 {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 0 10px 10px 0;
+}
+
+.roadmap-phase-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.phase-1 .roadmap-phase-label { color: var(--nu-red); }
+.phase-2 .roadmap-phase-label { color: #ca8a04; }
+.phase-3 .roadmap-phase-label { color: var(--nu-blue); }
+
+.roadmap-phase-period {
+  font-size: 11px;
+  color: var(--chrome-grey);
+  margin-bottom: 8px;
+}
+
+.roadmap-phase-focus {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nu-black);
+}
+
+.roadmap-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.roadmap-metric {
+  background: var(--nu-off-white);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.roadmap-metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.roadmap-metric-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nu-black);
+}
+
+.roadmap-metric-method {
+  font-size: 8px;
+  color: var(--chrome-grey);
+  background: white;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.roadmap-metric-values {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.roadmap-metric-value {
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.roadmap-metric-value.current { color: var(--chrome-grey); }
+.roadmap-metric-value.f1 { color: var(--nu-red); }
+.roadmap-metric-value.f2 { color: #ca8a04; }
+.roadmap-metric-value.target { color: var(--nu-green); }
+
+.roadmap-metric-arrow {
+  font-size: 10px;
+  color: var(--nu-grey);
+}
+
 /* Problems Section */
 .problems-section {
   margin-bottom: 24px;
@@ -732,6 +930,35 @@ body {
 .short .action-plan-target-value { color: #ca8a04; }
 .medium .action-plan-target-value { color: var(--nu-blue); }
 
+/* Methodology Note */
+.methodology-note {
+  background: var(--nu-off-white);
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--nu-purple);
+}
+
+.methodology-note-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nu-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.methodology-note-content {
+  font-size: 11px;
+  color: var(--chrome-grey);
+  line-height: 1.6;
+}
+
+.methodology-note-content strong {
+  color: var(--nu-black);
+  font-weight: 600;
+}
+
 /* Print styles */
 @media print {
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -768,26 +995,168 @@ body {
     <div class="kpi-card critical">
       <div class="kpi-label">SLA Médio</div>
       <div class="kpi-value">6,5d</div>
-      <div class="kpi-meta">Meta: ≤7 dias</div>
+      <div class="kpi-meta">Meta Final: ≤5d (90 dias)</div>
       <div class="kpi-trend bad">↑ 65% vs ano anterior</div>
+      <div class="kpi-trajectory">
+        <div class="kpi-trajectory-label">Trajetória</div>
+        <div class="kpi-trajectory-steps">
+          <span class="kpi-trajectory-step current">6,5d</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">6,0d</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">5,5d</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step target">5,0d</span>
+        </div>
+      </div>
     </div>
     <div class="kpi-card warning">
       <div class="kpi-label">Resolutividade</div>
       <div class="kpi-value">35,3%</div>
-      <div class="kpi-meta">Meta: ≥80%</div>
-      <div class="kpi-trend bad">↓ 44,7pp abaixo da meta</div>
+      <div class="kpi-meta">Meta Final: ≥60% (90 dias)</div>
+      <div class="kpi-trend bad">↓ 24,7pp abaixo da meta</div>
+      <div class="kpi-trajectory">
+        <div class="kpi-trajectory-label">Trajetória</div>
+        <div class="kpi-trajectory-steps">
+          <span class="kpi-trajectory-step current">35%</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">42%</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">50%</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step target">60%</span>
+        </div>
+      </div>
     </div>
     <div class="kpi-card warning">
       <div class="kpi-label">tNPS</div>
       <div class="kpi-value">5,3</div>
-      <div class="kpi-meta">Meta: ≥20</div>
+      <div class="kpi-meta">Meta Final: ≥20 (90 dias)</div>
       <div class="kpi-trend bad">Canal RDR: -66</div>
+      <div class="kpi-trajectory">
+        <div class="kpi-trajectory-label">Trajetória</div>
+        <div class="kpi-trajectory-steps">
+          <span class="kpi-trajectory-step current">5</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">10</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">15</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step target">20</span>
+        </div>
+      </div>
     </div>
     <div class="kpi-card critical">
       <div class="kpi-label">Taxa Resposta tNPS</div>
       <div class="kpi-value">7,2%</div>
-      <div class="kpi-meta">92,8% sem feedback</div>
-      <div class="kpi-trend bad">Baixa visibilidade</div>
+      <div class="kpi-meta">Meta Final: ≥15% (90 dias)</div>
+      <div class="kpi-trend bad">92,8% sem feedback</div>
+      <div class="kpi-trajectory">
+        <div class="kpi-trajectory-label">Trajetória</div>
+        <div class="kpi-trajectory-steps">
+          <span class="kpi-trajectory-step current">7%</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">9%</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step">12%</span>
+          <span class="kpi-trajectory-arrow">→</span>
+          <span class="kpi-trajectory-step target">15%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roadmap de Metas -->
+  <div class="roadmap-section">
+    <div class="section-title">Roadmap de Metas (90 dias)</div>
+    <div class="roadmap-container">
+      <div class="roadmap-header">
+        <div class="roadmap-title">Trajetória por Fase do Plano de Ação</div>
+        <div class="roadmap-methodology">Metodologia: Regulatório + P75 Interno + Benchmark Mercado</div>
+      </div>
+      
+      <!-- Timeline -->
+      <div class="roadmap-timeline">
+        <div class="roadmap-phase phase-1">
+          <div class="roadmap-phase-label">Fase 1 — Imediato</div>
+          <div class="roadmap-phase-period">0-30 dias</div>
+          <div class="roadmap-phase-focus">Quick Wins Collections</div>
+        </div>
+        <div class="roadmap-phase phase-2">
+          <div class="roadmap-phase-label">Fase 2 — Curto Prazo</div>
+          <div class="roadmap-phase-period">30-60 dias</div>
+          <div class="roadmap-phase-focus">Otimização Processos</div>
+        </div>
+        <div class="roadmap-phase phase-3">
+          <div class="roadmap-phase-label">Fase 3 — Médio Prazo</div>
+          <div class="roadmap-phase-period">60-90 dias</div>
+          <div class="roadmap-phase-focus">Transformação Estrutural</div>
+        </div>
+      </div>
+
+      <!-- Metrics per Phase -->
+      <div class="roadmap-metrics">
+        <div class="roadmap-metric">
+          <div class="roadmap-metric-header">
+            <div class="roadmap-metric-name">SLA</div>
+            <div class="roadmap-metric-method">Regulatório</div>
+          </div>
+          <div class="roadmap-metric-values">
+            <span class="roadmap-metric-value current">6,5d</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f1">6,0d</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f2">5,5d</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value target">5,0d</span>
+          </div>
+        </div>
+        <div class="roadmap-metric">
+          <div class="roadmap-metric-header">
+            <div class="roadmap-metric-name">Resolutividade</div>
+            <div class="roadmap-metric-method">P75 Interno</div>
+          </div>
+          <div class="roadmap-metric-values">
+            <span class="roadmap-metric-value current">35%</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f1">42%</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f2">50%</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value target">60%</span>
+          </div>
+        </div>
+        <div class="roadmap-metric">
+          <div class="roadmap-metric-header">
+            <div class="roadmap-metric-name">tNPS</div>
+            <div class="roadmap-metric-method">Benchmark</div>
+          </div>
+          <div class="roadmap-metric-values">
+            <span class="roadmap-metric-value current">5</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f1">10</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f2">15</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value target">20</span>
+          </div>
+        </div>
+        <div class="roadmap-metric">
+          <div class="roadmap-metric-header">
+            <div class="roadmap-metric-name">Taxa Resposta</div>
+            <div class="roadmap-metric-method">2x Baseline</div>
+          </div>
+          <div class="roadmap-metric-values">
+            <span class="roadmap-metric-value current">7%</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f1">9%</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value f2">12%</span>
+            <span class="roadmap-metric-arrow">→</span>
+            <span class="roadmap-metric-value target">15%</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1136,10 +1505,10 @@ body {
     <div class="section-title">Plano de Ação Recomendado</div>
     <div class="action-plan-grid">
       
-      <!-- Immediate -->
+      <!-- Phase 1: Immediate -->
       <div class="action-plan-card immediate">
         <div class="action-plan-header">
-          <div class="action-plan-horizon">Imediato (0-30d)</div>
+          <div class="action-plan-horizon">Fase 1 (0-30d)</div>
         </div>
         <div class="action-plan-title">Quick Wins - Collections</div>
         <div class="action-plan-items">
@@ -1149,15 +1518,15 @@ body {
           <div class="action-plan-item">Revisão de templates de resposta RDR</div>
         </div>
         <div class="action-plan-target">
-          <div class="action-plan-target-label">Meta</div>
-          <div class="action-plan-target-value">Reduzir estouro Collections de 72% → 50%</div>
+          <div class="action-plan-target-label">Metas Fase 1</div>
+          <div class="action-plan-target-value">SLA: 6,5d → 6,0d | Resolutividade: 35% → 42%</div>
         </div>
       </div>
 
-      <!-- Short Term -->
+      <!-- Phase 2: Short Term -->
       <div class="action-plan-card short">
         <div class="action-plan-header">
-          <div class="action-plan-horizon">Curto Prazo (30-90d)</div>
+          <div class="action-plan-horizon">Fase 2 (30-60d)</div>
         </div>
         <div class="action-plan-title">Otimização de Processos</div>
         <div class="action-plan-items">
@@ -1167,15 +1536,15 @@ body {
           <div class="action-plan-item">Dashboard operacional para squads</div>
         </div>
         <div class="action-plan-target">
-          <div class="action-plan-target-label">Meta</div>
-          <div class="action-plan-target-value">SLA médio de 6,5d → 5d</div>
+          <div class="action-plan-target-label">Metas Fase 2</div>
+          <div class="action-plan-target-value">SLA: 6,0d → 5,5d | Resolutividade: 42% → 50%</div>
         </div>
       </div>
 
-      <!-- Medium Term -->
+      <!-- Phase 3: Medium Term -->
       <div class="action-plan-card medium">
         <div class="action-plan-header">
-          <div class="action-plan-horizon">Médio Prazo (90-180d)</div>
+          <div class="action-plan-horizon">Fase 3 (60-90d)</div>
         </div>
         <div class="action-plan-title">Transformação Estrutural</div>
         <div class="action-plan-items">
@@ -1185,8 +1554,8 @@ body {
           <div class="action-plan-item">Benchmark de resolutividade por canal</div>
         </div>
         <div class="action-plan-target">
-          <div class="action-plan-target-label">Meta</div>
-          <div class="action-plan-target-value">Resolutividade de 35% → 60%</div>
+          <div class="action-plan-target-label">Metas Finais (90d)</div>
+          <div class="action-plan-target-value">SLA: ≤5d | Resol: ≥60% | tNPS: ≥20 | Resp: ≥15%</div>
         </div>
       </div>
 
@@ -1211,10 +1580,21 @@ body {
     </div>
   </div>
 
+  <!-- Methodology Note -->
+  <div class="methodology-note">
+    <div class="methodology-note-title">Metodologia de Cálculo das Metas</div>
+    <div class="methodology-note-content">
+      <strong>SLA:</strong> Compliance BACEN (10 dias úteis) com margem de 50% para segurança operacional. 
+      <strong>Resolutividade:</strong> Benchmark interno P75 — percentil 75 dos squads já atinge 60%. 
+      <strong>tNPS:</strong> Benchmark de mercado bancário + melhor canal interno (Chat: +32). 
+      <strong>Taxa de Resposta:</strong> Incremento de 2x sobre baseline, correlacionado com redução de SLA.
+    </div>
+  </div>
+
   <!-- Footer -->
   <div class="footer">
     <div class="footer-logo">Nubank — Ouvidoria</div>
-    <div>Customer Relationship Forum | Análise: Jan-Dez 2025</div>
+    <div>Customer Relationship Forum | Análise: Jan-Dez 2025 | Horizonte: 90 dias</div>
   </div>
 </div>
 
