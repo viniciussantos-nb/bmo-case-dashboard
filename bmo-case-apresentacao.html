@@ -17,8 +17,13 @@
   --nu-green: #22C55E;
   --nu-yellow: #EAB308;
   --nu-red: #EF4444;
+  --nu-orange: #F97316;
   --nu-blue: #3B82F6;
   --chrome-grey: #6B7280;
+  /* Escala de criticidade */
+  --impact-critical: #EF4444;
+  --impact-high: #F97316;
+  --impact-medium: #EAB308;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -198,9 +203,9 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   flex-direction: column;
   gap: 12px;
 }
-.priority-card.priority-1 { border-top-color: var(--nu-red); }
-.priority-card.priority-2 { border-top-color: var(--nu-yellow); }
-.priority-card.priority-3 { border-top-color: var(--nu-blue); }
+.priority-card.priority-1 { border-top-color: var(--impact-critical); }
+.priority-card.priority-2 { border-top-color: var(--impact-high); }
+.priority-card.priority-3 { border-top-color: var(--impact-medium); }
 
 .priority-badge {
   display: inline-flex;
@@ -222,12 +227,12 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   font-weight: 800;
   color: white;
 }
-.priority-1 .priority-badge .num { background: var(--nu-red); }
-.priority-1 .priority-badge { color: var(--nu-red); }
-.priority-2 .priority-badge .num { background: var(--nu-yellow); }
-.priority-2 .priority-badge { color: var(--nu-yellow); }
-.priority-3 .priority-badge .num { background: var(--nu-blue); }
-.priority-3 .priority-badge { color: var(--nu-blue); }
+.priority-1 .priority-badge .num { background: var(--impact-critical); }
+.priority-1 .priority-badge { color: var(--impact-critical); }
+.priority-2 .priority-badge .num { background: var(--impact-high); }
+.priority-2 .priority-badge { color: var(--impact-high); }
+.priority-3 .priority-badge .num { background: var(--impact-medium); }
+.priority-3 .priority-badge { color: var(--impact-medium); }
 
 .priority-card h3 {
   font-size: 22px;
@@ -240,9 +245,9 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   font-weight: 800;
   line-height: 1;
 }
-.priority-1 .big-number { color: var(--nu-red); }
-.priority-2 .big-number { color: var(--nu-yellow); }
-.priority-3 .big-number { color: var(--nu-blue); }
+.priority-1 .big-number { color: var(--impact-critical); }
+.priority-2 .big-number { color: var(--impact-high); }
+.priority-3 .big-number { color: var(--impact-medium); }
 
 .priority-card .metric-label {
   font-size: 14px;
@@ -258,8 +263,9 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 }
 
 /* Impact indicator */
-.impact-high { color: var(--nu-red); font-weight: 700; }
-.impact-medium { color: var(--nu-yellow); font-weight: 700; }
+.impact-critical { color: var(--impact-critical); font-weight: 700; }
+.impact-high { color: var(--impact-high); font-weight: 700; }
+.impact-medium { color: var(--impact-medium); font-weight: 700; }
 .impact-low { color: var(--nu-green); font-weight: 700; }
 
 /* Two column helper */
@@ -592,11 +598,11 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
     <tbody>
       <tr>
         <td>
-          <strong style="color:var(--nu-red);">1. SLA Elevado</strong><br>
+          <strong style="color:var(--impact-critical);">1. SLA Elevado</strong><br>
           <span style="font-size:14px;color:var(--chrome-grey);">46,12% com SLA > 7 dias</span>
         </td>
         <td>
-          <span class="impact-high">● CRÍTICO</span><br>
+          <span class="impact-critical">● CRÍTICO</span><br>
           BACEN exige resposta em até <strong>10 dias úteis</strong>. Com SLA médio de 6,48 dias e 46,12% com SLA > 7 dias, operamos no limite regulatório. <strong>Risco de multas e sanções.</strong>
         </td>
         <td>
@@ -604,31 +610,31 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
           Casos demorados migram para <strong>Procon (8,2%)</strong> e <strong>RDR (34%)</strong>. SLA alto alimenta ciclo de escalation externo, gerando exposição pública negativa.
         </td>
         <td>
-          <span class="impact-high">● CRÍTICO</span><br>
+          <span class="impact-critical">● CRÍTICO</span><br>
           SLA piorou <strong>65% no ano</strong> (4,5 → 7,4 dias). Backlog acumulado gera efeito cascata: mais casos antigos → mais pressão → mais erros → mais retrabalho.
         </td>
       </tr>
       <tr>
         <td>
-          <strong style="color:var(--nu-yellow);">2. Baixa Resolutividade RDR</strong><br>
+          <strong style="color:var(--impact-high);">2. Baixa Resolutividade RDR</strong><br>
           <span style="font-size:14px;color:var(--chrome-grey);">16-19% de resolução</span>
         </td>
         <td>
-          <span class="impact-high">● CRÍTICO</span><br>
+          <span class="impact-critical">● CRÍTICO</span><br>
           RDR concentra demandas que chegaram via <strong>BACEN</strong>. Resolutividade de 16-19% indica que <strong>80%+ dos clientes</strong> deste canal saem sem solução, gerando reincidência e insatisfação.
         </td>
         <td>
-          <span class="impact-high">● CRÍTICO</span><br>
+          <span class="impact-critical">● CRÍTICO</span><br>
           RDR = <strong>34% da base (114k casos)</strong>. tNPS de <strong>-66</strong> neste canal. Cada caso não resolvido é um detrator público potencial, afetando nota e decisão de novos clientes.
         </td>
         <td>
-          <span class="impact-medium">● ALTO</span><br>
+          <span class="impact-high">● ALTO</span><br>
           RDR + Collections concentra 76k casos com <strong>97% de não resposta</strong> ao tNPS. É um "ponto cego" operacional — sem feedback para melhorar.
         </td>
       </tr>
       <tr>
         <td>
-          <strong style="color:var(--nu-blue);">3. Baixa Taxa Resposta tNPS</strong><br>
+          <strong style="color:var(--impact-medium);">3. Baixa Taxa Resposta tNPS</strong><br>
           <span style="font-size:14px;color:var(--chrome-grey);">7,2% de resposta</span>
         </td>
         <td>
@@ -636,7 +642,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
           Com apenas <strong>7% de resposta</strong>, não temos visibilidade real sobre a satisfação dos clientes. Decisões de melhoria ficam baseadas em amostra potencialmente enviesada.
         </td>
         <td>
-          <span class="impact-medium">● ALTO</span><br>
+          <span class="impact-high">● ALTO</span><br>
           Sem feedback, não identificamos detratores a tempo de fazer recovery. <strong>90% dos detractors não têm problema resolvido</strong> — e não sabemos quem são os 93% que não respondem.
         </td>
         <td>
@@ -665,11 +671,11 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         
         <div style="margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <span style="background:var(--nu-red);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
+            <span style="background:var(--impact-critical);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
             <strong style="font-size:17px;">Procedência Ausente</strong>
           </div>
           <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
-            <li>Case menciona taxa de <strong style="color:var(--nu-red);">19%</strong> de casos procedentes</li>
+            <li>Case menciona taxa de <strong style="color:var(--impact-critical);">19%</strong> de casos procedentes</li>
             <li>Base não contém campo de procedência/improcedência</li>
             <li>Impossível analisar por que BACEN julga casos procedentes</li>
           </ul>
@@ -677,11 +683,11 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 
         <div style="margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <span style="background:var(--nu-red);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
+            <span style="background:var(--impact-critical);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
             <strong style="font-size:17px;">Receiving Method em Branco</strong>
           </div>
           <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
-            <li><strong style="color:var(--nu-red);">171.638 casos (50,84%)</strong> sem canal classificado</li>
+            <li><strong style="color:var(--impact-critical);">171.638 casos (50,84%)</strong> sem canal classificado</li>
             <li>Análises por canal ficam comprometidas</li>
             <li>Impossível segmentar ações por origem do caso</li>
           </ul>
