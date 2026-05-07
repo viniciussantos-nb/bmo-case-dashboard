@@ -206,7 +206,7 @@ body {
 /* ===== EVIDENCE ===== */
 .evidence {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -430,13 +430,15 @@ body {
 @media (max-width: 1280px) {
   .kpis { grid-template-columns: repeat(3, 1fr); }
 }
+@media (max-width: 1200px) {
+  .evidence { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 1024px) {
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .problems { grid-template-columns: 1fr; }
   .evidence { grid-template-columns: 1fr; }
   .roadmap-grid { grid-template-columns: 1fr; }
   .impact { flex-direction: column; gap: 20px; text-align: center; }
-  .impact-metrics { flex-wrap: wrap; justify-content: center; }
 }
 </style>
 </head>
@@ -575,11 +577,11 @@ body {
     </div>
   </section>
 
-  <!-- ===== 2 GRÁFICOS - EDITAR AQUI ===== -->
-  <section class="evidence">
-    <!-- Gráfico 1: Pareto -->
+  <!-- ===== 3 GRÁFICOS ===== -->
+  <section class="evidence" style="grid-template-columns: repeat(3, 1fr);">
+    <!-- Gráfico 1: Pareto por Squad -->
     <div class="chart-card">
-      <div class="chart-title">Concentração do Problema: Pareto por Squad</div>
+      <div class="chart-title">Concentração: Pareto por Squad</div>
       
       <div class="pareto-bar">
         <span class="pareto-label">Collections</span>
@@ -611,12 +613,50 @@ body {
         <span class="pareto-value">28,11%</span>
       </div>
       
-      <div class="chart-insight">Insight: Collections sozinho representa quase metade do problema. Foco neste squad gera maior impacto.</div>
+      <div class="chart-insight">Collections = 44,73% do problema. Foco neste squad gera maior impacto.</div>
     </div>
 
-    <!-- Gráfico 2: Tendência -->
+    <!-- Gráfico 2: Reasons Críticos Collections -->
     <div class="chart-card">
-      <div class="chart-title">Tendência: % de Casos com SLA > 7 dias (2025)</div>
+      <div class="chart-title">Drill-Down: Reasons Críticos (Collections)</div>
+      <div style="font-size:10px;color:var(--gray-400);margin-bottom:12px;">Taxa de SLA > 7 dias por motivo</div>
+      
+      <div class="pareto-bar">
+        <span class="pareto-label" style="width:100px;">SCR</span>
+        <div class="pareto-track"><div class="pareto-fill" style="width:92%;background:#4C1D95;"></div></div>
+        <span class="pareto-value" style="color:#4C1D95;font-weight:800;">91,8%</span>
+      </div>
+      
+      <div class="pareto-bar">
+        <span class="pareto-label" style="width:100px;">Multidébitos</span>
+        <div class="pareto-track"><div class="pareto-fill" style="width:87%;background:#6D28D9;"></div></div>
+        <span class="pareto-value" style="color:#6D28D9;font-weight:700;">86,7%</span>
+      </div>
+      
+      <div class="pareto-bar">
+        <span class="pareto-label" style="width:100px;">Cartão Crédito</span>
+        <div class="pareto-track"><div class="pareto-fill" style="width:81%;background:#7C3AED;"></div></div>
+        <span class="pareto-value" style="color:#7C3AED;">81,1%</span>
+      </div>
+      
+      <div class="pareto-bar">
+        <span class="pareto-label" style="width:100px;">Empréstimo</span>
+        <div class="pareto-track"><div class="pareto-fill" style="width:80%;background:#8B5CF6;"></div></div>
+        <span class="pareto-value" style="color:#8B5CF6;">79,8%</span>
+      </div>
+      
+      <div class="pareto-bar">
+        <span class="pareto-label" style="width:100px;">Acordo CI</span>
+        <div class="pareto-track"><div class="pareto-fill" style="width:50%;background:#A78BFA;"></div></div>
+        <span class="pareto-value" style="color:#A78BFA;">49,5%</span>
+      </div>
+      
+      <div class="chart-insight">SCR e Multidébitos: +85% dos casos excedem SLA. Prioridade máxima.</div>
+    </div>
+
+    <!-- Gráfico 3: Tendência -->
+    <div class="chart-card">
+      <div class="chart-title">Tendência: % Casos SLA > 7d (2025)</div>
       
       <div class="trend-chart">
         <div class="trend-bar" style="height:35%;"><span class="data-label">35%</span><span>Jan</span></div>
@@ -631,7 +671,7 @@ body {
         <div class="trend-bar alert" style="height:46%;"><span class="data-label">46%</span><span>Out</span></div>
       </div>
       
-      <div class="chart-insight">Insight: Deterioração contínua desde Jan. Pico em Ago (55%). Intervenção urgente necessária.</div>
+      <div class="chart-insight">Pico em Ago (55%). Intervenção urgente necessária.</div>
     </div>
   </section>
 
@@ -669,55 +709,109 @@ body {
     </div>
   </section>
 
-  <!-- ===== IMPACTO ESPERADO - EDITAR AQUI ===== -->
-  <section class="impact">
-    <div class="impact-title">Impacto Esperado</div>
+  <!-- ===== IMPACTO ESPERADO POR FASE ===== -->
+  <section class="impact" style="flex-direction:column;gap:16px;">
+    <div class="impact-title" style="margin-bottom:0;">Impacto Esperado por Fase</div>
     
-    <div class="impact-metrics">
-      <div class="impact-metric">
-        <div class="impact-label">SLA Médio</div>
-        <div class="impact-values">
-          <span class="impact-from">6,5d</span>
-          <span class="impact-arrow">→</span>
-          <span class="impact-to">5,0d</span>
-        </div>
+    <!-- Tabela de Impacto Faseado -->
+    <div style="display:grid;grid-template-columns:140px repeat(3,1fr);gap:0;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;font-size:12px;">
+      <!-- Header -->
+      <div style="padding:12px 16px;font-weight:700;color:rgba(255,255,255,0.6);border-bottom:1px solid rgba(255,255,255,0.15);">KPI</div>
+      <div style="padding:12px 16px;text-align:center;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);">
+        <div style="color:#93C5FD;">30 dias</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:400;">Quick Wins</div>
+      </div>
+      <div style="padding:12px 16px;text-align:center;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);">
+        <div style="color:#FDE047;">60 dias</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:400;">Estruturação</div>
+      </div>
+      <div style="padding:12px 16px;text-align:center;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.12);">
+        <div style="color:#4ADE80;">90 dias</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:400;">Escala + IA</div>
       </div>
       
-      <div class="impact-metric">
-        <div class="impact-label">Casos > 7 dias</div>
-        <div class="impact-values">
-          <span class="impact-from">46%</span>
-          <span class="impact-arrow">→</span>
-          <span class="impact-to">20%</span>
-        </div>
+      <!-- SLA Médio -->
+      <div style="padding:10px 16px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">SLA Médio</div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);">
+        <span style="color:rgba(255,255,255,0.5);">6,5d →</span> <strong>5,8d</strong>
+        <div style="font-size:10px;color:#93C5FD;">-11%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong>4,8d</strong>
+        <div style="font-size:10px;color:#FDE047;">-26%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.12);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong style="color:#4ADE80;">3,5d</strong>
+        <div style="font-size:10px;color:#4ADE80;">-46%</div>
       </div>
       
-      <div class="impact-metric">
-        <div class="impact-label">Resolutividade RDR</div>
-        <div class="impact-values">
-          <span class="impact-from">18%</span>
-          <span class="impact-arrow">→</span>
-          <span class="impact-to">35%</span>
-        </div>
+      <!-- Casos > 7 dias -->
+      <div style="padding:10px 16px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Casos > 7 dias</div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);">
+        <span style="color:rgba(255,255,255,0.5);">46% →</span> <strong>38%</strong>
+        <div style="font-size:10px;color:#93C5FD;">-17%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong>25%</strong>
+        <div style="font-size:10px;color:#FDE047;">-46%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.12);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong style="color:#4ADE80;">12%</strong>
+        <div style="font-size:10px;color:#4ADE80;">-74%</div>
       </div>
       
-      <div class="impact-metric">
-        <div class="impact-label">Taxa Resposta tNPS</div>
-        <div class="impact-values">
-          <span class="impact-from">7%</span>
-          <span class="impact-arrow">→</span>
-          <span class="impact-to">12%</span>
-        </div>
+      <!-- Resolutividade RDR -->
+      <div style="padding:10px 16px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Resolutividade RDR</div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);">
+        <span style="color:rgba(255,255,255,0.5);">18% →</span> <strong>28%</strong>
+        <div style="font-size:10px;color:#93C5FD;">+56%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong>42%</strong>
+        <div style="font-size:10px;color:#FDE047;">+133%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.12);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong style="color:#4ADE80;">55%</strong>
+        <div style="font-size:10px;color:#4ADE80;">+206%</div>
       </div>
       
-      <div class="impact-metric">
-        <div class="impact-label">tNPS RDR</div>
-        <div class="impact-values">
-          <span class="impact-from">-66</span>
-          <span class="impact-arrow">→</span>
-          <span class="impact-to">-30</span>
-        </div>
+      <!-- Taxa Resposta tNPS -->
+      <div style="padding:10px 16px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Taxa Resposta tNPS</div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);">
+        <span style="color:rgba(255,255,255,0.5);">7% →</span> <strong>10%</strong>
+        <div style="font-size:10px;color:#93C5FD;">+43%</div>
       </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong>14%</strong>
+        <div style="font-size:10px;color:#FDE047;">+100%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.12);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong style="color:#4ADE80;">18%</strong>
+        <div style="font-size:10px;color:#4ADE80;">+157%</div>
+      </div>
+      
+      <!-- tNPS RDR -->
+      <div style="padding:10px 16px;font-weight:600;">tNPS RDR</div>
+      <div style="padding:10px 16px;text-align:center;background:rgba(255,255,255,0.05);">
+        <span style="color:rgba(255,255,255,0.5);">-66 →</span> <strong>-50</strong>
+        <div style="font-size:10px;color:#93C5FD;">+24%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;background:rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong>-25</strong>
+        <div style="font-size:10px;color:#FDE047;">+62%</div>
+      </div>
+      <div style="padding:10px 16px;text-align:center;background:rgba(255,255,255,0.12);">
+        <span style="color:rgba(255,255,255,0.5);">→</span> <strong style="color:#4ADE80;">+5</strong>
+        <div style="font-size:10px;color:#4ADE80;">Zona Positiva</div>
+      </div>
+    </div>
+    
+    <!-- Metodologia -->
+    <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.5;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+      <strong style="color:rgba(255,255,255,0.9);">Metodologia:</strong> 
+      <strong>30d:</strong> Quick wins (roteamento + task force) reduzem backlog imediato. 
+      <strong>60d:</strong> Estruturação (filas RDR + alertas) estabiliza fluxo. 
+      <strong>90d:</strong> IA e automação escalam ganhos — correlação SLA×resolutividade: cada 1d de SLA = +4% resolutividade.
     </div>
   </section>
 
