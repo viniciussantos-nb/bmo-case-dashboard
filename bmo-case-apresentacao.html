@@ -662,56 +662,56 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 <div class="slide" data-slide="4">
   <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
   <div class="section-label">Refinamento do Diagnóstico</div>
-  <div class="executive-conclusion">A base atual apresenta gaps críticos: ausência de procedência/causa raiz e 51% dos casos sem canal de recebimento classificado</div>
+  <div class="executive-conclusion">A base de dados apresenta gaps que limitam algumas análises — pontuados abaixo para transparência</div>
 
   <div class="two-col" style="gap:32px;">
     <div>
-      <div class="card" style="border-top:5px solid var(--nu-red);margin-bottom:24px;padding:28px;">
-        <div class="card-title" style="margin-bottom:20px;">Gaps de Qualidade na Base</div>
+      <div class="card" style="border-top:5px solid var(--nu-purple);margin-bottom:24px;padding:28px;">
+        <div class="card-title" style="margin-bottom:20px;">Gaps Identificados na Base</div>
         
         <div style="margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <span style="background:var(--impact-critical);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
+            <span style="background:var(--nu-purple);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">1</span>
             <strong style="font-size:17px;">Procedência Ausente</strong>
           </div>
           <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
-            <li>Case menciona taxa de <strong style="color:var(--impact-critical);">19%</strong> de casos procedentes</li>
+            <li>Case menciona taxa de <strong>19%</strong> de casos procedentes</li>
             <li>Base não contém campo de procedência/improcedência</li>
-            <li>Impossível analisar por que BACEN julga casos procedentes</li>
+            <li>Não foi possível analisar motivos de procedência BACEN</li>
           </ul>
         </div>
 
         <div style="margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <span style="background:var(--impact-critical);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">CRÍTICO</span>
+            <span style="background:var(--nu-purple);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">2</span>
             <strong style="font-size:17px;">Receiving Method em Branco</strong>
           </div>
           <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
-            <li><strong style="color:var(--impact-critical);">171.638 casos (50,84%)</strong> sem canal classificado</li>
-            <li>Análises por canal ficam comprometidas</li>
-            <li>Impossível segmentar ações por origem do caso</li>
+            <li><strong>171.638 casos (50,84%)</strong> sem canal de recebimento classificado</li>
+            <li>Análises por canal ficam limitadas à metade da base</li>
+            <li>Utilizei a coluna "Channel" como alternativa para segmentação</li>
           </ul>
         </div>
 
         <div>
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <span style="background:var(--nu-green);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">BAIXO</span>
+            <span style="background:var(--nu-purple);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;">3</span>
             <strong style="font-size:17px;">Reason em Branco</strong>
           </div>
           <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--nu-black);line-height:1.7;">
             <li>4.210 casos (<strong>1,25%</strong>) sem motivo classificado</li>
             <li>Em Collections: apenas <strong>0,25%</strong> (263 casos)</li>
-            <li>Impacto baixo na análise geral</li>
+            <li>Impacto mínimo nas análises realizadas</li>
           </ul>
         </div>
       </div>
 
       <div class="stats-row" style="margin-bottom:0;">
-        <div class="stat-box danger" style="padding:24px;">
+        <div class="stat-box" style="padding:24px;">
           <div class="value" style="font-size:40px;">50,8%</div>
           <div class="label">Receiving Method Blank</div>
         </div>
-        <div class="stat-box success" style="padding:24px;">
+        <div class="stat-box" style="padding:24px;">
           <div class="value" style="font-size:40px;">1,25%</div>
           <div class="label">Reason Blank</div>
         </div>
