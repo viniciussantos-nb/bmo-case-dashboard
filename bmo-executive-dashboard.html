@@ -93,8 +93,8 @@ body {
 /* ===== KPIs ===== */
 .kpis {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
   margin-bottom: 32px;
 }
 
@@ -298,6 +298,16 @@ body {
   color: var(--gray-400);
 }
 
+.trend-bar .data-label {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gray-600);
+}
+
 .trend-labels {
   display: flex;
   justify-content: space-between;
@@ -417,6 +427,9 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1280px) {
+  .kpis { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 1024px) {
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .problems { grid-template-columns: 1fr; }
@@ -480,6 +493,13 @@ body {
       <div class="kpi-value">7,2%</div>
       <div class="kpi-delta negative">92,8% não respondem</div>
       <div class="kpi-insight">Baixa representatividade dos dados</div>
+    </div>
+    
+    <div class="kpi yellow">
+      <div class="kpi-label">tNPS Global</div>
+      <div class="kpi-value">+34,3</div>
+      <div class="kpi-delta negative">RDR: -66 (crítico)</div>
+      <div class="kpi-insight">Regulatório: risco reputacional BACEN | Operacional: retrabalho por insatisfação</div>
     </div>
   </section>
 
@@ -599,16 +619,16 @@ body {
       <div class="chart-title">Tendência: % de Casos com SLA > 7 dias (2025)</div>
       
       <div class="trend-chart">
-        <div class="trend-bar" style="height:35%;"><span>Jan</span></div>
-        <div class="trend-bar" style="height:38%;"><span>Fev</span></div>
-        <div class="trend-bar" style="height:40%;"><span>Mar</span></div>
-        <div class="trend-bar" style="height:42%;"><span>Abr</span></div>
-        <div class="trend-bar" style="height:44%;"><span>Mai</span></div>
-        <div class="trend-bar" style="height:48%;"><span>Jun</span></div>
-        <div class="trend-bar alert" style="height:52%;"><span>Jul</span></div>
-        <div class="trend-bar alert" style="height:55%;"><span>Ago</span></div>
-        <div class="trend-bar alert" style="height:50%;"><span>Set</span></div>
-        <div class="trend-bar alert" style="height:46%;"><span>Out</span></div>
+        <div class="trend-bar" style="height:35%;"><span class="data-label">35%</span><span>Jan</span></div>
+        <div class="trend-bar" style="height:38%;"><span class="data-label">38%</span><span>Fev</span></div>
+        <div class="trend-bar" style="height:40%;"><span class="data-label">40%</span><span>Mar</span></div>
+        <div class="trend-bar" style="height:42%;"><span class="data-label">42%</span><span>Abr</span></div>
+        <div class="trend-bar" style="height:44%;"><span class="data-label">44%</span><span>Mai</span></div>
+        <div class="trend-bar" style="height:48%;"><span class="data-label">48%</span><span>Jun</span></div>
+        <div class="trend-bar alert" style="height:52%;"><span class="data-label">52%</span><span>Jul</span></div>
+        <div class="trend-bar alert" style="height:55%;"><span class="data-label">55%</span><span>Ago</span></div>
+        <div class="trend-bar alert" style="height:50%;"><span class="data-label">50%</span><span>Set</span></div>
+        <div class="trend-bar alert" style="height:46%;"><span class="data-label">46%</span><span>Out</span></div>
       </div>
       
       <div class="chart-insight">Insight: Deterioração contínua desde Jan. Pico em Ago (55%). Intervenção urgente necessária.</div>
@@ -687,6 +707,15 @@ body {
           <span class="impact-from">7%</span>
           <span class="impact-arrow">→</span>
           <span class="impact-to">12%</span>
+        </div>
+      </div>
+      
+      <div class="impact-metric">
+        <div class="impact-label">tNPS RDR</div>
+        <div class="impact-values">
+          <span class="impact-from">-66</span>
+          <span class="impact-arrow">→</span>
+          <span class="impact-to">-30</span>
         </div>
       </div>
     </div>
