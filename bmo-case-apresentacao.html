@@ -1373,72 +1373,100 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 <div class="slide" data-slide="10">
   <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
   <div class="section-label">Arquitetura de Métricas</div>
-  <div class="executive-conclusion">Executivo responde "O que priorizar?" | Operacional responde "O que fazer agora?"</div>
+  <div class="executive-conclusion">Executivo foca em decisão estratégica; Operacional foca em ação tática. São complementares.</div>
 
-  <div class="two-col" style="gap:28px;">
-    <div>
-      <table style="width:100%;border-collapse:collapse;font-size:13px;background:white;border-radius:10px;overflow:hidden;">
-        <thead>
-          <tr style="background:var(--nu-purple);color:white;">
-            <th style="padding:12px 10px;text-align:left;font-weight:700;">Critério</th>
-            <th style="padding:12px 10px;text-align:left;font-weight:700;">Executivo</th>
-            <th style="padding:12px 10px;text-align:left;font-weight:700;">Operacional</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid #E5E7EB;">
-            <td style="padding:10px;font-weight:600;background:#FAFAFA;">Audiência</td>
-            <td style="padding:10px;">Liderança, Diretoria</td>
-            <td style="padding:10px;">Supervisores, Analistas</td>
-          </tr>
-          <tr style="border-bottom:1px solid #E5E7EB;">
-            <td style="padding:10px;font-weight:600;background:#FAFAFA;">Frequência</td>
-            <td style="padding:10px;">Semanal / Mensal</td>
-            <td style="padding:10px;">Diária / Tempo real</td>
-          </tr>
-          <tr style="border-bottom:1px solid #E5E7EB;">
-            <td style="padding:10px;font-weight:600;background:#FAFAFA;">Métricas</td>
-            <td style="padding:10px;">4-6 KPIs agregados</td>
-            <td style="padding:10px;">Granular (fila, aging)</td>
-          </tr>
-          <tr style="border-bottom:1px solid #E5E7EB;">
-            <td style="padding:10px;font-weight:600;background:#FAFAFA;">Visão</td>
-            <td style="padding:10px;">Tendência, Risco</td>
-            <td style="padding:10px;">Drill-down por canal/squad</td>
-          </tr>
-          <tr>
-            <td style="padding:10px;font-weight:600;background:#FAFAFA;">Ação</td>
-            <td style="padding:10px;">Priorizar recursos</td>
-            <td style="padding:10px;">Rotear, Escalar, Resolver</td>
-          </tr>
-        </tbody>
-      </table>
+  <div style="margin-bottom:24px;">
+    <table style="width:100%;border-collapse:collapse;font-size:14px;background:white;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+      <thead>
+        <tr style="background:var(--nu-purple);color:white;">
+          <th style="padding:16px 18px;text-align:left;font-weight:700;width:18%;">Critério</th>
+          <th style="padding:16px 18px;text-align:left;font-weight:700;width:41%;">Dashboard Executivo</th>
+          <th style="padding:16px 18px;text-align:left;font-weight:700;width:41%;">Dashboard Operacional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 18px;font-weight:600;background:#FAFAFA;">Audiência</td>
+          <td style="padding:14px 18px;">Liderança, Fórum, Diretoria</td>
+          <td style="padding:14px 18px;">Supervisores, Analistas, Gestores</td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 18px;font-weight:600;background:#FAFAFA;">Frequência</td>
+          <td style="padding:14px 18px;">Semanal / Mensal</td>
+          <td style="padding:14px 18px;">Diária / Tempo real</td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 18px;font-weight:600;background:#FAFAFA;">Métricas</td>
+          <td style="padding:14px 18px;">4-6 KPIs agregados (SLA, Resolutividade, tNPS)</td>
+          <td style="padding:14px 18px;">Métricas granulares (fila, aging, backlog por squad)</td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 18px;font-weight:600;background:#FAFAFA;">Visão</td>
+          <td style="padding:14px 18px;">Tendência, Risco, Impacto estratégico</td>
+          <td style="padding:14px 18px;">Drill-down por canal, squad, reason</td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 18px;font-weight:600;background:#FAFAFA;">Pergunta</td>
+          <td style="padding:14px 18px;color:var(--nu-purple);font-weight:600;">"O que priorizar?"</td>
+          <td style="padding:14px 18px;color:var(--nu-purple);font-weight:600;">"O que fazer agora?"</td>
+        </tr>
+        <tr>
+          <td style="padding:14px 18px;font-weight:600;background:#FAFAFA;">Ação</td>
+          <td style="padding:14px 18px;">Alocar recursos, Decidir investimento</td>
+          <td style="padding:14px 18px;">Rotear caso, Escalar, Resolver</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <div class="key-message" style="padding:16px 20px;margin-top:20px;">
-        <strong>Complementaridade:</strong> Executivo para direção estratégica, Operacional para execução tática. Ambos usam a mesma Golden Source.
+  <div class="cards-grid cards-2" style="gap:28px;margin-bottom:24px;">
+    <div class="card" style="border-top:5px solid var(--nu-purple);padding:28px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+        <div style="width:48px;height:48px;background:var(--nu-purple);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:var(--nu-purple);">Dashboard Executivo</div>
+          <div style="font-size:13px;color:var(--chrome-grey);">Visão de risco e priorização</div>
+        </div>
       </div>
+      <div style="background:var(--nu-off-white);border-radius:10px;padding:18px;margin-bottom:18px;">
+        <div style="font-size:12px;font-weight:600;color:var(--chrome-grey);margin-bottom:8px;">ESTRUTURA</div>
+        <div style="font-size:14px;color:var(--nu-black);line-height:1.7;">
+          Headline → 4 KPIs → 3 Problemas Críticos → Plano 30-60-90 → Impacto Esperado
+        </div>
+      </div>
+      <a href="bmo-executive-dashboard.html" target="_blank" style="display:block;text-align:center;background:var(--nu-purple);color:white;padding:14px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;">Abrir Dashboard Executivo</a>
     </div>
 
-    <div>
-      <div class="cards-grid cards-2" style="gap:20px;">
-        <div class="card" style="border-top:4px solid var(--nu-purple);padding:20px;">
-          <div style="font-size:15px;font-weight:700;color:var(--nu-purple);margin-bottom:10px;">Dashboard Executivo</div>
-          <div style="font-size:12px;color:var(--chrome-grey);margin-bottom:14px;">Headline → 4 KPIs → 3 Problemas → Plano 30-60-90 → Impacto</div>
-          <a href="bmo-executive-dashboard.html" target="_blank" style="display:block;text-align:center;background:var(--nu-purple);color:white;padding:10px 16px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:600;">Abrir Executivo</a>
+    <div class="card" style="border-top:5px solid #6B21A8;padding:28px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+        <div style="width:48px;height:48px;background:#6B21A8;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
         </div>
-
-        <div class="card" style="border-top:4px solid #6B21A8;padding:20px;">
-          <div style="font-size:15px;font-weight:700;color:#6B21A8;margin-bottom:10px;">Dashboard Operacional</div>
-          <div style="font-size:12px;color:var(--chrome-grey);margin-bottom:14px;">Filtros → KPIs → Gráficos → Drill-down temporal</div>
-          <a href="bmo-ouvidoria-dashboard-embedded.html" target="_blank" style="display:block;text-align:center;background:#6B21A8;color:white;padding:10px 16px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:600;">Abrir Operacional</a>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#6B21A8;">Dashboard Operacional</div>
+          <div style="font-size:13px;color:var(--chrome-grey);">Gestão diária e monitoramento</div>
         </div>
       </div>
-
-      <div class="card" style="padding:20px;margin-top:20px;background:var(--nu-off-white);">
-        <div style="font-size:13px;font-weight:700;color:var(--nu-black);margin-bottom:12px;">Critérios de Diferenciação</div>
-        <div style="font-size:12px;color:var(--chrome-grey);line-height:1.7;">
-          Os critérios seguem o framework <strong style="color:var(--nu-black);">5W1H</strong> aplicado a dashboards: <strong style="color:var(--nu-black);">Who</strong> (audiência), <strong style="color:var(--nu-black);">When</strong> (frequência), <strong style="color:var(--nu-black);">What</strong> (métricas), <strong style="color:var(--nu-black);">Why</strong> (visão/objetivo), <strong style="color:var(--nu-black);">How</strong> (ação habilitada).
+      <div style="background:var(--nu-off-white);border-radius:10px;padding:18px;margin-bottom:18px;">
+        <div style="font-size:12px;font-weight:600;color:var(--chrome-grey);margin-bottom:8px;">ESTRUTURA</div>
+        <div style="font-size:14px;color:var(--nu-black);line-height:1.7;">
+          Filtros → KPIs detalhados → Gráficos por canal/squad → Drill-down temporal
         </div>
+      </div>
+      <a href="bmo-ouvidoria-dashboard-embedded.html" target="_blank" style="display:block;text-align:center;background:#6B21A8;color:white;padding:14px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;">Abrir Dashboard Operacional</a>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:24px;">
+    <div class="key-message" style="flex:1;padding:20px 28px;">
+      <strong>Complementaridade:</strong> Um dashboard não substitui o outro. Executivo para direção estratégica, Operacional para execução tática. Ambos usam a mesma Golden Source.
+    </div>
+    <div style="background:var(--nu-off-white);border-radius:12px;padding:20px 24px;flex:1;">
+      <div style="font-size:13px;font-weight:700;color:var(--nu-black);margin-bottom:10px;">Metodologia: Framework 5W1H</div>
+      <div style="font-size:13px;color:var(--chrome-grey);line-height:1.6;">
+        <strong style="color:var(--nu-purple);">Who</strong> (audiência) · <strong style="color:var(--nu-purple);">When</strong> (frequência) · <strong style="color:var(--nu-purple);">What</strong> (métricas) · <strong style="color:var(--nu-purple);">Why</strong> (visão) · <strong style="color:var(--nu-purple);">How</strong> (ação)
       </div>
     </div>
   </div>
