@@ -1800,209 +1800,456 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   </div>
 </div>
 
-<!-- SLIDE 14: Framework de Priorização + Portfólio 4 Semanas -->
+<!-- SLIDE 14: Roadmap 4 Semanas — Preparação para o Fórum -->
 <div class="slide" data-slide="14">
   <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
   <div class="section-label">Gestão de Pessoas e Priorização</div>
-  <div class="executive-conclusion">Framework simples para uso autônomo do time: regulatório sempre prioridade por risco; demais iniciativas por impacto no SLA.</div>
+  <div class="executive-conclusion">Entrega em 3 semanas é viável com paralelização, uso de IA (Cursor) e alocação por skill. Bot de triagem roda em paralelo.</div>
 
   <div class="two-col" style="gap:40px;">
     <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;">
-        <div class="card-title" style="margin-bottom:18px;font-size:16px;">Framework: Impacto × Urgência</div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;">
+        <div class="card-title" style="margin-bottom:16px;font-size:16px;">Roadmap 4 Semanas — Diagnóstico + Dashboard</div>
         
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
-          <div style="background:#DCFCE7;border-radius:10px;padding:16px;text-align:center;border:2px solid #16A34A;">
-            <div style="font-size:11px;color:#16A34A;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Alto Impacto + Alta Urgência</div>
-            <div style="font-size:16px;font-weight:700;color:#16A34A;">FAZER AGORA</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:var(--nu-purple);color:white;">
+              <th style="padding:8px 10px;text-align:left;font-weight:700;width:18%;">Semana</th>
+              <th style="padding:8px 10px;text-align:left;font-weight:700;">Frente</th>
+              <th style="padding:8px 10px;text-align:center;font-weight:700;width:15%;">Analistas</th>
+              <th style="padding:8px 10px;text-align:left;font-weight:700;width:25%;">Entregável</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FAFAFA;">
+              <td style="padding:8px 10px;font-weight:600;" rowspan="2">S1</td>
+              <td style="padding:8px 10px;">Extração e limpeza de dados</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">A1, A2</span></td>
+              <td style="padding:8px 10px;">Base tratada no Databricks</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FAFAFA;">
+              <td style="padding:8px 10px;">Setup Cursor + prompts iniciais</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">A3</span></td>
+              <td style="padding:8px 10px;">Ambiente configurado</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:8px 10px;font-weight:600;">S1-S2</td>
+              <td style="padding:8px 10px;">Análise de causa raiz (Pareto)</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">A1, A2, A3</span></td>
+              <td style="padding:8px 10px;">Pareto por Canal/Squad</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FAFAFA;">
+              <td style="padding:8px 10px;font-weight:600;">S2</td>
+              <td style="padding:8px 10px;">Validação de hipóteses</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">A4</span></td>
+              <td style="padding:8px 10px;">Correlações SLA × Resolutiv.</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:8px 10px;font-weight:600;">S2-S3</td>
+              <td style="padding:8px 10px;">Dashboard operacional</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">A5</span></td>
+              <td style="padding:8px 10px;">Dashboard com drill-down</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FAFAFA;">
+              <td style="padding:8px 10px;font-weight:600;">S3</td>
+              <td style="padding:8px 10px;">Dashboard executivo</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">A3, A5</span></td>
+              <td style="padding:8px 10px;">Dashboard para liderança</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:8px 10px;font-weight:600;">S3</td>
+              <td style="padding:8px 10px;">Consolidação e revisão</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#DCFCE7;color:#16A34A;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">Todos</span></td>
+              <td style="padding:8px 10px;">Apresentação final</td>
+            </tr>
+            <tr style="background:#FEF9C3;">
+              <td style="padding:8px 10px;font-weight:600;color:#CA8A04;">Paralelo</td>
+              <td style="padding:8px 10px;color:#CA8A04;">Discovery Bot Triagem</td>
+              <td style="padding:8px 10px;text-align:center;"><span style="background:#FEF9C3;color:#CA8A04;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;border:1px solid #CA8A04;">A4</span></td>
+              <td style="padding:8px 10px;color:#CA8A04;">Benchmark e requisitos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;margin-bottom:16px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:16px;">Alocação por Skill</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="background:#EDE9FE;color:var(--nu-purple);padding:4px 10px;border-radius:6px;font-weight:700;font-size:12px;min-width:60px;text-align:center;">A1, A2</span>
+            <span><strong>Dados</strong> — Extração, limpeza, SQL, Databricks</span>
           </div>
-          <div style="background:#EDE9FE;border-radius:10px;padding:16px;text-align:center;border:2px solid var(--nu-purple);">
-            <div style="font-size:11px;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Alto Impacto + Baixa Urgência</div>
-            <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">PLANEJAR</div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="background:#EDE9FE;color:var(--nu-purple);padding:4px 10px;border-radius:6px;font-weight:700;font-size:12px;min-width:60px;text-align:center;">A3</span>
+            <span><strong>IA/Cursor</strong> — Prompts, análise assistida, automação</span>
           </div>
-          <div style="background:#FEF9C3;border-radius:10px;padding:16px;text-align:center;border:2px solid #CA8A04;">
-            <div style="font-size:11px;color:#CA8A04;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Baixo Impacto + Alta Urgência</div>
-            <div style="font-size:16px;font-weight:700;color:#CA8A04;">DELEGAR</div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="background:#EDE9FE;color:var(--nu-purple);padding:4px 10px;border-radius:6px;font-weight:700;font-size:12px;min-width:60px;text-align:center;">A4</span>
+            <span><strong>Negócio</strong> — Validação, hipóteses, stakeholders</span>
           </div>
-          <div style="background:var(--nu-off-white);border-radius:10px;padding:16px;text-align:center;border:2px solid #9CA3AF;">
-            <div style="font-size:11px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Baixo Impacto + Baixa Urgência</div>
-            <div style="font-size:16px;font-weight:700;color:var(--chrome-grey);">BACKLOG</div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="background:#EDE9FE;color:var(--nu-purple);padding:4px 10px;border-radius:6px;font-weight:700;font-size:12px;min-width:60px;text-align:center;">A5</span>
+            <span><strong>Visualização</strong> — Dashboards, storytelling</span>
           </div>
         </div>
+      </div>
 
-        <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Classificação das 4 Frentes</div>
-        <div style="font-size:13px;line-height:1.7;">
-          <div style="display:flex;gap:8px;margin-bottom:6px;">
-            <span style="background:#DCFCE7;color:#16A34A;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px;">FAZER</span>
-            <span><strong>Relatórios Regulatórios</strong> — BACEN exige prazo, risco de multa</span>
+      <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 20px;border-left:4px solid var(--nu-purple);margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">Por que 3 semanas é viável?</div>
+        <div style="font-size:12px;color:var(--nu-black);line-height:1.6;">
+          <strong>1.</strong> Paralelização — 5 analistas em frentes simultâneas<br>
+          <strong>2.</strong> IA (Cursor) — Acelera análise e geração de insights<br>
+          <strong>3.</strong> Dados disponíveis — Base já existe no Databricks
+        </div>
+      </div>
+
+      <div class="key-message" style="padding:14px 18px;font-size:12px;">
+        <strong>Nota:</strong> Bot de triagem roda em paralelo com A4 sem impactar a entrega principal. Discovery na S1-S3, validação nos 30-60 dias seguintes.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15: Framework GUT de Priorização -->
+<div class="slide" data-slide="15">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Framework de Priorização</div>
+  <div class="executive-conclusion">Matriz GUT para uso autônomo do time: BAU = risco regulatório/operacional imediato; Estratégico = melhoria estrutural.</div>
+
+  <div class="two-col" style="gap:40px;">
+    <div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;margin-bottom:16px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:16px;">Matriz GUT — Como Funciona</div>
+        <div style="display:flex;gap:12px;margin-bottom:16px;">
+          <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:var(--nu-purple);">G</div>
+            <div style="font-size:11px;color:var(--chrome-grey);">Gravidade</div>
+            <div style="font-size:10px;color:var(--nu-black);">Impacto se não resolver</div>
           </div>
-          <div style="display:flex;gap:8px;margin-bottom:6px;">
-            <span style="background:#DCFCE7;color:#16A34A;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px;">FAZER</span>
-            <span><strong>Dashboard Executivo</strong> — Visibilidade para liderança</span>
+          <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:var(--nu-purple);">U</div>
+            <div style="font-size:11px;color:var(--chrome-grey);">Urgência</div>
+            <div style="font-size:10px;color:var(--nu-black);">Prazo para resolver</div>
           </div>
-          <div style="display:flex;gap:8px;margin-bottom:6px;">
-            <span style="background:#EDE9FE;color:var(--nu-purple);padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px;">PLANEJAR</span>
-            <span><strong>Automações</strong> — Alto impacto, sem urgência imediata</span>
+          <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:24px;font-weight:700;color:var(--nu-purple);">T</div>
+            <div style="font-size:11px;color:var(--chrome-grey);">Tendência</div>
+            <div style="font-size:10px;color:var(--nu-black);">Piora se não agir?</div>
           </div>
-          <div style="display:flex;gap:8px;">
-            <span style="background:var(--nu-off-white);color:var(--chrome-grey);padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px;">BACKLOG</span>
-            <span><strong>Diagnóstico</strong> — Já entregue neste case</span>
+        </div>
+        <div style="background:#EDE9FE;border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:12px;color:var(--nu-purple);margin-bottom:4px;">Fórmula</div>
+          <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">Prioridade = G × U × T</div>
+          <div style="font-size:11px;color:var(--chrome-grey);margin-top:4px;">Escala 1-5 para cada dimensão (máx: 125)</div>
+        </div>
+      </div>
+
+      <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 20px;">
+        <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:10px;">Regra de Priorização</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-weight:700;min-width:70px;text-align:center;">≥ 60</span>
+            <span>Fazer imediatamente</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="background:#FEF9C3;color:#CA8A04;padding:4px 10px;border-radius:4px;font-weight:700;min-width:70px;text-align:center;">40-59</span>
+            <span>Planejar para próximo ciclo</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="background:var(--nu-off-white);color:var(--chrome-grey);padding:4px 10px;border-radius:4px;font-weight:700;min-width:70px;text-align:center;border:1px solid #E5E7EB;">< 40</span>
+            <span>Backlog</span>
           </div>
         </div>
       </div>
     </div>
 
     <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;margin-bottom:16px;">
-        <div class="card-title" style="margin-bottom:16px;font-size:16px;">Portfólio 4 Semanas — 5 Analistas</div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:16px;">Classificação das Ações — BAU vs Estratégico</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <thead>
+            <tr style="background:var(--nu-purple);color:white;">
+              <th style="padding:8px 6px;text-align:left;font-weight:700;">Ação</th>
+              <th style="padding:8px 4px;text-align:center;font-weight:700;">G</th>
+              <th style="padding:8px 4px;text-align:center;font-weight:700;">U</th>
+              <th style="padding:8px 4px;text-align:center;font-weight:700;">T</th>
+              <th style="padding:8px 6px;text-align:center;font-weight:700;">Score</th>
+              <th style="padding:8px 6px;text-align:center;font-weight:700;">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
+              <td style="padding:6px;font-weight:600;">Relatórios BACEN</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">125</td>
+              <td style="padding:6px;text-align:center;"><span style="background:#16A34A;color:white;padding:2px 6px;border-radius:4px;font-size:9px;">BAU</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
+              <td style="padding:6px;font-weight:600;">Task Force Collections</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">80</td>
+              <td style="padding:6px;text-align:center;"><span style="background:#16A34A;color:white;padding:2px 6px;border-radius:4px;font-size:9px;">BAU</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
+              <td style="padding:6px;font-weight:600;">Dashboard Executivo</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">75</td>
+              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
+              <td style="padding:6px;font-weight:600;">Templates Resposta</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">64</td>
+              <td style="padding:6px;text-align:center;"><span style="background:#16A34A;color:white;padding:2px 6px;border-radius:4px;font-size:9px;">BAU</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FEF9C3;">
+              <td style="padding:6px;font-weight:600;">Agent IA Respostas</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">60</td>
+              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FEF9C3;">
+              <td style="padding:6px;font-weight:600;">Bot Triagem (validação)</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">48</td>
+              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;background:#FEF9C3;">
+              <td style="padding:6px;font-weight:600;">IA Generativa Respostas</td>
+              <td style="padding:6px;text-align:center;">5</td>
+              <td style="padding:6px;text-align:center;">2</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;font-weight:700;">40</td>
+              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:6px;">Dashboard Monitoramento</td>
+              <td style="padding:6px;text-align:center;">4</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;">36</td>
+              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
+            </tr>
+            <tr>
+              <td style="padding:6px;">Estudo Dimensionamento</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;">2</td>
+              <td style="padding:6px;text-align:center;">3</td>
+              <td style="padding:6px;text-align:center;">18</td>
+              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 16: Plano 30-60-90 Parte 1 -->
+<div class="slide" data-slide="16">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Plano de Gestão Executivo</div>
+  <div class="executive-conclusion">Plano 30-60-90 coerente com diagnóstico: cada fase ataca um problema crítico enquanto desenvolve capacidade e credibilidade.</div>
+
+  <div style="padding:0 20px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr>
+          <th style="padding:14px 16px;text-align:left;font-weight:700;background:var(--nu-purple);color:white;width:18%;">Dimensão</th>
+          <th style="padding:14px 16px;text-align:left;font-weight:700;background:#4C1D95;color:white;width:41%;">30 dias — Imersão e Diagnóstico</th>
+          <th style="padding:14px 16px;text-align:left;font-weight:700;background:#7C3AED;color:white;width:41%;">60 dias — Estruturação e Primeiras Entregas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Foco Principal (KPI)</td>
+          <td style="padding:14px 16px;line-height:1.5;">
+            <div style="font-size:18px;font-weight:700;color:#DC2626;">SLA Elevado</div>
+            <div style="font-size:12px;color:var(--chrome-grey);">46,12% dos casos com SLA > 7 dias</div>
+          </td>
+          <td style="padding:14px 16px;line-height:1.5;">
+            <div style="font-size:18px;font-weight:700;color:#DC2626;">Resolutividade RDR</div>
+            <div style="font-size:12px;color:var(--chrome-grey);">16-19% de resolução no canal RDR</div>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Iniciativas / Ações</td>
+          <td style="padding:14px 16px;line-height:1.6;">
+            <div style="margin-bottom:4px;">• Dashboard executivo (Fórum)</div>
+            <div style="margin-bottom:4px;">• Templates de resposta padronizados</div>
+            <div style="margin-bottom:4px;">• Task Force Collections</div>
+            <div>• Relatórios BACEN</div>
+          </td>
+          <td style="padding:14px 16px;line-height:1.6;">
+            <div style="margin-bottom:4px;">• Bot triagem validado (acurácia ≥85%)</div>
+            <div style="margin-bottom:4px;">• Agent IA para respostas simples (piloto)</div>
+            <div style="margin-bottom:4px;">• Dashboard operacional com drill-down</div>
+            <div>• Revisão de roteamento por reasons críticos</div>
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Stakeholders-Chave</td>
+          <td style="padding:14px 16px;line-height:1.6;">
+            <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Operação</strong> — Dados e validação</div>
+            <div><strong style="color:var(--nu-purple);">Compliance</strong> — Relatórios regulatórios</div>
+          </td>
+          <td style="padding:14px 16px;line-height:1.6;">
+            <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Engenharia</strong> — Infraestrutura do bot</div>
+            <div><strong style="color:var(--nu-purple);">Produto</strong> — Revisão de roteamento</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Marco de Sucesso</td>
+          <td style="padding:14px 16px;line-height:1.6;">
+            <div style="background:#DCFCE7;border-radius:6px;padding:10px 12px;">
+              <div style="font-weight:600;color:#16A34A;margin-bottom:4px;">Dashboard apresentado no Fórum</div>
+              <div style="font-size:12px;color:#16A34A;">SLA médio ≤ 6,0 dias (atual: 6,48d)</div>
+            </div>
+          </td>
+          <td style="padding:14px 16px;line-height:1.6;">
+            <div style="background:#DCFCE7;border-radius:6px;padding:10px 12px;">
+              <div style="font-weight:600;color:#16A34A;margin-bottom:4px;">Bot com acurácia ≥ 85%</div>
+              <div style="font-size:12px;color:#16A34A;">Resolutividade RDR ≥ 25% (atual: 16-19%)</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 17: Plano 30-60-90 Parte 2 + Gestão de Pessoas -->
+<div class="slide" data-slide="17">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Plano de Gestão Executivo</div>
+  <div class="executive-conclusion">90 dias: foco em tNPS e scaling. Paralelo: rituais e desenvolvimento do time para autonomia sustentável.</div>
+
+  <div class="two-col" style="gap:32px;">
+    <div>
+      <div class="card" style="border-top:4px solid #A78BFA;padding:24px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="background:#A78BFA;color:white;padding:8px 14px;border-radius:8px;font-size:14px;font-weight:700;">90 dias</div>
+          <div style="font-size:16px;font-weight:700;color:var(--nu-black);">Execução e Geração de Valor</div>
+        </div>
+        
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tbody>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:12px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);width:35%;">Foco Principal (KPI)</td>
+              <td style="padding:12px;">
+                <div style="font-size:16px;font-weight:700;color:#DC2626;">tNPS</div>
+                <div style="font-size:11px;color:var(--chrome-grey);">Atual: -66 no RDR | Meta: ≥ -40</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:12px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Iniciativas / Ações</td>
+              <td style="padding:12px;line-height:1.6;">
+                <div>• Scaling automações (bot + agent IA)</div>
+                <div>• AI CX Analysis piloto</div>
+                <div>• Feedback loop com Produto</div>
+                <div>• IA Generativa para respostas</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:12px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Stakeholders-Chave</td>
+              <td style="padding:12px;line-height:1.6;">
+                <div><strong style="color:var(--nu-purple);">Produto</strong> — Melhorias sistêmicas</div>
+                <div><strong style="color:var(--nu-purple);">CX</strong> — Jornada do cliente</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:12px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Marco de Sucesso</td>
+              <td style="padding:12px;">
+                <div style="background:#DCFCE7;border-radius:6px;padding:10px 12px;">
+                  <div style="font-weight:600;color:#16A34A;">tNPS RDR ≥ -40</div>
+                  <div style="font-size:11px;color:#16A34A;">Taxa resposta tNPS ≥ 12% | SLA ≤ 5,0d</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;">
+        <div class="card-title" style="margin-bottom:16px;font-size:16px;">Gestão de Pessoas — Paralelo aos 90 dias</div>
         
         <table style="width:100%;border-collapse:collapse;font-size:12px;">
           <thead>
             <tr style="background:var(--nu-purple);color:white;">
-              <th style="padding:10px 12px;text-align:left;font-weight:700;">Período</th>
-              <th style="padding:10px 12px;text-align:left;font-weight:700;">Foco Principal</th>
-              <th style="padding:10px 12px;text-align:center;font-weight:700;">Analistas</th>
+              <th style="padding:10px 12px;text-align:left;font-weight:700;width:20%;">Fase</th>
+              <th style="padding:10px 12px;text-align:left;font-weight:700;width:40%;">Rituais</th>
+              <th style="padding:10px 12px;text-align:left;font-weight:700;width:40%;">Desenvolvimento</th>
             </tr>
           </thead>
           <tbody>
             <tr style="border-bottom:1px solid #E5E7EB;">
-              <td style="padding:12px;font-weight:600;background:#FAFAFA;">Semana 1-2</td>
-              <td style="padding:12px;">
-                <div style="margin-bottom:4px;"><strong style="color:#16A34A;">Regulatórios</strong> — Relatórios BACEN</div>
-                <div><strong style="color:#16A34A;">Dashboard</strong> — Setup e primeiros KPIs</div>
+              <td style="padding:10px 12px;font-weight:600;background:#FAFAFA;">30 dias</td>
+              <td style="padding:10px 12px;line-height:1.5;">
+                <div>Daily 15min (prioridades)</div>
+                <div>1:1 semanal</div>
+                <div>Weekly review</div>
               </td>
-              <td style="padding:12px;text-align:center;">
-                <div>3 regulatório</div>
-                <div>2 dashboard</div>
+              <td style="padding:10px 12px;line-height:1.5;">
+                <div>Mapeamento de skills</div>
+                <div>Pareamento sênior-júnior</div>
+                <div style="font-size:10px;color:var(--chrome-grey);font-style:italic;">Conhecer o time</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;font-weight:600;background:#FAFAFA;">60 dias</td>
+              <td style="padding:10px 12px;line-height:1.5;">
+                <div>Retro mensal</div>
+                <div>Backlog grooming</div>
+                <div>Checkpoint de metas</div>
+              </td>
+              <td style="padding:10px 12px;line-height:1.5;">
+                <div>PDI individualizado</div>
+                <div>Autonomia gradual</div>
+                <div style="font-size:10px;color:var(--chrome-grey);font-style:italic;">Desenvolver</div>
               </td>
             </tr>
             <tr>
-              <td style="padding:12px;font-weight:600;background:#FAFAFA;">Semana 3-4</td>
-              <td style="padding:12px;">
-                <div style="margin-bottom:4px;"><strong style="color:#16A34A;">Dashboard</strong> — Drill-downs e validação</div>
-                <div><strong style="color:var(--nu-purple);">Automações</strong> — Discovery bot triagem</div>
+              <td style="padding:10px 12px;font-weight:600;background:#FAFAFA;">90 dias</td>
+              <td style="padding:10px 12px;line-height:1.5;">
+                <div>Showcase stakeholders</div>
+                <div>Calibração trimestral</div>
+                <div>Revisão de processos</div>
               </td>
-              <td style="padding:12px;text-align:center;">
-                <div>3 dashboard</div>
-                <div>2 automação</div>
+              <td style="padding:10px 12px;line-height:1.5;">
+                <div>Delegação estruturada</div>
+                <div>Ownership de frentes</div>
+                <div style="font-size:10px;color:var(--chrome-grey);font-style:italic;">Empoderar</div>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 20px;border-left:4px solid var(--nu-purple);">
-        <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">Regra de Ouro para o Time</div>
-        <div style="font-size:13px;color:var(--nu-black);line-height:1.6;">
-          <strong>1.</strong> Regulatório sempre primeiro (risco).<br>
-          <strong>2.</strong> Demais por impacto no SLA.<br>
-          <strong>3.</strong> Na dúvida, escalar para o supervisor.
-        </div>
+      <div class="key-message" style="padding:14px 18px;font-size:12px;">
+        <strong>Conexão com Diagnóstico:</strong> Entregas atacam os 3 problemas críticos (SLA → Resolutividade → tNPS). Gestão de pessoas prepara time para operar de forma autônoma.
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 15: Roadmap 30-60-90 -->
-<div class="slide" data-slide="15">
-  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
-  <div class="section-label">Plano de Gestão Executivo</div>
-  <div class="executive-conclusion">Plano coerente com diagnóstico: entregas resolvem problemas críticos enquanto construímos capacidade do time e credibilidade com stakeholders.</div>
-
-  <div style="padding:0 20px;">
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px;">
-      <thead>
-        <tr>
-          <th style="padding:14px 16px;text-align:left;font-weight:700;background:var(--nu-purple);color:white;width:18%;">Dimensão</th>
-          <th style="padding:14px 16px;text-align:left;font-weight:700;background:#4C1D95;color:white;width:27%;">30 dias — Imersão</th>
-          <th style="padding:14px 16px;text-align:left;font-weight:700;background:#7C3AED;color:white;width:27%;">60 dias — Estruturação</th>
-          <th style="padding:14px 16px;text-align:left;font-weight:700;background:#A78BFA;color:white;width:28%;">90 dias — Execução</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid #E5E7EB;">
-          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Entregas</td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Dashboard executivo</div>
-            <div>Relatórios regulatórios</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Ataca: SLA, visibilidade</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Bot triagem validado</div>
-            <div>Dashboard operacional</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Ataca: Capacidade, SLA</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Scaling automações</div>
-            <div>AI CX Analysis piloto</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Ataca: Resolutividade, tNPS</div>
-          </td>
-        </tr>
-        <tr style="border-bottom:1px solid #E5E7EB;">
-          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Gestão de Pessoas</td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>1:1s semanais</div>
-            <div>Mapeamento de skills</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Conhecer o time</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>PDI individualizado</div>
-            <div>Pareamento sênior-júnior</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Desenvolver</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Delegação estruturada</div>
-            <div>Autonomia nas decisões</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Empoderar</div>
-          </td>
-        </tr>
-        <tr style="border-bottom:1px solid #E5E7EB;">
-          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Rituais</td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Daily 15min (prioridades)</div>
-            <div>Weekly review (entregas)</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Cadência básica</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Retro mensal</div>
-            <div>Backlog grooming</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Melhoria contínua</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Calibração trimestral</div>
-            <div>Showcase para stakeholders</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Visibilidade e ajuste</div>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:14px 16px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);">Stakeholders</td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Alinhamento de expectativas</div>
-            <div>Mapeamento de necessidades</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Ouvir antes de agir</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Primeiras entregas visíveis</div>
-            <div>Feedback estruturado</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Mostrar valor</div>
-          </td>
-          <td style="padding:14px 16px;line-height:1.5;">
-            <div>Credibilidade construída</div>
-            <div>Parceria estratégica</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Influenciar decisões</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="key-message" style="padding:16px 24px;font-size:13px;">
-      <strong>Conexão com Diagnóstico:</strong> Entregas atacam os 3 problemas críticos (SLA, Resolutividade, tNPS). Automações seguem o Plano de Ação (Slide 7). Gestão de pessoas prepara time para operar o framework de forma autônoma.
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 16: Closing -->
-<div class="slide purple-bg" data-slide="16" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+<!-- SLIDE 18: Closing -->
+<div class="slide purple-bg" data-slide="18" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
   <div class="chrome" style="position:absolute;top:40px;left:56px;right:56px;"><span>Nubank</span><span>Confidencial</span></div>
   <div style="text-align:center;">
     <div style="font-size:24px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:24px;">Diagnóstico Estruturado</div>
@@ -2027,7 +2274,7 @@ const total = slides.length;
 const SLIDE_W = 1600;
 const SLIDE_H = 900;
 
-const PAGE_NUMS = [null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, null];
+const PAGE_NUMS = [null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, null];
 
 function scaleSlides() {
   const vw = window.innerWidth;
