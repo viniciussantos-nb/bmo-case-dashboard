@@ -1492,83 +1492,83 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 
   <div class="two-col" style="gap:28px;">
     <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:22px;margin-bottom:16px;">
-        <div class="card-title" style="margin-bottom:14px;font-size:15px;">Matriz de Priorização: Impacto × Esforço × Risco</div>
-        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:20px;margin-bottom:14px;">
+        <div class="card-title" style="margin-bottom:12px;font-size:14px;">Matriz de Priorização: Impacto × Esforço × Risco</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
           <thead>
             <tr style="background:var(--nu-purple);color:white;">
-              <th style="padding:10px 12px;text-align:left;font-weight:700;width:20%;">Eixo</th>
-              <th style="padding:10px 12px;text-align:center;font-weight:700;width:15%;">Avaliação</th>
-              <th style="padding:10px 12px;text-align:left;font-weight:700;">Justificativa</th>
+              <th style="padding:8px 10px;text-align:left;font-weight:700;width:18%;">Eixo</th>
+              <th style="padding:8px 10px;text-align:center;font-weight:700;width:14%;">Avaliação</th>
+              <th style="padding:8px 10px;text-align:left;font-weight:700;">Justificativa</th>
             </tr>
           </thead>
           <tbody>
             <tr style="border-bottom:1px solid #E5E7EB;">
-              <td style="padding:12px;font-weight:700;background:#FAFAFA;">IMPACTO</td>
-              <td style="padding:12px;text-align:center;"><span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-weight:700;font-size:11px;">ALTO</span></td>
-              <td style="padding:12px;line-height:1.5;">-35% no tempo de categorização manual. Libera capacidade operacional para casos complexos (detratores do SLA).</td>
+              <td style="padding:10px;font-weight:700;background:#FAFAFA;">IMPACTO</td>
+              <td style="padding:10px;text-align:center;"><span style="background:#DCFCE7;color:#16A34A;padding:3px 8px;border-radius:4px;font-weight:700;font-size:10px;">ALTO</span></td>
+              <td style="padding:10px;line-height:1.5;">-35% no tempo de categorização manual. Libera capacidade para casos complexos.</td>
             </tr>
             <tr style="border-bottom:1px solid #E5E7EB;">
-              <td style="padding:12px;font-weight:700;background:#FAFAFA;">ESFORÇO</td>
-              <td style="padding:12px;text-align:center;"><span style="background:#FEF9C3;color:#CA8A04;padding:4px 10px;border-radius:4px;font-weight:700;font-size:11px;">MÉDIO</span></td>
-              <td style="padding:12px;line-height:1.5;">Bot já existe. Avaliar: (1) novas ferramentas em 3 meses; (2) taxonomia ainda reflete operação; (3) baseline de acurácia.</td>
+              <td style="padding:10px;font-weight:700;background:#FAFAFA;">ESFORÇO</td>
+              <td style="padding:10px;text-align:center;"><span style="background:#FEF9C3;color:#CA8A04;padding:3px 8px;border-radius:4px;font-weight:700;font-size:10px;">MÉDIO</span></td>
+              <td style="padding:10px;line-height:1.5;">Bot já existe. Avaliar: (1) novas ferramentas; (2) taxonomia atual; (3) baseline de acurácia.</td>
             </tr>
             <tr>
-              <td style="padding:12px;font-weight:700;background:#FAFAFA;">RISCO</td>
-              <td style="padding:12px;text-align:center;"><span style="background:#FEF9C3;color:#CA8A04;padding:4px 10px;border-radius:4px;font-weight:700;font-size:11px;">MÉDIO</span></td>
-              <td style="padding:12px;line-height:1.5;">Categorização incorreta pode gerar roteamento errado. <strong>Mitigação:</strong> shadow mode antes de produção.</td>
+              <td style="padding:10px;font-weight:700;background:#FAFAFA;">RISCO</td>
+              <td style="padding:10px;text-align:center;"><span style="background:#FEF9C3;color:#CA8A04;padding:3px 8px;border-radius:4px;font-weight:700;font-size:10px;">MÉDIO</span></td>
+              <td style="padding:10px;line-height:1.5;">Categorização incorreta → roteamento errado. <strong>Mitigação:</strong> shadow mode*.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="key-message" style="padding:14px 20px;margin-bottom:16px;">
+      <div class="key-message" style="padding:12px 16px;margin-bottom:14px;font-size:11px;">
         <strong>Decisão:</strong> SIM, retomar com validação técnica. <strong>Prazo:</strong> 30 dias. <strong>Critério:</strong> acurácia >= 85% em shadow mode.
       </div>
 
-      <div style="background:var(--nu-off-white);border-radius:10px;padding:14px 18px;">
-        <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">O que é Shadow Mode?</div>
-        <div style="font-size:11px;color:var(--chrome-grey);line-height:1.5;">Técnica de validação onde o bot roda em paralelo com o processo manual, classificando casos sem impactar a operação. A saída do bot é comparada com a do humano para medir acurácia antes de ativar em produção.</div>
+      <div style="background:var(--nu-off-white);border-radius:8px;padding:12px 16px;border-left:3px solid var(--nu-purple);">
+        <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:4px;">* O que é Shadow Mode?</div>
+        <div style="font-size:11px;color:var(--chrome-grey);line-height:1.5;">Técnica de validação onde o bot roda em paralelo com o processo manual, classificando casos sem impactar a operação. A saída é comparada com a do humano para medir acurácia antes de ativar em produção.</div>
       </div>
     </div>
 
     <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:22px;">
-        <div class="card-title" style="margin-bottom:14px;font-size:15px;">Plano de Execução — 30 dias</div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:20px;">
+        <div class="card-title" style="margin-bottom:12px;font-size:14px;">Plano de Execução — 30 dias</div>
         
-        <div style="margin-bottom:14px;">
+        <div style="margin-bottom:12px;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <div style="background:#4C1D95;color:white;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;">FASE 1</div>
-            <div style="font-size:13px;font-weight:600;">Discovery e Benchmark (Dias 1-10)</div>
+            <div style="background:#4C1D95;color:white;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;">FASE 1</div>
+            <div style="font-size:12px;font-weight:600;">Discovery e Benchmark (Dias 1-10)</div>
           </div>
-          <div style="background:var(--nu-off-white);border-radius:8px;padding:12px;font-size:13px;line-height:1.6;">
+          <div style="background:var(--nu-off-white);border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.6;">
             <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Analista 1:</strong> Levantar métricas históricas do bot (acurácia, cobertura, erros)</div>
             <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Analista 2:</strong> Benchmark de alternativas (LLMs, AutoML, soluções de mercado)</div>
-            <div style="color:var(--chrome-grey);font-style:italic;font-size:11px;">Entregável: Relatório comparativo com recomendação GO/NO-GO</div>
+            <div style="color:var(--chrome-grey);font-style:italic;font-size:10px;">Entregável: Relatório comparativo com recomendação GO/NO-GO</div>
           </div>
         </div>
 
-        <div style="margin-bottom:14px;">
+        <div style="margin-bottom:12px;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <div style="background:#7C3AED;color:white;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;">FASE 2</div>
-            <div style="font-size:13px;font-weight:600;">Recalibração (Dias 11-20)</div>
+            <div style="background:#7C3AED;color:white;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;">FASE 2</div>
+            <div style="font-size:12px;font-weight:600;">Recalibração (Dias 11-20)</div>
           </div>
-          <div style="background:var(--nu-off-white);border-radius:8px;padding:12px;font-size:13px;line-height:1.6;">
+          <div style="background:var(--nu-off-white);border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.6;">
             <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Analista 3:</strong> Atualizar taxonomia de categorias (últimos 3 meses)</div>
             <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Analista 4:</strong> Retreinar modelo com dados recentes (se aplicável)</div>
-            <div style="color:var(--chrome-grey);font-style:italic;font-size:11px;">Entregável: Modelo recalibrado e documentação de mudanças</div>
+            <div style="color:var(--chrome-grey);font-style:italic;font-size:10px;">Entregável: Modelo recalibrado e documentação de mudanças</div>
           </div>
         </div>
 
         <div>
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <div style="background:#A78BFA;color:white;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;">FASE 3</div>
-            <div style="font-size:13px;font-weight:600;">Validação e Go-Live (Dias 21-30)</div>
+            <div style="background:#A78BFA;color:white;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;">FASE 3</div>
+            <div style="font-size:12px;font-weight:600;">Validação e Go-Live (Dias 21-30)</div>
           </div>
-          <div style="background:var(--nu-off-white);border-radius:8px;padding:12px;font-size:13px;line-height:1.6;">
+          <div style="background:var(--nu-off-white);border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.6;">
             <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Analista 5:</strong> Rodar em shadow mode (bot classifica, humano valida)</div>
             <div style="margin-bottom:4px;"><strong style="color:var(--nu-purple);">Todo o time:</strong> Medir acurácia em amostra de 1.000 casos</div>
-            <div style="color:var(--chrome-grey);font-style:italic;font-size:11px;">Entregável: Ativação se acurácia >= 85%</div>
+            <div style="color:var(--chrome-grey);font-style:italic;font-size:10px;">Entregável: Ativação se acurácia >= 85%</div>
           </div>
         </div>
       </div>
