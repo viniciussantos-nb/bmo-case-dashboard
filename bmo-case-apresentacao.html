@@ -2205,19 +2205,30 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
     </table>
   </div>
 
-  <!-- Footer com conexão ao diagnóstico -->
-  <div style="display:flex;gap:16px;padding:12px 10px;margin-top:12px;">
-    <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 16px;border-left:4px solid var(--nu-purple);">
-      <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:4px;">Conexão com Diagnóstico</div>
-      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">Cada fase ataca um dos 3 problemas críticos do Slide 1: <strong>SLA → Resolutividade → Taxa tNPS</strong>. Ações detalhadas no Slide 7.</div>
-    </div>
-    <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 16px;border-left:4px solid #16A34A;">
-      <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:4px;">Coerência do Plano</div>
-      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">Entregas progressivas: visibilidade (30d) → automação (60d) → escala (90d). Gestão de pessoas no próximo slide.</div>
-    </div>
-    <div style="flex:1;background:linear-gradient(135deg, var(--nu-purple) 0%, #6B21A8 100%);border-radius:10px;padding:14px 16px;">
-      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:4px;">Impacto Total em 90 Dias</div>
-      <div style="font-size:18px;font-weight:800;color:white;">SLA: 6,48d → 5,0d <span style="font-size:12px;color:#22C55E;">(-23%)</span></div>
+  <!-- Riscos de Execução e Mitigações -->
+  <div style="padding:8px 10px 0;">
+    <div style="font-size:11px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Riscos de Execução e Mitigações</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+      <div style="background:#FEE2E2;border-radius:8px;padding:10px 12px;border-left:3px solid #DC2626;">
+        <div style="font-size:10px;font-weight:700;color:#DC2626;margin-bottom:4px;">Regulatório</div>
+        <div style="font-size:10px;color:#991B1B;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> SLA não atingir meta, BACEN escalar</div>
+        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> Priorização Pareto + Task Force imediata</div>
+      </div>
+      <div style="background:#FEF3C7;border-radius:8px;padding:10px 12px;border-left:3px solid #D97706;">
+        <div style="font-size:10px;font-weight:700;color:#D97706;margin-bottom:4px;">Operacional</div>
+        <div style="font-size:10px;color:#92400E;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> Backlog crescer, time sobrecarregado</div>
+        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> Templates + automação libera capacidade</div>
+      </div>
+      <div style="background:#EDE9FE;border-radius:8px;padding:10px 12px;border-left:3px solid var(--nu-purple);">
+        <div style="font-size:10px;font-weight:700;color:var(--nu-purple);margin-bottom:4px;">Pessoas</div>
+        <div style="font-size:10px;color:#5B21B6;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> Burnout, rotatividade, resistência</div>
+        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> 1:1s, quick wins visíveis, autonomia gradual</div>
+      </div>
+      <div style="background:#E0E7FF;border-radius:8px;padding:10px 12px;border-left:3px solid #4F46E5;">
+        <div style="font-size:10px;font-weight:700;color:#4F46E5;margin-bottom:4px;">Tecnológico</div>
+        <div style="font-size:10px;color:#3730A3;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> Bot não atingir acurácia, dependência Eng</div>
+        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> Shadow mode, GO/NO-GO com critérios claros</div>
+      </div>
     </div>
   </div>
 </div>
