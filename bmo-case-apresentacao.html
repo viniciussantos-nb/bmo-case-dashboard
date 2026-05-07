@@ -2271,10 +2271,11 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
             <div style="margin-bottom:3px;">• Dashboard executivo (Fórum)</div>
             <div style="margin-bottom:3px;">• Triagem IA + Templates</div>
             <div style="margin-bottom:3px;">• Task Force Collections</div>
+            <div style="margin-bottom:3px;">• Retomada Bot Triagem (validação)</div>
             <div>• Mapeamento reasons críticos</div>
           </td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
-            <div style="margin-bottom:3px;">• Bot triagem validado (shadow)</div>
+            <div style="margin-bottom:3px;">• Bot triagem ativo (shadow)</div>
             <div style="margin-bottom:3px;">• Agent IA respostas (piloto)</div>
             <div style="margin-bottom:3px;">• Dashboard monitoramento</div>
             <div>• Priorização reasons críticos</div>
@@ -2330,28 +2331,28 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   </div>
 
   <!-- Riscos de Execução e Mitigações -->
-  <div style="padding:8px 10px 0;">
-    <div style="font-size:11px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Riscos de Execução e Mitigações</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-      <div style="background:#FEE2E2;border-radius:8px;padding:10px 12px;border-left:3px solid #DC2626;">
-        <div style="font-size:10px;font-weight:700;color:#DC2626;margin-bottom:4px;">Regulatório</div>
-        <div style="font-size:10px;color:#991B1B;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> SLA não atingir meta, BACEN escalar</div>
-        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> Priorização Pareto + Task Force imediata</div>
+  <div style="padding:12px 10px 0;">
+    <div style="font-size:13px;font-weight:700;color:var(--nu-purple);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:12px;">Riscos de Execução e Mitigações</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div style="background:#FEE2E2;border-radius:10px;padding:16px 18px;border-left:4px solid #DC2626;">
+        <div style="font-size:13px;font-weight:700;color:#DC2626;margin-bottom:8px;">Regulatório</div>
+        <div style="font-size:12px;color:#991B1B;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> SLA não atingir meta, BACEN escalar penalidades</div>
+        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> Priorização Pareto + Task Force imediata em Collections</div>
       </div>
-      <div style="background:#FEF3C7;border-radius:8px;padding:10px 12px;border-left:3px solid #D97706;">
-        <div style="font-size:10px;font-weight:700;color:#D97706;margin-bottom:4px;">Operacional</div>
-        <div style="font-size:10px;color:#92400E;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> Backlog crescer, time sobrecarregado</div>
-        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> Templates + automação libera capacidade</div>
+      <div style="background:#FEF3C7;border-radius:10px;padding:16px 18px;border-left:4px solid #D97706;">
+        <div style="font-size:13px;font-weight:700;color:#D97706;margin-bottom:8px;">Operacional</div>
+        <div style="font-size:12px;color:#92400E;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> Backlog crescer, time sobrecarregado com demandas BAU</div>
+        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> Templates + automação libera capacidade para estratégico</div>
       </div>
-      <div style="background:#EDE9FE;border-radius:8px;padding:10px 12px;border-left:3px solid var(--nu-purple);">
-        <div style="font-size:10px;font-weight:700;color:var(--nu-purple);margin-bottom:4px;">Pessoas</div>
-        <div style="font-size:10px;color:#5B21B6;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> Burnout, rotatividade, resistência</div>
-        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> 1:1s, quick wins visíveis, autonomia gradual</div>
+      <div style="background:#EDE9FE;border-radius:10px;padding:16px 18px;border-left:4px solid var(--nu-purple);">
+        <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:8px;">Pessoas</div>
+        <div style="font-size:12px;color:#5B21B6;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> Sobrecarga de trabalho, rotatividade, resistência à mudança</div>
+        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> 1:1s semanais, quick wins visíveis, autonomia gradual</div>
       </div>
-      <div style="background:#E0E7FF;border-radius:8px;padding:10px 12px;border-left:3px solid #4F46E5;">
-        <div style="font-size:10px;font-weight:700;color:#4F46E5;margin-bottom:4px;">Tecnológico</div>
-        <div style="font-size:10px;color:#3730A3;line-height:1.4;margin-bottom:4px;"><strong>Risco:</strong> Bot não atingir acurácia, dependência Eng</div>
-        <div style="font-size:10px;color:#16A34A;line-height:1.4;"><strong>Mitigação:</strong> Shadow mode, GO/NO-GO com critérios claros</div>
+      <div style="background:#E0E7FF;border-radius:10px;padding:16px 18px;border-left:4px solid #4F46E5;">
+        <div style="font-size:13px;font-weight:700;color:#4F46E5;margin-bottom:8px;">Tecnológico</div>
+        <div style="font-size:12px;color:#3730A3;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> Bot não atingir acurácia esperada, dependência de Engenharia</div>
+        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> Shadow mode 2 semanas, GO/NO-GO com critérios claros</div>
       </div>
     </div>
   </div>
