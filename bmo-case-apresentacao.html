@@ -2101,187 +2101,121 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   </div>
 </div>
 
-<!-- SLIDE 16: Roadmap 30-60-90 dias -->
+<!-- SLIDE 16: Roadmap 30-60-90 dias com ações detalhadas -->
 <div class="slide" data-slide="16">
   <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
   <div class="section-label">Plano de Gestão Executivo</div>
-  
-  <div style="text-align:center;margin-bottom:6px;">
-    <div style="font-size:32px;font-weight:700;color:var(--nu-purple);margin-bottom:4px;">90 Dias, Três Problemas Críticos</div>
-    <div style="font-size:13px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.05em;">Como cada KPI é atacado ao longo do plano</div>
-  </div>
+  <div class="executive-conclusion">Plano 30-60-90 coerente com diagnóstico: cada fase ataca um KPI crítico com ações específicas do Plano de Ação (Slide 7)</div>
 
-  <!-- Legenda -->
-  <div style="display:flex;gap:24px;justify-content:flex-start;margin-bottom:10px;padding:0 20px;">
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;">
-      <div style="width:14px;height:14px;background:var(--nu-purple);border-radius:3px;"></div>
-      <span style="color:var(--chrome-grey);">Execução principal</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;">
-      <div style="width:14px;height:14px;background:#A78BFA;border-radius:3px;"></div>
-      <span style="color:var(--chrome-grey);">Preparação / piloto</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;">
-      <div style="width:14px;height:14px;background:#16A34A;border-radius:3px;"></div>
-      <span style="color:var(--chrome-grey);">Marco de sucesso</span>
-    </div>
-  </div>
-
-  <!-- Timeline Grid -->
-  <div style="padding:0 20px;">
-    <!-- Header com períodos -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;margin-bottom:0;">
-      <div style="padding:10px 12px;font-size:11px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #E5E7EB;">Iniciativa</div>
-      <div style="padding:10px 12px;font-size:11px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;text-align:center;border-bottom:2px solid #4C1D95;background:#F5F3FF;">30 dias — Imersão</div>
-      <div style="padding:10px 12px;font-size:11px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;text-align:center;border-bottom:2px solid #7C3AED;background:#EDE9FE;">60 dias — Estruturação</div>
-      <div style="padding:10px 12px;font-size:11px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;text-align:center;border-bottom:2px solid #A78BFA;background:#DDD6FE;">90 dias — Execução</div>
-      <div style="padding:10px 12px;font-size:11px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;text-align:right;border-bottom:2px solid #E5E7EB;">Meta</div>
-    </div>
-
-    <!-- Track 1: SLA Elevado -->
-    <div style="background:#FEE2E2;padding:6px 12px;font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:0.04em;border-left:4px solid #DC2626;">
-      KPI 1 — SLA Elevado <span style="font-weight:400;color:#991B1B;text-transform:none;letter-spacing:normal;margin-left:8px;">46,12% > 7 dias</span>
-    </div>
-
-    <!-- Row 1: Dashboard Executivo -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Dashboard Executivo</div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Build + Validação</div>
+  <div class="two-col" style="gap:24px;">
+    <!-- Coluna Esquerda: Fases 1 e 2 -->
+    <div>
+      <!-- Fase 1: Quick Wins -->
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:20px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div style="background:#4C1D95;color:white;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;">FASE 1</div>
+          <div style="font-size:15px;font-weight:700;color:var(--nu-black);">Quick Wins (0-30 dias)</div>
+          <div style="margin-left:auto;background:#4C1D95;color:white;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;">Meta: ≤ 6,0d</div>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #4C1D95;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Triagem Automatizada por IA</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Classificação automática de casos por complexidade usando NLP. Priorização de SCR e Multidébitos (>85% SLA crítico) para fila especializada.</div>
+          </div>
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #4C1D95;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Templates de Resposta Padronizados</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Biblioteca de respostas para os 5 reasons mais frequentes de Collections. Redução de tempo de elaboração em ~40%.</div>
+          </div>
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #4C1D95;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Task Force Collections</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Alocação temporária de 2-3 analistas sênior para reduzir backlog de casos com SLA > 5 dias.</div>
+          </div>
+        </div>
       </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#16A34A;color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;font-weight:600;">Fórum Liderança</div>
-      </div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:#16A34A;font-weight:600;">Visibilidade C-Level</div>
-    </div>
 
-    <!-- Row 2: Templates Resposta -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Templates Resposta</div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:6px 0 0 6px;font-size:10px;text-align:center;margin-right:-4px;">Padronização</div>
+      <!-- Fase 2: Otimização -->
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:20px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div style="background:#7C3AED;color:white;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;">FASE 2</div>
+          <div style="font-size:15px;font-weight:700;color:var(--nu-black);">Otimização (30-60 dias)</div>
+          <div style="margin-left:auto;background:#7C3AED;color:white;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;">Meta: ≤ 5,5d</div>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #7C3AED;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Respostas Automatizadas via Agent IA</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Utilização de Agent IA (Claude ou similar) para automatizar respostas de casos menos complexos (solicitação de documentos, confirmação de dados). Libera headcount para casos complexos que são detratores do SLA.</div>
+          </div>
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #7C3AED;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Dashboard de Monitoramento em Tempo Real</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Alertas automáticos para casos aproximando SLA crítico. Visibilidade por squad e reason para gestão proativa.</div>
+          </div>
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #7C3AED;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Revisão de Roteamento</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Criação de fila prioritária para reasons críticos (SCR, Multidébitos, Cartão de Crédito). Casos com maior taxa de SLA > 7 dias são priorizados no atendimento.</div>
+          </div>
+        </div>
       </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#A78BFA;color:white;padding:5px 8px;border-radius:0 6px 6px 0;font-size:10px;text-align:center;margin-left:-4px;">Rollout</div>
-      </div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:var(--chrome-grey);">-20% tempo resposta</div>
     </div>
 
-    <!-- Row 3: Task Force Collections -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Task Force Collections</div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Backlog crítico</div>
+    <!-- Coluna Direita: Fase 3 + Impacto -->
+    <div>
+      <!-- Fase 3: Transformação -->
+      <div style="background:var(--nu-off-white);border-radius:14px;padding:20px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div style="background:#A78BFA;color:white;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;">FASE 3</div>
+          <div style="font-size:15px;font-weight:700;color:var(--nu-black);">Transformação (60-90 dias)</div>
+          <div style="margin-left:auto;background:#A78BFA;color:white;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;">Meta: ≤ 5,0d</div>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #A78BFA;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• IA Generativa para Respostas</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Sugestão automática de resposta baseada em histórico de casos similares. Analista revisa e aprova, reduzindo tempo de elaboração em ~60%.</div>
+          </div>
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #A78BFA;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Integração com Produto (Feedback Loop)</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Canal direto com squads de produto para resolver causas raiz. Casos recorrentes viram input para melhorias sistêmicas.</div>
+          </div>
+          <div style="background:white;border-radius:8px;padding:12px 14px;border-left:4px solid #A78BFA;">
+            <div style="font-size:13px;font-weight:600;color:var(--nu-black);margin-bottom:3px;">• Estudo de Dimensionamento</div>
+            <div style="font-size:11px;color:var(--chrome-grey);line-height:1.4;">Após otimizações, análise de capacidade vs. demanda para validar se headcount atual é adequado. Decisão baseada em dados, não em percepção.</div>
+          </div>
+        </div>
       </div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:#16A34A;font-weight:600;">SLA ≤ 6,0d</div>
-    </div>
 
-    <!-- Track 2: Resolutividade -->
-    <div style="background:#FEF3C7;padding:6px 12px;font-size:11px;font-weight:700;color:#D97706;text-transform:uppercase;letter-spacing:0.04em;border-left:4px solid #D97706;margin-top:6px;">
-      KPI 2 — Resolutividade RDR <span style="font-weight:400;color:#92400E;text-transform:none;letter-spacing:normal;margin-left:8px;">16-19% atual</span>
-    </div>
+      <!-- Resumo de Impacto -->
+      <div style="background:linear-gradient(135deg, var(--nu-purple) 0%, #6B21A8 100%);border-radius:14px;padding:20px;">
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Impacto Esperado</div>
+        
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;">
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 6px;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:3px;">SLA Médio</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:6px;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.7);">6,48d</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:20px;font-weight:800;color:white;">5,0d</span>
+            </div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 6px;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:3px;">Casos > 7 dias</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:6px;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.7);">46%</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:20px;font-weight:800;color:white;">20%</span>
+            </div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 6px;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:3px;">Redução Total</div>
+            <div style="font-size:24px;font-weight:800;color:#22C55E;">-23%</div>
+          </div>
+        </div>
 
-    <!-- Row 4: Bot Triagem -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Bot Triagem</div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#A78BFA;color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Discovery</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.9);line-height:1.5;border-top:1px solid rgba(255,255,255,0.2);padding-top:12px;">
+          <strong>Metodologia:</strong> Meta de SLA ≤ 5 dias baseada no limite regulatório BACEN (10 dias úteis) com margem de 50%. Priorização Pareto: foco em Collections (44,73%) e reasons críticos.
+        </div>
       </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Validação shadow</div>
-      </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#16A34A;color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;font-weight:600;">GO/NO-GO</div>
-      </div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:#16A34A;font-weight:600;">Acurácia ≥ 85%</div>
-    </div>
-
-    <!-- Row 5: Agent IA -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Agent IA Respostas</div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#A78BFA;color:white;padding:5px 8px;border-radius:6px 0 0 6px;font-size:10px;text-align:center;margin-right:-4px;">Piloto casos simples</div>
-      </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:0 6px 6px 0;font-size:10px;text-align:center;margin-left:-4px;">Scaling</div>
-      </div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:#16A34A;font-weight:600;">Resolut. ≥ 25%</div>
-    </div>
-
-    <!-- Row 6: Revisão Roteamento -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Revisão Roteamento</div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#A78BFA;color:white;padding:5px 8px;border-radius:6px 0 0 6px;font-size:10px;text-align:center;margin-right:-4px;">Mapeamento reasons</div>
-      </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:0 6px 6px 0;font-size:10px;text-align:center;margin-left:-4px;">Ajustes com Produto</div>
-      </div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:var(--chrome-grey);">-15% retrabalho</div>
-    </div>
-
-    <!-- Track 3: Taxa Resposta tNPS -->
-    <div style="background:#DBEAFE;padding:6px 12px;font-size:11px;font-weight:700;color:#1D4ED8;text-transform:uppercase;letter-spacing:0.04em;border-left:4px solid #1D4ED8;margin-top:6px;">
-      KPI 3 — Taxa Resposta tNPS <span style="font-weight:400;color:#1E40AF;text-transform:none;letter-spacing:normal;margin-left:8px;">8,77% atual</span>
-    </div>
-
-    <!-- Row 7: AI CX Analysis -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">AI CX Analysis</div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#A78BFA;color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Setup + Prompts</div>
-      </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Piloto análise dores</div>
-      </div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:var(--chrome-grey);">Insights qualitativos</div>
-    </div>
-
-    <!-- Row 8: Campanha Engajamento -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Campanha Engajamento</div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:#A78BFA;color:white;padding:5px 8px;border-radius:6px 0 0 6px;font-size:10px;text-align:center;margin-right:-4px;">Novo copy pesquisa</div>
-      </div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:0 6px 6px 0;font-size:10px;text-align:center;margin-left:-4px;">A/B test + Rollout</div>
-      </div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:#16A34A;font-weight:600;">Taxa ≥ 12%</div>
-    </div>
-
-    <!-- Row 9: Feedback Loop -->
-    <div style="display:grid;grid-template-columns:180px repeat(3,1fr) 200px;gap:0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="padding:10px 12px;font-size:12px;font-weight:600;">Feedback Loop Produto</div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:6px 4px;"></div>
-      <div style="padding:6px 4px;position:relative;">
-        <div style="background:var(--nu-purple);color:white;padding:5px 8px;border-radius:6px;font-size:10px;text-align:center;">Ritual mensal CX → PM</div>
-      </div>
-      <div style="padding:10px 12px;font-size:11px;text-align:right;color:var(--chrome-grey);">Melhorias sistêmicas</div>
-    </div>
-  </div>
-
-  <!-- Footer com stakeholders -->
-  <div style="display:flex;gap:16px;padding:10px 20px;margin-top:6px;">
-    <div style="flex:1;background:#FEE2E2;border-radius:8px;padding:10px 14px;border-left:4px solid #DC2626;">
-      <div style="font-size:10px;font-weight:700;color:#DC2626;margin-bottom:2px;">Stakeholders 30d</div>
-      <div style="font-size:10px;color:#991B1B;"><strong>Operação</strong> (dados) · <strong>Liderança</strong> (fórum)</div>
-    </div>
-    <div style="flex:1;background:#FEF3C7;border-radius:8px;padding:10px 14px;border-left:4px solid #D97706;">
-      <div style="font-size:10px;font-weight:700;color:#D97706;margin-bottom:2px;">Stakeholders 60d</div>
-      <div style="font-size:10px;color:#92400E;"><strong>Engenharia</strong> (bot) · <strong>Produto</strong> (roteamento)</div>
-    </div>
-    <div style="flex:1;background:#DBEAFE;border-radius:8px;padding:10px 14px;border-left:4px solid #1D4ED8;">
-      <div style="font-size:10px;font-weight:700;color:#1D4ED8;margin-bottom:2px;">Stakeholders 90d</div>
-      <div style="font-size:10px;color:#1E40AF;"><strong>Produto</strong> (melhorias) · <strong>CX</strong> (jornada)</div>
     </div>
   </div>
 </div>
