@@ -372,8 +372,8 @@ body {
 
 .big-numbers-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 .big-number-card {
   background: var(--nu-off-white);
@@ -398,6 +398,7 @@ body {
 .bn-dimension.operacional { background: #F97316; }
 .bn-dimension.experiencia { background: var(--nu-blue); }
 .bn-dimension.eficiencia { background: var(--nu-green); }
+.bn-dimension.regulatorio { background: #DC2626; }
 
 .bn-value { font-size: 48px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
 .bn-value.danger { color: var(--nu-red); }
@@ -535,12 +536,14 @@ body {
   margin-top: 24px;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1600px) {
   .big-numbers-grid { grid-template-columns: repeat(3, 1fr); }
-  .framework-dimensions { grid-template-columns: repeat(2, 1fr); }
-  .data-quality-grid { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
+  .big-numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .framework-dimensions { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 800px) {
   .charts-row { grid-template-columns: 1fr; }
   .big-numbers-grid { grid-template-columns: 1fr; }
 }
@@ -677,22 +680,22 @@ body {
       <div class="framework-subtitle">Indicadores agrupados em 4 dimensões estratégicas para monitoramento da operação</div>
       <div class="framework-dimensions">
         <div class="dimension-badge">
-          <div class="dimension-icon">⚖️</div>
+          <div class="dimension-icon" style="font-weight:700;color:var(--nu-purple);">R</div>
           <div class="dimension-name">Regulatório</div>
           <div class="dimension-desc">SLA BACEN, % RDR, Procon</div>
         </div>
         <div class="dimension-badge">
-          <div class="dimension-icon">⚙️</div>
+          <div class="dimension-icon" style="font-weight:700;color:var(--nu-purple);">O</div>
           <div class="dimension-name">Operacional</div>
           <div class="dimension-desc">Volume, SLA, Backlog</div>
         </div>
         <div class="dimension-badge">
-          <div class="dimension-icon">😊</div>
+          <div class="dimension-icon" style="font-weight:700;color:var(--nu-purple);">E</div>
           <div class="dimension-name">Experiência</div>
           <div class="dimension-desc">tNPS, Resolutividade</div>
         </div>
         <div class="dimension-badge">
-          <div class="dimension-icon">📊</div>
+          <div class="dimension-icon" style="font-weight:700;color:var(--nu-purple);">F</div>
           <div class="dimension-name">Eficiência</div>
           <div class="dimension-desc">Taxa de Resposta, Categorização</div>
         </div>
@@ -744,7 +747,7 @@ body {
 
         <div class="big-number-card tnps">
           <div class="bn-header">
-            <div class="bn-label">tNPS</div>
+            <div class="bn-label">tNPS Global</div>
             <div class="bn-dimension experiencia">Experiência</div>
           </div>
           <div class="bn-value neutral" id="bnTnps">-</div>
@@ -753,6 +756,40 @@ body {
           <div class="bn-breakdown">
             <div class="bn-breakdown-title">Distribuição</div>
             <div class="bn-breakdown-items" id="bnTnpsBreakdown"></div>
+          </div>
+        </div>
+
+        <div class="big-number-card taxa-resposta">
+          <div class="bn-header">
+            <div class="bn-label">Taxa Resposta tNPS</div>
+            <div class="bn-dimension eficiencia">Eficiência</div>
+          </div>
+          <div class="bn-value warning" id="bnTaxaResposta">-</div>
+          <div class="bn-subtitle" id="bnTaxaRespostaSubtitle">% responderam (meta: ≥15%)</div>
+          <div class="bn-trend down" id="bnTaxaRespostaTrend">-</div>
+          <div class="bn-breakdown">
+            <div class="bn-breakdown-title">Impacto</div>
+            <div class="bn-breakdown-items" id="bnTaxaRespostaBreakdown">
+              <div class="bn-breakdown-item"><span>Regulatório:</span> <span style="color:var(--nu-red);">Baixa representatividade</span></div>
+              <div class="bn-breakdown-item"><span>Operacional:</span> <span style="color:var(--nu-yellow);">Decisões sem dados</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="big-number-card sla-critico">
+          <div class="bn-header">
+            <div class="bn-label">Casos SLA > 7 dias</div>
+            <div class="bn-dimension regulatorio">Regulatório</div>
+          </div>
+          <div class="bn-value danger" id="bnSlaCritico">-</div>
+          <div class="bn-subtitle" id="bnSlaCriticoSubtitle">% do total (meta: ≤20%)</div>
+          <div class="bn-trend up" id="bnSlaCriticoTrend">-</div>
+          <div class="bn-breakdown">
+            <div class="bn-breakdown-title">Impacto</div>
+            <div class="bn-breakdown-items" id="bnSlaCriticoBreakdown">
+              <div class="bn-breakdown-item"><span>Regulatório:</span> <span style="color:var(--nu-red);">Risco BACEN elevado</span></div>
+              <div class="bn-breakdown-item"><span>Operacional:</span> <span style="color:var(--nu-yellow);">Backlog crítico</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -857,44 +894,17 @@ body {
       </div>
     </div>
 
-    <!-- Qualidade dos Dados -->
-    <div class="data-quality-section">
-      <div class="section-header">
-        <div class="section-title">
-          <span class="section-badge">EFICIÊNCIA</span>
-          Qualidade e Completude dos Dados
-        </div>
-      </div>
-      <div class="data-quality-grid">
-        <div class="dq-card">
-          <div class="dq-value" id="dqTotal">-</div>
-          <div class="dq-label">Total de Casos</div>
-        </div>
-        <div class="dq-card">
-          <div class="dq-value" id="dqTaxaResposta">-</div>
-          <div class="dq-label">Taxa de Resposta tNPS</div>
-        </div>
-        <div class="dq-card">
-          <div class="dq-value warning" id="dqReasonBlank">-</div>
-          <div class="dq-label">Reason em Branco</div>
-        </div>
-        <div class="dq-card">
-          <div class="dq-value danger" id="dqMethodBlank">-</div>
-          <div class="dq-label">Receiving Method Blank</div>
-        </div>
-        <div class="dq-card">
-          <div class="dq-value" id="dqRegulatorio">-</div>
-          <div class="dq-label">% Regulatório</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tabela de Priorização -->
+    <!-- Tabela de Priorização com Matriz GUT -->
     <div class="table-section">
       <div class="section-header">
         <div class="section-title">
-          <span class="section-badge">PRIORIZAÇÃO</span>
-          Matriz de Squads — Plano de Ação
+          <span class="section-badge">PRIORIZAÇÃO GUT</span>
+          Matriz de Squads — Gravidade × Urgência × Tendência
+        </div>
+        <div class="gut-legend" style="display:flex;gap:16px;font-size:11px;color:var(--chrome-grey);">
+          <span><strong>G</strong> = Vol. Regulatório (peso 5)</span>
+          <span><strong>U</strong> = SLA Médio (peso 5)</span>
+          <span><strong>T</strong> = Tendência SLA</span>
         </div>
       </div>
       <table id="tablePriority">
@@ -902,12 +912,13 @@ body {
           <tr>
             <th>#</th>
             <th>Squad</th>
-            <th>Volume</th>
+            <th>Vol. Reg.</th>
             <th>SLA Médio</th>
-            <th>Resolutiv.</th>
-            <th>tNPS</th>
-            <th>% Regulat.</th>
-            <th>Prioridade</th>
+            <th>G</th>
+            <th>U</th>
+            <th>T</th>
+            <th>Score GUT</th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -1345,9 +1356,26 @@ function updateDashboard() {
   document.getElementById('bnResolSubtitle').textContent = `${formatNumber(metrics.resolutividadeRespostas)} respostas (meta: ≥80%)`;
   
   const tnpsEl = document.getElementById('bnTnps');
-  tnpsEl.textContent = metrics.tnps;
+  tnpsEl.textContent = metrics.tnps > 0 ? '+' + metrics.tnps : metrics.tnps;
   tnpsEl.className = 'bn-value ' + (metrics.tnps < 0 ? 'danger' : metrics.tnps < 20 ? 'warning' : 'success');
-  document.getElementById('bnTnpsSubtitle').textContent = `${formatNumber(metrics.tnpsRespostas)} respostas (${metrics.taxaRespostaTnps.toFixed(1)}% resp.)`;
+  document.getElementById('bnTnpsSubtitle').textContent = `${formatNumber(metrics.tnpsRespostas)} respostas (RDR: -66)`;
+  
+  // Taxa de Resposta tNPS (novo KPI)
+  const taxaRespostaEl = document.getElementById('bnTaxaResposta');
+  if (taxaRespostaEl) {
+    taxaRespostaEl.textContent = metrics.taxaRespostaTnps.toFixed(1) + '%';
+    taxaRespostaEl.className = 'bn-value ' + (metrics.taxaRespostaTnps < 10 ? 'danger' : metrics.taxaRespostaTnps < 15 ? 'warning' : 'success');
+    document.getElementById('bnTaxaRespostaSubtitle').textContent = `${formatNumber(metrics.tnpsRespostas)} de ${formatNumber(metrics.volumeTotal)} responderam`;
+  }
+  
+  // Casos SLA > 7 dias (novo KPI)
+  const slaCriticoEl = document.getElementById('bnSlaCritico');
+  if (slaCriticoEl) {
+    const pctSlaCritico = metrics.volumeTotal > 0 ? (metrics.slaFaixas['>7 dias'] || 0) / metrics.volumeTotal * 100 : 0;
+    slaCriticoEl.textContent = pctSlaCritico.toFixed(1) + '%';
+    slaCriticoEl.className = 'bn-value ' + (pctSlaCritico > 40 ? 'danger' : pctSlaCritico > 20 ? 'warning' : 'success');
+    document.getElementById('bnSlaCriticoSubtitle').textContent = `${formatNumber(metrics.slaFaixas['>7 dias'] || 0)} casos críticos`;
+  }
   
   // Breakdown SLA
   document.getElementById('bnSlaBreakdown').innerHTML = Object.entries(metrics.slaFaixas)
@@ -1365,13 +1393,6 @@ function updateDashboard() {
     <div class="bn-breakdown-item"><span style="color:${nuYellow}">Passives</span><strong>${totalTnps > 0 ? ((metrics.passives/totalTnps)*100).toFixed(0) : 0}%</strong></div>
     <div class="bn-breakdown-item"><span style="color:${nuRed}">Detractors</span><strong>${totalTnps > 0 ? ((metrics.detractors/totalTnps)*100).toFixed(0) : 0}%</strong></div>
   `;
-  
-  // Data Quality
-  document.getElementById('dqTotal').textContent = formatNumber(metrics.volumeTotal);
-  document.getElementById('dqTaxaResposta').textContent = metrics.taxaRespostaTnps.toFixed(1) + '%';
-  document.getElementById('dqReasonBlank').textContent = ((metrics.reasonBlank / metrics.volumeTotal) * 100).toFixed(1) + '%';
-  document.getElementById('dqMethodBlank').textContent = ((metrics.methodBlank / metrics.volumeTotal) * 100).toFixed(1) + '%';
-  document.getElementById('dqRegulatorio').textContent = metrics.pctRegulatorio.toFixed(1) + '%';
   
   // Charts
   updateEvolutionCharts();
@@ -1636,55 +1657,92 @@ function updateReasonChart() {
 }
 
 // ============================================================
-// PRIORITY TABLE
+// PRIORITY TABLE - MATRIZ GUT
 // ============================================================
 function updatePriorityTable() {
   const squadData = calculateMetricByDimension('volume', '_squad').filter(r => r.total >= 50);
   
-  // Calculate regulatorio % per squad
+  // Calculate volume regulatório per squad
   const squadReg = {};
+  const squadSlaTrend = {}; // Para tendência
   filteredData.forEach(r => {
     const squad = r._squad || 'Sem Squad';
-    if (!squadReg[squad]) squadReg[squad] = { total: 0, reg: 0 };
+    if (!squadReg[squad]) squadReg[squad] = { total: 0, reg: 0, slaRecent: [], slaOld: [] };
     squadReg[squad].total++;
     if (r._canalRegulatorio !== 'Nao Regulatorio') squadReg[squad].reg++;
+    
+    // Tendência: compara SLA dos últimos 30 dias vs anteriores
+    if (r._creationDate && r._sla !== null) {
+      const daysAgo = (new Date() - r._creationDate) / (1000 * 60 * 60 * 24);
+      if (daysAgo <= 30) squadReg[squad].slaRecent.push(r._sla);
+      else if (daysAgo <= 60) squadReg[squad].slaOld.push(r._sla);
+    }
   });
   
   squadData.forEach(s => {
-    s.pctRegulatorio = squadReg[s.label] ? (squadReg[s.label].reg / squadReg[s.label].total * 100) : 0;
+    const regData = squadReg[s.label];
+    s.volRegulatorio = regData ? regData.reg : 0;
+    
+    // Tendência SLA (T): 1 = estável/melhorando, 3 = degradando, 5 = degradando rápido
+    const avgRecent = regData?.slaRecent.length > 0 ? regData.slaRecent.reduce((a,b)=>a+b,0)/regData.slaRecent.length : null;
+    const avgOld = regData?.slaOld.length > 0 ? regData.slaOld.reduce((a,b)=>a+b,0)/regData.slaOld.length : null;
+    if (avgRecent && avgOld) {
+      const diff = avgRecent - avgOld;
+      s.tendencia = diff > 2 ? 5 : diff > 1 ? 4 : diff > 0.5 ? 3 : diff > 0 ? 2 : 1;
+      s.tendenciaLabel = diff > 1 ? '↑↑' : diff > 0 ? '↑' : diff < -1 ? '↓↓' : diff < 0 ? '↓' : '→';
+    } else {
+      s.tendencia = 3; // Neutro se não tem dados suficientes
+      s.tendenciaLabel = '→';
+    }
   });
   
-  // Score and sort
+  // Normalização para scores 1-5 (Matriz GUT)
+  const maxVolReg = Math.max(...squadData.map(s => s.volRegulatorio), 1);
+  const maxSla = Math.max(...squadData.filter(s => s.sla !== null).map(s => s.sla), 1);
+  
   squadData.forEach(s => {
-    s.score = 0;
-    if (s.sla !== null && s.sla > 7) s.score += 3;
-    else if (s.sla !== null && s.sla > 5) s.score += 2;
-    if (s.resolutividade !== null && s.resolutividade < 70) s.score += 3;
-    else if (s.resolutividade !== null && s.resolutividade < 80) s.score += 2;
-    if (s.tnps !== null && s.tnps < 0) s.score += 3;
-    else if (s.tnps !== null && s.tnps < 20) s.score += 2;
-    if (s.pctRegulatorio > 50) s.score += 2;
-    s.score += Math.min(3, Math.floor(s.total / 10000));
+    // G (Gravidade) = Volume Regulatório normalizado (peso 5)
+    s.gravidade = Math.ceil((s.volRegulatorio / maxVolReg) * 5) || 1;
+    
+    // U (Urgência) = SLA Médio normalizado (peso 5)
+    // SLA > 10 = 5, SLA 7-10 = 4, SLA 5-7 = 3, SLA 3-5 = 2, SLA < 3 = 1
+    if (s.sla === null) s.urgencia = 1;
+    else if (s.sla > 10) s.urgencia = 5;
+    else if (s.sla > 7) s.urgencia = 4;
+    else if (s.sla > 5) s.urgencia = 3;
+    else if (s.sla > 3) s.urgencia = 2;
+    else s.urgencia = 1;
+    
+    // T (Tendência) já calculado acima
+    
+    // Score GUT = G × U × T
+    s.scoreGUT = s.gravidade * s.urgencia * s.tendencia;
   });
   
-  squadData.sort((a, b) => b.score - a.score);
+  // Sort by GUT score descending
+  squadData.sort((a, b) => b.scoreGUT - a.scoreGUT);
   
   const tbody = document.querySelector('#tablePriority tbody');
   tbody.innerHTML = '';
   squadData.slice(0, 15).forEach((row, idx) => {
-    const priority = idx < 3 ? 'critico' : idx < 6 ? 'alto' : idx < 10 ? 'medio' : 'baixo';
-    const priorityLabel = idx < 3 ? 'CRÍTICO' : idx < 6 ? 'ALTO' : idx < 10 ? 'MÉDIO' : 'BAIXO';
+    // Ação baseada no score GUT
+    let acao, acaoClass;
+    if (row.scoreGUT >= 60) { acao = 'Ação Imediata'; acaoClass = 'critico'; }
+    else if (row.scoreGUT >= 40) { acao = 'Prioridade Alta'; acaoClass = 'alto'; }
+    else if (row.scoreGUT >= 20) { acao = 'Monitorar'; acaoClass = 'medio'; }
+    else { acao = 'Backlog'; acaoClass = 'baixo'; }
     
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><strong>${idx + 1}</strong></td>
-      <td><strong>${row.label}</strong></td>
-      <td>${formatNumber(row.total)}</td>
+      <td><strong>${truncate(row.label, 25)}</strong></td>
+      <td style="font-weight: ${row.volRegulatorio > 1000 ? 'bold' : 'normal'}; color: ${row.volRegulatorio > 1000 ? nuRed : 'inherit'};">${formatNumber(row.volRegulatorio)}</td>
       <td style="color: ${row.sla > 7 ? nuRed : row.sla > 5 ? nuYellow : 'inherit'}; font-weight: ${row.sla > 7 ? 'bold' : 'normal'};">${row.sla !== null ? row.sla.toFixed(1) + 'd' : '-'}</td>
-      <td style="color: ${row.resolutividade < 70 ? nuRed : row.resolutividade < 80 ? nuYellow : 'inherit'}; font-weight: ${row.resolutividade < 80 ? 'bold' : 'normal'};">${row.resolutividade !== null ? row.resolutividade.toFixed(1) + '%' : '-'}</td>
-      <td style="color: ${row.tnps < 0 ? nuRed : 'inherit'}; font-weight: ${row.tnps < 0 ? 'bold' : 'normal'};">${row.tnps !== null ? row.tnps : '-'}</td>
-      <td>${row.pctRegulatorio.toFixed(1)}%</td>
-      <td><span class="badge ${priority}">${priorityLabel}</span></td>
+      <td style="font-weight: bold; color: ${row.gravidade >= 4 ? nuRed : row.gravidade >= 3 ? nuYellow : 'inherit'};">${row.gravidade}</td>
+      <td style="font-weight: bold; color: ${row.urgencia >= 4 ? nuRed : row.urgencia >= 3 ? nuYellow : 'inherit'};">${row.urgencia}</td>
+      <td style="font-weight: bold; color: ${row.tendencia >= 4 ? nuRed : row.tendencia >= 3 ? nuYellow : 'inherit'};">${row.tendencia} ${row.tendenciaLabel}</td>
+      <td style="font-weight: bold; font-size: 14px;">${row.scoreGUT}</td>
+      <td><span class="badge ${acaoClass}">${acao}</span></td>
     `;
     tbody.appendChild(tr);
   });
