@@ -1224,31 +1224,48 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
       <div style="background:linear-gradient(135deg, var(--nu-purple) 0%, #6B21A8 100%);border-radius:14px;padding:24px;">
         <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;">Impacto Esperado</div>
         
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px;">
+          <div style="text-align:center;background:rgba(255,255,255,0.15);border-radius:10px;padding:14px 8px;border:1px solid rgba(255,255,255,0.2);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:6px;font-weight:600;">SLA Collections (foco)</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <span style="font-size:18px;color:rgba(255,255,255,0.7);">9,04d</span>
+              <span style="font-size:14px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:26px;font-weight:800;color:#22C55E;">6,5d</span>
+            </div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;">-28% redução</div>
+          </div>
           <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 8px;">
-            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">SLA Médio</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:6px;">SLA Geral (efeito cascata)</div>
             <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
               <span style="font-size:16px;color:rgba(255,255,255,0.7);">6,48d</span>
               <span style="font-size:14px;color:rgba(255,255,255,0.5);">→</span>
               <span style="font-size:24px;font-weight:800;color:white;">5,0d</span>
             </div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;">-23% redução</div>
           </div>
-          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 8px;">
-            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">Casos > 7 dias</div>
+        </div>
+        
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px;">
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 8px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">Taxa SLA > 7d Collections</div>
             <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-              <span style="font-size:16px;color:rgba(255,255,255,0.7);">46%</span>
-              <span style="font-size:14px;color:rgba(255,255,255,0.5);">→</span>
-              <span style="font-size:24px;font-weight:800;color:white;">20%</span>
+              <span style="font-size:14px;color:rgba(255,255,255,0.7);">66%</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:20px;font-weight:800;color:white;">35%</span>
             </div>
           </div>
-          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 8px;">
-            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">Redução Total</div>
-            <div style="font-size:28px;font-weight:800;color:#22C55E;">-23%</div>
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 8px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">Taxa SLA > 7d Geral</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.7);">46%</span>
+              <span style="font-size:12px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:20px;font-weight:800;color:white;">20%</span>
+            </div>
           </div>
         </div>
 
-        <div style="font-size:12px;color:rgba(255,255,255,0.9);line-height:1.6;border-top:1px solid rgba(255,255,255,0.2);padding-top:14px;">
-          <strong>Metodologia:</strong> Meta de SLA ≤ 5 dias baseada no limite regulatório BACEN (10 dias úteis) com margem de 50%. Priorização Pareto: foco em Collections (44,73%) e reasons críticos.
+        <div style="font-size:11px;color:rgba(255,255,255,0.85);line-height:1.5;border-top:1px solid rgba(255,255,255,0.2);padding-top:12px;">
+          <strong>Lógica:</strong> Atacando Collections (44,73% dos casos críticos, SLA médio 9,04d) o impacto reflete no indicador geral. Meta baseada no limite BACEN (10 dias úteis) com margem de segurança.
         </div>
       </div>
     </div>
