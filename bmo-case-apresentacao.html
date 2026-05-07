@@ -725,96 +725,113 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   <div class="section-label">Refinamento do Diagnóstico</div>
   <div class="executive-conclusion">A base de dados apresenta gaps que limitam algumas análises — pontuados abaixo para transparência</div>
 
-  <div class="two-col" style="gap:40px;">
-    <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;">
-        <div class="card-title" style="margin-bottom:18px;font-size:16px;">Gaps Identificados na Base</div>
-        
-        <div style="margin-bottom:16px;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <span style="background:var(--nu-purple);color:white;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;">1</span>
-            <strong style="font-size:14px;">Procedência Ausente</strong>
-          </div>
-          <ul style="margin:0;padding-left:20px;font-size:13px;color:var(--nu-black);line-height:1.6;">
-            <li>Case menciona taxa de <strong>19%</strong> de casos procedentes</li>
-            <li>Base não contém campo de procedência/improcedência</li>
-            <li>Não foi possível analisar motivos de procedência BACEN</li>
-          </ul>
-        </div>
+  <!-- Tabela única de Gaps -->
+  <div style="margin-bottom:24px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:var(--nu-purple);color:white;">
+          <th style="padding:14px 16px;text-align:left;font-weight:700;width:20%;border-radius:10px 0 0 0;">Gap Identificado</th>
+          <th style="padding:14px 16px;text-align:left;font-weight:700;width:15%;">Impacto</th>
+          <th style="padding:14px 16px;text-align:left;font-weight:700;width:45%;">Detalhamento</th>
+          <th style="padding:14px 16px;text-align:left;font-weight:700;width:20%;border-radius:0 10px 0 0;">Mitigação Aplicada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 16px;vertical-align:top;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="background:var(--nu-purple);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">1</span>
+              <span style="font-weight:700;">Procedência Ausente</span>
+            </div>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;">
+            <span style="background:#FEE2E2;color:#DC2626;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;">Alto</span>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            Base não contém campo de procedência/improcedência. Case menciona taxa de 19% de casos procedentes, mas não foi possível analisar motivos de procedência BACEN.
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            Análise focada em SLA e resolutividade como proxies de qualidade
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 16px;vertical-align:top;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="background:var(--nu-purple);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">2</span>
+              <span style="font-weight:700;">Receiving Method</span>
+            </div>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;">
+            <span style="background:#FEF3C7;color:#D97706;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;">Médio</span>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            <strong>171.638 casos (50,84%)</strong> sem receiving method classificado. Análises por canal ficam limitadas à metade da base.
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            Utilizei coluna "Channel" como alternativa para segmentação
+          </td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:14px 16px;vertical-align:top;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="background:var(--nu-purple);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">3</span>
+              <span style="font-weight:700;">Reason em Branco</span>
+            </div>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;">
+            <span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;">Baixo</span>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            4.210 casos (<strong>1,25%</strong>) sem motivo classificado. Em Collections: apenas <strong>0,25%</strong> (263 casos).
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            Impacto mínimo — análises de Pareto não foram afetadas
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:14px 16px;vertical-align:top;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="background:var(--nu-purple);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">4</span>
+              <span style="font-weight:700;">IDs Repetidos</span>
+            </div>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;">
+            <span style="background:#FEF3C7;color:#D97706;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;">Médio</span>
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            <strong>1.131 IDs</strong> aparecem mais de uma vez (14,75% da base). 92% têm squads diferentes, 97% têm reasons diferentes.
+          </td>
+          <td style="padding:14px 16px;vertical-align:top;line-height:1.5;">
+            Não identificado padrão — pode ser recontato ou problema de chave
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-        <div style="margin-bottom:16px;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <span style="background:var(--nu-purple);color:white;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;">2</span>
-            <strong style="font-size:14px;">Receiving Method em Branco</strong>
-          </div>
-          <ul style="margin:0;padding-left:20px;font-size:13px;color:var(--nu-black);line-height:1.6;">
-            <li><strong>171.638 casos (50,84%)</strong> sem receiving method classificado</li>
-            <li>Análises por canal ficam limitadas à metade da base</li>
-            <li>Utilizei a coluna "Channel" como alternativa para segmentação</li>
-          </ul>
-        </div>
-
-        <div style="margin-bottom:16px;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <span style="background:var(--nu-purple);color:white;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;">3</span>
-            <strong style="font-size:14px;">Reason em Branco</strong>
-          </div>
-          <ul style="margin:0;padding-left:20px;font-size:13px;color:var(--nu-black);line-height:1.6;">
-            <li>4.210 casos (<strong>1,25%</strong>) sem motivo classificado</li>
-            <li>Em Collections: apenas <strong>0,25%</strong> (263 casos)</li>
-            <li>Impacto mínimo nas análises realizadas</li>
-          </ul>
-        </div>
-
-        <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-            <span style="background:var(--nu-purple);color:white;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;">4</span>
-            <strong style="font-size:14px;">IDs Repetidos sem Padrão</strong>
-          </div>
-          <ul style="margin:0;padding-left:20px;font-size:13px;color:var(--nu-black);line-height:1.6;">
-            <li><strong>1.131 IDs</strong> aparecem mais de uma vez (14,75% da base)</li>
-            <li>92% têm squads diferentes, 97% têm reasons diferentes</li>
-            <li>Não identificado padrão: pode ser recontato ou problema de chave</li>
-          </ul>
-        </div>
-      </div>
+  <!-- Dados Necessários para Aprofundamento -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;">
+    <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 18px;border-top:3px solid var(--nu-purple);">
+      <div style="font-size:14px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Procedência RDR</div>
+      <div style="font-size:12px;color:var(--chrome-grey);line-height:1.5;">Casos procedentes BACEN — dados descentralizados por squad</div>
     </div>
-
-    <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;margin-bottom:20px;">
-        <div class="card-title" style="margin-bottom:18px;font-size:16px;">Dados Necessários para Aprofundamento</div>
-        <table class="compact" style="font-size:13px;">
-          <thead>
-            <tr>
-              <th style="padding:12px 14px;">Dado Necessário</th>
-              <th style="padding:12px 14px;">Observação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:12px 14px;"><strong>Procedência RDR</strong><br><span style="font-size:11px;color:var(--chrome-grey);">Casos procedentes BACEN</span></td>
-              <td style="padding:12px 14px;">Dados descentralizados por squad</td>
-            </tr>
-            <tr>
-              <td style="padding:12px 14px;"><strong>Classificação Causa Raiz</strong><br><span style="font-size:11px;color:var(--chrome-grey);">NOK Produto/Atendimento/Processo</span></td>
-              <td style="padding:12px 14px;">Por que casos são procedentes</td>
-            </tr>
-            <tr>
-              <td style="padding:12px 14px;"><strong>Métricas Consolidadas</strong><br><span style="font-size:11px;color:var(--chrome-grey);">tNPS, Resolutividade, SLA</span></td>
-              <td style="padding:12px 14px;">Core Metrics (QuickSight)</td>
-            </tr>
-            <tr>
-              <td style="padding:12px 14px;"><strong>Histórico de Atendimento</strong><br><span style="font-size:11px;color:var(--chrome-grey);">Jornada antes do RDR</span></td>
-              <td style="padding:12px 14px;">Análise de recontatos e escalations</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="key-message" style="margin:0;padding:18px 22px;font-size:13px;">
-        <strong>Próximo Passo:</strong> Cruzar dados de SLA e resolutividade com classificação de causa raiz — identificando se casos procedentes são por falha de Atendimento, Processo ou Produto.
-      </div>
+    <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 18px;border-top:3px solid var(--nu-purple);">
+      <div style="font-size:14px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Classificação Causa Raiz</div>
+      <div style="font-size:12px;color:var(--chrome-grey);line-height:1.5;">NOK Produto/Atendimento/Processo — por que casos são procedentes</div>
     </div>
+    <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 18px;border-top:3px solid var(--nu-purple);">
+      <div style="font-size:14px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Métricas Consolidadas</div>
+      <div style="font-size:12px;color:var(--chrome-grey);line-height:1.5;">tNPS, Resolutividade, SLA — Core Metrics (QuickSight)</div>
+    </div>
+    <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 18px;border-top:3px solid var(--nu-purple);">
+      <div style="font-size:14px;font-weight:700;color:var(--nu-black);margin-bottom:6px;">Histórico de Atendimento</div>
+      <div style="font-size:12px;color:var(--chrome-grey);line-height:1.5;">Jornada antes do RDR — análise de recontatos e escalations</div>
+    </div>
+  </div>
+
+  <!-- Próximo Passo -->
+  <div class="key-message" style="margin:0;padding:16px 22px;font-size:13px;">
+    <strong>Próximo Passo:</strong> Cruzar dados de SLA e resolutividade com classificação de causa raiz — identificando se casos procedentes são por falha de Atendimento, Processo ou Produto.
   </div>
 </div>
 
