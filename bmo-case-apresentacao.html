@@ -1568,109 +1568,113 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 <!-- SLIDE 12: Metodologia de ROI -->
 <div class="slide" data-slide="12">
   <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
-  <div class="section-label">Metodologia de Mensuração</div>
-  <div class="executive-conclusion">Saving = Horas Economizadas × Custo/Hora FTE. Variáveis X e Y devem ser obtidas com operação e RH.</div>
+  <div class="section-label">Metodologia de ROI</div>
+  <div class="executive-conclusion">Com estimativas conservadoras, o bot de triagem pode gerar economia de R$ 236k/ano e liberar 3,4 FTEs para tarefas de maior valor.</div>
 
   <div class="two-col" style="gap:40px;">
     <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;">
-        <div class="card-title" style="margin-bottom:20px;font-size:16px;">Fluxo de Cálculo do ROI</div>
-        
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <!-- Step 1 -->
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">1</div>
-            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Volume Anual</div>
-              <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">337.613 casos</div>
-            </div>
-          </div>
-          
-          <!-- Arrow -->
-          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
-          
-          <!-- Step 2 -->
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">2</div>
-            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Tempo Manual por Caso</div>
-              <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">X <span style="font-weight:400;font-size:14px;color:var(--nu-black);">min/caso</span></div>
-            </div>
-          </div>
-          
-          <!-- Arrow -->
-          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
-          
-          <!-- Step 3 -->
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">3</div>
-            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Redução com Bot</div>
-              <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">35% <span style="font-weight:400;font-size:14px;color:var(--nu-black);">→ Economia = X × 0,35 min</span></div>
-            </div>
-          </div>
-          
-          <!-- Arrow -->
-          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
-          
-          <!-- Step 4 -->
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">4</div>
-            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Horas Economizadas</div>
-              <div style="font-size:14px;font-weight:600;color:var(--nu-black);">(337.613 × X × 0,35) / 60</div>
-            </div>
-          </div>
-          
-          <!-- Arrow -->
-          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
-          
-          <!-- Step 5 - Result -->
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="background:#16A34A;color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">$</div>
-            <div style="flex:1;background:#DCFCE7;border-radius:10px;padding:14px 18px;border-left:3px solid #16A34A;">
-              <div style="font-size:12px;color:#16A34A;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Saving Anual</div>
-              <div style="font-size:16px;font-weight:700;color:#16A34A;">Horas Economizadas × Y <span style="font-weight:400;font-size:14px;">(R$/hora)</span></div>
-            </div>
-          </div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;margin-bottom:16px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:15px;">O que é ROI de Automação?</div>
+        <div style="font-size:13px;line-height:1.7;color:var(--nu-black);">
+          <strong>ROI (Return on Investment)</strong> mede o retorno financeiro de implementar automação. 
+          Se o bot faz parte do trabalho manual, economizamos horas de trabalho humano — que têm custo.
         </div>
+        <div style="background:var(--nu-off-white);border-radius:8px;padding:14px 16px;margin-top:14px;text-align:center;">
+          <div style="font-size:12px;color:var(--chrome-grey);margin-bottom:6px;">Fórmula Base</div>
+          <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">SAVING = Horas Economizadas × Custo/Hora FTE</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:15px;">Cálculo Aplicado</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <tbody>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;background:#FAFAFA;font-weight:600;width:55%;">Volume anual</td>
+              <td style="padding:10px 12px;text-align:right;font-weight:700;color:var(--nu-purple);">337.613 casos</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;background:#FAFAFA;font-weight:600;">Tempo manual por caso*</td>
+              <td style="padding:10px 12px;text-align:right;font-weight:700;color:var(--nu-purple);">3 min</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;background:#FAFAFA;font-weight:600;">Redução com bot</td>
+              <td style="padding:10px 12px;text-align:right;font-weight:700;color:var(--nu-purple);">35%</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;background:#FAFAFA;font-weight:600;">Economia por caso</td>
+              <td style="padding:10px 12px;text-align:right;">3 × 0,35 = <strong>1,05 min</strong></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;background:#FAFAFA;font-weight:600;">Horas economizadas/ano</td>
+              <td style="padding:10px 12px;text-align:right;">(337.613 × 1,05) / 60 = <strong>5.908h</strong></td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px 12px;background:#FAFAFA;font-weight:600;">Custo FTE/hora*</td>
+              <td style="padding:10px 12px;text-align:right;font-weight:700;color:var(--nu-purple);">R$ 40</td>
+            </tr>
+            <tr style="background:#DCFCE7;">
+              <td style="padding:12px;font-weight:700;color:#16A34A;">SAVING ANUAL</td>
+              <td style="padding:12px;text-align:right;font-weight:700;font-size:16px;color:#16A34A;">R$ 236.320</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;margin-bottom:20px;">
-        <div class="card-title" style="margin-bottom:18px;font-size:16px;">Definição das Variáveis</div>
-        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      <div class="card" style="border-top:4px solid #16A34A;padding:24px;margin-bottom:16px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:15px;color:#16A34A;">Capacidade Liberada</div>
+        <div style="display:flex;gap:20px;">
+          <div style="flex:1;background:#DCFCE7;border-radius:10px;padding:18px;text-align:center;">
+            <div style="font-size:32px;font-weight:700;color:#16A34A;">3,4</div>
+            <div style="font-size:12px;color:#16A34A;margin-top:4px;">FTEs liberados</div>
+          </div>
+          <div style="flex:2;font-size:13px;line-height:1.6;display:flex;align-items:center;">
+            <div>
+              <strong>Fórmula:</strong> 5.908h / 1.760h = 3,4 FTEs<br>
+              <span style="color:var(--chrome-grey);font-size:12px;">1.760h = horas úteis anuais por analista</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font-size:13px;color:var(--nu-black);line-height:1.6;">
+          <strong>Impacto:</strong> Equivalente a 3-4 analistas que podem ser realocados para tratamento de casos complexos (detratores do SLA).
+        </div>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;margin-bottom:16px;">
+        <div class="card-title" style="margin-bottom:12px;font-size:15px;">Variáveis do Cálculo</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:var(--nu-purple);color:white;">
+              <th style="padding:8px 10px;text-align:left;">Variável</th>
+              <th style="padding:8px 10px;text-align:center;">Valor</th>
+              <th style="padding:8px 10px;text-align:left;">Fonte</th>
+            </tr>
+          </thead>
           <tbody>
             <tr style="border-bottom:1px solid #E5E7EB;">
-              <td style="padding:14px;font-weight:700;background:#FAFAFA;width:60px;text-align:center;"><span style="color:var(--nu-purple);font-size:18px;">X</span></td>
-              <td style="padding:14px;line-height:1.5;">
-                <strong>Tempo médio de categorização manual</strong><br>
-                <span style="font-size:12px;color:var(--chrome-grey);">Minutos que um analista leva para ler, entender e categorizar um caso. Obter via time study.</span>
-              </td>
+              <td style="padding:10px;">Tempo manual (X)</td>
+              <td style="padding:10px;text-align:center;font-weight:700;">3 min</td>
+              <td style="padding:10px;color:var(--chrome-grey);">Estimativa*</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:10px;">Custo FTE/hora (Y)</td>
+              <td style="padding:10px;text-align:center;font-weight:700;">R$ 40</td>
+              <td style="padding:10px;color:var(--chrome-grey);">Estimativa*</td>
             </tr>
             <tr>
-              <td style="padding:14px;font-weight:700;background:#FAFAFA;width:60px;text-align:center;"><span style="color:var(--nu-purple);font-size:18px;">Y</span></td>
-              <td style="padding:14px;line-height:1.5;">
-                <strong>Custo/hora do FTE</strong><br>
-                <span style="font-size:12px;color:var(--chrome-grey);">(Salário + encargos) / horas úteis mensais. Obter com RH ou estimar ~R$ 40-60/hora.</span>
-              </td>
+              <td style="padding:10px;">Horas úteis/ano</td>
+              <td style="padding:10px;text-align:center;font-weight:700;">1.760h</td>
+              <td style="padding:10px;color:var(--chrome-grey);">Padrão mercado</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="card" style="border-top:4px solid #16A34A;padding:28px;margin-bottom:20px;">
-        <div class="card-title" style="margin-bottom:14px;font-size:16px;color:#16A34A;">Capacidade Liberada (FTEs)</div>
-        <div style="background:#DCFCE7;border-radius:10px;padding:16px 20px;text-align:center;">
-          <div style="font-size:14px;color:#16A34A;margin-bottom:8px;">Fórmula</div>
-          <div style="font-size:18px;font-weight:700;color:#16A34A;">FTEs = Horas Economizadas / 1.760h</div>
-          <div style="font-size:12px;color:var(--chrome-grey);margin-top:8px;">1.760h = horas úteis anuais por analista (8h × 22 dias × 10 meses)</div>
-        </div>
-      </div>
-
-      <div class="key-message" style="padding:16px 20px;font-size:13px;">
-        <strong>Próximo Passo:</strong> Obter X com time study da operação e Y com RH. O saving potencial justifica a validação técnica proposta no Slide 11.
+      <div style="background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:4px solid #CA8A04;">
+        <div style="font-size:12px;font-weight:700;color:#CA8A04;margin-bottom:4px;">* Nota sobre Estimativas</div>
+        <div style="font-size:11px;color:var(--chrome-grey);line-height:1.5;">Tempo manual (3 min) e custo FTE (R$ 40/h) são estimativas conservadoras. Para cálculo definitivo, validar com time study da operação e dados de RH.</div>
       </div>
     </div>
   </div>
