@@ -2271,13 +2271,13 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
             <div style="margin-bottom:3px;">• Dashboard executivo (Fórum)</div>
             <div style="margin-bottom:3px;">• Triagem IA + Templates</div>
             <div style="margin-bottom:3px;">• Task Force Collections</div>
-            <div style="margin-bottom:3px;">• Retomada Bot Triagem (validação)</div>
+            <div style="margin-bottom:3px;">• Bot Triagem (validação + go-live)</div>
             <div>• Mapeamento reasons críticos</div>
           </td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
-            <div style="margin-bottom:3px;">• Bot triagem ativo (shadow)</div>
             <div style="margin-bottom:3px;">• Agent IA respostas (piloto)</div>
             <div style="margin-bottom:3px;">• Dashboard monitoramento</div>
+            <div style="margin-bottom:3px;">• Fila prioritária RDR</div>
             <div>• Priorização reasons críticos</div>
           </td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
@@ -2291,11 +2291,12 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
           <td style="padding:14px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);vertical-align:top;">Stakeholders<br><span style="font-size:10px;color:var(--chrome-grey);font-weight:400;">(Chave)</span></td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
             <div style="margin-bottom:3px;"><strong style="color:var(--nu-purple);">Operação</strong> — Dados e validação</div>
+            <div style="margin-bottom:3px;"><strong style="color:var(--nu-purple);">Engenharia</strong> — Infraestrutura bot</div>
             <div><strong style="color:var(--nu-purple);">Liderança</strong> — Fórum apresentação</div>
           </td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
-            <div style="margin-bottom:3px;"><strong style="color:var(--nu-purple);">Engenharia</strong> — Infraestrutura bot</div>
-            <div><strong style="color:var(--nu-purple);">Produto</strong> — Revisão roteamento</div>
+            <div style="margin-bottom:3px;"><strong style="color:var(--nu-purple);">Produto</strong> — Revisão roteamento</div>
+            <div><strong style="color:var(--nu-purple);">Operação</strong> — Pilotos e validação</div>
           </td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
             <div style="margin-bottom:3px;"><strong style="color:var(--nu-purple);">Produto</strong> — Melhorias sistêmicas</div>
@@ -2305,24 +2306,24 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         <tr>
           <td style="padding:14px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);vertical-align:top;border-radius:0 0 0 10px;">Marco de<br>Sucesso</td>
           <td style="padding:14px;vertical-align:top;">
-            <div style="background:#DCFCE7;border-radius:8px;padding:10px 12px;">
-              <div style="font-weight:600;color:#16A34A;font-size:12px;margin-bottom:4px;">Dashboard no Fórum</div>
-              <div style="font-size:11px;color:#16A34A;">SLA médio ≤ 6,0d (atual: 6,48d)</div>
-              <div style="font-size:11px;color:#16A34A;">Backlog crítico zerado</div>
+            <div style="background:var(--nu-off-white);border-radius:8px;padding:10px 12px;border-left:3px solid var(--nu-purple);">
+              <div style="font-weight:600;color:var(--nu-purple);font-size:12px;margin-bottom:4px;">Dashboard no Fórum + Bot ativo</div>
+              <div style="font-size:11px;color:var(--nu-black);">SLA médio ≤ 5,8d (atual: 6,48d)</div>
+              <div style="font-size:11px;color:var(--nu-black);">Bot acurácia ≥ 85%</div>
             </div>
           </td>
           <td style="padding:14px;vertical-align:top;">
-            <div style="background:#DCFCE7;border-radius:8px;padding:10px 12px;">
-              <div style="font-weight:600;color:#16A34A;font-size:12px;margin-bottom:4px;">Bot acurácia ≥ 85%</div>
-              <div style="font-size:11px;color:#16A34A;">Resolut. RDR ≥ 25% (atual: 16-19%)</div>
-              <div style="font-size:11px;color:#16A34A;">SLA médio ≤ 5,5d</div>
+            <div style="background:var(--nu-off-white);border-radius:8px;padding:10px 12px;border-left:3px solid var(--nu-purple);">
+              <div style="font-weight:600;color:var(--nu-purple);font-size:12px;margin-bottom:4px;">Estruturação consolidada</div>
+              <div style="font-size:11px;color:var(--nu-black);">Resolut. RDR ≥ 25% (atual: 16-19%)</div>
+              <div style="font-size:11px;color:var(--nu-black);">SLA médio ≤ 4,8d</div>
             </div>
           </td>
           <td style="padding:14px;vertical-align:top;border-radius:0 0 10px 0;">
-            <div style="background:#DCFCE7;border-radius:8px;padding:10px 12px;">
-              <div style="font-weight:600;color:#16A34A;font-size:12px;margin-bottom:4px;">Capacidade validada</div>
-              <div style="font-size:11px;color:#16A34A;">Taxa resposta tNPS ≥ 12%</div>
-              <div style="font-size:11px;color:#16A34A;">SLA médio ≤ 5,0d | -23% redução</div>
+            <div style="background:var(--nu-off-white);border-radius:8px;padding:10px 12px;border-left:3px solid var(--nu-purple);">
+              <div style="font-weight:600;color:var(--nu-purple);font-size:12px;margin-bottom:4px;">Capacidade validada</div>
+              <div style="font-size:11px;color:var(--nu-black);">Taxa resposta tNPS ≥ 12%</div>
+              <div style="font-size:11px;color:var(--nu-black);">SLA médio ≤ 3,5d | -46% redução</div>
             </div>
           </td>
         </tr>
@@ -2337,22 +2338,22 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
       <div style="background:#FEE2E2;border-radius:10px;padding:16px 18px;border-left:4px solid #DC2626;">
         <div style="font-size:13px;font-weight:700;color:#DC2626;margin-bottom:8px;">Regulatório</div>
         <div style="font-size:12px;color:#991B1B;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> SLA não atingir meta, BACEN escalar penalidades</div>
-        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> Priorização Pareto + Task Force imediata em Collections</div>
+        <div style="font-size:12px;color:var(--nu-black);line-height:1.5;"><strong>Mitigação:</strong> Priorização Pareto + Task Force imediata em Collections</div>
       </div>
       <div style="background:#FEF3C7;border-radius:10px;padding:16px 18px;border-left:4px solid #D97706;">
         <div style="font-size:13px;font-weight:700;color:#D97706;margin-bottom:8px;">Operacional</div>
         <div style="font-size:12px;color:#92400E;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> Backlog crescer, time sobrecarregado com demandas BAU</div>
-        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> Templates + automação libera capacidade para estratégico</div>
+        <div style="font-size:12px;color:var(--nu-black);line-height:1.5;"><strong>Mitigação:</strong> Templates + automação libera capacidade para estratégico</div>
       </div>
       <div style="background:#EDE9FE;border-radius:10px;padding:16px 18px;border-left:4px solid var(--nu-purple);">
         <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:8px;">Pessoas</div>
         <div style="font-size:12px;color:#5B21B6;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> Sobrecarga de trabalho, rotatividade, resistência à mudança</div>
-        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> 1:1s semanais, quick wins visíveis, autonomia gradual</div>
+        <div style="font-size:12px;color:var(--nu-black);line-height:1.5;"><strong>Mitigação:</strong> 1:1s semanais, quick wins visíveis, autonomia gradual</div>
       </div>
       <div style="background:#E0E7FF;border-radius:10px;padding:16px 18px;border-left:4px solid #4F46E5;">
         <div style="font-size:13px;font-weight:700;color:#4F46E5;margin-bottom:8px;">Tecnológico</div>
         <div style="font-size:12px;color:#3730A3;line-height:1.5;margin-bottom:8px;"><strong>Risco:</strong> Bot não atingir acurácia esperada, dependência de Engenharia</div>
-        <div style="font-size:12px;color:#16A34A;line-height:1.5;"><strong>Mitigação:</strong> Shadow mode 2 semanas, GO/NO-GO com critérios claros</div>
+        <div style="font-size:12px;color:var(--nu-black);line-height:1.5;"><strong>Mitigação:</strong> Shadow mode 2 semanas, GO/NO-GO com critérios claros</div>
       </div>
     </div>
   </div>
