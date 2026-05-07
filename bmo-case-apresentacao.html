@@ -1061,7 +1061,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
           <div style="background:#4C1D95;color:white;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;">FASE 1</div>
           <div style="font-size:16px;font-weight:700;color:var(--nu-black);">Quick Wins (0-30 dias)</div>
-          <div style="margin-left:auto;font-size:13px;color:var(--chrome-grey);">Meta: SLA ≤ 6,0d</div>
+          <div style="margin-left:auto;background:#4C1D95;color:white;padding:6px 14px;border-radius:20px;font-size:14px;font-weight:700;">Meta: ≤ 6,0d</div>
         </div>
         
         <div style="display:flex;flex-direction:column;gap:12px;">
@@ -1085,7 +1085,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
           <div style="background:#7C3AED;color:white;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;">FASE 2</div>
           <div style="font-size:16px;font-weight:700;color:var(--nu-black);">Otimização (30-60 dias)</div>
-          <div style="margin-left:auto;font-size:13px;color:var(--chrome-grey);">Meta: SLA ≤ 5,5d</div>
+          <div style="margin-left:auto;background:#7C3AED;color:white;padding:6px 14px;border-radius:20px;font-size:14px;font-weight:700;">Meta: ≤ 5,5d</div>
         </div>
         
         <div style="display:flex;flex-direction:column;gap:12px;">
@@ -1111,7 +1111,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
           <div style="background:#A78BFA;color:white;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;">FASE 3</div>
           <div style="font-size:16px;font-weight:700;color:var(--nu-black);">Transformação (60-90 dias)</div>
-          <div style="margin-left:auto;font-size:13px;color:var(--chrome-grey);">Meta: SLA ≤ 5,0d</div>
+          <div style="margin-left:auto;background:#A78BFA;color:white;padding:6px 14px;border-radius:20px;font-size:14px;font-weight:700;">Meta: ≤ 5,0d</div>
         </div>
         
         <div style="display:flex;flex-direction:column;gap:12px;">
@@ -1135,20 +1135,25 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;">Impacto Esperado</div>
         
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
-          <div style="text-align:center;">
-            <div style="font-size:28px;font-weight:800;color:white;">6,48d</div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.6);">→ 5,0d</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.8);margin-top:4px;">SLA Médio</div>
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 8px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">SLA Médio</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <span style="font-size:16px;color:rgba(255,255,255,0.7);">6,48d</span>
+              <span style="font-size:14px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:24px;font-weight:800;color:white;">5,0d</span>
+            </div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-size:28px;font-weight:800;color:white;">46%</div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.6);">→ 20%</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.8);margin-top:4px;">Casos > 7 dias</div>
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 8px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">Casos > 7 dias</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <span style="font-size:16px;color:rgba(255,255,255,0.7);">46%</span>
+              <span style="font-size:14px;color:rgba(255,255,255,0.5);">→</span>
+              <span style="font-size:24px;font-weight:800;color:white;">20%</span>
+            </div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-size:28px;font-weight:800;color:white;">-23%</div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.6);">redução</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.8);margin-top:4px;">Tempo Total</div>
+          <div style="text-align:center;background:rgba(255,255,255,0.1);border-radius:10px;padding:14px 8px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px;">Redução Total</div>
+            <div style="font-size:28px;font-weight:800;color:#22C55E;">-23%</div>
           </div>
         </div>
 
