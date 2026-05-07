@@ -1736,40 +1736,61 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
 
     <div>
       <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
           <div style="background:var(--nu-purple);color:white;padding:10px 14px;border-radius:10px;font-size:14px;font-weight:700;">2</div>
           <div class="card-title" style="margin:0;font-size:16px;">AI CX Analysis Plugin</div>
         </div>
         
-        <div style="margin-bottom:18px;">
+        <div style="margin-bottom:14px;">
           <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">O que é</div>
-          <div style="font-size:14px;line-height:1.6;color:var(--nu-black);">
-            Análise de <strong>337K casos</strong> via IA para identificar padrões ocultos nos transcritos e preencher gaps de dados automaticamente.
+          <div style="font-size:13px;line-height:1.6;color:var(--nu-black);">
+            Ferramenta que usa LLMs para analisar <strong>337K casos</strong> e extrair insights automaticamente: categorização granular, detecção de recontatos, inferência de campos vazios.
           </div>
         </div>
 
-        <div style="margin-bottom:18px;">
+        <div style="margin-bottom:14px;">
+          <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Como funciona</div>
+          <div style="display:flex;gap:8px;font-size:11px;text-align:center;">
+            <div style="flex:1;background:var(--nu-off-white);border-radius:6px;padding:10px 6px;">
+              <div style="font-weight:700;color:var(--nu-purple);margin-bottom:2px;">1. Input</div>
+              <div style="color:var(--chrome-grey);">Texto do caso</div>
+            </div>
+            <div style="display:flex;align-items:center;color:var(--nu-purple);">→</div>
+            <div style="flex:1;background:var(--nu-off-white);border-radius:6px;padding:10px 6px;">
+              <div style="font-weight:700;color:var(--nu-purple);margin-bottom:2px;">2. Análise IA</div>
+              <div style="color:var(--chrome-grey);">Classifica e infere</div>
+            </div>
+            <div style="display:flex;align-items:center;color:var(--nu-purple);">→</div>
+            <div style="flex:1;background:var(--nu-off-white);border-radius:6px;padding:10px 6px;">
+              <div style="font-weight:700;color:var(--nu-purple);margin-bottom:2px;">3. Output</div>
+              <div style="color:var(--chrome-grey);">Insights e gaps</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:14px;">
           <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;">Gaps que resolve</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="background:var(--nu-off-white);border-radius:8px;padding:12px 14px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:13px;font-weight:600;color:var(--nu-purple);">IDs Repetidos (14,75%)</div>
-              <div style="font-size:12px;color:var(--nu-black);">Identificar se são recontatos ou problema de chave</div>
-            </div>
-            <div style="background:var(--nu-off-white);border-radius:8px;padding:12px 14px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:13px;font-weight:600;color:var(--nu-purple);">Receiving Method em branco (50,84%)</div>
-              <div style="font-size:12px;color:var(--nu-black);">Inferir classificação a partir do conteúdo</div>
-            </div>
-            <div style="background:var(--nu-off-white);border-radius:8px;padding:12px 14px;border-left:3px solid var(--nu-purple);">
-              <div style="font-size:13px;font-weight:600;color:var(--nu-purple);">97% reasons diferentes</div>
-              <div style="font-size:12px;color:var(--nu-black);">Análise qualitativa revela padrões ocultos</div>
-            </div>
-          </div>
+          <table style="width:100%;border-collapse:collapse;font-size:11px;">
+            <tbody>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:8px;background:#FAFAFA;font-weight:600;color:var(--nu-purple);width:40%;">IDs Repetidos (14,75%)</td>
+                <td style="padding:8px;">Analisa texto para identificar se é recontato real</td>
+              </tr>
+              <tr style="border-bottom:1px solid #E5E7EB;">
+                <td style="padding:8px;background:#FAFAFA;font-weight:600;color:var(--nu-purple);">Receiving Method vazio (50,84%)</td>
+                <td style="padding:8px;">Infere canal via menções no texto ("app", "chat")</td>
+              </tr>
+              <tr>
+                <td style="padding:8px;background:#FAFAFA;font-weight:600;color:var(--nu-purple);">97% reasons diferentes</td>
+                <td style="padding:8px;">Cria categorias granulares que revelam padrões</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div style="background:#FEF9C3;border-radius:8px;padding:12px 14px;border-left:3px solid #CA8A04;">
-          <div style="font-size:12px;font-weight:600;color:#CA8A04;margin-bottom:4px;">Conexão com Problemas Críticos</div>
+        <div style="background:#FEF9C3;border-radius:8px;padding:10px 12px;border-left:3px solid #CA8A04;">
           <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">
-            Resolver esses gaps habilita análises mais profundas para atacar as causas raiz de SLA, Resolutividade e tNPS.
+            <strong style="color:#CA8A04;">Conexão:</strong> Resolver gaps habilita análises mais profundas para atacar causas raiz de SLA, Resolutividade e tNPS.
           </div>
         </div>
       </div>
