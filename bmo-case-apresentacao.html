@@ -462,7 +462,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
         </div>
         <div>
           <div style="font-size:18px;font-weight:700;color:var(--nu-black);margin-bottom:4px;">Plano de Gestão 30-60-90 Dias</div>
-          <div style="font-size:13px;color:var(--chrome-grey);line-height:1.5;">Roadmap de execução, framework GUT, riscos e modelo de gestão de pessoas</div>
+          <div style="font-size:13px;color:var(--chrome-grey);line-height:1.5;">Roadmap de execução, framework RICE, riscos e modelo de gestão de pessoas</div>
         </div>
       </div>
       
@@ -2094,137 +2094,133 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   </div>
 </div>
 
-<!-- SLIDE 16: Framework GUT de Priorização -->
+<!-- SLIDE 16: Framework RICE de Priorização -->
 <div class="slide" data-slide="16">
   <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
   <div class="section-label">Framework de Priorização</div>
-  <div class="executive-conclusion">Matriz GUT para uso autônomo do time: BAU = demanda operacional imediata; Estratégico = melhoria estrutural de longo prazo.</div>
+  <div class="executive-conclusion">Matriz RICE para uso autônomo do time — modelo estruturado para priorizar ações de melhoria na Ouvidoria</div>
 
-  <div class="two-col" style="gap:40px;">
-    <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;margin-bottom:16px;">
-        <div class="card-title" style="margin-bottom:14px;font-size:16px;">Matriz GUT — Como Funciona</div>
-        <div style="display:flex;gap:12px;margin-bottom:16px;">
-          <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:12px;text-align:center;">
-            <div style="font-size:24px;font-weight:700;color:var(--nu-purple);">G</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Gravidade</div>
-            <div style="font-size:10px;color:var(--nu-black);">Impacto se não resolver</div>
-          </div>
-          <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:12px;text-align:center;">
-            <div style="font-size:24px;font-weight:700;color:var(--nu-purple);">U</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Urgência</div>
-            <div style="font-size:10px;color:var(--nu-black);">Prazo para resolver</div>
-          </div>
-          <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:12px;text-align:center;">
-            <div style="font-size:24px;font-weight:700;color:var(--nu-purple);">T</div>
-            <div style="font-size:11px;color:var(--chrome-grey);">Tendência</div>
-            <div style="font-size:10px;color:var(--nu-black);">Piora se não agir?</div>
-          </div>
-        </div>
-        <div style="background:#EDE9FE;border-radius:8px;padding:12px;text-align:center;">
-          <div style="font-size:12px;color:var(--nu-purple);margin-bottom:4px;">Fórmula</div>
-          <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">Prioridade = G × U × T</div>
-          <div style="font-size:11px;color:var(--chrome-grey);margin-top:4px;">Escala 1-5 para cada dimensão (máx: 125)</div>
-        </div>
-      </div>
-
-      <div style="background:var(--nu-off-white);border-radius:10px;padding:16px 20px;">
-        <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:10px;">Regra de Priorização</div>
-        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-weight:700;min-width:70px;text-align:center;">≥ 40</span>
-            <span>Fazer nos 90 dias</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span style="background:var(--nu-off-white);color:var(--chrome-grey);padding:4px 10px;border-radius:4px;font-weight:700;min-width:70px;text-align:center;border:1px solid #E5E7EB;">< 40</span>
-            <span>Backlog (avaliar após 90d)</span>
-          </div>
-        </div>
+  <!-- Explicação RICE -->
+  <div style="display:flex;gap:20px;margin-bottom:24px;">
+    <div style="flex:1;background:var(--nu-off-white);border-radius:12px;padding:20px;border-left:4px solid var(--nu-purple);">
+      <div style="font-size:13px;font-weight:700;color:var(--nu-purple);margin-bottom:12px;">O que é RICE?</div>
+      <div style="font-size:12px;color:var(--nu-black);line-height:1.6;margin-bottom:12px;">Framework de priorização que equilibra <strong>impacto potencial</strong> com <strong>esforço necessário</strong>, gerando um score objetivo para comparar iniciativas.</div>
+      <div style="background:#EDE9FE;border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:14px;font-weight:700;color:var(--nu-purple);">RICE = (R × I × C) ÷ E</div>
       </div>
     </div>
-
-    <div>
-      <div class="card" style="border-top:4px solid var(--nu-purple);padding:24px;">
-        <div class="card-title" style="margin-bottom:14px;font-size:16px;">Classificação das Ações — BAU vs Estratégico</div>
-        <table style="width:100%;border-collapse:collapse;font-size:11px;">
-          <thead>
-            <tr style="background:var(--nu-purple);color:white;">
-              <th style="padding:8px 6px;text-align:left;font-weight:700;">Ação</th>
-              <th style="padding:8px 4px;text-align:center;font-weight:700;">G</th>
-              <th style="padding:8px 4px;text-align:center;font-weight:700;">U</th>
-              <th style="padding:8px 4px;text-align:center;font-weight:700;">T</th>
-              <th style="padding:8px 6px;text-align:center;font-weight:700;">Score</th>
-              <th style="padding:8px 6px;text-align:center;font-weight:700;">Tipo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
-              <td style="padding:6px;font-weight:600;">Task Force Collections</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;">5</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;font-weight:700;">80</td>
-              <td style="padding:6px;text-align:center;"><span style="background:#16A34A;color:white;padding:2px 6px;border-radius:4px;font-size:9px;">BAU</span></td>
-            </tr>
-            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
-              <td style="padding:6px;font-weight:600;">Dashboard Executivo</td>
-              <td style="padding:6px;text-align:center;">5</td>
-              <td style="padding:6px;text-align:center;">5</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;font-weight:700;">75</td>
-              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
-            </tr>
-            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
-              <td style="padding:6px;font-weight:600;">Templates Resposta</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;font-weight:700;">64</td>
-              <td style="padding:6px;text-align:center;"><span style="background:#16A34A;color:white;padding:2px 6px;border-radius:4px;font-size:9px;">BAU</span></td>
-            </tr>
-            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
-              <td style="padding:6px;font-weight:600;">Agent IA Respostas</td>
-              <td style="padding:6px;text-align:center;">5</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;font-weight:700;">60</td>
-              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
-            </tr>
-            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
-              <td style="padding:6px;font-weight:600;">Bot Triagem (validação)</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;font-weight:700;">48</td>
-              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
-            </tr>
-            <tr style="border-bottom:1px solid #E5E7EB;background:#DCFCE7;">
-              <td style="padding:6px;font-weight:600;">IA Generativa Respostas</td>
-              <td style="padding:6px;text-align:center;">5</td>
-              <td style="padding:6px;text-align:center;">2</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;font-weight:700;">40</td>
-              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
-            </tr>
-            <tr style="border-bottom:1px solid #E5E7EB;">
-              <td style="padding:6px;">Dashboard Monitoramento</td>
-              <td style="padding:6px;text-align:center;">4</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;">36</td>
-              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
-            </tr>
-            <tr>
-              <td style="padding:6px;">Estudo Dimensionamento</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;">2</td>
-              <td style="padding:6px;text-align:center;">3</td>
-              <td style="padding:6px;text-align:center;">18</td>
-              <td style="padding:6px;text-align:center;"><span style="background:var(--nu-purple);color:white;padding:2px 6px;border-radius:4px;font-size:9px;">ESTR</span></td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="flex:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+      <div style="background:white;border-radius:10px;padding:14px;text-align:center;border:2px solid var(--nu-purple);">
+        <div style="font-size:28px;font-weight:700;color:var(--nu-purple);">R</div>
+        <div style="font-size:12px;font-weight:700;color:var(--nu-black);margin-bottom:4px;">Reach</div>
+        <div style="font-size:10px;color:var(--chrome-grey);line-height:1.4;">Quantas pessoas/casos são impactados?</div>
       </div>
+      <div style="background:white;border-radius:10px;padding:14px;text-align:center;border:2px solid #7C3AED;">
+        <div style="font-size:28px;font-weight:700;color:#7C3AED;">I</div>
+        <div style="font-size:12px;font-weight:700;color:var(--nu-black);margin-bottom:4px;">Impact</div>
+        <div style="font-size:10px;color:var(--chrome-grey);line-height:1.4;">Qual o nível de impacto? (1-3)</div>
+      </div>
+      <div style="background:white;border-radius:10px;padding:14px;text-align:center;border:2px solid #A78BFA;">
+        <div style="font-size:28px;font-weight:700;color:#A78BFA;">C</div>
+        <div style="font-size:12px;font-weight:700;color:var(--nu-black);margin-bottom:4px;">Confidence</div>
+        <div style="font-size:10px;color:var(--chrome-grey);line-height:1.4;">Qual a confiança? (0.5-1.0)</div>
+      </div>
+      <div style="background:white;border-radius:10px;padding:14px;text-align:center;border:2px solid #C4B5FD;">
+        <div style="font-size:28px;font-weight:700;color:#C4B5FD;">E</div>
+        <div style="font-size:12px;font-weight:700;color:var(--nu-black);margin-bottom:4px;">Effort</div>
+        <div style="font-size:10px;color:var(--chrome-grey);line-height:1.4;">Quantas semanas/pessoa? (1-5)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabela RICE - Modelo para o time -->
+  <div style="background:white;border-radius:12px;overflow:hidden;border:1px solid #E5E7EB;">
+    <div style="background:var(--nu-purple);color:white;padding:12px 20px;font-size:14px;font-weight:700;">Modelo de Priorização — Ações de Melhoria Ouvidoria</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="background:#F9FAFB;">
+          <th style="padding:12px 14px;text-align:left;font-weight:700;border-bottom:2px solid #E5E7EB;">Ação</th>
+          <th style="padding:12px 10px;text-align:left;font-weight:700;border-bottom:2px solid #E5E7EB;width:22%;">Descrição</th>
+          <th style="padding:12px 8px;text-align:center;font-weight:700;border-bottom:2px solid #E5E7EB;">R</th>
+          <th style="padding:12px 8px;text-align:center;font-weight:700;border-bottom:2px solid #E5E7EB;">I</th>
+          <th style="padding:12px 8px;text-align:center;font-weight:700;border-bottom:2px solid #E5E7EB;">C</th>
+          <th style="padding:12px 8px;text-align:center;font-weight:700;border-bottom:2px solid #E5E7EB;">E</th>
+          <th style="padding:12px 10px;text-align:center;font-weight:700;border-bottom:2px solid #E5E7EB;">Score</th>
+          <th style="padding:12px 10px;text-align:center;font-weight:700;border-bottom:2px solid #E5E7EB;">Ranking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:10px 14px;font-weight:600;">Task Force Collections</td>
+          <td style="padding:10px;font-size:11px;color:var(--chrome-grey);">Reduzir backlog SLA > 7d em Collections</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px 8px;text-align:center;">1.0</td>
+          <td style="padding:10px 8px;text-align:center;">2</td>
+          <td style="padding:10px;text-align:center;font-weight:700;color:var(--nu-purple);">4.5</td>
+          <td style="padding:10px;text-align:center;"><span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-weight:700;">1</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:10px 14px;font-weight:600;">Fila Prioritária RDR</td>
+          <td style="padding:10px;font-size:11px;color:var(--chrome-grey);">Playbook dedicado para casos BACEN</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px 8px;text-align:center;">0.8</td>
+          <td style="padding:10px 8px;text-align:center;">2</td>
+          <td style="padding:10px;text-align:center;font-weight:700;color:var(--nu-purple);">3.6</td>
+          <td style="padding:10px;text-align:center;"><span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-weight:700;">2</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:10px 14px;font-weight:600;">Templates Resposta SCR</td>
+          <td style="padding:10px;font-size:11px;color:var(--chrome-grey);">Padronizar respostas reasons críticos</td>
+          <td style="padding:10px 8px;text-align:center;">2</td>
+          <td style="padding:10px 8px;text-align:center;">2</td>
+          <td style="padding:10px 8px;text-align:center;">1.0</td>
+          <td style="padding:10px 8px;text-align:center;">1</td>
+          <td style="padding:10px;text-align:center;font-weight:700;color:var(--nu-purple);">4.0</td>
+          <td style="padding:10px;text-align:center;"><span style="background:#DCFCE7;color:#16A34A;padding:4px 10px;border-radius:4px;font-weight:700;">3</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #E5E7EB;">
+          <td style="padding:10px 14px;font-weight:600;">Retomada Bot Triagem</td>
+          <td style="padding:10px;font-size:11px;color:var(--chrome-grey);">Validação técnica + shadow mode</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px 8px;text-align:center;">2</td>
+          <td style="padding:10px 8px;text-align:center;">0.5</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px;text-align:center;font-weight:700;color:var(--nu-purple);">1.0</td>
+          <td style="padding:10px;text-align:center;"><span style="background:#FEF3C7;color:#D97706;padding:4px 10px;border-radius:4px;font-weight:700;">4</span></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;font-weight:600;">Agent IA Respostas</td>
+          <td style="padding:10px;font-size:11px;color:var(--chrome-grey);">Automação de respostas simples</td>
+          <td style="padding:10px 8px;text-align:center;">2</td>
+          <td style="padding:10px 8px;text-align:center;">3</td>
+          <td style="padding:10px 8px;text-align:center;">0.5</td>
+          <td style="padding:10px 8px;text-align:center;">4</td>
+          <td style="padding:10px;text-align:center;font-weight:700;color:var(--nu-purple);">0.75</td>
+          <td style="padding:10px;text-align:center;"><span style="background:#FEF3C7;color:#D97706;padding:4px 10px;border-radius:4px;font-weight:700;">5</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Legenda e orientação -->
+  <div style="display:flex;gap:16px;margin-top:16px;">
+    <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:14px 18px;">
+      <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">Escala de Reach (R)</div>
+      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">1 = < 10k casos | 2 = 10-50k | 3 = > 50k casos/mês</div>
+    </div>
+    <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:14px 18px;">
+      <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">Escala de Impact (I)</div>
+      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">1 = Baixo | 2 = Médio | 3 = Alto impacto em KPI</div>
+    </div>
+    <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:14px 18px;">
+      <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">Escala de Confidence (C)</div>
+      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">0.5 = Baixa | 0.8 = Média | 1.0 = Alta confiança</div>
+    </div>
+    <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:14px 18px;">
+      <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:6px;">Escala de Effort (E)</div>
+      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">1 = 1 semana | 2 = 2 sem | 3 = 1 mês | 4-5 = +1 mês</div>
     </div>
   </div>
 </div>
@@ -2553,7 +2549,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   <div style="display:flex;gap:16px;padding:12px 10px 0;">
     <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:10px 14px;border-left:4px solid var(--nu-purple);">
       <div style="font-size:11px;font-weight:700;color:var(--nu-purple);margin-bottom:4px;">Conexão com 30-60-90</div>
-      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">Rituais suportam entregas: Daily = progresso GUT | 1:1 = PDI e carreira | Weekly = BAU vs Estratégico</div>
+      <div style="font-size:11px;color:var(--nu-black);line-height:1.5;">Rituais suportam entregas: Daily = progresso RICE | 1:1 = PDI e carreira | Weekly = BAU vs Estratégico</div>
     </div>
     <div style="flex:1;background:var(--nu-off-white);border-radius:8px;padding:10px 14px;border-left:4px solid #16A34A;">
       <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:4px;">Construção de Autonomia</div>
