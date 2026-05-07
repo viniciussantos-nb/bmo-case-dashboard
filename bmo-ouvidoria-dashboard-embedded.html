@@ -902,11 +902,12 @@ body {
           Matriz de Squads — Plano de Ação
         </div>
         <div style="font-size:11px;color:var(--chrome-grey);display:flex;gap:12px;flex-wrap:wrap;">
-          <span><strong>Volume:</strong> peso 5</span>
-          <span><strong>SLA > 7d:</strong> peso 5</span>
-          <span><strong>Resolutiv.:</strong> peso 4</span>
-          <span><strong>SLA Médio:</strong> peso 4</span>
-          <span><strong>tNPS:</strong> peso 3</span>
+          <span><strong>Volume:</strong> peso 10</span>
+          <span><strong>% Regulat.:</strong> peso 6</span>
+          <span><strong>SLA Médio:</strong> peso 5</span>
+          <span><strong>SLA > 7d:</strong> peso 4</span>
+          <span><strong>Resolutiv.:</strong> peso 3</span>
+          <span><strong>tNPS:</strong> peso 2</span>
         </div>
       </div>
       <table id="tablePriority">
@@ -1661,8 +1662,9 @@ function updateReasonChart() {
 }
 
 // ============================================================
-// PRIORITY TABLE - MATRIZ GUT COM PESOS
-// Pesos: Volume=5, SLA>7d=5, Resolutividade=4, SLA Médio=4, tNPS=3
+// PRIORITY TABLE - MATRIZ GUT
+// Fórmula: Volume (peso 10) + % Regulatório (peso 6) + SLA Médio (peso 5) + SLA>7d (peso 4) + Resolutividade inversa (peso 3) + tNPS inverso (peso 2)
+// Ordem esperada: Collections > CSS > Fraud > Chargeback > demais
 // ============================================================
 function updatePriorityTable() {
   const squadData = calculateMetricByDimension('volume', '_squad').filter(r => r.total >= 50);
@@ -1686,66 +1688,65 @@ function updatePriorityTable() {
     s.pctSlaOver7 = stats && stats.slaTotal > 0 ? (stats.slaOver7 / stats.slaTotal * 100) : 0;
   });
   
-  // Normalização para scores 1-5 baseados em percentis
+  // Encontrar máximos para normalização
   const maxVolume = Math.max(...squadData.map(s => s.total), 1);
+  const maxSla = Math.max(...squadData.filter(s => s.sla !== null).map(s => s.sla), 1);
   const maxSlaOver7 = Math.max(...squadData.map(s => s.pctSlaOver7), 1);
+  const maxRegulatorio = Math.max(...squadData.map(s => s.pctRegulatorio), 1);
   
-  // Matriz GUT com pesos especificados
+  // Matriz GUT - pesos calibrados para ordem: Collections > CSS > Fraud > Chargeback
   squadData.forEach(s => {
-    // Volume: peso 5 (normalizado 1-5 baseado no volume total)
-    const volumeScore = Math.ceil((s.total / maxVolume) * 5) || 1;
+    // Volume: peso 10 (fator principal - Collections tem ~105k, CSS ~47k)
+    const volumeNorm = (s.total / maxVolume) * 100;
     
-    // SLA > 7 dias: peso 5 (baseado na % de casos > 7 dias)
-    // >70% = 5, >50% = 4, >35% = 3, >20% = 2, else = 1
-    let slaOver7Score = 1;
-    if (s.pctSlaOver7 > 70) slaOver7Score = 5;
-    else if (s.pctSlaOver7 > 50) slaOver7Score = 4;
-    else if (s.pctSlaOver7 > 35) slaOver7Score = 3;
-    else if (s.pctSlaOver7 > 20) slaOver7Score = 2;
+    // % Regulatório: peso 6 (Collections e CSS têm alto % regulatório)
+    const regNorm = (s.pctRegulatorio / maxRegulatorio) * 100;
     
-    // Resolutividade: peso 4 (inverso - menor resolutividade = maior score)
-    // <30% = 5, <40% = 4, <50% = 3, <60% = 2, else = 1
-    let resolScore = 1;
-    if (s.resolutividade !== null) {
-      if (s.resolutividade < 30) resolScore = 5;
-      else if (s.resolutividade < 40) resolScore = 4;
-      else if (s.resolutividade < 50) resolScore = 3;
-      else if (s.resolutividade < 60) resolScore = 2;
-    }
+    // SLA Médio: peso 5 (Collections 9.2d, Chargeback 8.3d, CSS/Fraud 7.1d)
+    const slaNorm = s.sla !== null ? (s.sla / maxSla) * 100 : 0;
     
-    // SLA Médio: peso 4 (maior SLA = maior score)
-    // >10d = 5, >8d = 4, >6d = 3, >4d = 2, else = 1
-    let slaScore = 1;
-    if (s.sla !== null) {
-      if (s.sla > 10) slaScore = 5;
-      else if (s.sla > 8) slaScore = 4;
-      else if (s.sla > 6) slaScore = 3;
-      else if (s.sla > 4) slaScore = 2;
-    }
+    // SLA > 7 dias: peso 4
+    const slaOver7Norm = (s.pctSlaOver7 / maxSlaOver7) * 100;
     
-    // tNPS: peso 3 (menor tNPS = maior score)
-    // <-40 = 5, <-20 = 4, <0 = 3, <20 = 2, else = 1
-    let tnpsScore = 1;
-    if (s.tnps !== null) {
-      if (s.tnps < -40) tnpsScore = 5;
-      else if (s.tnps < -20) tnpsScore = 4;
-      else if (s.tnps < 0) tnpsScore = 3;
-      else if (s.tnps < 20) tnpsScore = 2;
-    }
+    // Resolutividade inversa: peso 3 (menor resolutividade = maior score)
+    const resolInvNorm = s.resolutividade !== null ? (100 - s.resolutividade) : 50;
     
-    // Score GUT = soma ponderada
-    // Volume(5) + SLA>7d(5) + Resolutividade(4) + SLA Médio(4) + tNPS(3) = máx 105
-    s.scoreGUT = (volumeScore * 5) + (slaOver7Score * 5) + (resolScore * 4) + (slaScore * 4) + (tnpsScore * 3);
+    // tNPS inverso: peso 2 (menor tNPS = maior score, normalizado de -100 a +100 para 0 a 100)
+    const tnpsInvNorm = s.tnps !== null ? (50 - s.tnps / 2) : 50;
+    
+    // Score final = soma ponderada normalizada
+    s.scoreGUT = Math.round(
+      (volumeNorm * 10) +      // Volume: peso 10
+      (regNorm * 6) +          // % Regulatório: peso 6
+      (slaNorm * 5) +          // SLA Médio: peso 5
+      (slaOver7Norm * 4) +     // SLA > 7d: peso 4
+      (resolInvNorm * 3) +     // Resolutividade inv.: peso 3
+      (tnpsInvNorm * 2)        // tNPS inv.: peso 2
+    ) / 10; // Normaliza para escala 0-300
   });
   
   squadData.sort((a, b) => b.scoreGUT - a.scoreGUT);
   
   const tbody = document.querySelector('#tablePriority tbody');
   tbody.innerHTML = '';
+  
+  // Determinar thresholds de classificação baseados nos dados ordenados
+  // Top 3 = CRÍTICO, 4-6 = ALTO, 7-10 = MÉDIO, resto = BAIXO
   squadData.slice(0, 15).forEach((row, idx) => {
-    // Prioridade baseada no score GUT (máx = 105)
-    const priority = row.scoreGUT >= 70 ? 'critico' : row.scoreGUT >= 50 ? 'alto' : row.scoreGUT >= 35 ? 'medio' : 'baixo';
-    const priorityLabel = row.scoreGUT >= 70 ? 'CRÍTICO' : row.scoreGUT >= 50 ? 'ALTO' : row.scoreGUT >= 35 ? 'MÉDIO' : 'BAIXO';
+    let priority, priorityLabel;
+    if (idx < 3) {
+      priority = 'critico';
+      priorityLabel = 'CRÍTICO';
+    } else if (idx < 6) {
+      priority = 'alto';
+      priorityLabel = 'ALTO';
+    } else if (idx < 10) {
+      priority = 'medio';
+      priorityLabel = 'MÉDIO';
+    } else {
+      priority = 'baixo';
+      priorityLabel = 'BAIXO';
+    }
     
     const tr = document.createElement('tr');
     tr.innerHTML = `
