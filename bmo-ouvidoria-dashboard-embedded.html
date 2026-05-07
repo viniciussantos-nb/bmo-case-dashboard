@@ -894,17 +894,15 @@ body {
       </div>
     </div>
 
-    <!-- Tabela de Priorização com Matriz GUT -->
+    <!-- Tabela de Priorização -->
     <div class="table-section">
       <div class="section-header">
         <div class="section-title">
-          <span class="section-badge">PRIORIZAÇÃO GUT</span>
-          Matriz de Squads — Gravidade × Urgência × Tendência
+          <span class="section-badge">PRIORIZAÇÃO</span>
+          Matriz de Squads — Plano de Ação
         </div>
-        <div class="gut-legend" style="display:flex;gap:16px;font-size:11px;color:var(--chrome-grey);">
-          <span><strong>G</strong> = Vol. Regulatório (peso 5)</span>
-          <span><strong>U</strong> = SLA Médio (peso 5)</span>
-          <span><strong>T</strong> = Tendência SLA</span>
+        <div style="font-size:11px;color:var(--chrome-grey);">
+          Score = Volume Regulatório + SLA + Resolutividade + tNPS (peso máximo: regulatório e SLA)
         </div>
       </div>
       <table id="tablePriority">
@@ -912,13 +910,12 @@ body {
           <tr>
             <th>#</th>
             <th>Squad</th>
-            <th>Vol. Reg.</th>
+            <th>Volume</th>
             <th>SLA Médio</th>
-            <th>G</th>
-            <th>U</th>
-            <th>T</th>
-            <th>Score GUT</th>
-            <th>Ação</th>
+            <th>Resolutiv.</th>
+            <th>tNPS</th>
+            <th>% Regulat.</th>
+            <th>Prioridade</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -1368,13 +1365,14 @@ function updateDashboard() {
     document.getElementById('bnTaxaRespostaSubtitle').textContent = `${formatNumber(metrics.tnpsRespostas)} de ${formatNumber(metrics.volumeTotal)} responderam`;
   }
   
-  // Casos SLA > 7 dias (novo KPI)
+  // Casos SLA > 7 dias (novo KPI) — soma das faixas 8-10 dias e 11+ dias
   const slaCriticoEl = document.getElementById('bnSlaCritico');
   if (slaCriticoEl) {
-    const pctSlaCritico = metrics.volumeTotal > 0 ? (metrics.slaFaixas['>7 dias'] || 0) / metrics.volumeTotal * 100 : 0;
+    const casosCriticos = (metrics.slaFaixas['8-10 dias'] || 0) + (metrics.slaFaixas['11+ dias'] || 0);
+    const pctSlaCritico = metrics.volumeTotal > 0 ? casosCriticos / metrics.volumeTotal * 100 : 0;
     slaCriticoEl.textContent = pctSlaCritico.toFixed(1) + '%';
     slaCriticoEl.className = 'bn-value ' + (pctSlaCritico > 40 ? 'danger' : pctSlaCritico > 20 ? 'warning' : 'success');
-    document.getElementById('bnSlaCriticoSubtitle').textContent = `${formatNumber(metrics.slaFaixas['>7 dias'] || 0)} casos críticos`;
+    document.getElementById('bnSlaCriticoSubtitle').textContent = `${formatNumber(casosCriticos)} casos críticos`;
   }
   
   // Breakdown SLA
@@ -1657,92 +1655,69 @@ function updateReasonChart() {
 }
 
 // ============================================================
-// PRIORITY TABLE - MATRIZ GUT
+// PRIORITY TABLE
 // ============================================================
 function updatePriorityTable() {
   const squadData = calculateMetricByDimension('volume', '_squad').filter(r => r.total >= 50);
   
-  // Calculate volume regulatório per squad
+  // Calculate regulatorio % per squad
   const squadReg = {};
-  const squadSlaTrend = {}; // Para tendência
   filteredData.forEach(r => {
     const squad = r._squad || 'Sem Squad';
-    if (!squadReg[squad]) squadReg[squad] = { total: 0, reg: 0, slaRecent: [], slaOld: [] };
+    if (!squadReg[squad]) squadReg[squad] = { total: 0, reg: 0 };
     squadReg[squad].total++;
     if (r._canalRegulatorio !== 'Nao Regulatorio') squadReg[squad].reg++;
-    
-    // Tendência: compara SLA dos últimos 30 dias vs anteriores
-    if (r._creationDate && r._sla !== null) {
-      const daysAgo = (new Date() - r._creationDate) / (1000 * 60 * 60 * 24);
-      if (daysAgo <= 30) squadReg[squad].slaRecent.push(r._sla);
-      else if (daysAgo <= 60) squadReg[squad].slaOld.push(r._sla);
-    }
   });
   
   squadData.forEach(s => {
-    const regData = squadReg[s.label];
-    s.volRegulatorio = regData ? regData.reg : 0;
-    
-    // Tendência SLA (T): 1 = estável/melhorando, 3 = degradando, 5 = degradando rápido
-    const avgRecent = regData?.slaRecent.length > 0 ? regData.slaRecent.reduce((a,b)=>a+b,0)/regData.slaRecent.length : null;
-    const avgOld = regData?.slaOld.length > 0 ? regData.slaOld.reduce((a,b)=>a+b,0)/regData.slaOld.length : null;
-    if (avgRecent && avgOld) {
-      const diff = avgRecent - avgOld;
-      s.tendencia = diff > 2 ? 5 : diff > 1 ? 4 : diff > 0.5 ? 3 : diff > 0 ? 2 : 1;
-      s.tendenciaLabel = diff > 1 ? '↑↑' : diff > 0 ? '↑' : diff < -1 ? '↓↓' : diff < 0 ? '↓' : '→';
-    } else {
-      s.tendencia = 3; // Neutro se não tem dados suficientes
-      s.tendenciaLabel = '→';
-    }
+    s.pctRegulatorio = squadReg[s.label] ? (squadReg[s.label].reg / squadReg[s.label].total * 100) : 0;
+    s.volRegulatorio = squadReg[s.label] ? squadReg[s.label].reg : 0;
   });
   
-  // Normalização para scores 1-5 (Matriz GUT)
-  const maxVolReg = Math.max(...squadData.map(s => s.volRegulatorio), 1);
-  const maxSla = Math.max(...squadData.filter(s => s.sla !== null).map(s => s.sla), 1);
-  
+  // Score com peso máximo para Volume Regulatório e SLA
   squadData.forEach(s => {
-    // G (Gravidade) = Volume Regulatório normalizado (peso 5)
-    s.gravidade = Math.ceil((s.volRegulatorio / maxVolReg) * 5) || 1;
+    s.score = 0;
+    // SLA (peso máximo: até 5 pontos)
+    if (s.sla !== null && s.sla > 10) s.score += 5;
+    else if (s.sla !== null && s.sla > 7) s.score += 4;
+    else if (s.sla !== null && s.sla > 5) s.score += 3;
+    else if (s.sla !== null && s.sla > 3) s.score += 2;
     
-    // U (Urgência) = SLA Médio normalizado (peso 5)
-    // SLA > 10 = 5, SLA 7-10 = 4, SLA 5-7 = 3, SLA 3-5 = 2, SLA < 3 = 1
-    if (s.sla === null) s.urgencia = 1;
-    else if (s.sla > 10) s.urgencia = 5;
-    else if (s.sla > 7) s.urgencia = 4;
-    else if (s.sla > 5) s.urgencia = 3;
-    else if (s.sla > 3) s.urgencia = 2;
-    else s.urgencia = 1;
+    // Volume Regulatório (peso máximo: até 5 pontos, normalizado)
+    // Usa escala: >10k=5, >5k=4, >2k=3, >1k=2, >500=1
+    if (s.volRegulatorio > 10000) s.score += 5;
+    else if (s.volRegulatorio > 5000) s.score += 4;
+    else if (s.volRegulatorio > 2000) s.score += 3;
+    else if (s.volRegulatorio > 1000) s.score += 2;
+    else if (s.volRegulatorio > 500) s.score += 1;
     
-    // T (Tendência) já calculado acima
+    // Resolutividade (peso menor: até 2 pontos)
+    if (s.resolutividade !== null && s.resolutividade < 50) s.score += 2;
+    else if (s.resolutividade !== null && s.resolutividade < 70) s.score += 1;
     
-    // Score GUT = G × U × T
-    s.scoreGUT = s.gravidade * s.urgencia * s.tendencia;
+    // tNPS (peso menor: até 2 pontos)
+    if (s.tnps !== null && s.tnps < -20) s.score += 2;
+    else if (s.tnps !== null && s.tnps < 0) s.score += 1;
   });
   
-  // Sort by GUT score descending
-  squadData.sort((a, b) => b.scoreGUT - a.scoreGUT);
+  squadData.sort((a, b) => b.score - a.score);
   
   const tbody = document.querySelector('#tablePriority tbody');
   tbody.innerHTML = '';
   squadData.slice(0, 15).forEach((row, idx) => {
-    // Ação baseada no score GUT
-    let acao, acaoClass;
-    if (row.scoreGUT >= 60) { acao = 'Ação Imediata'; acaoClass = 'critico'; }
-    else if (row.scoreGUT >= 40) { acao = 'Prioridade Alta'; acaoClass = 'alto'; }
-    else if (row.scoreGUT >= 20) { acao = 'Monitorar'; acaoClass = 'medio'; }
-    else { acao = 'Backlog'; acaoClass = 'baixo'; }
+    const priority = row.score >= 8 ? 'critico' : row.score >= 5 ? 'alto' : row.score >= 3 ? 'medio' : 'baixo';
+    const priorityLabel = row.score >= 8 ? 'CRÍTICO' : row.score >= 5 ? 'ALTO' : row.score >= 3 ? 'MÉDIO' : 'BAIXO';
     
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><strong>${idx + 1}</strong></td>
       <td><strong>${truncate(row.label, 25)}</strong></td>
-      <td style="font-weight: ${row.volRegulatorio > 1000 ? 'bold' : 'normal'}; color: ${row.volRegulatorio > 1000 ? nuRed : 'inherit'};">${formatNumber(row.volRegulatorio)}</td>
+      <td>${formatNumber(row.total)}</td>
       <td style="color: ${row.sla > 7 ? nuRed : row.sla > 5 ? nuYellow : 'inherit'}; font-weight: ${row.sla > 7 ? 'bold' : 'normal'};">${row.sla !== null ? row.sla.toFixed(1) + 'd' : '-'}</td>
-      <td style="font-weight: bold; color: ${row.gravidade >= 4 ? nuRed : row.gravidade >= 3 ? nuYellow : 'inherit'};">${row.gravidade}</td>
-      <td style="font-weight: bold; color: ${row.urgencia >= 4 ? nuRed : row.urgencia >= 3 ? nuYellow : 'inherit'};">${row.urgencia}</td>
-      <td style="font-weight: bold; color: ${row.tendencia >= 4 ? nuRed : row.tendencia >= 3 ? nuYellow : 'inherit'};">${row.tendencia} ${row.tendenciaLabel}</td>
-      <td style="font-weight: bold; font-size: 14px;">${row.scoreGUT}</td>
-      <td><span class="badge ${acaoClass}">${acao}</span></td>
+      <td style="color: ${row.resolutividade < 50 ? nuRed : row.resolutividade < 70 ? nuYellow : 'inherit'}; font-weight: ${row.resolutividade < 70 ? 'bold' : 'normal'};">${row.resolutividade !== null ? row.resolutividade.toFixed(1) + '%' : '-'}</td>
+      <td style="color: ${row.tnps < -20 ? nuRed : row.tnps < 0 ? nuYellow : 'inherit'}; font-weight: ${row.tnps < 0 ? 'bold' : 'normal'};">${row.tnps !== null ? row.tnps : '-'}</td>
+      <td style="font-weight: ${row.pctRegulatorio > 50 ? 'bold' : 'normal'};">${row.pctRegulatorio.toFixed(1)}%</td>
+      <td><span class="badge ${priority}">${priorityLabel}</span></td>
     `;
     tbody.appendChild(tr);
   });
