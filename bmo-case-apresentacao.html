@@ -1565,8 +1565,119 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
   </div>
 </div>
 
-<!-- SLIDE 12: Closing -->
-<div class="slide purple-bg" data-slide="12" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+<!-- SLIDE 12: Metodologia de ROI -->
+<div class="slide" data-slide="12">
+  <div class="chrome"><span>Nubank</span><span>Confidencial</span></div>
+  <div class="section-label">Metodologia de Mensuração</div>
+  <div class="executive-conclusion">Saving = Horas Economizadas × Custo/Hora FTE. Variáveis X e Y devem ser obtidas com operação e RH.</div>
+
+  <div class="two-col" style="gap:40px;">
+    <div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;">
+        <div class="card-title" style="margin-bottom:20px;font-size:16px;">Fluxo de Cálculo do ROI</div>
+        
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Step 1 -->
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">1</div>
+            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
+              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Volume Anual</div>
+              <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">337.613 casos</div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
+          
+          <!-- Step 2 -->
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">2</div>
+            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
+              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Tempo Manual por Caso</div>
+              <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">X <span style="font-weight:400;font-size:14px;color:var(--nu-black);">min/caso</span></div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
+          
+          <!-- Step 3 -->
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">3</div>
+            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
+              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Redução com Bot</div>
+              <div style="font-size:16px;font-weight:700;color:var(--nu-purple);">35% <span style="font-weight:400;font-size:14px;color:var(--nu-black);">→ Economia = X × 0,35 min</span></div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
+          
+          <!-- Step 4 -->
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="background:var(--nu-purple);color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">4</div>
+            <div style="flex:1;background:var(--nu-off-white);border-radius:10px;padding:14px 18px;border-left:3px solid var(--nu-purple);">
+              <div style="font-size:12px;color:var(--chrome-grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Horas Economizadas</div>
+              <div style="font-size:14px;font-weight:600;color:var(--nu-black);">(337.613 × X × 0,35) / 60</div>
+            </div>
+          </div>
+          
+          <!-- Arrow -->
+          <div style="text-align:center;color:var(--nu-purple);font-size:18px;">↓</div>
+          
+          <!-- Step 5 - Result -->
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="background:#16A34A;color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;min-width:32px;text-align:center;">$</div>
+            <div style="flex:1;background:#DCFCE7;border-radius:10px;padding:14px 18px;border-left:3px solid #16A34A;">
+              <div style="font-size:12px;color:#16A34A;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;">Saving Anual</div>
+              <div style="font-size:16px;font-weight:700;color:#16A34A;">Horas Economizadas × Y <span style="font-weight:400;font-size:14px;">(R$/hora)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="border-top:4px solid var(--nu-purple);padding:28px;margin-bottom:20px;">
+        <div class="card-title" style="margin-bottom:18px;font-size:16px;">Definição das Variáveis</div>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <tbody>
+            <tr style="border-bottom:1px solid #E5E7EB;">
+              <td style="padding:14px;font-weight:700;background:#FAFAFA;width:60px;text-align:center;"><span style="color:var(--nu-purple);font-size:18px;">X</span></td>
+              <td style="padding:14px;line-height:1.5;">
+                <strong>Tempo médio de categorização manual</strong><br>
+                <span style="font-size:12px;color:var(--chrome-grey);">Minutos que um analista leva para ler, entender e categorizar um caso. Obter via time study.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:14px;font-weight:700;background:#FAFAFA;width:60px;text-align:center;"><span style="color:var(--nu-purple);font-size:18px;">Y</span></td>
+              <td style="padding:14px;line-height:1.5;">
+                <strong>Custo/hora do FTE</strong><br>
+                <span style="font-size:12px;color:var(--chrome-grey);">(Salário + encargos) / horas úteis mensais. Obter com RH ou estimar ~R$ 40-60/hora.</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="border-top:4px solid #16A34A;padding:28px;margin-bottom:20px;">
+        <div class="card-title" style="margin-bottom:14px;font-size:16px;color:#16A34A;">Capacidade Liberada (FTEs)</div>
+        <div style="background:#DCFCE7;border-radius:10px;padding:16px 20px;text-align:center;">
+          <div style="font-size:14px;color:#16A34A;margin-bottom:8px;">Fórmula</div>
+          <div style="font-size:18px;font-weight:700;color:#16A34A;">FTEs = Horas Economizadas / 1.760h</div>
+          <div style="font-size:12px;color:var(--chrome-grey);margin-top:8px;">1.760h = horas úteis anuais por analista (8h × 22 dias × 10 meses)</div>
+        </div>
+      </div>
+
+      <div class="key-message" style="padding:16px 20px;font-size:13px;">
+        <strong>Próximo Passo:</strong> Obter X com time study da operação e Y com RH. O saving potencial justifica a validação técnica proposta no Slide 11.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13: Closing -->
+<div class="slide purple-bg" data-slide="13" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
   <div class="chrome" style="position:absolute;top:40px;left:56px;right:56px;"><span>Nubank</span><span>Confidencial</span></div>
   <div style="text-align:center;">
     <div style="font-size:24px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:24px;">Diagnóstico Estruturado</div>
@@ -1591,7 +1702,7 @@ const total = slides.length;
 const SLIDE_W = 1600;
 const SLIDE_H = 900;
 
-const PAGE_NUMS = [null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, null];
+const PAGE_NUMS = [null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, null];
 
 function scaleSlides() {
   const vw = window.innerWidth;
