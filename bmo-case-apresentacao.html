@@ -2643,6 +2643,575 @@ document.addEventListener('click', e => {
 
 showSlide(0);
 scaleSlides();
+
+// ==================== SPEAKER NOTES MODE ====================
+const SPEAKER_NOTES = {
+  0: {
+    title: "Capa",
+    time: "30 seg",
+    notes: `Bom dia/Boa tarde. Sou Vinícius Santos e vou apresentar minha análise do case de BMO Ouvidoria.
+
+Antes de começar, quero compartilhar a conclusão principal que cheguei — assim vocês podem acompanhar meu raciocínio sabendo onde vou chegar:
+
+<strong>Identifiquei 3 problemas críticos na operação, mas descobri que eles não são independentes. O SLA elevado é a causa raiz que amplifica os outros dois. Portanto, minha estratégia é atacar o SLA primeiro — resolvendo um, melhoramos os três.</strong>`
+  },
+  1: {
+    title: "Agenda",
+    time: "1 min 30 seg",
+    notes: `Organizei a apresentação em 4 módulos:
+
+<strong>Módulo 1 — Diagnóstico:</strong> Como cheguei nos 3 problemas críticos e por que priorizei o SLA.
+
+<strong>Módulo 2 — Estratégia de Dados:</strong> Como garantir consistência nas métricas e construir dashboards que gerem ação.
+
+<strong>Módulo 3 — Automação e IA:</strong> Oportunidades de escala com tecnologia, incluindo análise de ROI.
+
+<strong>Módulo 4 — Gestão de Pessoas:</strong> Como estruturar o time de 5 analistas e o plano 30-60-90 dias.
+
+Ao longo da apresentação, vou explicar <strong>por que fiz cada escolha</strong> — não apenas o que fiz.`
+  },
+  2: {
+    title: "3 Problemas Críticos",
+    time: "3 min",
+    notes: `Recebi uma base com 337 mil casos de janeiro a dezembro de 2025. Meu primeiro passo foi entender: <strong>qual é o problema que mais importa resolver?</strong>
+
+Analisando os dados, identifiquei 3 problemas críticos:
+
+<strong>Primeiro: SLA elevado.</strong> 46% dos casos — mais de 155 mil — excedem 7 dias. Por que 7 dias? Porque o BACEN estabelece 10 dias úteis como limite. 7 dias representa 70% desse prazo — é uma margem de segurança operacional. Passar disso significa risco regulatório real.
+
+<strong>Segundo: Baixa resolutividade no RDR.</strong> Apenas 18% dos casos escalados para o BACEN são resolvidos. Ou seja, 82% dos clientes que escalam saem sem solução. Isso tem impacto reputacional direto.
+
+<strong>Terceiro: Baixa taxa de resposta do tNPS.</strong> Apenas 7,2% respondem à pesquisa. Os outros 93% são o que chamo de 'detratores silenciosos' — não temos visibilidade para melhorar.
+
+<strong>Mas aqui está o insight que mudou minha abordagem:</strong> esses problemas não são independentes. Quando cruzei os dados, descobri uma correlação forte entre eles. E isso me levou a uma hipótese.`
+  },
+  3: {
+    title: "Validação da Hipótese",
+    time: "2 min 30 seg",
+    notes: `Minha hipótese era: <strong>SLA é o driver dos outros dois problemas.</strong> Se isso fosse verdade, eu não precisaria atacar três frentes — bastaria focar em uma.
+
+Fui validar nos dados:
+
+<strong>Teste 1 — SLA vs Resolutividade:</strong> Casos atendidos em até 3 dias têm 42% de resolutividade. Acima de 4 dias, cai para 24,5%. É praticamente o dobro.
+
+<strong>Teste 2 — SLA vs tNPS:</strong> Clientes com atendimento rápido têm tNPS de -8. Com SLA longo, -45. A diferença é de 37 pontos.
+
+<strong>Teste 3 — SLA vs Taxa de Resposta:</strong> Clientes satisfeitos respondem mais. Se o SLA melhora, a taxa de resposta também melhora.
+
+<strong>Conclusão:</strong> A hipótese se confirmou. SLA é a causa raiz. <strong>Por isso minha estratégia é concentrar esforços no SLA primeiro</strong> — os outros indicadores melhoram como consequência.
+
+Isso é importante porque, com recursos limitados, precisamos escolher onde focar. Atacar três problemas ao mesmo tempo dilui o impacto.`
+  },
+  4: {
+    title: "Matriz de Impactos",
+    time: "1 min",
+    notes: `Aqui está a matriz cruzando os 3 problemas com impactos regulatório, operacional e reputacional.
+
+O ponto que quero destacar: quando combinamos SLA alto com baixa resolutividade no RDR, temos <strong>76 mil casos com 97% de não resposta ao tNPS</strong>. Não temos visibilidade operacional desse segmento. É um ponto cego crítico que precisa de atenção.
+
+<em>[Avançar — este slide é suporte visual, não precisa detalhar cada célula]</em>`
+  },
+  5: {
+    title: "Gaps de Dados",
+    time: "1 min",
+    notes: `Uma coisa que aprendi em análise de dados: <strong>transparência sobre limitações aumenta credibilidade.</strong>
+
+A base tinha gaps. O mais relevante: não tinha o campo de procedência BACEN que o case menciona. Usei SLA e resolutividade como proxies.
+
+Outros gaps menores — receiving method em branco, IDs repetidos — estão documentados aqui. Na seção de dados adicionais, listei o que precisaríamos consultar para aprofundar.
+
+<strong>Por que mostro isso?</strong> Porque em ambiente real, dados nunca são perfeitos. O importante é saber trabalhar com o que tem e ser transparente sobre as limitações.`
+  },
+  6: {
+    title: "Análise Pareto",
+    time: "1 min 30 seg",
+    notes: `Com o problema definido — SLA elevado — fui fazer análise de causa raiz usando Pareto.
+
+<strong>Por canal:</strong> RDR e Email concentram 92,95% dos casos críticos. Apenas 2 de 7 canais.
+
+<strong>Por squad:</strong> Collections sozinho representa 44,73% do problema.
+
+<strong>O insight:</strong> O problema está concentrado. Não preciso resolver tudo — se eu focar em Collections e RDR, ataco quase metade do problema.
+
+Isso guiou minha priorização: Collections primeiro.`
+  },
+  7: {
+    title: "Drill-Down Collections",
+    time: "1 min",
+    notes: `Dentro de Collections, identifiquei os reasons mais críticos:
+
+• <strong>SCR:</strong> 91,84% de estouro
+• <strong>Multidébitos:</strong> 86,7%
+• <strong>Cartão de Crédito:</strong> 81,1%
+
+Esses são os alvos do plano de ação. SCR e Multidébitos com fila prioritária e templates padronizados já geram impacto significativo.`
+  },
+  8: {
+    title: "Plano de Ação 90 dias",
+    time: "3 min",
+    notes: `Agora, como resolver. Estruturei um plano em 3 fases com metas progressivas.
+
+<strong>Fase 1 — 30 dias — Quick Wins:</strong>
+• Triagem automatizada por IA
+• Templates para os 5 reasons mais frequentes
+• Task Force em Collections
+• <strong>Meta: SLA ≤ 5,8 dias</strong>
+
+<strong>Fase 2 — 60 dias — Estruturação:</strong>
+• Agent IA para respostas simples
+• Dashboard de monitoramento com alertas
+• Revisão de roteamento
+• <strong>Meta: SLA ≤ 4,8 dias</strong>
+
+<strong>Fase 3 — 90 dias — Transformação:</strong>
+• IA Generativa para sugestão de respostas
+• Feedback loop com Produto
+• Estudo de dimensionamento
+• <strong>Meta: SLA ≤ 3,5 dias</strong>
+
+<strong>Impacto esperado em 90 dias:</strong>
+• SLA: 6,5 → 3,5 dias (redução de 46%)
+• Casos críticos: 46% → 12% (redução de 74%)
+• Resolutividade RDR: 18% → 55%
+• Taxa tNPS: 7% → 18%
+
+<strong>Por que essas metas?</strong> Usei P75 como referência — ou seja, se 25% dos casos já atingem esse SLA, é factível para os demais.`
+  },
+  9: {
+    title: "Desenvolvimento do Time",
+    time: "1 min",
+    notes: `Para executar, o time precisa de <strong>autonomia com alinhamento</strong>.
+
+Estruturei em 3 pilares:
+1. Playbook com critérios claros
+2. Perguntas-guia para análises independentes
+3. Calibração semanal
+
+O objetivo: analistas tomam decisões sem depender do líder para cada passo.`
+  },
+  10: {
+    title: "Golden Source",
+    time: "1 min 30 seg",
+    notes: `Uma pergunta do case era sobre consistência de dados entre fontes diferentes.
+
+Minha resposta: <strong>arquitetura de Golden Source.</strong>
+
+Uma fonte primária alimenta um Framework de Core Metrics — 5 métricas que importam: SLA, Resolutividade, tNPS, Volume, Taxa de Resposta.
+
+Esse framework materializa no Dashboard Operacional, que vira a <strong>fonte única da verdade</strong>. Qualquer discussão de número parte dali.
+
+Isso elimina o problema de 'meu número diz X, o seu diz Y'.`
+  },
+  11: {
+    title: "Dashboard Executivo vs Operacional",
+    time: "1 min",
+    notes: `Outra pergunta do case: diferença entre dashboard executivo e operacional.
+
+<strong>Executivo:</strong> 5 KPIs, visão estratégica, responde 'onde investir recursos?'
+
+<strong>Operacional:</strong> drill-down por squad, canal, reason, período. Responde 'por que o SLA de Collections subiu esta semana?'
+
+São complementares. O executivo decide, o operacional executa.`
+  },
+  12: {
+    title: "Bot de Triagem",
+    time: "1 min 30 seg",
+    notes: `O case perguntava sobre um bot de triagem parado há 3 meses.
+
+<strong>Minha recomendação: retomar, mas com validação técnica.</strong>
+
+Na matriz de priorização: impacto alto, esforço médio, risco médio-alto.
+
+<strong>Plano de 30 dias:</strong>
+• Semanas 1-2: Discovery e benchmark
+• Semanas 2-3: Recalibração com dados recentes
+• Semanas 3-4: Shadow mode com validação humana
+
+<strong>Critério GO/NO-GO:</strong> acurácia ≥ 85%. Se não atingir, não ativa.
+
+Por que esse approach? Prefiro transparência a risco operacional. Bot com baixa acurácia gera retrabalho.`
+  },
+  13: {
+    title: "ROI do Bot",
+    time: "1 min",
+    notes: `Fiz a conta de ROI com premissas conservadoras:
+
+• 30% dos casos são triagem simples
+• 3 minutos economizados por caso
+• R$ 35/hora por FTE
+
+<strong>Resultado:</strong> R$ 236 mil/ano de economia, 3,4 FTEs liberados.
+
+Importante: são estimativas. Deixei documentado que precisaria validar o tempo de triagem manual com dados reais. <strong>Transparência sobre premissas é fundamental.</strong>`
+  },
+  14: {
+    title: "Outros Casos de IA",
+    time: "1 min",
+    notes: `Identifiquei mais 2 oportunidades de IA:
+
+<strong>Agent IA para Respostas Simples:</strong> automatiza casos de baixa complexidade.
+
+<strong>AI CX Analysis Plugin:</strong> analisa conversas e identifica padrões. Resolve gaps de dados que mencionei.
+
+Ambas entram no roadmap de 60-90 dias.`
+  },
+  15: {
+    title: "Roadmap 4 Semanas",
+    time: "1 min 30 seg",
+    notes: `Para preparar o Fórum de liderança, estruturei um roadmap de 4 semanas com 2 tracks paralelos.
+
+<strong>Track 1 — Diagnóstico:</strong> extração, Pareto, dashboards
+<strong>Track 2 — Bot:</strong> discovery, requisitos, shadow mode
+
+Distribuí os 5 analistas por skill:
+• A1/A2: Dados
+• A3: IA e Pareto
+• A4: Negócio
+• A5: Dashboards
+
+Os tracks rodam em paralelo porque usam stakeholders diferentes.`
+  },
+  16: {
+    title: "Framework RICE",
+    time: "1 min",
+    notes: `Para o time priorizar de forma autônoma, implemento o framework RICE.
+
+<strong>Reach × Impact × Confidence ÷ Effort</strong>
+
+Isso permite que qualquer analista proponha uma ação e calcule prioridade objetivamente, sem depender de percepção.
+
+<strong>Por que RICE e não outro?</strong> É simples, quantificável e amplamente usado em produto. Facilita alinhamento com outras áreas.`
+  },
+  17: {
+    title: "Plano 30-60-90",
+    time: "2 min",
+    notes: `O plano consolidado:
+
+<strong>30 dias — Foco em SLA:</strong>
+• Dashboard no Fórum
+• Bot ativo (acurácia ≥ 85%)
+• Task Force Collections
+
+<strong>60 dias — Foco em Resolutividade:</strong>
+• Fila prioritária RDR
+• Agent IA em piloto
+
+<strong>90 dias — Foco em tNPS:</strong>
+• IA Generativa
+• Feedback loop com Produto
+
+<strong>Riscos mapeados:</strong> regulatório, operacional, pessoas, tecnológico. Cada um com mitigação.
+
+Por que mapeei riscos? Porque plano sem risco mapeado é wishful thinking. Prefiro antecipar problemas.`
+  },
+  18: {
+    title: "Gestão de Pessoas",
+    time: "1 min 30 seg",
+    notes: `Por fim, como pretendo liderar o time de 5 analistas sênior.
+
+<strong>Rituais:</strong>
+• Daily 15 min
+• 1:1 semanal
+• Weekly de alinhamento
+• Integração mensal
+
+<strong>4 pilares:</strong> Desenvolvimento técnico, rituais estruturados, engajamento via ownership, e liderança técnica.
+
+<strong>Meu diferencial como líder:</strong> Atuo hands-on. Não delego e cobro — trabalho junto. Tenho experiência com IA e ferramentas como Cursor, que posso usar para mentoria do time. E sei traduzir demandas técnicas para linguagem executiva.
+
+O modelo não cria dependência — constrói autonomia.`
+  },
+  19: {
+    title: "Encerramento",
+    time: "2 min",
+    notes: `Para resumir:
+
+<strong>O problema:</strong> 3 indicadores críticos que parecem independentes, mas têm uma causa raiz comum — SLA.
+
+<strong>A estratégia:</strong> Foco em SLA primeiro. Atacando um, melhoramos os três.
+
+<strong>O plano:</strong> 90 dias com metas progressivas, ROI calculado, riscos mapeados.
+
+<strong>A gestão:</strong> Time com autonomia, frameworks para priorização, rituais estruturados.
+
+<strong>Meu diferencial:</strong> Combino visão analítica com capacidade de execução. Sei estruturar problemas complexos, mas também sei colocar a mão na massa com o time.
+
+Estou à disposição para perguntas.`
+  }
+};
+
+let presenterWindow = null;
+let startTime = null;
+
+function formatTime(ms) {
+  const totalSec = Math.floor(ms / 1000);
+  const min = Math.floor(totalSec / 60);
+  const sec = totalSec % 60;
+  return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+}
+
+function openPresenterMode() {
+  if (presenterWindow && !presenterWindow.closed) {
+    presenterWindow.focus();
+    return;
+  }
+  
+  startTime = Date.now();
+  
+  presenterWindow = window.open('', 'PresenterNotes', 'width=700,height=900,left=100,top=100');
+  
+  const doc = presenterWindow.document;
+  doc.write(`
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Speaker Notes — Case BMO</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #1a1a2e;
+      color: #fff;
+      padding: 24px;
+      min-height: 100vh;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .slide-info {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .slide-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: #820AD1;
+    }
+    .slide-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .timer-box {
+      text-align: right;
+    }
+    .timer {
+      font-size: 36px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: #22C55E;
+    }
+    .timer.warning { color: #EAB308; }
+    .timer.danger { color: #EF4444; }
+    .suggested-time {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    .notes-container {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      max-height: 55vh;
+      overflow-y: auto;
+    }
+    .notes {
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.9);
+      white-space: pre-wrap;
+    }
+    .notes strong { color: #AA68FF; font-weight: 600; }
+    .notes em { color: rgba(255,255,255,0.5); font-style: italic; }
+    .next-slide {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .next-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .next-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .controls button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-prev { background: rgba(255,255,255,0.1); color: #fff; }
+    .btn-prev:hover { background: rgba(255,255,255,0.2); }
+    .btn-next { background: #820AD1; color: #fff; }
+    .btn-next:hover { background: #9B30E8; }
+    .btn-reset { background: rgba(239,68,68,0.2); color: #EF4444; }
+    .btn-reset:hover { background: rgba(239,68,68,0.3); }
+    .shortcut-hint {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 16px;
+    }
+    .messages {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(130,10,209,0.1);
+      border-radius: 8px;
+      border-left: 3px solid #820AD1;
+    }
+    .messages-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #AA68FF;
+      margin-bottom: 8px;
+    }
+    .messages-list {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="slide-info">
+      <span class="slide-number" id="slideNum">01</span>
+      <span class="slide-title" id="slideTitle">Capa</span>
+    </div>
+    <div class="timer-box">
+      <div class="timer" id="timer">00:00</div>
+      <div class="suggested-time" id="suggestedTime">Tempo sugerido: 30 seg</div>
+    </div>
+  </div>
+  
+  <div class="notes-container">
+    <div class="notes" id="notes"></div>
+  </div>
+  
+  <div class="next-slide">
+    <div class="next-label">Próximo slide</div>
+    <div class="next-title" id="nextTitle">Agenda</div>
+  </div>
+  
+  <div class="controls">
+    <button class="btn-prev" onclick="window.opener.navigate(-1)">← Anterior</button>
+    <button class="btn-reset" onclick="window.opener.resetTimer()">Reset Timer</button>
+    <button class="btn-next" onclick="window.opener.navigate(1)">Próximo →</button>
+  </div>
+  
+  <div class="shortcut-hint">Use ← → no teclado para navegar | N para abrir/fechar notas</div>
+  
+  <div class="messages">
+    <div class="messages-title">Mensagens-chave</div>
+    <div class="messages-list">
+      • SLA é a causa raiz — atacando um, melhoro três<br>
+      • O problema está concentrado — Collections = 44,73%<br>
+      • 46% → 12% em 90 dias — redução de 74%<br>
+      • Autonomia com alinhamento — framework, não dependência<br>
+      • Meu diferencial é execução — não só planejo, trabalho junto
+    </div>
+  </div>
+</body>
+</html>
+  `);
+  doc.close();
+  
+  updatePresenterWindow();
+  
+  // Start timer update
+  setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+  if (!presenterWindow || presenterWindow.closed || !startTime) return;
+  
+  const elapsed = Date.now() - startTime;
+  const timerEl = presenterWindow.document.getElementById('timer');
+  if (timerEl) {
+    timerEl.textContent = formatTime(elapsed);
+    // Warning at 25min, danger at 30min
+    if (elapsed > 30 * 60 * 1000) {
+      timerEl.className = 'timer danger';
+    } else if (elapsed > 25 * 60 * 1000) {
+      timerEl.className = 'timer warning';
+    } else {
+      timerEl.className = 'timer';
+    }
+  }
+}
+
+function resetTimer() {
+  startTime = Date.now();
+  updateTimer();
+}
+
+function updatePresenterWindow() {
+  if (!presenterWindow || presenterWindow.closed) return;
+  
+  const doc = presenterWindow.document;
+  const note = SPEAKER_NOTES[current] || { title: 'Slide', time: '', notes: '' };
+  const nextNote = SPEAKER_NOTES[current + 1];
+  
+  const slideNumEl = doc.getElementById('slideNum');
+  const slideTitleEl = doc.getElementById('slideTitle');
+  const suggestedTimeEl = doc.getElementById('suggestedTime');
+  const notesEl = doc.getElementById('notes');
+  const nextTitleEl = doc.getElementById('nextTitle');
+  
+  if (slideNumEl) slideNumEl.textContent = String(current).padStart(2, '0');
+  if (slideTitleEl) slideTitleEl.textContent = note.title;
+  if (suggestedTimeEl) suggestedTimeEl.textContent = note.time ? `Tempo sugerido: ${note.time}` : '';
+  if (notesEl) notesEl.innerHTML = note.notes;
+  if (nextTitleEl) nextTitleEl.textContent = nextNote ? nextNote.title : 'Fim da apresentação';
+}
+
+// Override navigate to also update presenter window
+const originalNavigate = navigate;
+navigate = function(dir) {
+  originalNavigate(dir);
+  updatePresenterWindow();
+};
+
+// Listen for N key to open presenter mode
+document.addEventListener('keydown', e => {
+  if (e.key === 'n' || e.key === 'N') {
+    e.preventDefault();
+    openPresenterMode();
+  }
+});
+
+// Sync when presenter window navigates
+window.addEventListener('message', e => {
+  if (e.data === 'next') navigate(1);
+  if (e.data === 'prev') navigate(-1);
+});
 </script>
 </body>
 </html>
