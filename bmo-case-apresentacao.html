@@ -2793,20 +2793,27 @@ Isso guiou minha priorização: <strong>Collections primeiro</strong>. Vou fazer
   },
   7: {
     title: "Drill-Down Collections",
-    time: "1 min 30 seg",
-    notes: `Dentro de Collections, identifiquei os reasons mais críticos ordenados por taxa de estouro:
+    time: "2 min",
+    notes: `Dentro de Collections, reasons ordenados por taxa de estouro:
 
-• <strong>SCR:</strong> 91,84% de estouro — praticamente todo caso estoura
+• <strong>SCR:</strong> 91,84% — praticamente todo caso estoura
 • <strong>Multidébitos:</strong> 86,7%
 • <strong>Cartão de Crédito:</strong> 81,1%
-• <strong>Acordo com Atraso:</strong> 74,98%
+• <strong>Empréstimo em Atraso:</strong> 79,84%
 • <strong>Acordo CI:</strong> 49,51%
 
-<strong>Observação importante:</strong> Acordo CI tem o maior volume absoluto, mas taxa de 49% — mais controlada. Por isso não é prioridade número 1 em urgência.
+<strong>Por que esses reasons têm SLA elevado?</strong> São hipóteses baseadas na natureza dos processos:
 
-<strong>SCR e Multidébitos</strong> têm taxas acima de 85% — são os alvos prioritários. Com fila prioritária e templates padronizados para esses reasons, já geramos impacto significativo.
+• <strong>SCR</strong> exige consulta ao BACEN/Serasa e análise manual de histórico de crédito — processo burocrático
+• <strong>Multidébitos</strong> requer análise cruzada de múltiplas dívidas e negociação complexa entre produtos
+• <strong>Cartão de Crédito</strong> envolve disputas de valores, análise de transações contestadas e processo de estorno
+• <strong>Empréstimo em Atraso</strong> exige cálculos de juros, renegociação e integração com sistemas legados
 
-SLA médio de Collections é de <strong>9,04 dias</strong> — acima do limite regulatório. Precisa de ação imediata.`
+<strong>Acordo CI</strong> tem o maior volume absoluto (51k casos), mas taxa de 49% indica processo mais controlado — provavelmente por ser migração padronizada.
+
+<strong>Conclusão:</strong> Taxa ≠ Volume. SCR e Multidébitos têm processos complexos com >85% de estouro — são os alvos prioritários.
+
+SLA médio de Collections: <strong>9,04 dias</strong> — acima do limite regulatório. Precisa de ação imediata.`
   },
   8: {
     title: "Plano de Ação 90 dias",

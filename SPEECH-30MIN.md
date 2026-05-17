@@ -180,21 +180,28 @@ Isso guiou minha priorização: **Collections primeiro**. Vou fazer o drill-down
 
 ---
 
-#### Slide 7: Drill-Down Collections (1 min 30 seg)
+#### Slide 7: Drill-Down Collections (2 min)
 
 "Dentro de Collections, identifiquei os reasons mais críticos ordenados por taxa de estouro:
 
-**SCR:** 91,84% de estouro de SLA — praticamente todo caso estoura
+**SCR:** 91,84% de estouro — praticamente todo caso estoura
 **Multidébitos:** 86,7%
 **Cartão de Crédito:** 81,1%
-**Acordo com Atraso:** 74,98%
+**Empréstimo em Atraso:** 79,84%
 **Acordo CI:** 49,51%
 
-Uma observação importante: **Acordo CI tem o maior volume absoluto**, mas a taxa de estouro é de 49% — mais controlada. Por isso não é a prioridade número 1 em urgência.
+**Por que esses reasons têm SLA tão elevado?** Na coluna da direita estão as hipóteses baseadas na natureza dos processos:
 
-Já **SCR e Multidébitos** têm taxas acima de 85% — são os alvos prioritários. Com fila prioritária e templates padronizados para esses reasons, já geramos impacto significativo no SLA de Collections.
+- **SCR** exige consulta ao BACEN e Serasa, análise manual de histórico de crédito — é um processo burocrático por natureza
+- **Multidébitos** requer análise cruzada de múltiplas dívidas e negociação complexa entre diferentes produtos
+- **Cartão de Crédito** envolve disputas de valores, análise de transações contestadas e processo de estorno — depende de terceiros
+- **Empréstimo em Atraso** exige cálculos de juros, renegociação de dívidas e integração com sistemas legados
 
-O SLA médio de Collections é de **9,04 dias** — acima do limite regulatório. Precisa de ação imediata."
+Já **Acordo CI** tem o maior volume absoluto — são 51 mil casos — mas a taxa de 49% indica um processo mais controlado, provavelmente porque é migração padronizada de acordos.
+
+**A conclusão importante:** taxa é diferente de volume. SCR e Multidébitos têm processos inerentemente complexos com mais de 85% de estouro — são os alvos prioritários para fila dedicada e templates.
+
+O SLA médio de Collections é de **9,04 dias** — já acima do limite regulatório. Precisa de ação imediata."
 
 ---
 
@@ -528,7 +535,7 @@ Estou à disposição para perguntas."
 | 4 | Matriz de Impactos | 2 min |
 | 5 | Gaps de Dados | 1 min 30 seg |
 | 6 | Análise Pareto | 1 min 30 seg |
-| 7 | Drill-Down Collections | 1 min 30 seg |
+| 7 | Drill-Down Collections | 2 min |
 | 8 | Plano de Ação 90 dias | 3 min |
 | 9 | Desenvolvimento do Time | 1 min |
 | 10 | Golden Source | 1 min 30 seg |
