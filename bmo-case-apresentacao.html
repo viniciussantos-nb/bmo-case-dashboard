@@ -2673,78 +2673,140 @@ Ao longo da apresentação, vou explicar <strong>por que fiz cada escolha</stron
   2: {
     title: "3 Problemas Críticos",
     time: "3 min",
-    notes: `Recebi uma base com 337 mil casos de janeiro a dezembro de 2025. Meu primeiro passo foi entender: <strong>qual é o problema que mais importa resolver?</strong>
+    notes: `Recebi uma base com <strong>337.614 casos</strong> de janeiro a dezembro de 2025. Os números gerais já indicam o cenário: SLA médio de <strong>6,48 dias</strong>, resolutividade geral de <strong>35,3%</strong>, taxa de resposta tNPS de apenas <strong>7,2%</strong>.
 
-Analisando os dados, identifiquei 3 problemas críticos:
+Identifiquei <strong>3 problemas críticos</strong> — e os priorizei nessa ordem:
 
-<strong>Primeiro: SLA elevado.</strong> 46% dos casos — mais de 155 mil — excedem 7 dias. Por que 7 dias? Porque o BACEN estabelece 10 dias úteis como limite. 7 dias representa 70% desse prazo — é uma margem de segurança operacional. Passar disso significa risco regulatório real.
+<strong>Primeiro — Prioridade Crítica — SLA Elevado:</strong>
+• <strong>46,12%</strong> dos casos excedem 7 dias — mais de 155 mil casos
+• BACEN exige resposta em até 10 dias úteis
+• O SLA <strong>piorou 65% ao longo do ano</strong> — de 4,5 para 7,4 dias
+• É a causa raiz dos demais problemas
 
-<strong>Segundo: Baixa resolutividade no RDR.</strong> Apenas 18% dos casos escalados para o BACEN são resolvidos. Ou seja, 82% dos clientes que escalam saem sem solução. Isso tem impacto reputacional direto.
+<strong>Segundo — Prioridade Alta — Baixa Resolutividade RDR:</strong>
+• Apenas <strong>16-19%</strong> de resolução neste canal
+• São <strong>34% da base — 114 mil casos</strong> — e o tNPS é de <strong>-66</strong>
+• Clientes que chegam no RDR já escalaram para o BACEN
 
-<strong>Terceiro: Baixa taxa de resposta do tNPS.</strong> Apenas 7,2% respondem à pesquisa. Os outros 93% são o que chamo de 'detratores silenciosos' — não temos visibilidade para melhorar.
+<strong>Terceiro — Prioridade Média — Baixa Taxa de Resposta tNPS:</strong>
+• Apenas <strong>7,2%</strong> respondem à pesquisa
+• Os outros <strong>92,8%</strong> são detratores silenciosos
+• Sem dados, CompSol não consegue gerar insights confiáveis
 
-<strong>Mas aqui está o insight que mudou minha abordagem:</strong> esses problemas não são independentes. Quando cruzei os dados, descobri uma correlação forte entre eles. E isso me levou a uma hipótese.`
+<strong>Tese central:</strong> SLA é a causa raiz. Resolver SLA melhora resolutividade — cliente atendido rápido tem problema resolvido. E aumenta taxa de resposta — quem responde tem SLA de 4,6 dias vs 6,6 dias de quem não responde.`
   },
   3: {
     title: "Validação da Hipótese",
     time: "2 min 30 seg",
-    notes: `Minha hipótese era: <strong>SLA é o driver dos outros dois problemas.</strong> Se isso fosse verdade, eu não precisaria atacar três frentes — bastaria focar em uma.
+    notes: `Essa não é uma opinião — é uma correlação comprovada nos dados.
 
-Fui validar nos dados:
+<strong>Teste 1 — SLA vs Resolutividade:</strong>
+• Casos até 3 dias: <strong>42% de resolutividade</strong>
+• Casos 4+ dias: <strong>24,5%</strong>
+• Queda de <strong>17,5 pontos percentuais</strong>
 
-<strong>Teste 1 — SLA vs Resolutividade:</strong> Casos atendidos em até 3 dias têm 42% de resolutividade. Acima de 4 dias, cai para 24,5%. É praticamente o dobro.
+<strong>Teste 2 — SLA vs tNPS:</strong>
+• Atendimento rápido (0-3 dias): tNPS de <strong>6,1</strong>
+• Atendimento lento (4+ dias): tNPS de <strong>4,2</strong>
 
-<strong>Teste 2 — SLA vs tNPS:</strong> Clientes com atendimento rápido têm tNPS de -8. Com SLA longo, -45. A diferença é de 37 pontos.
+<strong>Comprovação por squad:</strong>
+• Collections: Rápido 45% vs Lento 21% — diferença de 24pp
+• CSS: Rápido 44% vs Lento 22% — diferença de 22pp
 
-<strong>Teste 3 — SLA vs Taxa de Resposta:</strong> Clientes satisfeitos respondem mais. Se o SLA melhora, a taxa de resposta também melhora.
+<strong>Detalhamento por faixa de SLA:</strong>
+• 0-1 dias: 55,6% resolutividade, tNPS 7,5
+• 2-3 dias: 47,5% resolutividade, tNPS 7,2
+• 11+ dias: apenas 29,7% resolutividade, tNPS 3,5
 
-<strong>Conclusão:</strong> A hipótese se confirmou. SLA é a causa raiz. <strong>Por isso minha estratégia é concentrar esforços no SLA primeiro</strong> — os outros indicadores melhoram como consequência.
+<strong>Conclusão:</strong> A cada dia adicional de SLA, perdemos ~3pp de resolutividade e ~0,5pts de tNPS. Casos até 3 dias têm <strong>71% mais chance</strong> de ter o problema resolvido.
 
-Isso é importante porque, com recursos limitados, precisamos escolher onde focar. Atacar três problemas ao mesmo tempo dilui o impacto.`
+<strong>Por que 7 dias como corte?</strong>
+1. Regulatório: 70% do prazo BACEN dá margem de segurança
+2. Empírico: Dados mostram degradação significativa a partir de 7 dias`
   },
   4: {
     title: "Matriz de Impactos",
-    time: "1 min",
-    notes: `Aqui está a matriz cruzando os 3 problemas com impactos regulatório, operacional e reputacional.
+    time: "2 min",
+    notes: `Matriz cruzando os 3 problemas com dimensões regulatória, reputacional e operacional.
 
-O ponto que quero destacar: quando combinamos SLA alto com baixa resolutividade no RDR, temos <strong>76 mil casos com 97% de não resposta ao tNPS</strong>. Não temos visibilidade operacional desse segmento. É um ponto cego crítico que precisa de atenção.
+<strong>Problema 1 — SLA Elevado:</strong>
+• <strong>Regulatório: CRÍTICO</strong> — BACEN exige 10 dias úteis. Com 46% acima de 7 dias, operamos no limite. Risco de multas e sanções
+• <strong>Reputacional: ALTO</strong> — Cliente em Ouvidoria já é escalation. SLA longo aumenta risco de Procon, Reclame Aqui
+• <strong>Operacional: CRÍTICO</strong> — Demora gera recontato, multiplicando volume. Efeito cascata
 
-<em>[Avançar — este slide é suporte visual, não precisa detalhar cada célula]</em>`
+<strong>Problema 2 — Baixa Resolutividade RDR:</strong>
+• <strong>Regulatório: CRÍTICO</strong> — São demandas via BACEN. 80%+ saem sem solução
+• <strong>Reputacional: CRÍTICO</strong> — 114 mil casos com tNPS de -66. Cada não resolvido é detrator público
+• <strong>Operacional: ALTO</strong> — <strong>76k casos RDR + Collections com 97% de não resposta ao tNPS</strong>. Sem visibilidade operacional
+
+<strong>Problema 3 — Baixa Taxa de Resposta tNPS:</strong>
+• <strong>Regulatório: MÉDIO</strong> — Decisões baseadas em amostra enviesada
+• <strong>Reputacional: ALTO</strong> — 90% dos detratores não têm problema resolvido
+• <strong>Operacional: MÉDIO</strong> — CompSol não consegue gerar relatórios confiáveis
+
+<strong>Ponto crítico:</strong> Esses 76 mil casos de RDR em Collections com 97% de não resposta são nosso maior ponto cego. Não temos feedback para melhorar — e é onde está o maior risco reputacional.`
   },
   5: {
     title: "Gaps de Dados",
-    time: "1 min",
-    notes: `Uma coisa que aprendi em análise de dados: <strong>transparência sobre limitações aumenta credibilidade.</strong>
+    time: "1 min 30 seg",
+    notes: `Por transparência, preciso pontuar os gaps que encontrei na base.
 
-A base tinha gaps. O mais relevante: não tinha o campo de procedência BACEN que o case menciona. Usei SLA e resolutividade como proxies.
+<strong>Gap 1 — Procedência Ausente (Impacto Alto):</strong>
+• Base não contém campo de procedência/improcedência
+• Case menciona taxa de 19%, mas não consegui analisar os motivos
+• Mitigação: usei SLA e resolutividade como proxies
 
-Outros gaps menores — receiving method em branco, IDs repetidos — estão documentados aqui. Na seção de dados adicionais, listei o que precisaríamos consultar para aprofundar.
+<strong>Gap 2 — Receiving Method (Impacto Médio):</strong>
+• <strong>171.638 casos — 50,84% da base</strong> — sem classificação
+• Mitigação: utilizei coluna Channel como alternativa
 
-<strong>Por que mostro isso?</strong> Porque em ambiente real, dados nunca são perfeitos. O importante é saber trabalhar com o que tem e ser transparente sobre as limitações.`
+<strong>Gap 3 — Reason em Branco (Impacto Baixo):</strong>
+• Apenas 4.210 casos (1,25%). Em Collections: apenas 0,25%
+• Impacto mínimo nas análises de Pareto
+
+<strong>Gap 4 — IDs Repetidos (Impacto Médio):</strong>
+• 1.131 IDs aparecem mais de uma vez
+• 92% têm squads diferentes, 97% têm reasons diferentes
+• Pode ser recontato ou problema de chave
+
+<strong>Dados adicionais necessários:</strong> Procedência RDR detalhada, classificação de causa raiz NOK, métricas do QuickSight, histórico pré-RDR.
+
+<strong>Por que mostro isso?</strong> Dados nunca são perfeitos. O importante é saber trabalhar com o que tem e ser transparente sobre limitações.`
   },
   6: {
     title: "Análise Pareto",
     time: "1 min 30 seg",
-    notes: `Com o problema definido — SLA elevado — fui fazer análise de causa raiz usando Pareto.
+    notes: `Com o problema definido — SLA elevado — análise de causa raiz usando Pareto. Onde está concentrado o problema?
 
-<strong>Por canal:</strong> RDR e Email concentram 92,95% dos casos críticos. Apenas 2 de 7 canais.
+<strong>Por Canal:</strong>
+• RDR e Email concentram <strong>92,95%</strong> dos casos críticos
+• Apenas 2 de 7 canais
 
-<strong>Por squad:</strong> Collections sozinho representa 44,73% do problema.
+<strong>Por Squad:</strong>
+• <strong>Collections sozinho representa 44,73%</strong> do problema
+• CSS vem em segundo com 27,62%
+• Os 5 maiores squads concentram 78% dos casos críticos
 
-<strong>O insight:</strong> O problema está concentrado. Não preciso resolver tudo — se eu focar em Collections e RDR, ataco quase metade do problema.
+<strong>O insight:</strong> O problema está concentrado. Não preciso resolver tudo — se eu focar em Collections e RDR, ataco quase metade do problema com recursos direcionados.
 
-Isso guiou minha priorização: Collections primeiro.`
+Isso guiou minha priorização: <strong>Collections primeiro</strong>. Vou fazer o drill-down.`
   },
   7: {
     title: "Drill-Down Collections",
-    time: "1 min",
-    notes: `Dentro de Collections, identifiquei os reasons mais críticos:
+    time: "1 min 30 seg",
+    notes: `Dentro de Collections, identifiquei os reasons mais críticos ordenados por taxa de estouro:
 
-• <strong>SCR:</strong> 91,84% de estouro
+• <strong>SCR:</strong> 91,84% de estouro — praticamente todo caso estoura
 • <strong>Multidébitos:</strong> 86,7%
 • <strong>Cartão de Crédito:</strong> 81,1%
+• <strong>Acordo com Atraso:</strong> 74,98%
+• <strong>Acordo CI:</strong> 49,51%
 
-Esses são os alvos do plano de ação. SCR e Multidébitos com fila prioritária e templates padronizados já geram impacto significativo.`
+<strong>Observação importante:</strong> Acordo CI tem o maior volume absoluto, mas taxa de 49% — mais controlada. Por isso não é prioridade número 1 em urgência.
+
+<strong>SCR e Multidébitos</strong> têm taxas acima de 85% — são os alvos prioritários. Com fila prioritária e templates padronizados para esses reasons, já geramos impacto significativo.
+
+SLA médio de Collections é de <strong>9,04 dias</strong> — acima do limite regulatório. Precisa de ação imediata.`
   },
   8: {
     title: "Plano de Ação 90 dias",
