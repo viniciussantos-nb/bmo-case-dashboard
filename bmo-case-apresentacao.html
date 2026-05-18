@@ -3261,11 +3261,12 @@ function updatePresenterWindow() {
   if (nextTitleEl) nextTitleEl.textContent = nextNote ? nextNote.title : 'Fim da apresentação';
 }
 
-// Override navigate to also update presenter window
+// Override navigate to also update presenter and review windows
 const originalNavigate = navigate;
 navigate = function(dir) {
   originalNavigate(dir);
   updatePresenterWindow();
+  if (typeof updateReviewWindow === 'function') updateReviewWindow();
 };
 
 // Listen for N key to open presenter mode
@@ -3598,13 +3599,6 @@ function updateReviewWindow() {
     }
   }
 }
-
-// Also update review window on navigation
-const originalNavigate2 = navigate;
-navigate = function(dir) {
-  originalNavigate2(dir);
-  updateReviewWindow();
-};
 </script>
 </body>
 </html>
