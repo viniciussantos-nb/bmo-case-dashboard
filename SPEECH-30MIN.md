@@ -282,7 +282,7 @@ Os tracks rodam em paralelo porque usam stakeholders diferentes."
 
 ---
 
-#### Slide 16: Framework RICE (1 min)
+#### Slide 16: Framework RICE (1 min 30 seg)
 
 "Para priorização autônoma, uso o framework **RICE**:
 
@@ -293,7 +293,15 @@ Os tracks rodam em paralelo porque usam stakeholders diferentes."
 
 **Fórmula:** (R × I × C) ÷ E
 
-Por que RICE? É quantificável, remove subjetividade, e permite que qualquer analista proponha ações e calcule prioridade de forma autônoma."
+**Importante: BAU vs Estratégico**
+
+Na priorização, separo as demandas em duas categorias:
+
+- **BAU (Business As Usual):** Atividades rotineiras e operacionais do dia a dia — responder casos, monitorar filas, gerar relatórios recorrentes. São necessárias, mas não transformam.
+
+- **Iniciativas Estratégicas:** Projetos que geram mudança estrutural — implementar IA, criar dashboards, otimizar processos. São o que move os indicadores.
+
+O RICE ajuda a priorizar as iniciativas estratégicas. O BAU tem sua cadência própria. Na Weekly, alinhamos: quanto tempo vai para BAU, quanto vai para estratégico. Se o BAU está consumindo 100% do time, não há transformação."
 
 ---
 
@@ -445,7 +453,7 @@ Estou à disposição para perguntas."
 | 13 | ROI do Bot | 30 seg |
 | 14 | Outros Casos de IA | 30 seg |
 | 15 | Roadmap 4 Semanas | 1 min 30 seg |
-| 16 | Framework RICE | 1 min |
+| 16 | Framework RICE | 1 min 30 seg |
 | 17 | Plano 30-60-90 | 3 min |
 | 18 | **Gestão de Pessoas** | **4 min** |
 | 19 | Encerramento | 2 min |
