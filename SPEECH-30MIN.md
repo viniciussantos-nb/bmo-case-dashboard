@@ -1,17 +1,17 @@
 # Speech — Case BMO Ouvidoria
-## Processo Seletivo Nubank | 30 minutos (versão revisada)
+## Processo Seletivo Nubank | 30 minutos (versão final)
 
 ---
 
-## ESTRUTURA DA APRESENTAÇÃO
+## ESTRUTURA OTIMIZADA PARA 30 MINUTOS
 
-| Módulo | Tempo | Slides |
-|--------|-------|--------|
-| 1. Abertura | 2 min | 0-1 |
-| 2. Diagnóstico | 12 min | 2-7 |
-| 3. Plano de Ação | 8 min | 8-14 |
-| 4. Gestão de Pessoas | 6 min | 15-18 |
-| 5. Fechamento | 2 min | 19 |
+| Módulo | Tempo | Slides | Foco |
+|--------|-------|--------|------|
+| Abertura | 2 min | 0-1 | Contexto + Agenda |
+| Diagnóstico | 10 min | 2-7 | Problemas + Validação + Pareto |
+| Plano de Ação | 6 min | 8-14 | Ações + IA (resumido) |
+| **Gestão de Pessoas** | **10 min** | **15-18** | **Foco principal** |
+| Fechamento | 2 min | 19 | Síntese |
 
 ---
 
@@ -21,375 +21,249 @@
 
 ### ABERTURA (2 min)
 
-#### Slide 0: Capa (30 seg)
+#### Slide 0: Capa (1 min)
 
-"Bom dia/Boa tarde. Sou Vinícius Santos e vou apresentar minha análise do case de BMO Ouvidoria.
+"Bom dia/Boa tarde. Sou Vinícius Santos e vou apresentar o case de BMO Ouvidoria.
 
-Antes de começar, quero compartilhar a conclusão principal — assim vocês podem acompanhar meu raciocínio sabendo onde vou chegar:
+**Antes de começar, um contexto:** o case completo foi enviado anteriormente e passou pelo processo de triagem, então vou focar nos **principais pontos e na linha de raciocínio** que usei para chegar nas conclusões. Se em algum momento quiserem que eu aprofunde algum ponto ou tiverem dúvidas, fiquem à vontade para interromper ou anotar para o final.
 
-**Identifiquei 3 problemas críticos na operação, mas descobri que eles não são independentes. O SLA elevado é a causa raiz que amplifica os outros dois. Portanto, minha estratégia é atacar o SLA primeiro — resolvendo um, melhoramos os três.**"
-
----
-
-#### Slide 1: Agenda (1 min 30 seg)
-
-"Organizei a apresentação em 4 módulos:
-
-**Módulo 1 — Diagnóstico:** Como cheguei nos 3 problemas críticos e por que priorizei o SLA. Vou mostrar a validação estatística dessa hipótese.
-
-**Módulo 2 — Estratégia de Dados:** Como garantir consistência nas métricas e construir dashboards que gerem ação — executivo e operacional.
-
-**Módulo 3 — Automação e IA:** Oportunidades de escala com tecnologia, incluindo a decisão sobre o bot de triagem e análise de ROI.
-
-**Módulo 4 — Gestão de Pessoas:** Como estruturar o time de 5 analistas, o framework de priorização RICE, e o plano 30-60-90 dias.
-
-Ao longo da apresentação, vou explicar **por que fiz cada escolha** — não apenas o que fiz."
+**A conclusão principal que cheguei:** identifiquei 3 problemas críticos na operação, mas descobri que eles não são independentes. O SLA elevado é a causa raiz que amplifica os outros dois. Minha estratégia é atacar o SLA primeiro — resolvendo um, melhoramos os três."
 
 ---
 
-### MÓDULO 1: DIAGNÓSTICO (12 min)
+#### Slide 1: Agenda (1 min)
 
-#### Slide 2: 3 Problemas Críticos (3 min)
+"A apresentação está organizada em 4 módulos:
 
-"Recebi uma base com **337.614 casos** de janeiro a dezembro de 2025. Meu primeiro passo foi entender: qual é o problema que mais importa resolver?
+**Módulo 1 — Diagnóstico:** Os 3 problemas críticos e a validação estatística de que SLA é a causa raiz.
 
-Os números gerais já indicam o cenário: SLA médio de **6,48 dias**, resolutividade geral de **35,3%**, e taxa de resposta tNPS de apenas **7,2%**.
+**Módulo 2 — Estratégia de Dados:** Governança com Golden Source e diferença entre dashboards.
 
-Analisando mais a fundo, identifiquei **3 problemas críticos** — e os priorizei nessa ordem:
+**Módulo 3 — Automação:** Oportunidades com IA e análise de ROI.
 
-**Primeiro — Prioridade Crítica — SLA Elevado:**
-- **46,12%** dos casos excedem 7 dias de atendimento — são mais de 155 mil casos
-- O BACEN exige resposta em até 10 dias úteis
-- Pior: o SLA **piorou 65% ao longo do ano** — de 4,5 para 7,4 dias
-- É a causa raiz dos demais problemas — vou demonstrar isso no próximo slide
+**Módulo 4 — Gestão de Pessoas:** O plano 30-60-90, framework de priorização e modelo de gestão do time — que é onde vou me aprofundar mais.
 
-**Segundo — Prioridade Alta — Baixa Resolutividade no RDR:**
-- Apenas **16-19%** de resolução neste canal
-- São **34% da base — 114 mil casos** — e o tNPS é de **-66**
-- Clientes que chegam no RDR já escalaram para o BACEN. Cada caso não resolvido é impacto reputacional direto
+Vamos começar."
 
-**Terceiro — Prioridade Média — Baixa Taxa de Resposta tNPS:**
-- Apenas **7,2%** respondem à pesquisa
-- Os outros **92,8%** são detratores silenciosos
-- Sem dados, CompSol não consegue gerar insights confiáveis para melhoria
+---
 
-**A tese central que defendo:** SLA é a causa raiz. Resolver SLA melhora resolutividade — porque cliente atendido rápido tem problema resolvido. E aumenta taxa de resposta — quem responde tem SLA de 4,6 dias versus 6,6 dias de quem não responde."
+### MÓDULO 1: DIAGNÓSTICO (10 min)
+
+#### Slide 2: 3 Problemas Críticos (2 min 30 seg)
+
+"Analisei **337.614 casos** de janeiro a dezembro de 2025. Os indicadores gerais já mostram o cenário: SLA médio de **6,48 dias**, resolutividade de **35,3%**, taxa de resposta tNPS de **7,2%**.
+
+Identifiquei **3 problemas críticos**:
+
+**1. SLA Elevado (Prioridade Crítica):**
+- **46,12%** dos casos excedem 7 dias — mais de 155 mil casos
+- O SLA **piorou 65% no ano** — de 4,5 para 7,4 dias
+- Risco regulatório direto: BACEN exige 10 dias úteis
+
+**2. Baixa Resolutividade RDR (Prioridade Alta):**
+- Apenas **16-19%** de resolução
+- São **114 mil casos** com tNPS de **-66**
+- Clientes que já escalaram para o BACEN
+
+**3. Baixa Taxa de Resposta tNPS (Prioridade Média):**
+- Apenas **7,2%** respondem
+- **92,8%** são detratores silenciosos — sem visibilidade para melhoria
+
+**A tese central:** SLA é a causa raiz. Quem é atendido rápido tem problema resolvido e responde mais à pesquisa."
 
 ---
 
 #### Slide 3: Validação da Hipótese (2 min 30 seg)
 
-"Essa não é uma opinião — é uma correlação comprovada nos dados. Fui validar a hipótese de que SLA é o driver dos demais problemas.
+"Fui validar essa hipótese nos dados. Dividi os casos em duas categorias:
 
-**Teste 1 — SLA vs Resolutividade:**
-- Casos atendidos em até 3 dias: **42% de resolutividade**
-- Casos com 4+ dias: **24,5% de resolutividade**
-- É uma queda de **17,5 pontos percentuais** — praticamente o dobro
+**Rápido: 0 a 3 dias** — Escolhi esse corte porque representa atendimentos dentro de uma margem confortável, onde ainda há tempo para eventuais retrabalhos sem estourar o prazo.
 
-**Teste 2 — SLA vs tNPS:**
-- Atendimento rápido (0-3 dias): tNPS de **6,1**
-- Atendimento lento (4+ dias): tNPS de **4,2**
-- A diferença é consistente em todos os squads
+**Lento: 4 dias ou mais** — A partir daqui, cada dia adicional consome a margem de segurança até o limite regulatório de 10 dias.
 
-**Comprovação por squad:**
-- Collections: Rápido 45% vs Lento 21% — diferença de 24pp
-- CSS: Rápido 44% vs Lento 22% — diferença de 22pp
-- A correlação se mantém independente do squad
+**Os resultados:**
 
-**O detalhamento por faixa de SLA é ainda mais revelador:**
-- 0-1 dias: 55,6% de resolutividade, tNPS 7,5
-- 2-3 dias: 47,5% de resolutividade, tNPS 7,2
-- A partir de 4 dias começa a degradação
-- 11+ dias: apenas 29,7% de resolutividade, tNPS 3,5
+| Categoria | Resolutividade | tNPS |
+|-----------|----------------|------|
+| Rápido (0-3 dias) | **42%** | **6,1** |
+| Lento (4+ dias) | **24,5%** | **4,2** |
+| Diferença | **-17,5pp** | **-1,9pts** |
 
-**A conclusão é clara:** a cada dia adicional de SLA, perdemos aproximadamente 3 pontos percentuais de resolutividade e 0,5 pontos de tNPS. Casos resolvidos em até 3 dias têm **71% mais chance** de ter o problema resolvido.
+**Por squad, a correlação se mantém:**
+- Collections: 45% vs 21% — diferença de 24pp
+- CSS: 44% vs 22% — diferença de 22pp
 
-**Por que 7 dias como corte crítico?** Duas razões:
-1. **Regulatório:** Prazo BACEN é 10 dias úteis — 7 dias corridos dá margem de segurança
-2. **Empírico:** Os dados mostram que a partir de 7 dias há degradação significativa — resolutividade cai de 30,9% para 28,7%"
+**A conclusão:** a cada dia adicional de SLA, perdemos ~3pp de resolutividade e ~0,5pts de tNPS. Casos até 3 dias têm **71% mais chance** de resolução.
+
+**Por que 7 dias como corte crítico?** Representa 70% do prazo BACEN — margem de segurança antes do limite regulatório."
 
 ---
 
-#### Slide 4: Matriz de Impactos (2 min)
+#### Slide 4: Matriz de Impactos (1 min)
 
-"Agora quero mostrar a matriz de impactos cruzando os 3 problemas com as dimensões regulatória, reputacional e operacional.
+"A matriz cruza os 3 problemas com impactos regulatório, reputacional e operacional.
 
-**Problema 1 — SLA Elevado:**
-- **Impacto Regulatório: CRÍTICO** — BACEN exige 10 dias úteis. Com 46% acima de 7 dias, operamos no limite. Risco de multas e sanções
-- **Impacto Reputacional: ALTO** — Cliente em Ouvidoria já é um escalation. SLA longo aumenta risco de escalation adicional para Procon, Reclame Aqui
-- **Impacto Operacional: CRÍTICO** — Demora gera recontato em outras plataformas, multiplicando volume. É um efeito cascata: mais casos gera mais pressão, que gera mais erros
+**O ponto mais crítico:** SLA + RDR combinados geram **76 mil casos com 97% de não resposta ao tNPS**. É nosso maior ponto cego — sem feedback para melhorar justamente onde o risco reputacional é maior.
 
-**Problema 2 — Baixa Resolutividade RDR:**
-- **Impacto Regulatório: CRÍTICO** — RDR são demandas que chegaram via BACEN. 80%+ saem sem solução
-- **Impacto Reputacional: CRÍTICO** — São 114 mil casos com tNPS de -66. Cada caso não resolvido é um detrator público potencial
-- **Impacto Operacional: ALTO** — Aqui está um dado importante: **RDR + Collections concentra 76 mil casos com 97% de não resposta ao tNPS**. Não temos visibilidade operacional desse segmento
-
-**Problema 3 — Baixa Taxa de Resposta tNPS:**
-- **Impacto Regulatório: MÉDIO** — Com 7% de resposta, decisões ficam baseadas em amostra enviesada
-- **Impacto Reputacional: ALTO** — 90% dos detratores não têm problema resolvido — e não sabemos quem são os 93% que não respondem
-- **Impacto Operacional: MÉDIO** — CompSol não consegue gerar relatórios confiáveis
-
-**O ponto crítico que conecta com o próximo slide:** esses 76 mil casos de RDR em Collections com 97% de não resposta são nosso maior ponto cego. Não temos feedback para melhorar esse segmento — e é justamente onde está o maior risco reputacional."
+*[Os detalhes estão no slide — avanço para a análise de causa raiz]*"
 
 ---
 
-#### Slide 5: Gaps de Dados (1 min 30 seg)
+#### Slide 5: Gaps de Dados (30 seg)
 
-"Por transparência, preciso pontuar os gaps que encontrei na base. Isso aumenta credibilidade da análise.
-
-**Gap 1 — Procedência Ausente (Impacto Alto):**
-- Base não contém campo de procedência/improcedência
-- Case menciona taxa de 19% de casos procedentes, mas não consegui analisar os motivos
-- Mitigação: usei SLA e resolutividade como proxies de qualidade
-
-**Gap 2 — Receiving Method em Branco (Impacto Médio):**
-- **171.638 casos — 50,84% da base** — sem receiving method classificado
-- Mitigação: utilizei coluna Channel como alternativa
-
-**Gap 3 — Reason em Branco (Impacto Baixo):**
-- Apenas 4.210 casos (1,25%) sem motivo. Em Collections: apenas 0,25%
-- Impacto mínimo nas análises de Pareto
-
-**Gap 4 — IDs Repetidos (Impacto Médio):**
-- 1.131 IDs aparecem mais de uma vez
-- 92% têm squads diferentes, 97% têm reasons diferentes
-- Pode ser recontato ou problema de chave — não identificado padrão
-
-**Na seção de dados adicionais**, listo o que precisaríamos consultar para aprofundar: procedência RDR detalhada, classificação de causa raiz NOK, métricas consolidadas do QuickSight, e histórico de atendimento pré-RDR.
-
-**Por que mostro isso?** Porque em ambiente real, dados nunca são perfeitos. O importante é saber trabalhar com o que tem e ser transparente sobre as limitações."
+"Por transparência: a base tinha gaps. O principal é a **ausência do campo de procedência BACEN** — usei SLA e resolutividade como proxies. Os demais gaps estão documentados no slide e têm impacto menor na análise."
 
 ---
 
 #### Slide 6: Análise Pareto (1 min 30 seg)
 
-"Com o problema definido — SLA elevado — fui fazer análise de causa raiz usando Pareto. A pergunta é: onde está concentrado o problema?
+"Onde está concentrado o problema?
 
-**Por Canal:**
-- RDR e Email concentram **92,95%** dos casos críticos de SLA
-- Apenas 2 de 7 canais
+**Por canal:** RDR e Email = **92,95%** dos casos críticos
+**Por squad:** **Collections = 44,73%** do problema
 
-**Por Squad:**
-- **Collections sozinho representa 44,73%** do problema
-- CSS vem em segundo com 27,62%
-- Os 5 maiores squads concentram 78% dos casos críticos
-
-**O insight é claro:** o problema está concentrado. Não preciso resolver tudo — se eu focar em Collections e RDR, ataco quase metade do problema com recursos direcionados.
-
-Isso guiou minha priorização: **Collections primeiro**. Vou fazer o drill-down."
+O insight: o problema está concentrado. Focando em Collections, ataco quase metade do problema."
 
 ---
 
 #### Slide 7: Drill-Down Collections (2 min)
 
-"Dentro de Collections, identifiquei os reasons mais críticos ordenados por taxa de estouro:
+"Dentro de Collections, os reasons por taxa de estouro:
 
-**SCR:** 91,84% de estouro — praticamente todo caso estoura
-**Multidébitos:** 86,7%
-**Cartão de Crédito:** 81,1%
-**Empréstimo em Atraso:** 79,84%
-**Acordo CI:** 49,51%
+- **SCR:** 91,84% — praticamente todo caso estoura
+- **Multidébitos:** 86,7%
+- **Cartão de Crédito:** 81,1%
+- **Empréstimo em Atraso:** 79,84%
+- **Acordo CI:** 49,51%
 
-**Por que esses reasons têm SLA tão elevado?** Na coluna da direita estão as hipóteses baseadas na natureza dos processos:
+**Por que esses reasons têm SLA elevado?**
 
-- **SCR** exige consulta ao BACEN e Serasa, análise manual de histórico de crédito — é um processo burocrático por natureza
-- **Multidébitos** requer análise cruzada de múltiplas dívidas e negociação complexa entre diferentes produtos
-- **Cartão de Crédito** envolve disputas de valores, análise de transações contestadas e processo de estorno — depende de terceiros
-- **Empréstimo em Atraso** exige cálculos de juros, renegociação de dívidas e integração com sistemas legados
+- **SCR** exige consulta ao BACEN/Serasa e análise manual de histórico — processo burocrático
+- **Multidébitos** requer análise cruzada de múltiplas dívidas — negociação complexa
+- **Cartão de Crédito** envolve disputas e processo de estorno — depende de terceiros
 
-Já **Acordo CI** tem o maior volume absoluto — são 51 mil casos — mas a taxa de 49% indica um processo mais controlado, provavelmente porque é migração padronizada de acordos.
+**Acordo CI** tem maior volume (51k casos), mas taxa de 49% indica processo mais controlado.
 
-**A conclusão importante:** taxa é diferente de volume. SCR e Multidébitos têm processos inerentemente complexos com mais de 85% de estouro — são os alvos prioritários para fila dedicada e templates.
+**Conclusão:** SCR e Multidébitos são os alvos prioritários — processos complexos com >85% de estouro.
 
-O SLA médio de Collections é de **9,04 dias** — já acima do limite regulatório. Precisa de ação imediata."
+SLA médio de Collections: **9,04 dias** — já acima do limite regulatório."
 
 ---
 
-### MÓDULO 2: PLANO DE AÇÃO (8 min)
+### MÓDULO 2: PLANO DE AÇÃO (6 min)
 
-#### Slide 8: Plano de Ação 90 dias (3 min)
+#### Slide 8: Plano de Ação 90 dias (2 min)
 
-"Com o diagnóstico completo, agora o plano de ação. Estruturei em 3 fases com metas progressivas, focando em Collections que representa 44,73% do problema.
+"O plano em 3 fases, focando em Collections:
 
 **Fase 1 — 30 dias — Quick Wins:**
-- Triagem automatizada por IA para classificar casos por complexidade
-- Templates de resposta para os 5 reasons mais frequentes
-- Task Force temporária em Collections para zerar backlog
+- Triagem automatizada por IA
+- Templates para os 5 reasons mais frequentes
+- Task Force em Collections
 - **Meta: SLA ≤ 5,8 dias**
 
 **Fase 2 — 60 dias — Estruturação:**
-- Agent IA para respostas de casos simples
-- Dashboard de monitoramento em tempo real com alertas
-- Priorização de reasons críticos (SCR, Multidébitos)
+- Agent IA para respostas simples
+- Dashboard de monitoramento
 - **Meta: SLA ≤ 4,8 dias**
 
 **Fase 3 — 90 dias — Transformação:**
 - IA Generativa para sugestão de respostas
 - Feedback loop com Produto
-- Estudo de dimensionamento baseado em dados
 - **Meta: SLA ≤ 3,5 dias**
 
-**Impacto esperado em 90 dias:**
-- SLA Médio: de 6,5 para **3,5 dias** — redução de 46%
-- Casos > 7 dias: de 46% para **12%** — redução de 74%
-- Resolutividade RDR: de 18% para **55%** — aumento de 206%
-- Taxa de resposta tNPS: de 7% para **18%** — aumento de 157%
-- tNPS RDR: de -66 para **+5** — saindo da zona crítica
-
-**Por que essas metas são factíveis?** Usei P75 como referência — se 25% dos casos já atingem esse SLA, é factível para os demais com as ações corretas."
+**Impacto em 90 dias:**
+- SLA: 6,5 → 3,5 dias (redução de 46%)
+- Casos críticos: 46% → 12% (redução de 74%)
+- Resolutividade RDR: 18% → 55%"
 
 ---
 
-#### Slide 9: Desenvolvimento do Time (1 min)
+#### Slide 9: Desenvolvimento do Time (30 seg)
 
-"Para executar esse plano, o time precisa de **autonomia com alinhamento**.
+"Para executar, o time precisa de **autonomia com alinhamento**. Três pilares:
 
-Estruturei em 3 pilares:
+1. **Playbook** com critérios claros de análise
+2. **Perguntas-guia** para direcionar investigações
+3. **Calibração semanal** para ajustes
 
-**1. Playbook Estruturado:**
-- Definição clara de causa raiz: concentração em squads/reasons específicos
-- Metodologia: Pareto por canal, squad, reason + drill-down
-- Critérios de decisão documentados
-
-**2. Perguntas-Guia:**
-- Onde está concentrado o problema?
-- Qual a correlação com outros indicadores?
-- O que muda se resolvermos isso?
-
-**3. Calibração Contínua:**
-- Revisão semanal de análises
-- Feedback estruturado
-- Ajuste de abordagem conforme achados
-
-O objetivo: analistas tomam decisões de forma autônoma, sem depender do líder para cada passo."
+O objetivo: analistas tomam decisões sem depender do líder para cada passo."
 
 ---
 
-#### Slide 10: Golden Source (1 min 30 seg)
+#### Slide 10: Golden Source (1 min)
 
-"Uma pergunta do case era sobre consistência de dados entre fontes diferentes. Como garantir que os números batem?
+"Sobre consistência de dados — a metodologia **Golden Source**.
 
-Minha resposta: **arquitetura de Golden Source**.
+**O que é:** Uma arquitetura onde existe uma **única fonte primária de dados** considerada a versão oficial. Todas as outras fontes derivam dela ou são validadas contra ela.
 
-O fluxo é: Golden Source → Framework de Core Metrics → Dashboard Operacional
+**Por que importa:** Elimina o problema de 'meu número diz X, o seu diz Y'. Quando há divergência, a Golden Source é o árbitro.
 
-**Golden Source:** Uma fonte primária de dados com governança clara. Princípios MECE — mutuamente exclusivo, coletivamente exaustivo.
-
-**Framework de Core Metrics:** As 5 métricas que importam:
-1. SLA Médio
-2. Casos > 7 dias
-3. Resolutividade
-4. tNPS
-5. Taxa de Resposta tNPS
-
-**Dashboard Operacional:** Materializa o framework e vira a **fonte única da verdade**. Qualquer discussão de número parte dali.
-
-Isso elimina o problema de 'meu número diz X, o seu diz Y'. O Dashboard Operacional é a referência para toda a operação."
+**Na prática:** Golden Source alimenta o Framework de Core Metrics — as 5 métricas que importam. Esse framework materializa no Dashboard Operacional, que vira a **fonte única da verdade** para a operação."
 
 ---
 
-#### Slide 11: Dashboard Executivo vs Operacional (1 min)
+#### Slide 11: Dashboard Executivo vs Operacional (30 seg)
 
-"Outra pergunta do case: qual a diferença entre dashboard executivo e operacional?
+"Em resumo:
+- **Executivo:** 5 KPIs, visão estratégica, decisão de onde investir
+- **Operacional:** Drill-down completo, visão tática, ação imediata
 
-**Dashboard Executivo:**
-- Audiência: Diretoria, C-Level
-- Frequência: Semanal/Mensal
-- Métricas: 5 KPIs principais
-- Pergunta que responde: 'Onde investir recursos?'
-- Drill-down: Mínimo — só tendência temporal
-
-**Dashboard Operacional:**
-- Audiência: Supervisores, Analistas
-- Frequência: Diária/Tempo real
-- Métricas: Todas as métricas operacionais
-- Pergunta que responde: 'Por que o SLA de Collections subiu esta semana?'
-- Drill-down: Máximo — por squad, canal, reason, período
-
-São complementares. O executivo direciona estratégia, o operacional executa tática."
+São complementares — o executivo direciona, o operacional executa."
 
 ---
 
-#### Slide 12: Bot de Triagem (1 min 30 seg)
+#### Slide 12: Bot de Triagem (30 seg)
 
-"O case perguntava sobre um bot de triagem que está parado há 3 meses. Minha recomendação: **retomar, mas com validação técnica prévia**.
+"O bot parado há 3 meses: **retomar com validação técnica**.
 
-Na matriz de priorização:
-- Impacto: **Alto** — triagem automatizada libera headcount para casos complexos
-- Esforço: **Médio** — já existe, precisa recalibrar
-- Risco: **Médio-Alto** — se a acurácia for baixa, gera retrabalho
+Plano de 30 dias: discovery, recalibração, shadow mode.
 
-**Plano de execução em 30 dias:**
-
-**Semanas 1-2:** Discovery técnico
-- Benchmark de alternativas
-- Requisitos de recalibração
-- Definição de métricas de sucesso
-
-**Semanas 2-3:** Recalibração
-- Treinar com dados recentes
-- Ajustar regras de classificação
-
-**Semanas 3-4:** Validação
-- Shadow mode: bot classifica, humano valida
-- Relatório de acurácia
-
-**Critério GO/NO-GO:** Acurácia ≥ 85%. Se não atingir, não ativa.
-
-Por que esse approach? Prefiro transparência a risco operacional. Bot com baixa acurácia gera mais problema do que resolve."
+Critério GO/NO-GO: acurácia ≥ 85%. Se não atingir, não ativa."
 
 ---
 
-#### Slide 13: ROI do Bot (1 min)
+#### Slide 13: ROI do Bot (30 seg)
 
-"Fiz a conta de ROI com premissas conservadoras:
+"ROI com premissas conservadoras:
 
 **Premissas:**
-- 30% dos casos são triagem simples (101.284 casos/ano)
-- 3 minutos economizados por caso
-- Custo FTE: R$ 5.800/mês (R$ 35/hora)
+- Tempo economizado por caso: 3 minutos
+- Custo FTE: **R$ 40/hora**
+- Volume anual de triagem
 
-**Cálculo:**
-- Horas economizadas: 5.064 horas/ano
-- Economia: R$ 177.240/ano só em triagem
-- FTEs liberados: 3,4 analistas para tarefas de maior valor
+**Resultado estimado:** Economia de aproximadamente **R$ 250 mil/ano** e liberação de **3-4 FTEs** para tarefas de maior valor.
 
-**Resultado Total:** Economia estimada de **R$ 236 mil/ano**.
-
-**Importante:** São estimativas. Deixei documentado que precisaria validar o tempo médio de triagem manual com dados reais. A nota de FTE explica que é Full-Time Equivalent — 1 FTE = 1 pessoa trabalhando 40h/semana.
-
-Transparência sobre premissas é fundamental para credibilidade."
+*Nota: São estimativas que precisam ser validadas com dados reais de tempo de triagem.*"
 
 ---
 
-#### Slide 14: Outros Casos de IA (1 min)
+#### Slide 14: Outros Casos de IA (30 seg)
 
-"Identifiquei mais 2 oportunidades de IA que podem acelerar os resultados:
+"Duas oportunidades adicionais de IA:
 
 **1. Agent IA para Respostas Simples:**
-- O que é: Automatiza respostas de baixa complexidade — solicitação de documentos, confirmação de dados, status de processo
-- Impacto: Libera headcount para casos complexos que precisam de análise humana
-- Gaps que resolve: Reduz tempo de resposta, padroniza comunicação
+- Automatiza casos de baixa complexidade
+- **Impacto:** Libera headcount para casos complexos, padroniza comunicação, reduz tempo de primeira resposta
 
 **2. AI CX Analysis Plugin:**
-- O que é: Analisa conversas e identifica padrões automaticamente usando LLM
-- Impacto: Classifica reasons automaticamente, identifica tendências, sugere melhorias
-- Gaps que resolve: IDs repetidos (identifica recontatos), receiving method em branco (classifica automaticamente), inconsistência de reasons
+- Analisa conversas e identifica padrões automaticamente
+- **Impacto:** Classifica reasons automaticamente, identifica tendências antes que virem problemas, melhora qualidade dos dados
 
-Ambas são prototipáveis com dados existentes e entram no roadmap de 60-90 dias."
+Ambas atacam a raiz do problema: mais eficiência operacional com menos esforço manual."
 
 ---
 
-### MÓDULO 4: GESTÃO DE PESSOAS (6 min)
+### MÓDULO 4: GESTÃO DE PESSOAS (10 min)
 
 #### Slide 15: Roadmap 4 Semanas (1 min 30 seg)
 
-"Para preparar o diagnóstico completo para o Fórum de liderança, estruturei um roadmap de 4 semanas com 2 tracks paralelos.
+"Para o Fórum de liderança, estruturei um roadmap de 4 semanas com **2 tracks paralelos**:
 
 **Track 1 — Diagnóstico:**
 - Semana 1: Extração e limpeza de dados
 - Semana 2: Análise Pareto com suporte de IA
-- Semana 3: Validação de hipóteses e correlações
+- Semana 3: Validação de hipóteses
 - Semana 4: Dashboards operacional e executivo
 
 **Track 2 — Bot de Triagem:**
@@ -398,106 +272,136 @@ Ambas são prototipáveis com dados existentes e entram no roadmap de 60-90 dias
 - Semana 3: Shadow mode
 - Semana 4: Relatório GO/NO-GO
 
-**Distribuição dos 5 analistas por skill:**
-- A1/A2: Foco em dados — extração, limpeza, qualidade
-- A3: Foco em IA — análise Pareto com Cursor
-- A4: Foco em negócio — bot de triagem, stakeholders
-- A5: Foco em dashboards — operacional e executivo
+**Distribuição dos 5 analistas:**
+- A1/A2: Dados — extração, limpeza, qualidade
+- A3: IA — análise Pareto com Cursor
+- A4: Negócio — bot, stakeholders
+- A5: Dashboards — operacional e executivo
 
-Os tracks rodam em paralelo porque usam stakeholders diferentes — não competem por recurso."
+Os tracks rodam em paralelo porque usam stakeholders diferentes."
 
 ---
 
 #### Slide 16: Framework RICE (1 min)
 
-"Para o time priorizar de forma autônoma, implemento o framework RICE.
+"Para priorização autônoma, uso o framework **RICE**:
 
-**R — Reach:** Quantos casos são impactados? (escala 1-5)
-**I — Impact:** Qual o nível de impacto no KPI? (0.25 a 3)
-**C — Confidence:** Qual a confiança na estimativa? (20% a 100%)
-**E — Effort:** Quantas semanas/pessoa? (número absoluto)
+- **R**each: Quantos casos são impactados
+- **I**mpact: Nível de impacto no KPI
+- **C**onfidence: Confiança na estimativa
+- **E**ffort: Esforço em semanas/pessoa
 
-**Fórmula:** (R × I × C) ÷ E = Score
+**Fórmula:** (R × I × C) ÷ E
 
-**Exemplo prático com ações do case:**
-1. Task Force Collections: Score 36 — Prioridade 1
-2. Templates de Resposta: Score 20 — Prioridade 2
-3. Triagem por IA: Score 15 — Prioridade 3
-4. Dashboard SLA: Score 12 — Prioridade 4
-5. Feedback Loop Produto: Score 6 — Prioridade 5
-
-Por que RICE? É simples, quantificável e amplamente usado em produto. Permite que qualquer analista proponha uma ação e calcule prioridade objetivamente."
+Por que RICE? É quantificável, remove subjetividade, e permite que qualquer analista proponha ações e calcule prioridade de forma autônoma."
 
 ---
 
-#### Slide 17: Plano 30-60-90 (2 min)
+#### Slide 17: Plano 30-60-90 (3 min)
 
-"O plano executivo consolidado em 30-60-90 dias:
+"Agora o plano executivo completo em **30-60-90 dias**:
 
-**30 DIAS — Foco: SLA (Vermelho)**
-Iniciativas:
-- Dashboard apresentado no Fórum
-- Retomada Bot Triagem (validação completa)
-- Task Force Collections
-Stakeholders: Dados, IA, Engenharia
-Marco de Sucesso: Dashboard no Fórum + Bot ativo com acurácia ≥ 85%
+**30 DIAS — Foco: SLA**
+- **Iniciativas:** Dashboard no Fórum, Bot de Triagem validado e ativo, Task Force Collections
+- **Stakeholders:** Dados, IA, Engenharia
+- **Marco de Sucesso:** Dashboard apresentado + Bot com acurácia ≥ 85%
 
-**60 DIAS — Foco: Resolutividade (Laranja)**
-Iniciativas:
-- Fila prioritária RDR
-- Agent IA em piloto
-- Dashboard monitoramento em tempo real
-Stakeholders: Produto, Operação
-Marco de Sucesso: Resolutividade RDR ≥ 25%
+**60 DIAS — Foco: Resolutividade**
+- **Iniciativas:** Fila prioritária RDR, Agent IA em piloto, Dashboard de monitoramento em tempo real
+- **Stakeholders:** Produto, Operação
+- **Marco de Sucesso:** Resolutividade RDR ≥ 25%
 
-**90 DIAS — Foco: tNPS (Amarelo)**
-Iniciativas:
-- IA Generativa para sugestão de respostas
-- Estudo de dimensionamento
-- Priorização de reasons críticos (SCR, Multidébitos)
-Stakeholders: Estratégia, Qualidade
-Marco de Sucesso: Taxa resposta tNPS ≥ 12%, SLA ≤ 3,5 dias
+**90 DIAS — Foco: tNPS**
+- **Iniciativas:** IA Generativa, Estudo de dimensionamento, Priorização de reasons críticos
+- **Stakeholders:** Estratégia, Qualidade
+- **Marco de Sucesso:** Taxa resposta tNPS ≥ 12%, SLA ≤ 3,5 dias
 
-**Riscos de Execução e Mitigações:**
-- **Regulatório:** BACEN pode escalar casos → Comunicação proativa, priorização RDR
-- **Operacional:** Backlog pode crescer durante transição → Task Force temporária, alocação extra
-- **Pessoas:** Sobrecarga de trabalho → Distribuição equilibrada, monitoramento de carga
-- **Tecnológico:** Bot pode não atingir acurácia → GO/NO-GO rigoroso, plano B manual"
+**RISCOS DE EXECUÇÃO E MITIGAÇÕES:**
+
+**Risco Regulatório:** BACEN pode escalar casos durante a transição
+→ **Mitigação:** Comunicação proativa com compliance, priorização absoluta de RDR, monitoramento diário de casos próximos ao limite
+
+**Risco Operacional:** Backlog pode crescer durante implementação de mudanças
+→ **Mitigação:** Task Force temporária com analistas sênior, horas extras controladas no primeiro mês, alocação extra se necessário
+
+**Risco de Pessoas:** Sobrecarga de trabalho durante período de mudança
+→ **Mitigação:** Distribuição equilibrada via RICE, monitoramento de carga nas 1:1s, ajuste de escopo se necessário
+
+**Risco Tecnológico:** Bot pode não atingir acurácia esperada
+→ **Mitigação:** GO/NO-GO rigoroso em 30 dias, plano B com triagem manual otimizada, não ativar sem validação"
 
 ---
 
-#### Slide 18: Gestão de Pessoas (1 min 30 seg)
+#### Slide 18: Gestão de Pessoas (4 min)
 
-"Por fim, como pretendo liderar o time de 5 analistas sênior.
+"Por fim, e o mais importante para esta avaliação: como pretendo **liderar o time de 5 analistas sênior**.
 
-**Timeline Semanal de Rituais:**
-- **Daily (15 min):** Acompanhamento RICE, desbloqueios, prioridades do dia — todo dia às 9h
-- **1:1 (45 min):** Individual com cada analista — carreira, entregas, feedback — sexta-feira
-- **Weekly (1h):** Alinhamento do time — revisão da semana, planejamento da próxima — segunda-feira
+**TIMELINE SEMANAL DE RITUAIS:**
 
-**4 Pilares de Gestão:**
+**Daily (15 min) — Todo dia às 9h:**
+- Acompanhamento do progresso das tarefas RICE
+- Identificação de bloqueios
+- Prioridades do dia
+- Formato: standup rápido, cada um fala o que fez, o que vai fazer, e se tem impedimento
 
-**01 — Desenvolvimento Técnico:**
-- PDI individualizado por competência
-- Capacitação em ferramentas (Cursor, SQL, Python)
-- Mentoria técnica direta
+**1:1 (45 min) — Individual, sexta-feira:**
+- Não é status report — é desenvolvimento
+- Conversa sobre carreira, aspirações, feedback
+- Revisão de entregas da semana
+- PDI: o que a pessoa quer desenvolver, como posso ajudar
+- Fundamental para reter talentos e identificar insatisfações cedo
 
-**02 — Rituais e Acompanhamento:**
-- Cadência clara de entregas
-- 1:1 focado em desenvolvimento
-- Feedback contínuo, não só em avaliação
+**Weekly (1h) — Time completo, segunda-feira:**
+- Revisão da semana anterior: o que funcionou, o que não funcionou
+- Planejamento da semana: distribuição de tarefas via RICE
+- Alinhamento BAU vs Estratégico: o que é urgente vs o que é importante
+- Espaço para o time trazer problemas e sugestões
 
-**03 — Engajamento:**
-- Ownership: cada analista 'dono' de um projeto estratégico
-- Visibilidade em fóruns executivos
-- Integração mensal do time
+**Integração Mensal:**
+- Atividade fora do contexto de trabalho
+- Coffee, almoço de time, team building
+- Importante para coesão do grupo
 
-**04 — Liderança Técnica (Meu Diferencial):**
-- Hands-on: atuo junto ao time em entregas críticas
-- Mentoria em IA, Cursor e análise de dados
-- Contexto de negócio: traduzo demandas técnicas para linguagem executiva
+**OS 4 PILARES DE GESTÃO:**
 
-O modelo não cria dependência do líder — constrói autonomia no time."
+**Pilar 1 — Desenvolvimento Técnico:**
+- PDI individualizado por competência — cada analista tem gaps diferentes
+- Capacitação em ferramentas: Cursor, SQL, Python, análise de dados
+- Mentoria técnica direta — não terceirizo, faço junto
+- Objetivo: elevar o nível técnico do time continuamente
+
+**Pilar 2 — Rituais e Acompanhamento:**
+- Cadência clara de entregas — todo mundo sabe o que é esperado
+- 1:1 focado em desenvolvimento, não em cobrança
+- Feedback contínuo, não só em avaliação formal
+- Weekly estruturada com pauta definida
+
+**Pilar 3 — Engajamento:**
+- **Ownership:** Cada analista é 'dono' de um projeto estratégico — não executor de tarefas
+- **Visibilidade:** Reconhecimento em fóruns executivos — quem fez o trabalho apresenta
+- **Integração:** Atividades mensais para fortalecer o time como grupo
+
+**Pilar 4 — Liderança Técnica (Meu Diferencial):**
+- **Hands-on:** Não sou líder que delega e cobra. Atuo junto ao time em entregas críticas
+- **Mentoria em IA:** Tenho experiência com Cursor, automação, análise de dados — posso capacitar o time
+- **Contexto de negócio:** Sei traduzir demandas técnicas para linguagem executiva e vice-versa
+
+**CONSTRUÇÃO DE AUTONOMIA:**
+
+O modelo que proponho **não cria dependência do líder**. O objetivo é construir capacidade analítica e decisória no time.
+
+- Framework RICE permite que qualquer analista priorize sem precisar perguntar
+- Playbook documenta critérios de decisão
+- 1:1 desenvolve, não controla
+- Ownership dá responsabilidade real, não tarefas
+
+**TIME ENXUTO, ALTO IMPACTO:**
+
+Com 5 analistas sênior bem direcionados + liderança técnica hands-on, a capacidade é multiplicada sem aumento de headcount. O diferencial está em:
+- Processos claros
+- Ferramentas certas
+- Desenvolvimento contínuo
+- Liderança que trabalha junto"
 
 ---
 
@@ -507,111 +411,95 @@ O modelo não cria dependência do líder — constrói autonomia no time."
 
 "Para resumir:
 
-**O problema:** 3 indicadores críticos que parecem independentes, mas têm uma causa raiz comum — SLA. Comprovei com dados: casos rápidos têm o dobro da resolutividade e tNPS significativamente maior.
+**O problema:** 3 indicadores críticos com uma causa raiz comum — SLA. Comprovado com dados: casos rápidos têm o dobro da resolutividade.
 
-**A estratégia:** Foco em SLA primeiro, priorizando Collections que representa 44,73% do problema. Atacando um ponto, melhoramos os três indicadores.
+**A estratégia:** Foco em SLA, priorizando Collections que representa 44,73% do problema.
 
-**O plano:** 90 dias com metas progressivas:
-- SLA de 6,5 para 3,5 dias
-- Casos críticos de 46% para 12%
-- Resolutividade RDR de 18% para 55%
+**O plano:** 90 dias com metas progressivas, riscos mapeados, mitigações definidas.
 
-**A gestão:** Time com autonomia via framework RICE, rituais estruturados, e modelo de liderança que não cria dependência.
+**A gestão:** Time com autonomia via RICE, rituais estruturados, desenvolvimento contínuo, e liderança técnica hands-on.
 
-**Meu diferencial:** Combino visão analítica para estruturar problemas complexos, conhecimento técnico para implementar soluções com IA, e experiência de liderança para desenvolver o time. Não só planejo — executo junto.
+**Meu diferencial:** Combino capacidade analítica para estruturar problemas, conhecimento técnico para implementar soluções com IA, e experiência de liderança que desenvolve — não controla.
 
 Estou à disposição para perguntas."
 
 ---
 
-## RESUMO DE TEMPOS (REVISADO)
+## RESUMO DE TEMPOS (TOTAL: 30 min)
 
 | Slide | Título | Tempo |
 |-------|--------|-------|
-| 0 | Capa | 30 seg |
-| 1 | Agenda | 1 min 30 seg |
-| 2 | 3 Problemas Críticos | 3 min |
+| 0 | Capa | 1 min |
+| 1 | Agenda | 1 min |
+| 2 | 3 Problemas Críticos | 2 min 30 seg |
 | 3 | Validação da Hipótese | 2 min 30 seg |
-| 4 | Matriz de Impactos | 2 min |
-| 5 | Gaps de Dados | 1 min 30 seg |
+| 4 | Matriz de Impactos | 1 min |
+| 5 | Gaps de Dados | 30 seg |
 | 6 | Análise Pareto | 1 min 30 seg |
 | 7 | Drill-Down Collections | 2 min |
-| 8 | Plano de Ação 90 dias | 3 min |
-| 9 | Desenvolvimento do Time | 1 min |
-| 10 | Golden Source | 1 min 30 seg |
-| 11 | Dashboard Exec vs Oper | 1 min |
-| 12 | Bot de Triagem | 1 min 30 seg |
-| 13 | ROI do Bot | 1 min |
-| 14 | Outros Casos de IA | 1 min |
+| 8 | Plano de Ação 90 dias | 2 min |
+| 9 | Desenvolvimento do Time | 30 seg |
+| 10 | Golden Source | 1 min |
+| 11 | Dashboard Exec vs Oper | 30 seg |
+| 12 | Bot de Triagem | 30 seg |
+| 13 | ROI do Bot | 30 seg |
+| 14 | Outros Casos de IA | 30 seg |
 | 15 | Roadmap 4 Semanas | 1 min 30 seg |
 | 16 | Framework RICE | 1 min |
-| 17 | Plano 30-60-90 | 2 min |
-| 18 | Gestão de Pessoas | 1 min 30 seg |
+| 17 | Plano 30-60-90 | 3 min |
+| 18 | **Gestão de Pessoas** | **4 min** |
 | 19 | Encerramento | 2 min |
-| **TOTAL** | | **~32 min** |
-
-*Nota: Tempo ligeiramente acima de 30 min para ter margem de corte. Na prática, alguns slides podem ser mais rápidos.*
+| **TOTAL** | | **30 min** |
 
 ---
 
-## DICAS PARA O DIA
+## SLIDES RESUMIDOS (para compensar tempo)
 
-### Pontos de Corte (se precisar reduzir tempo)
-- Slide 5 (Gaps): Pode resumir em 45 seg mencionando só o principal
-- Slide 9 (Desenvolvimento do Time): Pode pular se tempo estiver curto
-- Slide 13 (ROI): Pode dar só o número final sem detalhar premissas
+Os seguintes slides foram **reduzidos** para dar mais tempo à gestão de pessoas:
 
-### Pontos para Enfatizar
-- Slide 3: A validação estatística é seu diferencial — não pule
-- Slide 4: O dado dos 76k casos com 97% não resposta é impactante — use
-- Slide 8: Os números de impacto são ambiciosos e mostram domínio — destaque
+| Slide | Antes | Depois | Economia |
+|-------|-------|--------|----------|
+| 4 - Matriz de Impactos | 2 min | 1 min | 1 min |
+| 5 - Gaps de Dados | 1 min 30 seg | 30 seg | 1 min |
+| 9 - Desenvolvimento | 1 min | 30 seg | 30 seg |
+| 11 - Exec vs Oper | 1 min | 30 seg | 30 seg |
+| 12 - Bot de Triagem | 1 min 30 seg | 30 seg | 1 min |
+| 13 - ROI | 1 min | 30 seg | 30 seg |
+| 14 - Outros IA | 1 min | 30 seg | 30 seg |
 
-### Linguagem
-- Use "eu identifiquei", "minha análise mostrou", "minha recomendação é"
-- Evite passivo: "foi identificado", "os dados mostram"
-- Mostre ownership em cada decisão
-
-### Se der branco
-- Volte para: "O ponto principal é que SLA é a causa raiz"
-- Ou: "O problema está concentrado em Collections — 44,73%"
+**Tempo economizado:** ~5 min → Realocado para slides 17 e 18
 
 ---
 
-## POSSÍVEIS PERGUNTAS E RESPOSTAS
+## MENSAGENS-CHAVE
 
-**P: Por que você escolheu 7 dias como corte?**
-> "Duas razões: regulatória — 70% do prazo BACEN dá margem de segurança. E empírica — os dados mostram degradação significativa de resolutividade e tNPS a partir de 7 dias."
+1. **"SLA é a causa raiz"** — atacando um, melhoro três
 
-**P: Como você validaria se o bot realmente funciona?**
-> "Shadow mode por 2 semanas: o bot classifica, mas humano valida. Comparo acurácia. Se menor que 85%, não ativo e investigo o que está errando."
+2. **"Rápido = 0-3 dias, Lento = 4+ dias"** — corte baseado em margem de segurança
 
-**P: De onde veio a meta de 55% de resolutividade em RDR?**
-> "Benchmark interno. Os squads com melhor performance já atingem esse patamar. Se alguns conseguem, é factível para os demais com as ações corretas."
+3. **"Collections = 44,73%"** — o problema está concentrado
 
-**P: E se o time resistir às mudanças?**
-> "Começo pelo porquê. Mostro os dados, o impacto nos indicadores. Envolvo na construção da solução. Resistência geralmente vem de não entender o contexto ou não ter sido consultado."
+4. **"Golden Source = fonte única da verdade"** — elimina divergência de números
+
+5. **"Autonomia com alinhamento"** — framework RICE, não dependência
+
+6. **"Liderança hands-on"** — não delego e cobro, trabalho junto
+
+---
+
+## POSSÍVEIS PERGUNTAS
+
+**P: Por que 0-3 dias como "Rápido"?**
+> "Margem de segurança. Com 3 dias, ainda há tempo para retrabalho sem estourar o prazo. A partir de 4 dias, cada dia consome a margem até o limite de 10."
+
+**P: De onde veio o custo de R$ 40/hora?**
+> "Estimativa baseada em custo médio de analista sênior + encargos. É uma premissa que precisaria ser validada com dados reais de RH."
+
+**P: Como você lida com resistência do time?**
+> "Começo pelo porquê. Mostro os dados, o impacto. Envolvo na construção. Resistência geralmente vem de não entender o contexto ou não ter sido consultado."
 
 **P: Por que você e não outro candidato?**
-> "Combino três coisas: capacidade analítica para estruturar problemas — como mostrei na validação de hipótese. Conhecimento técnico para implementar soluções com IA — como o plano de automação. E experiência de liderança hands-on — não só planejo, executo junto com o time."
+> "Três coisas: capacidade analítica — como mostrei no diagnóstico. Conhecimento técnico — IA, Cursor, automação. E liderança que desenvolve — não controlo, construo autonomia."
 
-**P: O que você faria diferente se tivesse mais tempo?**
-> "Aprofundaria a análise de procedência BACEN — era um gap da base. E faria entrevistas qualitativas com analistas para entender gargalos que os dados não mostram — às vezes o problema é processo, não volume."
-
-**P: Esses números de impacto são realistas?**
-> "Usei P75 como referência — se 25% dos casos já atingem esse SLA, é factível para os demais. E as ações são progressivas em 3 fases justamente para validar antes de escalar."
-
----
-
-## MENSAGENS-CHAVE (MEMORIZE)
-
-1. **"SLA é a causa raiz"** — atacando um, melhoro três. Comprovado com dados.
-
-2. **"O problema está concentrado"** — Collections = 44,73%. Foco gera impacto.
-
-3. **"76k casos RDR sem feedback"** — 97% não respondem tNPS. Ponto cego crítico.
-
-4. **"46% → 12% em 90 dias"** — redução de 74% nos casos críticos.
-
-5. **"Autonomia com alinhamento"** — framework RICE, não dependência do líder.
-
-6. **"Meu diferencial é execução"** — não só planejo, trabalho junto com o time.
+**P: O que faria diferente com mais tempo?**
+> "Entrevistas qualitativas com analistas para entender gargalos que os dados não mostram. E análise de procedência BACEN que era um gap da base."

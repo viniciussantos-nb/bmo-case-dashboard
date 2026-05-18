@@ -2648,12 +2648,12 @@ scaleSlides();
 const SPEAKER_NOTES = {
   0: {
     title: "Capa",
-    time: "30 seg",
-    notes: `Bom dia/Boa tarde. Sou Vinícius Santos e vou apresentar minha análise do case de BMO Ouvidoria.
+    time: "1 min",
+    notes: `Bom dia/Boa tarde. Sou Vinícius Santos e vou apresentar o case de BMO Ouvidoria.
 
-Antes de começar, quero compartilhar a conclusão principal que cheguei — assim vocês podem acompanhar meu raciocínio sabendo onde vou chegar:
+<strong>Contexto:</strong> O case completo foi enviado anteriormente e passou pelo processo de triagem, então vou focar nos <strong>principais pontos e na linha de raciocínio</strong>. Se quiserem que eu aprofunde algo ou tiverem dúvidas, fiquem à vontade para interromper ou anotar para o final.
 
-<strong>Identifiquei 3 problemas críticos na operação, mas descobri que eles não são independentes. O SLA elevado é a causa raiz que amplifica os outros dois. Portanto, minha estratégia é atacar o SLA primeiro — resolvendo um, melhoramos os três.</strong>`
+<strong>Conclusão principal:</strong> Identifiquei 3 problemas críticos, mas descobri que não são independentes. O SLA elevado é a causa raiz que amplifica os outros dois. Minha estratégia é atacar o SLA primeiro — resolvendo um, melhoramos os três.`
   },
   1: {
     title: "Agenda",
@@ -2698,80 +2698,42 @@ Identifiquei <strong>3 problemas críticos</strong> — e os priorizei nessa ord
   3: {
     title: "Validação da Hipótese",
     time: "2 min 30 seg",
-    notes: `Essa não é uma opinião — é uma correlação comprovada nos dados.
+    notes: `Fui validar a hipótese nos dados. Dividi os casos em duas categorias:
 
-<strong>Teste 1 — SLA vs Resolutividade:</strong>
-• Casos até 3 dias: <strong>42% de resolutividade</strong>
-• Casos 4+ dias: <strong>24,5%</strong>
-• Queda de <strong>17,5 pontos percentuais</strong>
+<strong>Rápido: 0 a 3 dias</strong> — Escolhi esse corte porque representa atendimentos dentro de uma margem confortável, onde ainda há tempo para retrabalhos sem estourar o prazo.
 
-<strong>Teste 2 — SLA vs tNPS:</strong>
-• Atendimento rápido (0-3 dias): tNPS de <strong>6,1</strong>
-• Atendimento lento (4+ dias): tNPS de <strong>4,2</strong>
+<strong>Lento: 4 dias ou mais</strong> — A partir daqui, cada dia adicional consome a margem de segurança até o limite regulatório de 10 dias.
 
-<strong>Comprovação por squad:</strong>
-• Collections: Rápido 45% vs Lento 21% — diferença de 24pp
-• CSS: Rápido 44% vs Lento 22% — diferença de 22pp
+<strong>Os resultados:</strong>
+• Rápido (0-3 dias): <strong>42% resolutividade</strong>, tNPS <strong>6,1</strong>
+• Lento (4+ dias): <strong>24,5% resolutividade</strong>, tNPS <strong>4,2</strong>
+• Diferença: <strong>-17,5pp</strong> de resolutividade
 
-<strong>Detalhamento por faixa de SLA:</strong>
-• 0-1 dias: 55,6% resolutividade, tNPS 7,5
-• 2-3 dias: 47,5% resolutividade, tNPS 7,2
-• 11+ dias: apenas 29,7% resolutividade, tNPS 3,5
+<strong>Por squad, a correlação se mantém:</strong>
+• Collections: 45% vs 21% — diferença de 24pp
+• CSS: 44% vs 22% — diferença de 22pp
 
-<strong>Conclusão:</strong> A cada dia adicional de SLA, perdemos ~3pp de resolutividade e ~0,5pts de tNPS. Casos até 3 dias têm <strong>71% mais chance</strong> de ter o problema resolvido.
+<strong>Conclusão:</strong> A cada dia adicional de SLA, perdemos ~3pp de resolutividade e ~0,5pts de tNPS. Casos até 3 dias têm <strong>71% mais chance</strong> de resolução.
 
-<strong>Por que 7 dias como corte?</strong>
-1. Regulatório: 70% do prazo BACEN dá margem de segurança
-2. Empírico: Dados mostram degradação significativa a partir de 7 dias`
+<strong>Por que 7 dias como corte crítico?</strong> Representa 70% do prazo BACEN — margem de segurança antes do limite regulatório.`
   },
   4: {
     title: "Matriz de Impactos",
-    time: "2 min",
-    notes: `Matriz cruzando os 3 problemas com dimensões regulatória, reputacional e operacional.
+    time: "1 min",
+    notes: `A matriz cruza os 3 problemas com impactos regulatório, reputacional e operacional.
 
-<strong>Problema 1 — SLA Elevado:</strong>
-• <strong>Regulatório: CRÍTICO</strong> — BACEN exige 10 dias úteis. Com 46% acima de 7 dias, operamos no limite. Risco de multas e sanções
-• <strong>Reputacional: ALTO</strong> — Cliente em Ouvidoria já é escalation. SLA longo aumenta risco de Procon, Reclame Aqui
-• <strong>Operacional: CRÍTICO</strong> — Demora gera recontato, multiplicando volume. Efeito cascata
+<strong>Ponto mais crítico:</strong> SLA + RDR combinados geram <strong>76 mil casos com 97% de não resposta ao tNPS</strong>. É nosso maior ponto cego — sem feedback para melhorar justamente onde o risco reputacional é maior.
 
-<strong>Problema 2 — Baixa Resolutividade RDR:</strong>
-• <strong>Regulatório: CRÍTICO</strong> — São demandas via BACEN. 80%+ saem sem solução
-• <strong>Reputacional: CRÍTICO</strong> — 114 mil casos com tNPS de -66. Cada não resolvido é detrator público
-• <strong>Operacional: ALTO</strong> — <strong>76k casos RDR + Collections com 97% de não resposta ao tNPS</strong>. Sem visibilidade operacional
-
-<strong>Problema 3 — Baixa Taxa de Resposta tNPS:</strong>
-• <strong>Regulatório: MÉDIO</strong> — Decisões baseadas em amostra enviesada
-• <strong>Reputacional: ALTO</strong> — 90% dos detratores não têm problema resolvido
-• <strong>Operacional: MÉDIO</strong> — CompSol não consegue gerar relatórios confiáveis
-
-<strong>Ponto crítico:</strong> Esses 76 mil casos de RDR em Collections com 97% de não resposta são nosso maior ponto cego. Não temos feedback para melhorar — e é onde está o maior risco reputacional.`
+<em>[Os detalhes estão no slide — avanço para a análise de causa raiz]</em>`
   },
   5: {
     title: "Gaps de Dados",
-    time: "1 min 30 seg",
-    notes: `Por transparência, preciso pontuar os gaps que encontrei na base.
+    time: "30 seg",
+    notes: `Por transparência: a base tinha gaps.
 
-<strong>Gap 1 — Procedência Ausente (Impacto Alto):</strong>
-• Base não contém campo de procedência/improcedência
-• Case menciona taxa de 19%, mas não consegui analisar os motivos
-• Mitigação: usei SLA e resolutividade como proxies
+<strong>Principal:</strong> Ausência do campo de <strong>procedência BACEN</strong> — usei SLA e resolutividade como proxies.
 
-<strong>Gap 2 — Receiving Method (Impacto Médio):</strong>
-• <strong>171.638 casos — 50,84% da base</strong> — sem classificação
-• Mitigação: utilizei coluna Channel como alternativa
-
-<strong>Gap 3 — Reason em Branco (Impacto Baixo):</strong>
-• Apenas 4.210 casos (1,25%). Em Collections: apenas 0,25%
-• Impacto mínimo nas análises de Pareto
-
-<strong>Gap 4 — IDs Repetidos (Impacto Médio):</strong>
-• 1.131 IDs aparecem mais de uma vez
-• 92% têm squads diferentes, 97% têm reasons diferentes
-• Pode ser recontato ou problema de chave
-
-<strong>Dados adicionais necessários:</strong> Procedência RDR detalhada, classificação de causa raiz NOK, métricas do QuickSight, histórico pré-RDR.
-
-<strong>Por que mostro isso?</strong> Dados nunca são perfeitos. O importante é saber trabalhar com o que tem e ser transparente sobre limitações.`
+Os demais gaps estão documentados no slide e têm impacto menor na análise.`
   },
   6: {
     title: "Análise Pareto",
@@ -2848,81 +2810,72 @@ SLA médio de Collections: <strong>9,04 dias</strong> — acima do limite regula
   },
   9: {
     title: "Desenvolvimento do Time",
-    time: "1 min",
-    notes: `Para executar, o time precisa de <strong>autonomia com alinhamento</strong>.
+    time: "30 seg",
+    notes: `Para executar, o time precisa de <strong>autonomia com alinhamento</strong>. Três pilares:
 
-Estruturei em 3 pilares:
-1. Playbook com critérios claros
-2. Perguntas-guia para análises independentes
-3. Calibração semanal
+1. <strong>Playbook</strong> com critérios claros de análise
+2. <strong>Perguntas-guia</strong> para direcionar investigações
+3. <strong>Calibração semanal</strong> para ajustes
 
-O objetivo: analistas tomam decisões sem depender do líder para cada passo.`
+Objetivo: analistas tomam decisões sem depender do líder para cada passo.`
   },
   10: {
     title: "Golden Source",
-    time: "1 min 30 seg",
-    notes: `Uma pergunta do case era sobre consistência de dados entre fontes diferentes.
+    time: "1 min",
+    notes: `Sobre consistência de dados — a metodologia <strong>Golden Source</strong>.
 
-Minha resposta: <strong>arquitetura de Golden Source.</strong>
+<strong>O que é:</strong> Uma arquitetura onde existe uma <strong>única fonte primária de dados</strong> considerada a versão oficial. Todas as outras fontes derivam dela ou são validadas contra ela.
 
-Uma fonte primária alimenta um Framework de Core Metrics — 5 métricas que importam: SLA, Resolutividade, tNPS, Volume, Taxa de Resposta.
+<strong>Por que importa:</strong> Elimina o problema de 'meu número diz X, o seu diz Y'. Quando há divergência, a Golden Source é o árbitro.
 
-Esse framework materializa no Dashboard Operacional, que vira a <strong>fonte única da verdade</strong>. Qualquer discussão de número parte dali.
-
-Isso elimina o problema de 'meu número diz X, o seu diz Y'.`
+<strong>Na prática:</strong> Golden Source alimenta o Framework de Core Metrics — as 5 métricas que importam. Esse framework materializa no Dashboard Operacional, que vira a <strong>fonte única da verdade</strong> para a operação.`
   },
   11: {
     title: "Dashboard Executivo vs Operacional",
-    time: "1 min",
-    notes: `Outra pergunta do case: diferença entre dashboard executivo e operacional.
+    time: "30 seg",
+    notes: `Em resumo:
+• <strong>Executivo:</strong> 5 KPIs, visão estratégica, decisão de onde investir
+• <strong>Operacional:</strong> Drill-down completo, visão tática, ação imediata
 
-<strong>Executivo:</strong> 5 KPIs, visão estratégica, responde 'onde investir recursos?'
-
-<strong>Operacional:</strong> drill-down por squad, canal, reason, período. Responde 'por que o SLA de Collections subiu esta semana?'
-
-São complementares. O executivo decide, o operacional executa.`
+São complementares — o executivo direciona, o operacional executa.`
   },
   12: {
     title: "Bot de Triagem",
-    time: "1 min 30 seg",
-    notes: `O case perguntava sobre um bot de triagem parado há 3 meses.
+    time: "30 seg",
+    notes: `O bot parado há 3 meses: <strong>retomar com validação técnica</strong>.
 
-<strong>Minha recomendação: retomar, mas com validação técnica.</strong>
+Plano de 30 dias: discovery, recalibração, shadow mode.
 
-Na matriz de priorização: impacto alto, esforço médio, risco médio-alto.
-
-<strong>Plano de 30 dias:</strong>
-• Semanas 1-2: Discovery e benchmark
-• Semanas 2-3: Recalibração com dados recentes
-• Semanas 3-4: Shadow mode com validação humana
-
-<strong>Critério GO/NO-GO:</strong> acurácia ≥ 85%. Se não atingir, não ativa.
-
-Por que esse approach? Prefiro transparência a risco operacional. Bot com baixa acurácia gera retrabalho.`
+Critério GO/NO-GO: acurácia ≥ 85%. Se não atingir, não ativa.`
   },
   13: {
     title: "ROI do Bot",
-    time: "1 min",
-    notes: `Fiz a conta de ROI com premissas conservadoras:
+    time: "30 seg",
+    notes: `ROI com premissas conservadoras:
 
-• 30% dos casos são triagem simples
-• 3 minutos economizados por caso
-• R$ 35/hora por FTE
+<strong>Premissas:</strong>
+• Tempo economizado por caso: 3 minutos
+• Custo FTE: <strong>R$ 40/hora</strong>
+• Volume anual de triagem
 
-<strong>Resultado:</strong> R$ 236 mil/ano de economia, 3,4 FTEs liberados.
+<strong>Resultado estimado:</strong> Economia de aproximadamente <strong>R$ 250 mil/ano</strong> e liberação de <strong>3-4 FTEs</strong> para tarefas de maior valor.
 
-Importante: são estimativas. Deixei documentado que precisaria validar o tempo de triagem manual com dados reais. <strong>Transparência sobre premissas é fundamental.</strong>`
+<em>Nota: São estimativas que precisam ser validadas com dados reais de tempo de triagem.</em>`
   },
   14: {
     title: "Outros Casos de IA",
-    time: "1 min",
-    notes: `Identifiquei mais 2 oportunidades de IA:
+    time: "30 seg",
+    notes: `Duas oportunidades adicionais de IA:
 
-<strong>Agent IA para Respostas Simples:</strong> automatiza casos de baixa complexidade.
+<strong>1. Agent IA para Respostas Simples:</strong>
+• Automatiza casos de baixa complexidade
+• <strong>Impacto:</strong> Libera headcount para casos complexos, padroniza comunicação, reduz tempo de primeira resposta
 
-<strong>AI CX Analysis Plugin:</strong> analisa conversas e identifica padrões. Resolve gaps de dados que mencionei.
+<strong>2. AI CX Analysis Plugin:</strong>
+• Analisa conversas e identifica padrões automaticamente
+• <strong>Impacto:</strong> Classifica reasons automaticamente, identifica tendências antes que virem problemas, melhora qualidade dos dados
 
-Ambas entram no roadmap de 60-90 dias.`
+Ambas atacam a raiz: mais eficiência com menos esforço manual.`
   },
   15: {
     title: "Roadmap 4 Semanas",
@@ -2953,42 +2906,88 @@ Isso permite que qualquer analista proponha uma ação e calcule prioridade obje
   },
   17: {
     title: "Plano 30-60-90",
-    time: "2 min",
-    notes: `O plano consolidado:
+    time: "3 min",
+    notes: `<strong>30 DIAS — Foco: SLA</strong>
+• Iniciativas: Dashboard no Fórum, Bot validado e ativo, Task Force Collections
+• Stakeholders: Dados, IA, Engenharia
+• Marco: Dashboard apresentado + Bot com acurácia ≥ 85%
 
-<strong>30 dias — Foco em SLA:</strong>
-• Dashboard no Fórum
-• Bot ativo (acurácia ≥ 85%)
-• Task Force Collections
+<strong>60 DIAS — Foco: Resolutividade</strong>
+• Iniciativas: Fila prioritária RDR, Agent IA em piloto, Dashboard monitoramento
+• Stakeholders: Produto, Operação
+• Marco: Resolutividade RDR ≥ 25%
 
-<strong>60 dias — Foco em Resolutividade:</strong>
-• Fila prioritária RDR
-• Agent IA em piloto
+<strong>90 DIAS — Foco: tNPS</strong>
+• Iniciativas: IA Generativa, Estudo de dimensionamento, Priorização de reasons críticos
+• Stakeholders: Estratégia, Qualidade
+• Marco: Taxa resposta tNPS ≥ 12%, SLA ≤ 3,5 dias
 
-<strong>90 dias — Foco em tNPS:</strong>
-• IA Generativa
-• Feedback loop com Produto
+<strong>RISCOS E MITIGAÇÕES:</strong>
 
-<strong>Riscos mapeados:</strong> regulatório, operacional, pessoas, tecnológico. Cada um com mitigação.
+<strong>Regulatório:</strong> BACEN pode escalar casos
+→ Comunicação proativa com compliance, priorização de RDR, monitoramento diário
 
-Por que mapeei riscos? Porque plano sem risco mapeado é wishful thinking. Prefiro antecipar problemas.`
+<strong>Operacional:</strong> Backlog pode crescer durante transição
+→ Task Force temporária, horas extras controladas, alocação extra se necessário
+
+<strong>Pessoas:</strong> Sobrecarga de trabalho
+→ Distribuição equilibrada via RICE, monitoramento nas 1:1s, ajuste de escopo
+
+<strong>Tecnológico:</strong> Bot pode não atingir acurácia
+→ GO/NO-GO rigoroso, plano B com triagem manual otimizada`
   },
   18: {
     title: "Gestão de Pessoas",
-    time: "1 min 30 seg",
-    notes: `Por fim, como pretendo liderar o time de 5 analistas sênior.
+    time: "4 min",
+    notes: `<strong>TIMELINE SEMANAL DE RITUAIS:</strong>
 
-<strong>Rituais:</strong>
-• Daily 15 min
-• 1:1 semanal
-• Weekly de alinhamento
+<strong>Daily (15 min) — Todo dia às 9h:</strong>
+• Acompanhamento do progresso RICE
+• Identificação de bloqueios
+• Prioridades do dia
+• Formato: standup rápido
+
+<strong>1:1 (45 min) — Individual, sexta-feira:</strong>
+• Não é status report — é desenvolvimento
+• Carreira, aspirações, feedback
+• PDI: o que a pessoa quer desenvolver
+• Fundamental para reter talentos
+
+<strong>Weekly (1h) — Time completo, segunda-feira:</strong>
+• Revisão da semana anterior
+• Planejamento: distribuição via RICE
+• Alinhamento BAU vs Estratégico
+• Espaço para problemas e sugestões
+
+<strong>Integração Mensal:</strong> Coffee, almoço de time, team building
+
+<strong>4 PILARES:</strong>
+
+<strong>1. Desenvolvimento Técnico:</strong>
+• PDI individualizado por competência
+• Capacitação: Cursor, SQL, Python
+• Mentoria técnica direta — não terceirizo
+
+<strong>2. Rituais e Acompanhamento:</strong>
+• Cadência clara de entregas
+• 1:1 focado em desenvolvimento, não cobrança
+• Feedback contínuo
+
+<strong>3. Engajamento:</strong>
+• Ownership: cada analista 'dono' de um projeto
+• Visibilidade: quem fez, apresenta
 • Integração mensal
 
-<strong>4 pilares:</strong> Desenvolvimento técnico, rituais estruturados, engajamento via ownership, e liderança técnica.
+<strong>4. Liderança Técnica (Meu Diferencial):</strong>
+• Hands-on: atuo junto em entregas críticas
+• Mentoria em IA e Cursor
+• Traduzo técnico para executivo
 
-<strong>Meu diferencial como líder:</strong> Atuo hands-on. Não delego e cobro — trabalho junto. Tenho experiência com IA e ferramentas como Cursor, que posso usar para mentoria do time. E sei traduzir demandas técnicas para linguagem executiva.
-
-O modelo não cria dependência — constrói autonomia.`
+<strong>CONSTRUÇÃO DE AUTONOMIA:</strong>
+• RICE permite priorizar sem perguntar
+• Playbook documenta critérios
+• 1:1 desenvolve, não controla
+• O modelo não cria dependência — constrói capacidade`
   },
   19: {
     title: "Encerramento",
