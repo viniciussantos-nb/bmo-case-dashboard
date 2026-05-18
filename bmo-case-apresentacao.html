@@ -3274,6 +3274,10 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     openPresenterMode();
   }
+  if (e.key === 'r' || e.key === 'R') {
+    e.preventDefault();
+    openReviewMode();
+  }
 });
 
 // Sync when presenter window navigates
@@ -3281,6 +3285,326 @@ window.addEventListener('message', e => {
   if (e.data === 'next') navigate(1);
   if (e.data === 'prev') navigate(-1);
 });
+
+// ==================== REVIEW MODE (Slide + Speech) ====================
+let reviewWindow = null;
+
+function openReviewMode() {
+  if (reviewWindow && !reviewWindow.closed) {
+    reviewWindow.focus();
+    updateReviewWindow();
+    return;
+  }
+  
+  reviewWindow = window.open('', 'ReviewMode', 'width=1400,height=900,left=50,top=50');
+  
+  const doc = reviewWindow.document;
+  doc.write(`
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Review Mode — Case BMO</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f1a;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      height: 100vh;
+      gap: 0;
+    }
+    .slide-panel {
+      background: #1a1a2e;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .slide-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slide-number {
+      background: #820AD1;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .slide-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .slide-time {
+      background: rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+    .slide-frame {
+      flex: 1;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .slide-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transform-origin: top left;
+    }
+    .slide-nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .slide-nav button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-prev { background: rgba(255,255,255,0.1); color: #fff; }
+    .btn-prev:hover { background: rgba(255,255,255,0.2); }
+    .btn-next { background: #820AD1; color: #fff; }
+    .btn-next:hover { background: #9B30E8; }
+    
+    .speech-panel {
+      background: #0f0f1a;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .speech-header {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .speech-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #820AD1;
+      margin-bottom: 4px;
+    }
+    .speech-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .speech-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .speech-text {
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.85);
+      white-space: pre-wrap;
+    }
+    .speech-text strong { color: #AA68FF; font-weight: 600; }
+    .speech-text em { color: rgba(255,255,255,0.5); font-style: italic; }
+    
+    .progress-bar {
+      display: flex;
+      gap: 4px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .progress-dot {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .progress-dot:hover { background: rgba(255,255,255,0.3); }
+    .progress-dot.active { background: #820AD1; }
+    .progress-dot.passed { background: rgba(130,10,209,0.5); }
+    
+    .shortcut-hint {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 12px;
+    }
+    
+    .next-preview {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+    }
+    .next-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+    .next-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="slide-panel">
+      <div class="slide-header">
+        <div class="slide-info">
+          <span class="slide-number" id="slideNum">00</span>
+          <span class="slide-title" id="slideTitle">Capa</span>
+        </div>
+        <span class="slide-time" id="slideTime">30 seg</span>
+      </div>
+      <div class="slide-frame">
+        <div id="slidePreview" style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:14px;">
+          Slide Preview
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn-prev" onclick="window.opener.navigate(-1); window.opener.updateReviewWindow();">← Anterior</button>
+        <button class="btn-next" onclick="window.opener.navigate(1); window.opener.updateReviewWindow();">Próximo →</button>
+      </div>
+    </div>
+    
+    <div class="speech-panel">
+      <div class="speech-header">
+        <div class="speech-label">Speech do Slide</div>
+        <div class="speech-title" id="speechTitle">Capa</div>
+      </div>
+      <div class="speech-content">
+        <div class="speech-text" id="speechText"></div>
+      </div>
+      <div class="next-preview">
+        <div class="next-label">Próximo slide</div>
+        <div class="next-title" id="nextTitle">Agenda</div>
+      </div>
+      <div class="progress-bar" id="progressBar"></div>
+      <div class="shortcut-hint">← → para navegar | R para fechar | N para modo apresentador</div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        window.opener.navigate(1);
+        window.opener.updateReviewWindow();
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        window.opener.navigate(-1);
+        window.opener.updateReviewWindow();
+      }
+      if (e.key === 'r' || e.key === 'R' || e.key === 'Escape') {
+        window.close();
+      }
+    });
+  </script>
+</body>
+</html>
+  `);
+  doc.close();
+  
+  updateReviewWindow();
+}
+
+function updateReviewWindow() {
+  if (!reviewWindow || reviewWindow.closed) return;
+  
+  const doc = reviewWindow.document;
+  const note = SPEAKER_NOTES[current] || { title: 'Slide', time: '', notes: '' };
+  const nextNote = SPEAKER_NOTES[current + 1];
+  
+  // Update slide info
+  const slideNumEl = doc.getElementById('slideNum');
+  const slideTitleEl = doc.getElementById('slideTitle');
+  const slideTimeEl = doc.getElementById('slideTime');
+  const speechTitleEl = doc.getElementById('speechTitle');
+  const speechTextEl = doc.getElementById('speechText');
+  const nextTitleEl = doc.getElementById('nextTitle');
+  const progressBar = doc.getElementById('progressBar');
+  const slidePreview = doc.getElementById('slidePreview');
+  
+  if (slideNumEl) slideNumEl.textContent = String(current).padStart(2, '0');
+  if (slideTitleEl) slideTitleEl.textContent = note.title;
+  if (slideTimeEl) slideTimeEl.textContent = note.time || '';
+  if (speechTitleEl) speechTitleEl.textContent = note.title;
+  if (speechTextEl) speechTextEl.innerHTML = note.notes;
+  if (nextTitleEl) nextTitleEl.textContent = nextNote ? nextNote.title : 'Fim da apresentação';
+  
+  // Update progress bar
+  if (progressBar) {
+    let html = '';
+    for (let i = 0; i < total; i++) {
+      let className = 'progress-dot';
+      if (i < current) className += ' passed';
+      if (i === current) className += ' active';
+      html += '<div class="' + className + '" onclick="window.opener.current=' + i + '; window.opener.showSlide(' + i + '); window.opener.updateReviewWindow();"></div>';
+    }
+    progressBar.innerHTML = html;
+  }
+  
+  // Update slide preview - capture current slide as image
+  if (slidePreview) {
+    const slideEl = slides[current];
+    if (slideEl) {
+      // Clone the slide and render it
+      const clone = slideEl.cloneNode(true);
+      clone.style.position = 'relative';
+      clone.style.opacity = '1';
+      clone.style.pointerEvents = 'none';
+      clone.style.transform = 'scale(0.45)';
+      clone.style.transformOrigin = 'top left';
+      clone.style.width = '1600px';
+      clone.style.height = '900px';
+      
+      slidePreview.innerHTML = '';
+      slidePreview.style.overflow = 'hidden';
+      slidePreview.appendChild(clone);
+    }
+  }
+}
+
+// Also update review window on navigation
+const originalNavigate2 = navigate;
+navigate = function(dir) {
+  originalNavigate2(dir);
+  updateReviewWindow();
+};
 </script>
 </body>
 </html>
