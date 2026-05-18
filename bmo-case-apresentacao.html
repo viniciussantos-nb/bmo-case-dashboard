@@ -2269,7 +2269,7 @@ table.compact tbody td { padding: 10px 14px; font-size: 14px; line-height: 1.4; 
           <td style="padding:14px;font-weight:700;background:#FAFAFA;color:var(--nu-purple);vertical-align:top;">Iniciativas<br><span style="font-size:10px;color:var(--chrome-grey);font-weight:400;">(Ações)</span></td>
           <td style="padding:14px;vertical-align:top;line-height:1.6;">
             <div style="margin-bottom:3px;">• Dashboard executivo (Fórum)</div>
-            <div style="margin-bottom:3px;">• Triagem IA + Templates</div>
+            <div style="margin-bottom:3px;">• Template de Respostas</div>
             <div style="margin-bottom:3px;">• Task Force Collections</div>
             <div style="margin-bottom:3px;">• Bot Triagem (validação + go-live)</div>
             <div>• Mapeamento reasons críticos</div>
@@ -2693,7 +2693,18 @@ Identifiquei <strong>3 problemas críticos</strong> — e os priorizei nessa ord
 • Os outros <strong>92,8%</strong> são detratores silenciosos
 • Sem dados, CompSol não consegue gerar insights confiáveis
 
-<strong>Tese central:</strong> SLA é a causa raiz. Resolver SLA melhora resolutividade — cliente atendido rápido tem problema resolvido. E aumenta taxa de resposta — quem responde tem SLA de 4,6 dias vs 6,6 dias de quem não responde.`
+<strong>Tese central:</strong> SLA é a causa raiz. Resolver SLA melhora resolutividade — cliente atendido rápido tem problema resolvido. E aumenta taxa de resposta — quem responde tem SLA de 4,6 dias vs 6,6 dias de quem não responde.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEL PERGUNTA:</strong>
+
+<strong>P: "Você mencionou 337k casos. Esse volume está batendo com nosso dataset canonical?"</strong>
+
+<strong>R:</strong> "Usei a base disponibilizada para o case, com 337.614 casos no período de janeiro a outubro de 2025. Não tenho acesso ao canonical para validar.
+
+O que posso garantir é que apliquei filtros consistentes — apenas casos de Ouvidoria, excluindo testes e duplicatas. Se houver divergência, pode ser por diferença no período exato ou filtros de canal.
+
+Estou aberto a revalidar com a base oficial. O mais importante é que a análise proporcional se mantém — a concentração em Collections (44,73%) e a correlação SLA-resolutividade devem se confirmar."`
   },
   3: {
     title: "Validação da Hipótese",
@@ -2715,7 +2726,26 @@ Identifiquei <strong>3 problemas críticos</strong> — e os priorizei nessa ord
 
 <strong>Conclusão:</strong> A cada dia adicional de SLA, perdemos ~3pp de resolutividade e ~0,5pts de tNPS. Casos até 3 dias têm <strong>71% mais chance</strong> de resolução.
 
-<strong>Por que 7 dias como corte crítico?</strong> Representa 70% do prazo BACEN — margem de segurança antes do limite regulatório.`
+<strong>Por que 7 dias como corte crítico?</strong> Representa 70% do prazo BACEN — margem de segurança antes do limite regulatório.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEIS PERGUNTAS:</strong>
+
+<strong>P: "Como você validou a correlação entre SLA e resolutividade? Qual dataset usou?"</strong>
+
+<strong>R:</strong> "Usei a base de Ouvidoria com 337.614 casos de janeiro a outubro de 2025. Segmentei em dois grupos: Rápido (0-3 dias) e Lento (4+ dias).
+
+A diferença de 17,5pp se manteve por squad — Collections: 45% vs 21%, CSS: 44% vs 22%. Não é efeito isolado, é sistêmico.
+
+A correlação mostra que cada dia adicional de SLA reduz ~3pp de resolutividade. Casos até 3 dias têm 71% mais chance de resolução."
+
+<strong>P: "A metodologia de corte Rápido/Lento — como você chegou nesses critérios? Existe benchmark?"</strong>
+
+<strong>R:</strong> "Defini com base na margem de segurança regulatória: BACEN exige 10 dias úteis. 7 dias = 70% do prazo. 0-3 dias = margem confortável para retrabalho. 4+ dias = cada dia consome a margem até o limite.
+
+Não encontrei benchmark externo para Ouvidoria. Mas a validação empírica mostrou que o corte faz sentido: diferença de 17,5pp entre grupos — estatisticamente significativa.
+
+Se a operação tiver outro corte interno, posso ajustar. O critério foi operacionalmente lógico e empiricamente validado."`
   },
   4: {
     title: "Matriz de Impactos",
@@ -2733,7 +2763,21 @@ Identifiquei <strong>3 problemas críticos</strong> — e os priorizei nessa ord
 
 <strong>Principal:</strong> Ausência do campo de <strong>procedência BACEN</strong> — usei SLA e resolutividade como proxies.
 
-Os demais gaps estão documentados no slide e têm impacto menor na análise.`
+Os demais gaps estão documentados no slide e têm impacto menor na análise.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEL PERGUNTA:</strong>
+
+<strong>P: "Você mencionou gaps na base. Como você tratou esses gaps na sua análise?"</strong>
+
+<strong>R:</strong> "Identifiquei 4 gaps principais:
+
+1. Ausência do campo de procedência BACEN — usei SLA e resolutividade como proxies
+2. Nulls no campo Reason — excluí da análise Pareto, mantive no volume total
+3. IDs repetidos sem padrão — não tratei, sinalizei como oportunidade
+4. Receiving Method em branco — não impactou análise principal
+
+O gap mais relevante é a procedência. Se tivesse esse campo, poderia segmentar casos BACEN vs escalados internamente. Mas a análise de SLA como causa raiz não depende desse campo — a correlação se sustenta independentemente da origem."`
   },
   6: {
     title: "Análise Pareto",
@@ -2746,12 +2790,23 @@ Os demais gaps estão documentados no slide e têm impacto menor na análise.`
 
 <strong>Por Squad:</strong>
 • <strong>Collections sozinho representa 44,73%</strong> do problema
-• CSS vem em segundo com 27,62%
+• CSS vem em segundo com 14,87%
 • Os 5 maiores squads concentram 78% dos casos críticos
 
 <strong>O insight:</strong> O problema está concentrado. Não preciso resolver tudo — se eu focar em Collections e RDR, ataco quase metade do problema com recursos direcionados.
 
-Isso guiou minha priorização: <strong>Collections primeiro</strong>. Vou fazer o drill-down.`
+Isso guiou minha priorização: <strong>Collections primeiro</strong>. Vou fazer o drill-down.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEL PERGUNTA:</strong>
+
+<strong>P: "A diferença entre seus números e o que temos internamente — como você concilia isso?"</strong>
+
+<strong>R:</strong> "Essa é uma preocupação válida. Trabalhei com a base que recebi, que pode ter diferenças de corte temporal ou filtros.
+
+O importante é que a metodologia é replicável. Se os números absolutos divergirem, a correlação SLA-resolutividade deve se manter — é um padrão comportamental, não depende do volume exato.
+
+Se pudermos rodar a mesma análise na base oficial, aceito ajustar. O que não muda é a tese de que SLA elevado é a causa raiz."`
   },
   7: {
     title: "Drill-Down Collections",
@@ -2783,9 +2838,9 @@ SLA médio de Collections: <strong>9,04 dias</strong> — acima do limite regula
     notes: `Agora, como resolver. Estruturei um plano em 3 fases com metas progressivas.
 
 <strong>Fase 1 — 30 dias — Quick Wins:</strong>
-• Triagem automatizada por IA
-• Templates para os 5 reasons mais frequentes
+• Template de Respostas para reasons frequentes
 • Task Force em Collections
+• Bot Triagem (validação + go-live)
 • <strong>Meta: SLA ≤ 5,8 dias</strong>
 
 <strong>Fase 2 — 60 dias — Estruturação:</strong>
@@ -2828,7 +2883,30 @@ Objetivo: analistas tomam decisões sem depender do líder para cada passo.`
 
 <strong>Por que importa:</strong> Elimina o problema de 'meu número diz X, o seu diz Y'. Quando há divergência, a Golden Source é o árbitro.
 
-<strong>Na prática:</strong> Golden Source alimenta o Framework de Core Metrics — as 5 métricas que importam. Esse framework materializa no Dashboard Operacional, que vira a <strong>fonte única da verdade</strong> para a operação.`
+<strong>Na prática:</strong> Golden Source alimenta o Framework de Core Metrics — as 5 métricas que importam. Esse framework materializa no Dashboard Operacional, que vira a <strong>fonte única da verdade</strong> para a operação.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEIS PERGUNTAS:</strong>
+
+<strong>P: "O Dashboard Operacional como Golden Source — como garantir que não diverge do que o BACEN reporta?"</strong>
+
+<strong>R:</strong> "Para garantir consistência com BACEN:
+
+• Filtros documentados — mesma lógica de corte temporal (casos respondidos no período, não abertos)
+• Reconciliação trimestral — comparar nosso número com o reportado
+• Alertas de divergência — se diferença > 1%, investigar
+
+O problema do Q3 (BACEN usando corte de 25/09 ao invés de 30/09) mostra que precisamos documentar e validar a metodologia deles. Se BACEN muda sem aviso, nossa fonte continua correta — a divergência é de metodologia, não de erro."
+
+<strong>P: "Como você pretende manter a consistência dos dashboards ao longo do tempo?"</strong>
+
+<strong>R:</strong> "Três pilares:
+
+1. Documentação de metodologia — cada métrica tem definição escrita
+2. Validação periódica — trimestral, comparo com fontes externas
+3. Ownership claro — um analista é 'dono', qualquer mudança passa por ele
+
+Se eu assumir a posição, na primeira semana levanto: quais dashboards existem, quem é owner, última validação. Qualquer 'sem dono' vira prioridade de correção."`
   },
   11: {
     title: "Dashboard Executivo vs Operacional",
@@ -2846,7 +2924,31 @@ São complementares — o executivo direciona, o operacional executa.`
 
 Plano de 30 dias: discovery, recalibração, shadow mode.
 
-Critério GO/NO-GO: acurácia ≥ 85%. Se não atingir, não ativa.`
+Critério GO/NO-GO: acurácia ≥ 85%. Se não atingir, não ativa.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEIS PERGUNTAS:</strong>
+
+<strong>P: "O bot de triagem que você propõe retomar — como funcionaria a integração com os sistemas atuais?"</strong>
+
+<strong>R:</strong> "Minha proposta é retomada com validação técnica, não ativação direta:
+
+• Semana 1: Discovery — entender por que parou
+• Semana 2: Requisitos de recalibração
+• Semana 3: Shadow mode — roda em paralelo sem impactar operação
+• Semana 4: GO/NO-GO — acurácia ≥ 85%
+
+Se não atingir, não ativa. Integração seria via API do Zendesk, classificando tickets na entrada. Analista valida antes de encaminhar."
+
+<strong>P: "Como você garantiria que as mudanças não causem um novo incidente de dados?"</strong>
+
+<strong>R:</strong> "Três salvaguardas:
+
+1. Não mexo na fonte de dados — mudanças são operacionais (roteamento, priorização)
+2. Dashboard como monitoramento — métricas em tempo real, se algo quebrar, detectamos rápido
+3. Piloto antes de escala — qualquer automação roda em shadow mode primeiro
+
+Se precisar de alterações em pipelines, passa pelo time de Engineering com change management adequado."`
   },
   13: {
     title: "ROI do Bot",
@@ -2860,7 +2962,16 @@ Critério GO/NO-GO: acurácia ≥ 85%. Se não atingir, não ativa.`
 
 <strong>Resultado estimado:</strong> Economia de aproximadamente <strong>R$ 250 mil/ano</strong> e liberação de <strong>3-4 FTEs</strong> para tarefas de maior valor.
 
-<em>Nota: São estimativas que precisam ser validadas com dados reais de tempo de triagem.</em>`
+<em>Nota: São estimativas que precisam ser validadas com dados reais de tempo de triagem.</em>
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEL PERGUNTA:</strong>
+
+<strong>P: "De onde veio o custo de R$ 40/hora?"</strong>
+
+<strong>R:</strong> "Estimativa baseada em custo médio de analista sênior + encargos. É uma premissa que precisaria ser validada com dados reais de RH.
+
+Se o custo real for diferente, a fórmula se mantém — só ajusta o valor. O importante é demonstrar que existe ROI positivo, não o número exato."`
   },
   14: {
     title: "Outros Casos de IA",
@@ -2911,7 +3022,24 @@ Os tracks rodam em paralelo porque usam stakeholders diferentes.`
 
 • <strong>Iniciativas Estratégicas:</strong> Projetos que geram mudança estrutural — implementar IA, criar dashboards, otimizar processos. É o que move os indicadores.
 
-RICE prioriza as iniciativas estratégicas. BAU tem cadência própria. Na Weekly: quanto tempo vai para BAU, quanto vai para estratégico. Se BAU consome 100%, não há transformação.`
+RICE prioriza as iniciativas estratégicas. BAU tem cadência própria. Na Weekly: quanto tempo vai para BAU, quanto vai para estratégico. Se BAU consome 100%, não há transformação.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEL PERGUNTA:</strong>
+
+<strong>P: "No framework RICE, como você definiria o peso de cada critério? Quem valida?"</strong>
+
+<strong>R:</strong> "O RICE já tem pesos implícitos na fórmula: (R × I × C) ÷ E
+
+Na prática:
+• Reach = Volume de casos impactados (dado objetivo)
+• Impact = Escala de 1-3 (baixo/médio/alto impacto no KPI)
+• Confidence = % de confiança na estimativa (50-100%)
+• Effort = Semanas-pessoa necessárias
+
+Quem valida: o time preenche na Weekly, eu valido se as estimativas são realistas. Em caso de divergência, usamos dados históricos.
+
+O framework não é para criar burocracia — é para o time ter autonomia de priorização sem depender de mim para cada decisão."`
   },
   17: {
     title: "Plano 30-60-90",
@@ -2943,7 +3071,34 @@ RICE prioriza as iniciativas estratégicas. BAU tem cadência própria. Na Weekl
 → Distribuição equilibrada via RICE, monitoramento nas 1:1s, ajuste de escopo
 
 <strong>Tecnológico:</strong> Bot pode não atingir acurácia
-→ GO/NO-GO rigoroso, plano B com triagem manual otimizada`
+→ GO/NO-GO rigoroso, plano B com triagem manual otimizada
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEIS PERGUNTAS:</strong>
+
+<strong>P: "Se descobrirmos que a causa raiz é diferente da sua hipótese, qual o plano B?"</strong>
+
+<strong>R:</strong> "Se SLA não for a causa raiz, as ações ainda fazem sentido — só muda a priorização.
+
+Se a causa for complexidade do caso e não SLA: foco sairia de 'atender mais rápido' para 'segmentar por complexidade'. Criaria filas separadas: simples (resposta automatizada) vs complexo (analista sênior).
+
+A beleza do diagnóstico estruturado é que não depende de uma única hipótese. Se a correlação não se confirmar, investigo outras variáveis: reason, canal, analista, tempo de primeira resposta.
+
+O que não muda: o problema existe (46% de estouro de SLA, 18% de resolutividade RDR). A causa pode variar, mas precisa de solução."
+
+<strong>P: "Como você escalaria problemas de dados identificados durante a execução?"</strong>
+
+<strong>R:</strong> "Fluxo de escalação:
+
+1. Identificação — Analista detecta divergência
+2. Registro — Documenta em ticket
+3. Classificação — Severidade por impacto:
+   • Crítico (afeta regulatório) → Escalação imediata para Engineering
+   • Alto (afeta decisão) → Resolução em 24h
+   • Médio/Baixo → Backlog de correção
+4. Comunicação — FYI para stakeholders
+
+O importante é não paralisar a operação por problema de dados, mas também não ignorar."`
   },
   18: {
     title: "Gestão de Pessoas",
@@ -2996,7 +3151,26 @@ RICE prioriza as iniciativas estratégicas. BAU tem cadência própria. Na Weekl
 • RICE permite priorizar sem perguntar
 • Playbook documenta critérios
 • 1:1 desenvolve, não controla
-• O modelo não cria dependência — constrói capacidade`
+• O modelo não cria dependência — constrói capacidade
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEIS PERGUNTAS:</strong>
+
+<strong>P: "Como você lida com resistência do time?"</strong>
+
+<strong>R:</strong> "Começo pelo porquê. Mostro os dados, o impacto. Envolvo na construção.
+
+Resistência geralmente vem de não entender o contexto ou não ter sido consultado. Não imponho mudanças — construo junto.
+
+Se a resistência persistir, investigo a causa: é medo de mudança? Sobrecarga? Falta de skill? Cada causa tem uma abordagem diferente."
+
+<strong>P: "A resolutividade que você apresentou — está considerando apenas tickets fechados ou também os em andamento?"</strong>
+
+<strong>R:</strong> "Apenas tickets fechados com status de resolução positiva. Excluí tickets em andamento (não têm outcome definido) e fechados como 'improcedente'.
+
+Fórmula: Resolutividade = Tickets Resolvidos / Tickets Fechados × 100
+
+Se a operação usar outra definição (ex: incluir parcialmente resolvidos), posso recalcular. O critério foi binário — ou resolveu, ou não resolveu — para evitar ambiguidade."`
   },
   19: {
     title: "Encerramento",
@@ -3013,7 +3187,30 @@ RICE prioriza as iniciativas estratégicas. BAU tem cadência própria. Na Weekl
 
 <strong>Meu diferencial:</strong> Combino visão analítica com capacidade de execução. Sei estruturar problemas complexos, mas também sei colocar a mão na massa com o time.
 
-Estou à disposição para perguntas.`
+Estou à disposição para perguntas.
+
+<hr style="margin: 16px 0; border: none; border-top: 1px dashed #ccc;">
+<strong>⚠️ POSSÍVEIS PERGUNTAS FINAIS:</strong>
+
+<strong>P: "Como você lida quando os números não batem entre diferentes fontes?"</strong>
+
+<strong>R:</strong> "Primeiro, não entro em pânico. Divergência é normal — o problema é não entender o porquê.
+
+Meu processo:
+1. Isolar a diferença — qual é o delta?
+2. Checar filtros — período? canal? status?
+3. Validar metodologia — uma fonte usa data de abertura, outra de fechamento?
+4. Decidir a SoT — se ambas estão certas, qual é a fonte de verdade para o contexto?
+
+O que não faço: ajustar meus números para bater com outro sem entender a causa."
+
+<strong>P: "Por que você e não outro candidato?"</strong>
+
+<strong>R:</strong> "Três coisas: capacidade analítica — como mostrei no diagnóstico. Conhecimento técnico — IA, Cursor, automação. E liderança que desenvolve — não controlo, construo autonomia."
+
+<strong>P: "O que faria diferente com mais tempo?"</strong>
+
+<strong>R:</strong> "Entrevistas qualitativas com analistas para entender gargalos que os dados não mostram. E análise de procedência BACEN que era um gap da base."`
   }
 };
 

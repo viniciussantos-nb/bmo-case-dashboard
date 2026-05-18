@@ -157,9 +157,9 @@ SLA médio de Collections: **9,04 dias** — já acima do limite regulatório."
 "O plano em 3 fases, focando em Collections:
 
 **Fase 1 — 30 dias — Quick Wins:**
-- Triagem automatizada por IA
-- Templates para os 5 reasons mais frequentes
+- Template de Respostas para reasons frequentes
 - Task Force em Collections
+- Bot Triagem (validação + go-live)
 - **Meta: SLA ≤ 5,8 dias**
 
 **Fase 2 — 60 dias — Estruturação:**
